@@ -93,11 +93,9 @@ export default function SharePanel({
 
       if (!pool?.current) throw new Error('No relay pool available');
 
-      const results = await Promise.allSettled(
-        relays.map((url) => pool.current.publish(url, signed))
-      );
+      const results = await pool.current.publishTo(signed, relays);
 
-      const succeeded = results.filter((r) => r.status === 'fulfilled').length;
+      const succeeded = [...results.values()].filter((r) => r.ok).length;
       if (succeeded === 0) throw new Error('All relays rejected the note');
 
       setStatus('done');
