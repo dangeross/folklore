@@ -47,19 +47,22 @@ export class RelayPool {
    * Subscribe to all connected relays with a common filter.
    *
    * Events are deduplicated by event `id`. Calls `onevent` for each
-   * unique event. Calls `oneose` after ALL relays have sent EOSE
-   * (or after `eoseTimeoutMs`).
+   * unique event. Calls `oneose` after the FIRST relay sends EOSE
+   * (fast path for initial render). Calls `onallEose` after ALL relays
+   * have sent EOSE (or after `eoseTimeoutMs`) — use this to gate logic
+   * that requires a complete event set.
    *
    * @param {Array} filters - nostr filter array
-   * @param {{ onevent, oneose? }} callbacks
+   * @param {{ onevent, oneose?, onallEose? }} callbacks
    * @param {{ eoseTimeoutMs?: number }} options
    * @returns {{ close: () => void }}
    */
-  subscribe(filters, { onevent, oneose }, { eoseTimeoutMs = 10000 } = {}) {
+  subscribe(filters, { onevent, oneose, onallEose }, { eoseTimeoutMs = 10000 } = {}) {
     const subs = [];
     const relayCount = this.#relays.size;
     let eoseCount = 0;
     let eoseFired = false;
+    let allEoseFired = false;
 
     const fireEose = () => {
       if (eoseFired) return;
@@ -67,9 +70,16 @@ export class RelayPool {
       oneose?.();
     };
 
-    // Timeout: fire EOSE even if slow relays haven't responded
+    const fireAllEose = () => {
+      if (allEoseFired) return;
+      allEoseFired = true;
+      clearTimeout(timer);
+      onallEose?.();
+    };
+
+    // Timeout: fire all-eose even if slow relays haven't responded
     const timer = relayCount > 0
-      ? setTimeout(fireEose, eoseTimeoutMs)
+      ? setTimeout(() => { fireEose(); fireAllEose(); }, eoseTimeoutMs)
       : null;
 
     for (const [url, relay] of this.#relays) {
@@ -85,6 +95,8 @@ export class RelayPool {
             console.log(`[pool] EOSE from ${url} (${eoseCount}/${relayCount})`);
             // Fire on FIRST eose for fast initial render
             if (eoseCount === 1) fireEose();
+            // Fire all-eose once every relay has responded
+            if (eoseCount >= relayCount) fireAllEose();
           },
         });
         subs.push(sub);
@@ -94,13 +106,14 @@ export class RelayPool {
     }
 
     if (relayCount === 0) {
-      // No relays connected — fire eose immediately
+      // No relays connected — fire both immediately
       fireEose();
+      fireAllEose();
     }
 
     return {
       close() {
-        if (timer) clearTimeout(timer);
+        clearTimeout(timer);
         subs.forEach((s) => { try { s.close(); } catch {} });
       },
     };

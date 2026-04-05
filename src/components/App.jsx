@@ -528,9 +528,11 @@ export default function App() {
 
   // Initial room on ready (mergedEvents includes drafts in build mode)
   useEffect(() => {
-    // worldConfig requires the world event — don't proceed until it's loaded.
-    // Without it genesisPlace is '' and the engine gets an invalid currentPlace.
-    if (status === 'ready' && worldConfig && mergedEvents.size > 0 && log.length === 0) {
+    // Wait for 'expanded' (world relay EOSE) so all events are present before
+    // rendering the initial room — prevents exits/items missing on first load.
+    // Falls back to 'ready' only in build mode (drafts, no relay expansion).
+    const isLoaded = status === 'expanded' || (buildMode && status === 'ready');
+    if (isLoaded && worldConfig && mergedEvents.size > 0 && log.length === 0) {
       const engine = getEngine();
 
       // If the engine fell back to genesis because events loaded incrementally
@@ -577,7 +579,7 @@ export default function App() {
 
   // Re-enter room when preview mode changes (trust config updated)
   useEffect(() => {
-    if (status !== 'ready' || log.length === 0) return;
+    if ((status !== 'ready' && status !== 'expanded') || log.length === 0) return;
     const engine = getEngine(); // updates engine config with new trustInfo
     engine.enterRoom(engine.currentPlace);
     commitEngine(engine);

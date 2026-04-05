@@ -2,16 +2,75 @@
  * useRelay — Subscribe to all kind:30078 events for a world across multiple relays.
  *
  * Uses RelayPool for simultaneous connections. Deduplicates events by a-tag,
- * keeping the latest created_at. Renders on first EOSE for fast initial load.
+ * keeping the latest created_at.
  *
- * After the world event is received, its relay tags are extracted and any
- * additional relays are connected + subscribed automatically.
+ * Status flow:
+ *   connecting → connected → ready (first relay EOSE, fast render) → expanded (all relays EOSE + world relays done)
+ *
+ * App.jsx gates initial room entry on 'expanded' so exits/items are never
+ * missing on first load. 'ready' is available for showing a loading indicator.
  */
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { RelayPool } from '../services/relayPool.js';
 import { DEFAULT_RELAY_URLS } from '../config.js';
 import { getWorldRelays, getCustomRelays, mergeRelayUrls } from '../services/relayUrls.js';
+
+/**
+ * After all initial relay EOSEs, connect to any world-specific relays and
+ * subscribe — then set status 'expanded'. If no new relays needed, sets
+ * 'expanded' immediately.
+ */
+async function expandPool({
+  pool, worldTag, worldEvent, handleEvent,
+  cancelled, setStatus, setRelayStatus, setPublishUrls,
+}) {
+  if (cancelled) return;
+
+  const worldRelays = worldEvent ? getWorldRelays(worldEvent) : [];
+
+  const updatePublish = () => {
+    const custom = getCustomRelays(worldTag);
+    const { publish } = mergeRelayUrls({ worldRelays, custom });
+    setPublishUrls(publish);
+  };
+
+  if (worldRelays.length === 0) {
+    updatePublish();
+    console.log('[useRelay] no world relays — expanded');
+    setStatus('expanded');
+    return;
+  }
+
+  const connected = new Set(pool.connectedUrls);
+  const newUrls = worldRelays.filter((url) => !connected.has(url.replace(/\/+$/, '')));
+
+  if (newUrls.length === 0) {
+    updatePublish();
+    console.log('[useRelay] no new world relays — expanded');
+    setStatus('expanded');
+    return;
+  }
+
+  await pool.connect(newUrls);
+  if (cancelled) return;
+  setRelayStatus(new Map(pool.connectionStatus));
+
+  pool.subscribe(
+    [{ kinds: [30078], '#t': [worldTag] }],
+    {
+      onevent: handleEvent,
+      oneose() {
+        if (!cancelled) {
+          console.log('[useRelay] world relay EOSE — expanded');
+          setStatus('expanded');
+        }
+      },
+    },
+  );
+
+  updatePublish();
+}
 
 /**
  * @param {string} worldTag - the world slug to subscribe to
@@ -29,12 +88,15 @@ export function useRelay(worldTag) {
   const [relayStatus, setRelayStatus] = useState(new Map());
   const [publishUrls, setPublishUrls] = useState([...DEFAULT_RELAY_URLS]);
   const poolRef = useRef(null);
-  const expandedRef = useRef(false); // track whether we've expanded to world relays
+  const worldEventRef = useRef(null); // world event tracked as events arrive
 
-  // Stable callback for handling events
+  // Stable callback for handling events — also tracks the world event
   const handleEvent = useCallback((event) => {
     const d = event.tags.find((t) => t[0] === 'd')?.[1];
     if (!d) return;
+    if (event.tags.find((t) => t[0] === 'type')?.[1] === 'world') {
+      worldEventRef.current = event;
+    }
     setEvents((prev) => {
       const aTag = `30078:${event.pubkey}:${d}`;
       const existing = prev.get(aTag);
@@ -54,7 +116,7 @@ export function useRelay(worldTag) {
 
     setStatus('connecting');
     setEvents(new Map());
-    expandedRef.current = false;
+    worldEventRef.current = null;
     let cancelled = false;
 
     async function connect() {
@@ -109,8 +171,9 @@ export function useRelay(worldTag) {
         });
       }
 
-      // Initial subscription — no limit so relay EOSE semantics are unchanged.
-      // We observe event count/timestamps to detect truncation after EOSE.
+      // Initial subscription.
+      // oneose  (first relay EOSE) → 'ready' for fast UI render.
+      // onallEose (all relays EOSE) → expand to world-specific relays, then 'expanded'.
       pool.subscribe(
         [{ kinds: [30078], '#t': [worldTag] }],
         {
@@ -121,14 +184,21 @@ export function useRelay(worldTag) {
           },
           oneose() {
             if (!cancelled) {
-              console.log(`[useRelay] EOSE — ${initialCount} events received.`);
+              console.log(`[useRelay] first EOSE — ${initialCount} events so far`);
               setStatus('ready');
-              // If the relay appeared to truncate, fetch older pages
-              if (initialCount >= PAGE_SIZE && initialMin < Infinity) {
-                console.log(`[useRelay] initial batch full — paginating from until=${initialMin - 1}`);
-                fetchNextPage(initialMin - 1);
-              }
             }
+          },
+          onallEose() {
+            if (cancelled) return;
+            console.log(`[useRelay] all EOSE — ${initialCount} events total`);
+            if (initialCount >= PAGE_SIZE && initialMin < Infinity) {
+              console.log(`[useRelay] initial batch full — paginating from until=${initialMin - 1}`);
+              fetchNextPage(initialMin - 1);
+            }
+            expandPool({
+              pool, worldTag, worldEvent: worldEventRef.current, handleEvent,
+              cancelled, setStatus, setRelayStatus, setPublishUrls,
+            });
           },
         },
       );
@@ -142,59 +212,6 @@ export function useRelay(worldTag) {
       poolRef.current = null;
     };
   }, [worldTag, handleEvent]);
-
-  // After events arrive, check for world event relay tags and expand pool
-  useEffect(() => {
-    if (expandedRef.current || status !== 'ready' || !poolRef.current) return;
-
-    // Find the world event
-    let worldEvent = null;
-    for (const [, ev] of events) {
-      if (ev.tags.find((t) => t[0] === 'type')?.[1] === 'world') {
-        worldEvent = ev;
-        break;
-      }
-    }
-    if (!worldEvent) return;
-
-    const worldRelays = getWorldRelays(worldEvent);
-    if (worldRelays.length === 0) return;
-
-    // Check if there are new relays to connect
-    const connected = new Set(poolRef.current.connectedUrls);
-    const newUrls = worldRelays.filter((url) => !connected.has(url.replace(/\/+$/, '')));
-
-    if (newUrls.length === 0) {
-      expandedRef.current = true;
-      // Update publish URLs
-      const custom = getCustomRelays(worldTag);
-      const { publish } = mergeRelayUrls({ worldRelays, custom });
-      setPublishUrls(publish);
-      return;
-    }
-
-    expandedRef.current = true;
-
-    // Connect to new relays and subscribe
-    (async () => {
-      const pool = poolRef.current;
-      if (!pool) return;
-
-      await pool.connect(newUrls);
-      setRelayStatus(new Map(pool.connectionStatus));
-
-      // Subscribe the new relays (pool.subscribe already fans out to all connected)
-      pool.subscribe(
-        [{ kinds: [30078], '#t': [worldTag] }],
-        { onevent: handleEvent },
-      );
-
-      // Update publish URLs
-      const custom = getCustomRelays(worldTag);
-      const { publish } = mergeRelayUrls({ worldRelays, custom });
-      setPublishUrls(publish);
-    })();
-  }, [events, status, worldTag, handleEvent]);
 
   // Add or remove a relay dynamically (called from RelaySettingsPanel)
   const updateRelays = useCallback(async (action, url) => {
