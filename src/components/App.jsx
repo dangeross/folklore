@@ -769,7 +769,7 @@ export default function App() {
               <span className="sm:hidden">⚡</span>
             </button>
           )}
-          {status !== 'ready' ? <span style={{ color: 'var(--colour-dim)' }}>{' | '}{status}</span> : ''}
+          {(status !== 'ready' && status !== 'expanded') ? <span style={{ color: 'var(--colour-dim)' }}>{' | '}{status}</span> : ''}
         </span>
         <span className="flex items-center gap-2 shrink-0">
           <ModeDropdown
