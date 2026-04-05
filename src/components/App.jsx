@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo, lazy, Suspense } from 'react';
 import { useRelay } from '../hooks/useRelay.js';
 import { usePlayerState } from '../hooks/usePlayerState.js';
 import { useSigner } from '../hooks/useSigner.js';
@@ -13,17 +13,17 @@ import { interpolateHud } from '../engine/hud.js';
 import { useStateBackup } from '../hooks/useStateBackup.js';
 import { useNip65 } from '../hooks/useNip65.js';
 import PaymentPanel from './PaymentPanel.jsx';
-import Guide from './Guide.jsx';
+const Guide = lazy(() => import('./Guide.jsx'));
 import Landing from './Landing.jsx';
-import BuildModeOverlay from '../builder/components/BuildModeOverlay.jsx';
-import EventEditor from '../builder/components/EventEditor.jsx';
-import DraftListPanel from '../builder/components/DraftListPanel.jsx';
+const BuildModeOverlay = lazy(() => import('../builder/components/BuildModeOverlay.jsx'));
+const EventEditor = lazy(() => import('../builder/components/EventEditor.jsx'));
+const DraftListPanel = lazy(() => import('../builder/components/DraftListPanel.jsx'));
 import ModeDropdown from '../builder/components/ModeDropdown.jsx';
-import WorldCreator from '../builder/components/WorldCreator.jsx';
-import VouchPanel from '../builder/components/VouchPanel.jsx';
-import TrustPanel from '../builder/components/TrustPanel.jsx';
-import EventGraph from '../builder/components/EventGraph.jsx';
-import MapOverlay from './MapOverlay.jsx';
+const WorldCreator = lazy(() => import('../builder/components/WorldCreator.jsx'));
+const VouchPanel = lazy(() => import('../builder/components/VouchPanel.jsx'));
+const TrustPanel = lazy(() => import('../builder/components/TrustPanel.jsx'));
+const EventGraph = lazy(() => import('../builder/components/EventGraph.jsx'));
+const MapOverlay = lazy(() => import('./MapOverlay.jsx'));
 import { publishReport, publishRevoke, deletePublishedEvent } from '../builder/eventBuilder.js';
 import Lobby from './Lobby.jsx';
 import AuthorProfile from './AuthorProfile.jsx';
@@ -697,7 +697,7 @@ export default function App() {
 
   // ── Guide route ──────────────────────────────────────────────────────
   if (route.page === 'guide') {
-    return <Guide guidePage={route.guidePage} identity={identity} />;
+    return <Suspense fallback={null}><Guide guidePage={route.guidePage} identity={identity} /></Suspense>;
   }
 
   // ── Landing route ──────────────────────────────────────────────────────
@@ -719,7 +719,7 @@ export default function App() {
         onCreateWorld={() => setShowWorldCreator(true)}
         showWorldCreator={showWorldCreator}
         worldCreatorNode={showWorldCreator && (
-          <WorldCreator
+          <Suspense fallback={null}><WorldCreator
             onClose={() => setShowWorldCreator(false)}
             onSaveDrafts={(worldSlug, templates) => {
               for (const tmpl of templates) {
@@ -730,7 +730,7 @@ export default function App() {
               setBuildMode(true);
               navigateToWorld(worldSlug);
             }}
-          />
+          /></Suspense>
         )}
       /></>
     );
@@ -881,13 +881,15 @@ export default function App() {
 
       {/* Map overlay */}
       {showMap && worldConfig?.worldEvent && (
-        <MapOverlay
-          events={mergedEvents}
-          playerState={player.state}
-          mapMode={getTag(worldConfig.worldEvent, 'map')}
-          currentPlace={engine?.currentPlace}
-          onClose={() => setShowMap(false)}
-        />
+        <Suspense fallback={null}>
+          <MapOverlay
+            events={mergedEvents}
+            playerState={player.state}
+            mapMode={getTag(worldConfig.worldEvent, 'map')}
+            currentPlace={engine?.currentPlace}
+            onClose={() => setShowMap(false)}
+          />
+        </Suspense>
       )}
 
       {paymentActive && (
@@ -922,28 +924,32 @@ export default function App() {
 
       {/* Vouch panel */}
       {vouchTarget && identity?.signer && (
-        <VouchPanel
-          targetPubkey={vouchTarget}
-          worldSlug={worldTag}
-          signer={identity.signer}
-          pool={pool}
-          events={mergedEvents}
-          trustSet={trustInfo?.trustSet}
-          clientMode={trustInfo?.effectiveMode}
-          onClose={() => setVouchTarget(null)}
-        />
+        <Suspense fallback={null}>
+          <VouchPanel
+            targetPubkey={vouchTarget}
+            worldSlug={worldTag}
+            signer={identity.signer}
+            pool={pool}
+            events={mergedEvents}
+            trustSet={trustInfo?.trustSet}
+            clientMode={trustInfo?.effectiveMode}
+            onClose={() => setVouchTarget(null)}
+          />
+        </Suspense>
       )}
 
       {/* Trust panel */}
       {showTrust && trustInfo?.trustSet && (
-        <TrustPanel
-          trustSet={trustInfo.trustSet}
-          worldSlug={worldTag}
-          identityPubkey={identity?.pubkey}
-          signer={identity?.signer}
-          pool={pool}
-          onClose={() => setShowTrust(false)}
-        />
+        <Suspense fallback={null}>
+          <TrustPanel
+            trustSet={trustInfo.trustSet}
+            worldSlug={worldTag}
+            identityPubkey={identity?.pubkey}
+            signer={identity?.signer}
+            pool={pool}
+            onClose={() => setShowTrust(false)}
+          />
+        </Suspense>
       )}
 
       {/* Relay settings */}
@@ -988,7 +994,8 @@ export default function App() {
       )}
 
       {/* Build mode — event graph */}
-      {buildMode && status === 'ready' && (
+      {buildMode && (status === 'ready' || status === 'expanded') && (
+        <Suspense fallback={null}>
         <EventGraph
           events={mergedEvents}
           currentPlace={engineRef.current?.currentPlace || player.state.place}
@@ -1039,10 +1046,12 @@ export default function App() {
               : undefined
           }
         />
+        </Suspense>
       )}
 
       {/* Draft list panel */}
       {showDrafts && (
+        <Suspense fallback={null}>
         <DraftListPanel
           drafts={drafts}
           events={mergedEvents}
@@ -1121,10 +1130,12 @@ export default function App() {
               : undefined
           }
         />
+        </Suspense>
       )}
 
       {/* Event editor */}
       {editorState && (
+        <Suspense fallback={null}>
         <EventEditor
           eventType={editorState.eventType}
           worldSlug={worldTag}
@@ -1164,6 +1175,7 @@ export default function App() {
           }}
           onClose={() => { stopPreview(); setEditorState(null); }}
         />
+        </Suspense>
       )}
 
       {status === 'connecting' && <p>Connecting to relay...</p>}

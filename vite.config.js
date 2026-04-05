@@ -54,6 +54,21 @@ export default defineConfig({
       },
     },
   ],
+  // Exclude heavy deps from pre-bundling so they are code-split as true
+  // dynamic imports rather than inlined into the main chunk.
+  optimizeDeps: {
+    exclude: ['@strudel/web'],
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Keep @strudel/web in its own chunk — only loaded when audio is initialised
+          if (id.includes('@strudel')) return 'strudel';
+        },
+      },
+    },
+  },
   // SPA history fallback — Vite dev server serves index.html for all routes by default
   // (appType: 'spa' is the default). For production, configure your hosting to do the same.
 });
