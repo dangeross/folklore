@@ -151,11 +151,15 @@ export function mixInteraction(Engine) {
         }
       }
     }
+    // guardState is fixed at the moment of interaction — all on-interact guards check
+    // the pre-interaction state even if a self-set-state tag fires first and mutates
+    // currentState (which is needed for transition-finding logic in later self-set-states).
+    const guardState = currentState;
     for (const tag of getTags(event, 'on-interact')) {
       if (tag[1] !== verb) continue;
       // State guard at position 2 — blank = any state, otherwise must match current state
       const stateGuard = tag[2];
-      if (stateGuard && currentState && stateGuard !== currentState) continue;
+      if (stateGuard && guardState && stateGuard !== guardState) continue;
       const action = tag[3];
       const targetState = tag[4];
       const targetRef = tag[5];
