@@ -2,7 +2,7 @@
 
 ## What is Folklore?
 
-Folklore (Federated Open Adventure and Knowledge Living On A Relay) is a decentralised text adventure engine built on NOSTR. Worlds are graphs of NOSTR events stored on relays — no central server, no accounts, no login. Your identity is a NOSTR keypair, and anyone can build, extend, or play any world.
+Folklore is a decentralised text adventure engine built on NOSTR. Worlds are graphs of NOSTR events stored on relays — no central server, no accounts, no login. Your identity is a NOSTR keypair, and anyone can build, extend, or play any world.
 
 You can build:
 

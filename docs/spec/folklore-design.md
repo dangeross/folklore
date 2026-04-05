@@ -1,5 +1,4 @@
 # FOAKLOAR — Design Document
-*Federated Open Adventure and Knowledge Living On A Relay*
 *Personal reference · Work in progress*
 
 ---
