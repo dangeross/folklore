@@ -85,7 +85,7 @@ export const TAG_SCHEMAS = {
   d:              { label: 'D-Tag', desc: 'Unique identifier for this event (auto-generated)', auto: true, fields: [{ name: 'value', type: 'text', required: true, placeholder: 'world:type:name' }] },
   t:              { label: 'World Tag', desc: 'World this event belongs to (auto-set)', auto: true, fields: [{ name: 'value', type: 'text', required: true, placeholder: 'the-lake' }] },
   type:           { label: 'Type', desc: 'Event type (auto-set from editor)', auto: true, fields: [{ name: 'value', type: 'select', required: true, options: ['place', 'portal', 'item', 'feature', 'clue', 'puzzle', 'recipe', 'payment', 'npc', 'dialogue', 'consequence', 'world', 'vouch', 'quest', 'sound', 'player-state'] }] },
-  w:              { label: 'Protocol', desc: 'Protocol identifier for relay discovery (auto-set on world events)', auto: true, fields: [{ name: 'value', type: 'text', required: true, placeholder: 'foakloar' }] },
+  w:              { label: 'Protocol', desc: 'Protocol identifier for relay discovery (auto-set on world events)', auto: true, fields: [{ name: 'value', type: 'text', required: true, placeholder: 'folklore' }] },
 
   // ── Display ──────────────────────────────────────────────────────────────
   title:          { label: 'Title', desc: 'Display name shown to the player', fields: [{ name: 'value', type: 'text', required: true, placeholder: 'Display title' }] },

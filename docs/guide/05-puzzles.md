@@ -1,6 +1,6 @@
 # Puzzles, Clues, and Sealed Content
 
-Puzzles are the core challenge mechanic in foakloar. They gate progression, reward exploration, and give players something to solve rather than just something to find. This guide covers how to create puzzles, place clues that help players solve them, and how sealed (encrypted) content works at a high level.
+Puzzles are the core challenge mechanic in folklore. They gate progression, reward exploration, and give players something to solve rather than just something to find. This guide covers how to create puzzles, place clues that help players solve them, and how sealed (encrypted) content works at a high level.
 
 > ▶ **Try it:** Import [tides-end-05-puzzles.json](tutorials/tides-end-05-puzzles.json) to explore these concepts in a working world.
 
@@ -188,7 +188,7 @@ Combined with counters and `on-counter`, you can build attempt-limited puzzles:
 
 ## Sealed Content and NIP-44
 
-This is an advanced topic. The short version: foakloar can encrypt event content using NIP-44 so that it is literally unreadable without the correct key. This is not simulated encryption -- it is real cryptography. Even scraping all relay data won't reveal the content.
+This is an advanced topic. The short version: folklore can encrypt event content using NIP-44 so that it is literally unreadable without the correct key. This is not simulated encryption -- it is real cryptography. Even scraping all relay data won't reveal the content.
 
 A sealed clue or place has:
 - `content-type: application/nip44` -- tells the client the content is encrypted.

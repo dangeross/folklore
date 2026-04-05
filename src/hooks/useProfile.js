@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react';
 import { Relay } from 'nostr-tools/relay';
 import { RELAY_URLS } from '../config.js';
 
-const CACHE_PREFIX = 'foakloar:profile:';
+const CACHE_PREFIX = 'folklore:profile:';
 const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 
 function getCached(hexPubkey) {

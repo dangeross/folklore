@@ -1,6 +1,6 @@
 # State, Transitions, Requires, and Counters
 
-This guide covers the four mechanisms that make foakloar worlds interactive: **state** (how things change), **transitions** (feedback when they change), **requires** (gating access), and **counters** (tracking numbers and thresholds). Together, these let you build locked doors, item puzzles, multi-step mechanisms, and progression gates.
+This guide covers the four mechanisms that make folklore worlds interactive: **state** (how things change), **transitions** (feedback when they change), **requires** (gating access), and **counters** (tracking numbers and thresholds). Together, these let you build locked doors, item puzzles, multi-step mechanisms, and progression gates.
 
 > ▶ **Try it:** Import [tides-end-03-state.json](tutorials/tides-end-03-state.json) to explore these concepts in a working world.
 

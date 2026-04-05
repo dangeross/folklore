@@ -1,5 +1,5 @@
 /**
- * Landing — front page of foakloar.
+ * Landing — front page of folklore.
  *
  * Warm, inviting introduction: tagline, pillars, curated worlds.
  * Uses the Tide's End coastal theme shared with the Guide.
@@ -70,7 +70,7 @@ export default function Landing({ identity }) {
       {/* ── Header ─────────────────────────────────────────── */}
       <div className="max-w-2xl mx-auto font-mono text-sm game-container" style={{ paddingBottom: 0 }}>
         <div className="flex items-center justify-between mb-4">
-          <span style={{ color: T.highlight }}>foakloar</span>
+          <span style={{ color: T.highlight }}>folklore</span>
           <IdentityButton identity={identity} onClick={() => setShowLogin(!showLogin)} />
         </div>
       </div>
@@ -235,7 +235,7 @@ export default function Landing({ identity }) {
             Explore
           </button>
           <a
-            href="https://github.com/dangeross/foakloar"
+            href="https://github.com/dangeross/folklore"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-80"

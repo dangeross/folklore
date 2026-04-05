@@ -1,12 +1,12 @@
 /**
  * useWorldList — Manages a user's NIP-51 kind:30001 curated world list.
  *
- * Fetches the user's existing "foakloar:worlds" list from relays on mount,
+ * Fetches the user's existing "folklore:worlds" list from relays on mount,
  * then provides toggle(aTag) to add/remove a world and auto-publish the update.
  *
  * The kind:30001 event is a NIP-51 "Categorized bookmarks list":
  *   kind: 30001
- *   d: "foakloar:worlds"
+ *   d: "folklore:worlds"
  *   tags: [["a", "30078:<pubkey>:<dtag>"], ...]
  */
 
@@ -14,10 +14,10 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Relay } from 'nostr-tools/relay';
 import { RELAY_URLS } from '../config.js';
 
-const CURATED_LIST_DTAG = 'foakloar:worlds';
+const CURATED_LIST_DTAG = 'folklore:worlds';
 
 /**
- * Fetch the user's current foakloar:worlds list event from relays.
+ * Fetch the user's current folklore:worlds list event from relays.
  * Returns the event with the most recent created_at, or null.
  */
 async function fetchExistingList(pubkey) {
@@ -46,7 +46,7 @@ async function fetchExistingList(pubkey) {
 }
 
 /**
- * Publish a new version of the foakloar:worlds list event.
+ * Publish a new version of the folklore:worlds list event.
  */
 async function publishList(signer, aTags) {
   const template = {

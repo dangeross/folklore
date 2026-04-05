@@ -12,7 +12,7 @@ function makeWorld({ extraTags = [] } = {}) {
   return makeEvent(`${WORLD}:world`, [
     ['type', 'world'],
     ['title', 'Test World'],
-    ['w', 'foakloar'],
+    ['w', 'folklore'],
     ['start', ref(`${WORLD}:place:start`)],
     ...extraTags,
   ], 'A test world.');

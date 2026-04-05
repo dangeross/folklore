@@ -1,4 +1,4 @@
-# Foakloar Tag-Shape Cheat Sheet
+# Folklore Tag-Shape Cheat Sheet
 
 Machine-readable reference for LLM world authoring. All events are `kind: 30078`.
 
@@ -197,7 +197,7 @@ D-tag: `<slug>:world`
 | `title` | `["title", "<name>"]` | yes | — |
 | `start` | `["start", "<place-ref>"]` | yes | player spawns here |
 | `collaboration` | `["collaboration", "closed"\|"vouched"\|"open"]` | yes | who can contribute content |
-| `w` | `["w", "foakloar"]` | yes | protocol identifier |
+| `w` | `["w", "folklore"]` | yes | protocol identifier |
 | `health` | `["health", "<number>"]` | opt | — |
 | `max-health` | `["max-health", "<number>"]` | opt | — |
 | `max-inventory` | `["max-inventory", "<number>", "<blocked-message>"]` | opt | carry cap; blocks pickup when inventory exceeds `<number>` |

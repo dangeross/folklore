@@ -1,7 +1,7 @@
 /**
  * PageHeader — Shared sticky header for non-game pages.
  *
- * Renders: foakloar (gold, links to landing) | children | identity button
+ * Renders: folklore (gold, links to landing) | children | identity button
  * Sticky at top, consistent padding and font size.
  */
 
@@ -35,7 +35,7 @@ export default function PageHeader({ identity, children }) {
             padding: 0,
           }}
         >
-          foakloar
+          folklore
         </button>
         <span className="flex items-center gap-2">
           {children}

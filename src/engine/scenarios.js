@@ -3,7 +3,7 @@
  * Never published to NOSTR relays.
  */
 
-const STORAGE_PREFIX = 'foakloar:scenarios:';
+const STORAGE_PREFIX = 'folklore:scenarios:';
 
 export function loadScenarios(worldSlug) {
   try {

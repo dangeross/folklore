@@ -2,7 +2,7 @@
 /**
  * gen-world.js — Synthetic world generator for scaling tests.
  *
- * Generates a valid foakloar world JSON importable via the builder.
+ * Generates a valid folklore world JSON importable via the builder.
  * Places are arranged in a W×H grid connected by cardinal exits via
  * proper portal events (one portal per edge, bidirectional).
  * Items, NPCs, and recipes are distributed across the grid.
@@ -107,7 +107,7 @@ events.push({
     ['version', '1.0.0'],
     ['lang', 'en'],
     ['collaboration', 'closed'],
-    ['w', 'foakloar'],
+    ['w', 'folklore'],
     ['start', ref(placeId(0, 0))],
     ['counter', 'moves', '0'],
     ['on-move', '', 'increment', 'moves'],

@@ -44,7 +44,7 @@ let firstEval = true;
 // Reference to events map (set on each evaluateSoundTags call)
 let eventsMap = null;
 
-const MUTE_KEY = 'foakloar:sound-muted';
+const MUTE_KEY = 'folklore:sound-muted';
 
 /**
  * Initialize Strudel. Must be called from a user gesture (click).

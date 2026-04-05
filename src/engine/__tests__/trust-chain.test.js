@@ -41,7 +41,7 @@ function makeWorld({ genesis = GENESIS, collaboration = 'vouched', collaborators
     kind: 30078, pubkey: genesis, id: dtag, sig: '',
     created_at: Math.floor(Date.now() / 1000),
     tags: [
-      ['d', dtag], ['type', 'world'], ['w', 'foakloar'],
+      ['d', dtag], ['type', 'world'], ['w', 'folklore'],
       ['title', 'Test World'], ['collaboration', collaboration],
       ...collaborators.map((pk) => ['collaborator', pk]),
       ...extraTags,
@@ -436,7 +436,7 @@ describe('World event genesis ordering', () => {
     const world1 = {
       kind: 30078, pubkey: GENESIS, id: 'w1', sig: '',
       created_at: now - 1000,
-      tags: [['d', `${WORLD}:world`], ['type', 'world'], ['w', 'foakloar'],
+      tags: [['d', `${WORLD}:world`], ['type', 'world'], ['w', 'folklore'],
              ['title', 'Original'], ['collaboration', 'vouched']],
       content: '',
     };
@@ -445,7 +445,7 @@ describe('World event genesis ordering', () => {
     const world2 = {
       kind: 30078, pubkey: ATTACKER, id: 'w2', sig: '',
       created_at: now,
-      tags: [['d', `${WORLD}:world`], ['type', 'world'], ['w', 'foakloar'],
+      tags: [['d', `${WORLD}:world`], ['type', 'world'], ['w', 'folklore'],
              ['title', 'Impostor'], ['collaboration', 'open']],
       content: '',
     };

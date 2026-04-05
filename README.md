@@ -1,8 +1,8 @@
-# foakloar
+# folklore
 
 A decentralised text adventure engine built on [NOSTR](https://nostr.com). Worlds live on relays. Player identity is a keypair. Puzzle gates are enforced by cryptography, not servers.
 
-→ **[foakloar.vercel.app](https://foakloar.vercel.app)** — play or build a world
+→ **[flklr.com](https://flklr.com)** — play or build a world
 
 ---
 
@@ -30,7 +30,7 @@ Player state is stored locally (localStorage) and can optionally be backed up as
 | [NIP-33](https://github.com/nostr-protocol/nostr/blob/master/nips/33.md) | Parameterised replaceable events (`kind: 30078`) |
 | [NIP-44](https://github.com/nostr-protocol/nostr/blob/master/nips/44.md) | Encryption for sealed content (puzzle-gated places/clues, player state backups) |
 | [NIP-47](https://github.com/nostr-protocol/nostr/blob/master/nips/47.md) | Nostr Wallet Connect for in-game Lightning payments |
-| [NIP-51](https://github.com/nostr-protocol/nostr/blob/master/nips/51.md) | `kind: 30001` categorised list for world curation (`d: "foakloar:worlds"`) |
+| [NIP-51](https://github.com/nostr-protocol/nostr/blob/master/nips/51.md) | `kind: 30001` categorised list for world curation (`d: "folklore:worlds"`) |
 | [NIP-57](https://github.com/nostr-protocol/nostr/blob/master/nips/57.md) | Zap receipts for tipping world authors |
 | [NIP-65](https://github.com/nostr-protocol/nostr/blob/master/nips/65.md) | Relay list metadata — player's preferred relays for state backup |
 
@@ -65,7 +65,7 @@ All events are `kind: 30078` and carry a `["type", "<name>"]` tag.
 
 ## Tag shapes
 
-Full reference in [`docs/spec/foakloar-design.md`](docs/spec/foakloar-design.md). Key shapes:
+Full reference in [`docs/spec/folklore-design.md`](docs/spec/folklore-design.md). Key shapes:
 
 ```
 ["type",        "<event-type>"]
@@ -205,7 +205,7 @@ Authors must operate (or use) a LNURL server that supports these LUDs. If the ve
 
 ## World curation
 
-Any user can maintain a curated world list by publishing a `kind: 30001` event with `d: "foakloar:worlds"` containing `a`-tag references to world events. This list is browsable on the user's profile page (`/u/<npub>`) and can be set as the lobby's featured list by configuring `VITE_APP_PUBKEY`.
+Any user can maintain a curated world list by publishing a `kind: 30001` event with `d: "folklore:worlds"` containing `a`-tag references to world events. This list is browsable on the user's profile page (`/u/<npub>`) and can be set as the lobby's featured list by configuring `VITE_APP_PUBKEY`.
 
 ---
 
@@ -230,9 +230,9 @@ npm run build      # production build
 
 | File | Contents |
 |------|----------|
-| [`docs/spec/foakloar-design.md`](docs/spec/foakloar-design.md) | Full design spec — canonical tag shapes, all mechanics |
+| [`docs/spec/folklore-design.md`](docs/spec/folklore-design.md) | Full design spec — canonical tag shapes, all mechanics |
 | [`docs/spec/CHANGELOG.md`](docs/spec/CHANGELOG.md) | Schema changelog |
 | [`docs/guide/`](docs/guide/) | World-building guide — 12 chapters covering every mechanic from basics to combat, sound, trust, and endgame |
-| [`docs/authoring/foakloar-authoring-guide.md`](docs/authoring/foakloar-authoring-guide.md) | LLM world authoring guide |
+| [`docs/authoring/folklore-authoring-guide.md`](docs/authoring/folklore-authoring-guide.md) | LLM world authoring guide |
 | [`docs/authoring/tag-reference.md`](docs/authoring/tag-reference.md) | Complete tag reference |
 | [`docs/worlds/`](docs/worlds/) | Importable world JSON files |

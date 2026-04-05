@@ -1,17 +1,17 @@
 /**
- * useWorldDiscovery — Discover foakloar worlds from relays.
+ * useWorldDiscovery — Discover folklore worlds from relays.
  *
  * Two modes:
  *   'curated'  — Fetch a specific pubkey's NIP-51 curated list (kind:30001,
- *                d-tag "foakloar:worlds"), then load referenced world events.
- *   'search'   — Query all foakloar worlds via indexed #w tag.
+ *                d-tag "folklore:worlds"), then load referenced world events.
+ *   'search'   — Query all folklore worlds via indexed #w tag.
  */
 
 import { useEffect, useState } from 'react';
 import { Relay } from 'nostr-tools/relay';
 import { RELAY_URLS } from '../config.js';
 
-const CURATED_LIST_DTAG = 'foakloar:worlds';
+const CURATED_LIST_DTAG = 'folklore:worlds';
 
 /**
  * Extract world metadata from a raw NOSTR event.
@@ -93,7 +93,7 @@ async function queryRelay(url, filter, collected, cancelled) {
 }
 
 /**
- * Curated mode: fetch a pubkey's foakloar:worlds list, then load those worlds.
+ * Curated mode: fetch a pubkey's folklore:worlds list, then load those worlds.
  */
 async function discoverCurated(curatorPubkey, collected, cancelled) {
   let curatedSlugs = [];
@@ -147,7 +147,7 @@ async function discoverCurated(curatorPubkey, collected, cancelled) {
 }
 
 /**
- * Search mode: find all foakloar worlds via indexed #w tag.
+ * Search mode: find all folklore worlds via indexed #w tag.
  */
 async function discoverAll(collected, cancelled) {
   for (const url of RELAY_URLS) {
@@ -155,7 +155,7 @@ async function discoverAll(collected, cancelled) {
     try {
       const found = await queryRelay(
         url,
-        { kinds: [30078], '#w': ['foakloar'] },
+        { kinds: [30078], '#w': ['folklore'] },
         collected,
         cancelled
       );
@@ -167,7 +167,7 @@ async function discoverAll(collected, cancelled) {
 }
 
 /**
- * Author mode: find all foakloar worlds by a specific pubkey.
+ * Author mode: find all folklore worlds by a specific pubkey.
  */
 async function discoverByAuthor(authorPubkey, collected, cancelled) {
   for (const url of RELAY_URLS) {
@@ -175,7 +175,7 @@ async function discoverByAuthor(authorPubkey, collected, cancelled) {
     try {
       const found = await queryRelay(
         url,
-        { kinds: [30078], authors: [authorPubkey], '#w': ['foakloar'] },
+        { kinds: [30078], authors: [authorPubkey], '#w': ['folklore'] },
         collected,
         cancelled
       );

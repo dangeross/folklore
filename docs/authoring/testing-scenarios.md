@@ -2,7 +2,7 @@
 
 Scenarios are dev-only test fixtures for large worlds. They let an author jump directly into a specific game state (room + quest states + inventory + counters) without replaying the entire world from scratch.
 
-**Scenarios are never published to NOSTR relays.** They live only in `localStorage` under `foakloar:scenarios:<worldSlug>` and are imported/applied inside the event graph build view.
+**Scenarios are never published to NOSTR relays.** They live only in `localStorage` under `folklore:scenarios:<worldSlug>` and are imported/applied inside the event graph build view.
 
 ---
 

@@ -1,6 +1,6 @@
 # Trust & Collaboration
 
-Every foakloar world is built on NOSTR — an open protocol where anyone can publish events. This means anyone can publish content tagged with your world's slug. The trust model determines what players see and what gets filtered out.
+Every folklore world is built on NOSTR — an open protocol where anyone can publish events. This means anyone can publish content tagged with your world's slug. The trust model determines what players see and what gets filtered out.
 
 ---
 

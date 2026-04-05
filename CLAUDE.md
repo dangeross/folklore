@@ -2,7 +2,7 @@
 
 ## Golden Rule
 
-**The design spec is the source of truth.** Every tag shape, trigger type, and action type must conform to `docs/spec/foakloar-design.md`. If a feature or tag doesn't exist in the spec, **discuss it with the user before implementing**. Never invent new tags, triggers, or action types.
+**The design spec is the source of truth.** Every tag shape, trigger type, and action type must conform to `docs/spec/folklore-design.md`. If a feature or tag doesn't exist in the spec, **discuss it with the user before implementing**. Never invent new tags, triggers, or action types.
 
 ---
 
@@ -18,7 +18,7 @@ A decentralised text adventure built on NOSTR (kind 30078). The world is a graph
 
 | File | Purpose |
 |------|---------|
-| `docs/spec/foakloar-design.md` | **Canonical design spec** — all tag shapes defined here |
+| `docs/spec/folklore-design.md` | **Canonical design spec** — all tag shapes defined here |
 | `docs/spec/CHANGELOG.md` | Schema changelog — all spec changes |
 | `docs/spec/sample-presets.md` | Sound sample preset reference (dirt, classic) |
 | `docs/authoring/` | LLM world authoring guides and worked examples |
@@ -189,7 +189,7 @@ Blank (`""`) = fires in any state. Named state = fires only when entity is in th
 - Read the spec before implementing any new mechanic
 - All world events must use tag shapes exactly as defined in the spec
 - Discuss any proposed spec extensions before writing code
-- **Keep docs in sync:** changes to the spec (`docs/spec/foakloar-design.md`), authoring guide (`docs/authoring/foakloar-authoring-guide.md`), or tag reference (`docs/authoring/tag-reference.md`) must be reflected in the other docs if applicable. Also update the spec changelog (`docs/spec/CHANGELOG.md`). **Guide pages** (`docs/guide/*.md`) that cover affected features must also be updated with new tag shapes, examples, and behaviour changes.
+- **Keep docs in sync:** changes to the spec (`docs/spec/folklore-design.md`), authoring guide (`docs/authoring/folklore-authoring-guide.md`), or tag reference (`docs/authoring/tag-reference.md`) must be reflected in the other docs if applicable. Also update the spec changelog (`docs/spec/CHANGELOG.md`). **Guide pages** (`docs/guide/*.md`) that cover affected features must also be updated with new tag shapes, examples, and behaviour changes.
 - The client should be event/data-driven — behaviour comes from tags, not hardcoded logic
 - Test each phase with world content that exercises the new mechanic
 - Run `npm test` to verify all engine tests pass before committing

@@ -37,7 +37,7 @@ const TUTORIALS = [
 
 const ADVANCED = [
   { id: 'authoring', title: 'Create Worlds with AI', subtitle: 'LLM-assisted authoring' },
-  { id: 'lightning', title: 'Lightning & Tipping', subtitle: 'Bitcoin payments in foakloar' },
+  { id: 'lightning', title: 'Lightning & Tipping', subtitle: 'Bitcoin payments in folklore' },
   { id: '12-trust', title: 'Trust & Collaboration', subtitle: 'Vouching, moderation, open worlds' },
 ];
 
@@ -202,7 +202,7 @@ function Sidebar({ currentPage, onNavigate, open, onToggle, onImport }) {
             className="cursor-pointer hover:opacity-80"
             style={{ color: THEME.highlight, background: 'none', border: 'none', font: 'inherit', fontSize: '0.875rem' }}
           >
-            foakloar
+            folklore
           </button>
           <button
             onClick={onToggle}
@@ -354,7 +354,7 @@ function GuideTOC({ onNavigate }) {
   return (
     <div>
       <h1 style={{ color: THEME.highlight, fontSize: '1.3rem', marginBottom: '0.5rem', fontWeight: 'normal' }}>
-        foakloar guide
+        folklore guide
       </h1>
       <p style={{ color: THEME.dim, fontSize: '0.75rem', marginBottom: '0.75rem', maxWidth: 600 }}>
         Learn to build text adventure worlds. Each tutorial has a companion world you can import and explore.
@@ -456,10 +456,10 @@ function GuideTOC({ onNavigate }) {
 
 function LLMPromptSection() {
   const [copied, setCopied] = useState(false);
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://foakloar.vercel.app';
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://flklr.com';
   const guideUrl = `${baseUrl}/guide/authoring`;
 
-  const prompt = `You are authoring a foakloar text adventure world. Foakloar is a decentralised text adventure engine built on NOSTR.
+  const prompt = `You are authoring a folklore text adventure world. Folklore is a decentralised text adventure engine built on NOSTR.
 
 Read the authoring guide and reference docs at: ${guideUrl}
 

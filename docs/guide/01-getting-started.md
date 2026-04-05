@@ -1,8 +1,8 @@
-# Getting Started with Foakloar
+# Getting Started with Folklore
 
-## What is Foakloar?
+## What is Folklore?
 
-Foakloar (Federated Open Adventure and Knowledge Living On A Relay) is a decentralised text adventure engine built on NOSTR. Worlds are graphs of NOSTR events stored on relays — no central server, no accounts, no login. Your identity is a NOSTR keypair, and anyone can build, extend, or play any world.
+Folklore (Federated Open Adventure and Knowledge Living On A Relay) is a decentralised text adventure engine built on NOSTR. Worlds are graphs of NOSTR events stored on relays — no central server, no accounts, no login. Your identity is a NOSTR keypair, and anyone can build, extend, or play any world.
 
 You can build:
 
@@ -20,7 +20,7 @@ Everything is data-driven. Behaviour comes from tags on events, not hardcoded lo
 
 ## The Three Basics: Worlds, Places, and Portals
 
-Every foakloar world is built from three foundational event types.
+Every folklore world is built from three foundational event types.
 
 ### World
 
@@ -54,11 +54,11 @@ Portals are separate events from places. This means:
 
 ## Builder Walkthrough
 
-This walkthrough creates a minimal world with two places and a portal connecting them. You can follow along in the foakloar client's Build Mode.
+This walkthrough creates a minimal world with two places and a portal connecting them. You can follow along in the folklore client's Build Mode.
 
 ### Step 1: Create a World
 
-Open the foakloar client and click **Create World** from the lobby.
+Open the folklore client and click **Create World** from the lobby.
 
 Fill in:
 - **Slug**: `my-first-world`
@@ -115,7 +115,7 @@ This world contains four places (The Dock, Village Square, The Tavern, The Beach
 - Evocative prose descriptions grounded in a consistent setting
 
 To use it:
-1. Open the foakloar client
+1. Open the folklore client
 2. Go to Build Mode
 3. Use **Import** to load the JSON file
 4. The `<PUBKEY>` placeholders are automatically replaced with your keypair on import

@@ -1,9 +1,9 @@
 openapi: 3.1.0
 info:
-  title: Foakloar World Validator
+  title: Folklore World Validator
   version: 1.0.0
   description: |
-    Validates NOSTR dungeon world files (kind 30078 events) for the Foakloar protocol.
+    Validates NOSTR dungeon world files (kind 30078 events) for the Folklore protocol.
 
     Returns structured, actionable issues that tell you exactly which event and tag
     to fix, what category of problem it is, and how to resolve it.
@@ -11,7 +11,7 @@ info:
     Accepts JSON with comments (//) and trailing commas for convenience.
 
 servers:
-  - url: https://foakloar.com
+  - url: https://flklr.com
     description: Production
   - url: http://localhost:5173
     description: Local development
@@ -50,7 +50,7 @@ paths:
                         - ["t", "my-world"]
                         - ["type", "world"]
                         - ["title", "My World"]
-                        - ["w", "foakloar"]
+                        - ["w", "folklore"]
                         - ["start", "30078:<PUBKEY>:my-world:place:start"]
                         - ["collaboration", "open"]
                       content: ""

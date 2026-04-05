@@ -10,8 +10,8 @@
 
 import { DEFAULT_RELAY_URLS } from '../config.js';
 
-const CUSTOM_RELAY_PREFIX = 'foakloar:relays:';
-const NIP65_CACHE_PREFIX = 'foakloar:nip65:';
+const CUSTOM_RELAY_PREFIX = 'folklore:relays:';
+const NIP65_CACHE_PREFIX = 'folklore:nip65:';
 const NIP65_TTL = 60 * 60 * 1000; // 1 hour
 
 // ── Source extractors ────────────────────────────────────────────────────────

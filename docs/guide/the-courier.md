@@ -8,7 +8,7 @@ A logistics puzzle in five rooms. One pair of hands. A thief in the shadows. A c
 
 ## Concept
 
-The Courier strips foakloar down to pure puzzle. No combat, no dialogue trees, no branching narrative. Five rooms in a line, four items to deliver, and a carry limit of one.
+The Courier strips folklore down to pure puzzle. No combat, no dialogue trees, no branching narrative. Five rooms in a line, four items to deliver, and a carry limit of one.
 
 Every move is a decision. Pick up the package or the letter? Go east toward the tower or west to find the coin? The thief roams the street and market — if you're carrying something when you cross paths, it's gone. You'll find it at the dock eventually, but that costs moves. And the temple gates close at move 30.
 
@@ -46,7 +46,7 @@ There is no single solution. The thief's random movement means every playthrough
 
 ## Design Notes
 
-The Courier demonstrates that foakloar's tag system can build pure puzzle games, not just narrative adventures. The same mechanics that power a sprawling open world (state, counters, NPCs, items) create a tight five-room brain teaser when constrained.
+The Courier demonstrates that folklore's tag system can build pure puzzle games, not just narrative adventures. The same mechanics that power a sprawling open world (state, counters, NPCs, items) create a tight five-room brain teaser when constrained.
 
 The Game Boy colour palette and CRT effects reinforce the retro puzzle aesthetic. The terse prose — "Grey water. Rotting pilings." — keeps the focus on decisions, not atmosphere.
 

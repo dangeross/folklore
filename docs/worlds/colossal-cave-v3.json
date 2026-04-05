@@ -53,7 +53,7 @@
         ["version", "0.3.0"],
         ["lang", "en"],
         ["collaboration", "closed"],
-        ["w", "foakloar"],
+        ["w", "folklore"],
         ["start", "30078:<PUBKEY>:colossal-cave:place:end-of-road"],
         ["health", "6"],
         ["max-health", "6"],

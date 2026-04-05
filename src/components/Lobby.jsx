@@ -3,7 +3,7 @@
  *
  * Header dropdown switches between:
  *   curated  — application's featured world list
- *   search   — all foakloar worlds on relays (#w tag discovery)
+ *   search   — all folklore worlds on relays (#w tag discovery)
  *   + world  — opens the world creator
  *
  * Also shows local draft worlds and manual slug entry.

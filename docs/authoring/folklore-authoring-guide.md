@@ -19,7 +19,7 @@ The spec is the only constraint. The schema supports non-linear structures, unre
 | Document | Contents |
 |----------|----------|
 | [tag-reference.md](./tag-reference.md) | All tag shapes, event types, action types, trigger shapes |
-| [foakloar-design.md](../spec/foakloar-design.md) | Full canonical spec — trust model, combat, sound, NIP-44 |
+| [folklore-design.md](../spec/folklore-design.md) | Full canonical spec — trust model, combat, sound, NIP-44 |
 | [sample-presets.md](../spec/sample-presets.md) | Sound sample preset reference (dirt, classic) |
 | [testing-scenarios.md](./testing-scenarios.md) | Dev-only test fixtures — jump to any game state in one click |
 | `docs/worlds/` | Complete importable world JSON files |
@@ -245,10 +245,10 @@ hash:   "cc421c90e82bd9b59dd998b616f8cb2f35270149388e2e042b9151d64a4e34b8"
 
 Before publishing, validate your world JSON against the API.
 
-**Endpoint:** `POST https://foakloar.vercel.app/api/validate`
+**Endpoint:** `POST https://flklr.com/api/validate`
 
 ```bash
-curl -X POST https://foakloar.vercel.app/api/validate \
+curl -X POST https://flklr.com/api/validate \
   -H "Content-Type: application/json" \
   -d @my-world-events.json
 ```

@@ -33,7 +33,7 @@ Object.defineProperty(globalThis, 'window', {
 // ── Helpers ───────────────────────────────────────────────────────────────
 
 const SLUG = 'test-world';
-const STORAGE_KEY = `foakloar:scenarios:${SLUG}`;
+const STORAGE_KEY = `folklore:scenarios:${SLUG}`;
 const PK = '30078:aabbcc1122:test-world';
 
 function makeScenario(id, tags = [], content = '') {

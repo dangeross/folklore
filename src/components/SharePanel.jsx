@@ -29,7 +29,7 @@ function buildNoteText({ worldSlug, worldTitle, worldContent, worldAuthorPubkey 
     '',
     `nostr:${FOAKLOAR_NPUB}`,
     '',
-    '#textadventure #foakloar',
+    '#textadventure #folklore',
   ].filter((l, i, arr) => !(l === '' && arr[i - 1] === '')).join('\n');
 }
 
@@ -73,7 +73,7 @@ export default function SharePanel({
 
       const FOAKLOAR_PUBKEY = 'c08d7b5a79cc4b1a6a1a2d0ff73c422661e333b8a9df48f8b20650c06fbe3e2f';
       const pTags = [['p', FOAKLOAR_PUBKEY]];
-      // Also tag world author if different from foakloar
+      // Also tag world author if different from folklore
       if (worldAuthorPubkey && worldAuthorPubkey !== FOAKLOAR_PUBKEY) {
         pTags.push(['p', worldAuthorPubkey]);
       }
@@ -83,7 +83,7 @@ export default function SharePanel({
         created_at: Math.floor(Date.now() / 1000),
         tags: [
           ['t', 'textadventure'],
-          ['t', 'foakloar'],
+          ['t', 'folklore'],
           ...pTags,
         ],
         content: text.trim(),

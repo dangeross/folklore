@@ -501,7 +501,12 @@ export class GameEngine {
       const npcReq = checkRequires(npc, this.player.state, this.events);
       if (!npcReq.allowed) continue;
       const npcUv = this._uvLabel(npcTrust);
+      this.player.ensureNpcState(npcDTag, initNpcState(npc));
       this._emit(`${getTag(npc, 'title')} is here.${npcUv}`, 'npc');
+      // Fire on-encounter triggers only on actual movement, not on look
+      if (isMoving) {
+        this._fireNpcEncounter(npc, npcDTag);
+      }
     }
 
     // Clues — display if requires pass and not already seen

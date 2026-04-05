@@ -141,7 +141,7 @@ export function mixConsequence(Engine) {
   /**
    * Execute a consequence event (spec §2.11).
    * Fixed execution order regardless of tag declaration:
-   *   give-item → consume-item → deal-damage → drop inventory → clears → content → respawn
+   *   give-item → consume-item → deal-damage → set-counter → set-state → drop inventory → clears → content → respawn
    */
   Engine.prototype._executeConsequence = function(consequenceRef) {
     const event = this.events.get(consequenceRef);
@@ -177,6 +177,18 @@ export function mixConsequence(Engine) {
     }
 
     // 3b. set-state — external state changes (e.g. NPC burning, clue revealed)
+    for (const tag of tags.filter((t) => t[0] === 'set-counter')) {
+      // ["set-counter", "counter-name", "value"] — sets world-scoped counter
+      // ["set-counter", "counter-name", "value", "external-ref"] — sets external event's counter
+      const counterName = tag[1];
+      const value = tag[2];
+      const extRef = tag[3] || null;
+      if (!counterName || value === undefined) continue;
+      const worldEvent = this._findWorldEvent();
+      const worldDtag = worldEvent ? getTag(worldEvent, 'd') : null;
+      this._applyCounterAction('set-counter', worldDtag, counterName, value, worldEvent, extRef);
+    }
+
     for (const tag of tags.filter((t) => t[0] === 'set-state')) {
       const targetState = tag[1];
       const targetRef = tag[2];

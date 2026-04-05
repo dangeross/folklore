@@ -1,6 +1,6 @@
 # Tutorial 2: Items and Features
 
-This tutorial introduces the two kinds of "things" that populate a foakloar world: **items** (portable objects the player can pick up and carry) and **features** (fixed parts of a place that can be examined and interacted with but never picked up). It also covers **nouns** and **verbs** — the tags that make things referenceable and interactive.
+This tutorial introduces the two kinds of "things" that populate a folklore world: **items** (portable objects the player can pick up and carry) and **features** (fixed parts of a place that can be examined and interacted with but never picked up). It also covers **nouns** and **verbs** — the tags that make things referenceable and interactive.
 
 > ▶ **Try it:** Import [tides-end-02-things.json](tutorials/tides-end-02-things.json) to explore these concepts in a working world.
 

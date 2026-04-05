@@ -11,7 +11,7 @@ Scenarios are dev-only test fixtures — never published to NOSTR relays. They w
 
 **Tag shape:** `["type", "scenario"]` events support `place`, `set-state`, `give-item`, `set-counter`, and `chain` tags. Chain inheritance resolves bases recursively (depth 5); `set-state`/`set-counter` use last-write-wins, `give-item` uses union, `place` uses current over base.
 
-**Storage:** `foakloar:scenarios:<worldSlug>` in `localStorage`. Imported via the Drafts panel "Import Scenarios" button. Applied via the `[scenarios]` toolbar button in the event graph (genesis/collaborator access only, or fully-draft worlds).
+**Storage:** `folklore:scenarios:<worldSlug>` in `localStorage`. Imported via the Drafts panel "Import Scenarios" button. Applied via the `[scenarios]` toolbar button in the event graph (genesis/collaborator access only, or fully-draft worlds).
 
 **File format:** `<worldslug>-scenarios.json` — array of scenario objects `{ tags, content }`.
 
@@ -247,8 +247,8 @@ Client strips `the`/`a`/`an` from input before matching. Noun tags must never co
 Portal always uses extended form. Portal wins if conflict. Hidden portals still require slot declaration on the place.
 
 **Authoring docs added**
-- `reference/foakloar-authoring-guide.md` — world design process, writing guidelines, narrative patterns, common mistakes, publishing
-- `reference/foakloar-micro-world.md` — complete 5-place worked example (The Lighthouse Keeper)
+- `reference/folklore-authoring-guide.md` — world design process, writing guidelines, narrative patterns, common mistakes, publishing
+- `reference/folklore-micro-world.md` — complete 5-place worked example (The Lighthouse Keeper)
 
 ### Changed
 
@@ -382,10 +382,10 @@ NIP-44 sealed clue. Answer derives decryption key. Same hash verification as `ri
 **`puzzle` tag on sealed places is publishing-tool only**
 Not read by client engine at runtime. Documents which answer to use for NIP-44 encryption. Riddle puzzles activated via feature `on-interact` → `set-state` on the puzzle event.
 
-**`["w", "foakloar"]` tag on world events — relay discovery**
+**`["w", "folklore"]` tag on world events — relay discovery**
 Single-letter indexed tag enabling relay-level discovery of all FOAKLOAR world events:
-`{ kinds: [30078], '#w': ['foakloar'] }`
-Only world events carry this tag — content events do not. Value is always lowercase `"foakloar"`. Complements NIP-51 curated lists: `#w` is open discovery, curated lists are curation. See spec section 6.2.0.
+`{ kinds: [30078], '#w': ['folklore'] }`
+Only world events carry this tag — content events do not. Value is always lowercase `"folklore"`. Complements NIP-51 curated lists: `#w` is open discovery, curated lists are curation. See spec section 6.2.0.
 
 **`description` tag removed — use `content` field universally**
 `["description", "..."]` was an undocumented tag used on items, features, and NPCs. Replaced throughout with the standard `content` field, consistent with places, clues, and all other event types. `content-type` declares the format as before.
@@ -420,7 +420,7 @@ Only world events carry this tag — content events do not. Value is always lowe
 
 **`room` → `place`** throughout all docs.
 
-**Files renamed** — `nostr-dungeon-design.md` → `foakloar-design.md`, `nostr-dungeon-mvp.md` → `foakloar-mvp.md`.
+**Files renamed** — `nostr-dungeon-design.md` → `folklore-design.md`, `nostr-dungeon-mvp.md` → `folklore-mvp.md`.
 
 ---
 

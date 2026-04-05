@@ -376,9 +376,26 @@ function eventsToReferenceGraph(events) {
             const prev = i > 0 ? tag[i - 1] : '';
             const actionType = (typeof prev === 'string' && prev && !prev.startsWith('30078:') && prev !== name)
               ? prev : '';
-            pushEdge({ source: ref, target: val, edgeType: 'action',
-              tagName: name, tagIdx: `${tagIdx}-${i}`,
-              meta: { trigger: name, verb, stateGuard, actionType } });
+            // traverse targets a portal ref, not a place — resolve through to
+            // the portal's exit destinations so the edge points to the actual place.
+            if (actionType === 'traverse') {
+              const portalEvent = events.get(val);
+              if (portalEvent) {
+                const exitTags = (portalEvent.tags || []).filter(t => t[0] === 'exit');
+                exitTags.forEach((exit, exitIdx) => {
+                  const placeRef = exit[1];
+                  if (typeof placeRef === 'string' && placeRef.startsWith('30078:')) {
+                    pushEdge({ source: ref, target: placeRef, edgeType: 'action',
+                      tagName: name, tagIdx: `${tagIdx}-${i}-${exitIdx}`,
+                      meta: { trigger: name, verb, stateGuard, actionType: 'traverse' } });
+                  }
+                });
+              }
+            } else {
+              pushEdge({ source: ref, target: val, edgeType: 'action',
+                tagName: name, tagIdx: `${tagIdx}-${i}`,
+                meta: { trigger: name, verb, stateGuard, actionType } });
+            }
           }
         }
         return;

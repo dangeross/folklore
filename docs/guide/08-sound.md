@@ -1,6 +1,6 @@
 # Sound: Ambient Audio and Effects
 
-Sound in foakloar is synthesised client-side using Strudel (a TidalCycles-style live-coding language built on WebAudio). No audio files are required for basic sounds — built-in oscillators and noise work instantly. For richer soundscapes, sample presets provide hundreds of named audio samples.
+Sound in folklore is synthesised client-side using Strudel (a TidalCycles-style live-coding language built on WebAudio). No audio files are required for basic sounds — built-in oscillators and noise work instantly. For richer soundscapes, sample presets provide hundreds of named audio samples.
 
 This guide covers sound events, sound types, sample presets, sound as an action type, and tempo control.
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * world-review.js — compact narrative summary of a foakloar world JSON
+ * world-review.js — compact narrative summary of a folklore world JSON
  * Usage: node scripts/world-review.js <path-to-world.json>
  * Output: plain text suitable for LLM analysis
  */

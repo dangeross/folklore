@@ -185,6 +185,31 @@ describe('_executeConsequence', () => {
     expect(arenaItems).toContain(ref(`${WORLD}:item:shield`));
   });
 
+  it('set-counter resets a world counter', () => {
+    const arena = makePlace('arena');
+    const respawnPlace = makePlace('entrance');
+    const world = makeWorldEvent({
+      extraTags: [
+        ['counter', 'moves-act3', '0'],
+        ['on-counter', 'down', 'moves-act3', '0', 'consequence', ref(`${WORLD}:consequence:caught`)],
+      ],
+    });
+    const consequence = makeConsequence('caught', {
+      respawn: `${WORLD}:place:entrance`,
+      extraTags: [['set-counter', 'moves-act3', '40']],
+    });
+
+    const events = buildEvents(arena, respawnPlace, world, consequence);
+    // Counter is initialized by engine from world event's counter tag
+    const engine = makeEngine(events, { place: ref(`${WORLD}:place:arena`) });
+    engine.currentPlace = ref(`${WORLD}:place:arena`);
+
+    engine._executeConsequence(ref(`${WORLD}:consequence:caught`));
+
+    expect(engine.player.getCounter(`${WORLD}:world:moves-act3`)).toBe(40);
+    expect(engine.currentPlace).toBe(ref(`${WORLD}:place:entrance`));
+  });
+
   it('is no-op for missing consequence ref', () => {
     const arena = makePlace('arena');
     const events = buildEvents(arena);

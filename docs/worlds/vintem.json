@@ -1,0 +1,1613 @@
+{
+  "answers": {},
+  "walkthrough": [
+    {
+      "input": "examine bodies",
+      "expect": [
+        "Manoel",
+        "Miguel"
+      ]
+    },
+    {
+      "input": "examine masks",
+      "expect": [
+        "lead"
+      ]
+    },
+    {
+      "input": "examine bag",
+      "expect": [
+        "watch"
+      ]
+    },
+    {
+      "input": "examine watches",
+      "expect": [
+        "18"
+      ]
+    },
+    {
+      "input": "examine note",
+      "expect": [
+        "signal"
+      ]
+    },
+    {
+      "input": "examine mask",
+      "expect": [
+        "pocket"
+      ]
+    },
+    {
+      "input": "north",
+      "expect": [
+        "ridge"
+      ]
+    },
+    {
+      "input": "south",
+      "expect": [
+        "site"
+      ]
+    },
+    {
+      "input": "examine towers",
+      "expect": [
+        "radio"
+      ]
+    },
+    {
+      "input": "examine bottle",
+      "expect": [
+        "empty"
+      ]
+    },
+    {
+      "input": "west",
+      "expect": [
+        "hollow"
+      ]
+    },
+    {
+      "input": "examine hollow",
+      "expect": [
+        "capsules"
+      ]
+    },
+    {
+      "input": "take capsules",
+      "expect": [
+        "Taken"
+      ]
+    },
+    {
+      "input": "east",
+      "expect": [
+        "site"
+      ]
+    },
+    {
+      "input": "examine manoel",
+      "expect": [
+        "still"
+      ]
+    },
+    {
+      "input": "examine miguel",
+      "expect": [
+        "nervous"
+      ]
+    },
+    {
+      "input": "examine shortwave",
+      "expect": [
+        "static"
+      ]
+    },
+    {
+      "input": "up",
+      "expect": [
+        "summit"
+      ]
+    },
+    {
+      "input": "wear mask",
+      "expect": [
+        "darkness"
+      ]
+    },
+    {
+      "input": "take capsules",
+      "expect": [
+        "already"
+      ]
+    },
+    {
+      "input": "wait",
+      "expect": [
+        "signal"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:world"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "world"
+        ],
+        [
+          "title",
+          "VINTÉM"
+        ],
+        [
+          "author",
+          "FOAKLOAR"
+        ],
+        [
+          "version",
+          "1.0.0"
+        ],
+        [
+          "lang",
+          "en"
+        ],
+        [
+          "collaboration",
+          "closed"
+        ],
+        [
+          "w",
+          "folklore"
+        ],
+        [
+          "tag",
+          "mystery"
+        ],
+        [
+          "tag",
+          "atmospheric"
+        ],
+        [
+          "tag",
+          "historical"
+        ],
+        [
+          "cw",
+          "Death. Based on a real unsolved case from 1966."
+        ],
+        [
+          "voice",
+          "Quiet and precise. Present tense. Sensory detail first. Sergio notices small things with unusual clarity — the specific weight of objects, the quality of light. Sentences shorten as evening approaches. No horror, no exploitation. Elegiac."
+        ],
+        [
+          "start",
+          "30078:<PUBKEY>:vintem:place:foot-of-hill"
+        ],
+        [
+          "theme",
+          "void-blue"
+        ],
+        [
+          "effects",
+          "typewriter"
+        ],
+        [
+          "counter",
+          "watch",
+          "20"
+        ],
+        [
+          "on-move",
+          "",
+          "decrement",
+          "watch",
+          "1"
+        ],
+        [
+          "on-counter",
+          "down",
+          "watch",
+          "0",
+          "consequence",
+          "30078:<PUBKEY>:vintem:consequence:signal-window-opens"
+        ],
+        [
+          "inventory",
+          "30078:<PUBKEY>:vintem:item:lead-mask"
+        ],
+        [
+          "sound",
+          "30078:<PUBKEY>:vintem:sound:wind-ambient",
+          "ambient",
+          "0.4"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:consequence:signal-window-opens"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "consequence"
+        ],
+        [
+          "set-state",
+          "open",
+          "30078:<PUBKEY>:vintem:portal:site-to-summit"
+        ],
+        [
+          "sound",
+          "30078:<PUBKEY>:vintem:sound:signal-tone",
+          "effect",
+          "0.9"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:place:foot-of-hill"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Foot of Vintém Hill"
+        ],
+        [
+          "exit",
+          "up"
+        ]
+      ],
+      "content": "The hill rises ahead of you, scrub grass and red dirt, the kind of slope you climb without thinking. Niterói spreads below — rooftops, water towers, the bay going silver in the late afternoon light. You have been here before, on a different day, for a different reason.\n\nYou came by bus. Manoel and Miguel came by bus three days ago. You missed that bus. You have been telling yourself that ever since.\n\nA path climbs upward through the grass."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:portal:foot-to-path"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:foot-of-hill",
+          "up",
+          "The path climbs into the grass."
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:path-up",
+          "down",
+          "The city waits below."
+        ],
+        [
+          "transition-effect",
+          "fade"
+        ],
+        [
+          "transition-duration",
+          "600"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:place:path-up"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "The Path"
+        ],
+        [
+          "exit",
+          "up"
+        ],
+        [
+          "exit",
+          "down"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:vintem:feature:radio-towers"
+        ]
+      ],
+      "content": "The path narrows between stands of tall grass. The city noise fades. Up here there is only wind and the distant crackle of signal from the radio towers that crown the hill above you, their red lights beginning to blink as the afternoon dims.\n\nSomething about the light is different than you expected. Flatter. More specific."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:feature:radio-towers"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Radio Towers"
+        ],
+        [
+          "noun",
+          "towers",
+          "radio towers",
+          "antennae",
+          "antenna"
+        ]
+      ],
+      "content": "Three steel towers, older than they look. They transmit something — you have never been sure what. Miguel once said that radio waves pass through everything. Through walls, through bone. Through whatever it is you are when you are not a body. He said it like it was good news."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:portal:path-to-site"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:path-up",
+          "up",
+          "The path continues upward."
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:the-site",
+          "down",
+          "The path descends to the city."
+        ],
+        [
+          "transition-effect",
+          "fade"
+        ],
+        [
+          "transition-duration",
+          "800"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:place:the-site"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "The Site"
+        ],
+        [
+          "exit",
+          "down"
+        ],
+        [
+          "exit",
+          "north"
+        ],
+        [
+          "exit",
+          "west"
+        ],
+        [
+          "exit",
+          "up"
+        ],
+        [
+          "item",
+          "30078:<PUBKEY>:vintem:item:water-bottle"
+        ],
+        [
+          "item",
+          "30078:<PUBKEY>:vintem:item:notebook-page"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:vintem:feature:manoel"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:vintem:feature:miguel"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:vintem:feature:the-bag"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:vintem:feature:shortwave"
+        ],
+        [
+          "sound",
+          "30078:<PUBKEY>:vintem:sound:static-loop",
+          "layer",
+          "0.25"
+        ],
+        [
+          "verb",
+          "leave"
+        ],
+        [
+          "verb",
+          "report"
+        ],
+        [
+          "on-interact",
+          "leave",
+          "",
+          "traverse",
+          "30078:<PUBKEY>:vintem:portal:site-to-ending-rationalist"
+        ],
+        [
+          "on-interact",
+          "report",
+          "",
+          "traverse",
+          "30078:<PUBKEY>:vintem:portal:site-to-ending-rationalist"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:vintem:feature:masks-on-faces"
+        ],
+        [
+          "on-interact",
+          "stay",
+          "",
+          "traverse",
+          "30078:<PUBKEY>:vintem:portal:site-to-ending-witness"
+        ]
+      ],
+      "content": "They are here.\n\nManoel and Miguel lie side by side in the grass, formal suits, waterproof coats, as though they dressed for something important. Which they did. The grass has already begun to grow back around them — three days of ordinary weather, ordinary time, while you were not here.\n\nEach of them wears a lead mask over their eyes. Crude things, hand-cut, shaped like sunglasses from another world. You have one like it in your coat pocket. You have had it there since August.\n\nA water bottle and a small notebook page lie in the grass. Nearby, a canvas bag. Manoel's shortwave radio sits propped against a rock, still on, still searching."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:feature:manoel"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Manoel"
+        ],
+        [
+          "noun",
+          "manoel",
+          "manoel's body",
+          "bodies",
+          "body",
+          "men",
+          "them"
+        ]
+      ],
+      "content": "Manoel lies on his left side, one arm extended as though pointing at something specific in the distance. His coat is buttoned to the top. You remember arguing with him once about whether any of this was real — the contacts, the signals, the belief that men with the right equipment could reach something beyond ordinary frequency. He said: *what is real is what you are willing to wait for.* He looks like he is still waiting."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:feature:miguel"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Miguel"
+        ],
+        [
+          "noun",
+          "miguel",
+          "miguel's body"
+        ]
+      ],
+      "content": "Miguel. The waitress at the bar described him as very nervous. You believe that. Miguel was always very nervous — had been since you were teenagers repairing radios in his father's shop, always checking his watch, always a few seconds ahead of whatever was happening, anticipating the next moment before this one had finished. You wonder if that is still true. If somewhere he is still nervous. Still checking."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:feature:the-bag"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Canvas Bag"
+        ],
+        [
+          "noun",
+          "bag",
+          "canvas bag"
+        ],
+        [
+          "contains",
+          "30078:<PUBKEY>:vintem:item:the-watches",
+          "default",
+          "The bag is closed."
+        ]
+      ],
+      "content": "A canvas bag, slightly damp from three days of dew. The flap is folded shut but not fastened."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:item:the-watches"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Two Wristwatches"
+        ],
+        [
+          "noun",
+          "watches",
+          "wristwatches",
+          "watch"
+        ],
+        [
+          "state",
+          "default"
+        ],
+        [
+          "transition",
+          "default",
+          "checked",
+          ""
+        ],
+        [
+          "on-interact",
+          "examine",
+          "",
+          "set-state",
+          "checked"
+        ]
+      ],
+      "content": "Both watches. Removed and bagged before the end — that detail has stayed with you since you heard it. Why bag your watch? To keep it safe. To protect it from whatever you were expecting to happen to the rest of you.\n\nManoel's shows 18:04. Miguel's shows 18:04. Both stopped at the same moment.\n\nYou check your own wrist. Your watch still runs. It reads {{watch}} minutes until dark."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:item:water-bottle"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Water Bottle"
+        ],
+        [
+          "noun",
+          "bottle",
+          "water bottle"
+        ]
+      ],
+      "content": "Empty. They bought it at the bar in Niterói, the same bar where the waitress noticed Miguel checking his watch. A single bottle for two men. That has always seemed to Sergio like the kind of detail that means something, though he has never been able to say what."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:item:notebook-page"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Notebook Page"
+        ],
+        [
+          "noun",
+          "note",
+          "notebook",
+          "page",
+          "notebook page",
+          "instruction",
+          "instructions"
+        ]
+      ],
+      "content": "A single page, handwritten in clumsy Portuguese. You have seen this before — a copy was sent to all three of you.\n\n*16:30 — estar no local combinado.*\n*18:30 — ingerir as cápsulas, após o efeito proteger os metais aguardar o sinal máscara.*\n\n*16:30 — be at the agreed place.*\n*18:30 — ingest capsules, after effect protect metals await signal mask.*\n\nThat is all. That is the entire instruction. You have read it perhaps two hundred times and it has never become less strange."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:feature:shortwave"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Shortwave Radio"
+        ],
+        [
+          "noun",
+          "shortwave",
+          "radio",
+          "receiver"
+        ]
+      ],
+      "content": "Miguel's shortwave, a Motorola he rebuilt from salvage parts. It is on. The dial is set to a frequency you do not recognise — not a broadcast band, something between stations. The speaker produces a soft, continuous static, regular enough that you keep almost hearing something in it. A pattern. A word. Something on the edge of resolution that never quite arrives."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:feature:masks-on-faces"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Lead Masks"
+        ],
+        [
+          "noun",
+          "masks",
+          "their masks",
+          "lead masks"
+        ]
+      ],
+      "content": "Hand-cut lead, roughly shaped to cover the eyes. Crude wire holds them in place. They are not comfortable — you can see that. They were not meant for comfort. They were meant for protection. Against what kind of light you still do not know. Against what specific frequency of the visible. You put your hand in your coat pocket and feel the edge of yours."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:item:lead-mask"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Lead Mask"
+        ],
+        [
+          "noun",
+          "mask",
+          "lead mask",
+          "my mask"
+        ],
+        [
+          "state",
+          "unexamined"
+        ],
+        [
+          "transition",
+          "unexamined",
+          "examined",
+          ""
+        ],
+        [
+          "transition",
+          "examined",
+          "worn",
+          "You lift the mask and settle it over your eyes. The world goes dark at the edges."
+        ],
+        [
+          "verb",
+          "wear",
+          "put on"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unexamined",
+          "set-state",
+          "examined"
+        ],
+        [
+          "on-interact",
+          "wear",
+          "examined",
+          "set-state",
+          "worn"
+        ],
+        [
+          "on-interact",
+          "wear",
+          "unexamined",
+          "set-state",
+          "worn"
+        ]
+      ],
+      "content": "Your lead mask. You cut it yourself, in August, following the same instructions Manoel and Miguel used. The same crude shape. The same rough wire at the temples. You have carried it every day since then without putting it on. Your pocket knows the weight of it exactly."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:place:the-ridge"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "The Ridge"
+        ],
+        [
+          "exit",
+          "south"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:vintem:feature:city-view"
+        ]
+      ],
+      "content": "The ridge opens the world. Niterói below, the bay beyond it, the far shore where Rio begins. The light is going amber now, the city starting to find its own illumination against the coming dark. Everything below is ordinary. Traffic. Lives. People who do not know what is behind you on this hill.\n\nThe wind is stronger here. It carries the smell of salt and something faintly electrical — the towers, probably. Or something else."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:portal:site-to-ridge"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:the-site",
+          "north",
+          "The ridge is to the north."
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:the-ridge",
+          "south",
+          "The site lies south."
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:feature:city-view"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "The City"
+        ],
+        [
+          "noun",
+          "city",
+          "niterói",
+          "bay",
+          "view",
+          "lights"
+        ]
+      ],
+      "content": "You and Manoel grew up two streets apart, in a neighbourhood that looked nothing like this. Miguel was from further north. You met at a repair shop, three young men with oscilloscopes and too much time and a shared conviction that the gap between technology and the unknown was narrowing every year.\n\nYou can see Miguel's street from here, if you know where to look. You do. You look."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:place:the-hollow"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Rock Hollow"
+        ],
+        [
+          "exit",
+          "east"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:vintem:feature:hollow-rock"
+        ],
+        [
+          "item",
+          "30078:<PUBKEY>:vintem:item:capsules"
+        ]
+      ],
+      "content": "A depression in the hillside where a large rock has split and leaned inward, forming a sheltered space no larger than a closet. You scouted this hill six weeks ago. You left something here.\n\nThe rock is dark with old moss. The hollow smells of earth and something faintly chemical."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:portal:site-to-hollow"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:the-site",
+          "west",
+          "A hollow in the rock to the west."
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:the-hollow",
+          "east",
+          "Back to the site."
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:feature:hollow-rock"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Split Rock"
+        ],
+        [
+          "noun",
+          "rock",
+          "split rock",
+          "hollow",
+          "crevice"
+        ]
+      ],
+      "content": "The split is deeper than it looks from outside. Someone small could sleep in here. Someone careful left something in here, six weeks ago, wrapped in cloth and pushed into the back of the crevice where the stone is driest."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:item:capsules"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Two Capsules"
+        ],
+        [
+          "noun",
+          "capsules",
+          "capsule",
+          "pills"
+        ]
+      ],
+      "content": "Two capsules in a folded cloth, sealed with wax. You prepared them yourself. You do not know exactly what is in them — that knowledge came from a source you chose to trust. Whatever they contain is meant to alter the frequency of perception. To make you receivable. That is the word that was used: *receivable.* Like a set, tuned to the right station."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:place:the-summit"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Summit"
+        ],
+        [
+          "exit",
+          "down"
+        ],
+        [
+          "verb",
+          "wait"
+        ],
+        [
+          "verb",
+          "wear"
+        ],
+        [
+          "on-interact",
+          "wait",
+          "",
+          "consequence",
+          "30078:<PUBKEY>:vintem:consequence:ending-believer"
+        ],
+        [
+          "sound",
+          "30078:<PUBKEY>:vintem:sound:static-loop",
+          "layer",
+          "0.15"
+        ],
+        [
+          "sound",
+          "30078:<PUBKEY>:vintem:sound:wind-ambient",
+          "ambient",
+          "0.6"
+        ]
+      ],
+      "content": "The top of Vintém Hill. The towers are close enough to touch, their red lights now blinking regularly against a sky that has gone fully dark at the edges and still holds a pale yellow band above the horizon where the sun was.\n\nThe static from the shortwave below has become something else up here — not cleaner, but more present. More directional. As though it knows something about the specific angle of your attention.\n\nYou are at the agreed place. The note said 18:30. The window is open.\n\nYou can wait."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:portal:site-to-summit"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "state",
+          "closed"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:the-site",
+          "up",
+          "The summit path is above."
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:the-summit",
+          "down",
+          "The site lies below."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:vintem:portal:site-to-summit",
+          "open",
+          "The path to the summit feels wrong. Not yet. Something is not ready, or you are not ready — you cannot tell which."
+        ],
+        [
+          "transition-effect",
+          "fade"
+        ],
+        [
+          "transition-duration",
+          "1200"
+        ],
+        [
+          "transition-clear",
+          "true"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:consequence:ending-believer"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "consequence"
+        ],
+        [
+          "respawn",
+          "30078:<PUBKEY>:vintem:place:ending-believer"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:place:ending-rationalist"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "A Kerb in Niterói"
+        ],
+        [
+          "exit",
+          "out"
+        ]
+      ],
+      "content": "You walked down the hill. You found a telephone outside a pharmacy three blocks from the bus stop. You told them there were two bodies on Vintém Hill and gave them the path directions and then you hung up because you did not know what else to say.\n\nNow you sit on a kerb in the dark. Your coat pocket is still heavy. The mask is still in it. You did not leave it on the hill. You do not know why.\n\nA police car will come. You will tell them you are a friend. You will tell them you found them this way. Both things are true.\n\nThe signal, if there was one, came without you. Or it did not come at all. Either way, you will not know. That is the condition you have chosen: safety, and not knowing.\n\nThe kerb is cold. You wait for headlights."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:place:ending-witness"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "The Site, Morning"
+        ],
+        [
+          "exit",
+          "stay"
+        ]
+      ],
+      "content": "You stayed. You did not complete the ritual. You did not call the police. You sat between them through the night, the shortwave still running, the static cycling through its almost-patterns, the city lights below going out one district at a time and then coming back with the dawn.\n\nYou do not know if sitting here means anything. It felt like the only honest option. You owed them a witness. Nobody else was going to come.\n\nThe boy arrives at mid-morning, string trailing behind him, kite not yet airborne. He comes over the ridge and stops.\n\nHe looks at Manoel. He looks at Miguel. He looks at you — sitting upright between them, mask in your lap, alive in the obvious way that they are not.\n\nHe runs.\n\nYou let him. He will bring people. You will still be here."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:portal:site-to-ending-rationalist"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "transition-effect",
+          "fade"
+        ],
+        [
+          "transition-duration",
+          "1500"
+        ],
+        [
+          "transition-clear",
+          "true"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:ending-rationalist",
+          "out",
+          "Walk away from the hill."
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:portal:site-to-ending-witness"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "transition-effect",
+          "fade"
+        ],
+        [
+          "transition-duration",
+          "2000"
+        ],
+        [
+          "transition-clear",
+          "true"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:ending-witness",
+          "stay",
+          "Remain on the hill until morning."
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:quest:the-signal"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Await the Signal"
+        ],
+        [
+          "quest-type",
+          "endgame"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:vintem:item:notebook-page"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:vintem:feature:masks-on-faces"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:vintem:item:the-watches"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:vintem:item:capsules"
+        ]
+      ],
+      "content": "16:30 — be at the agreed place. 18:30 — ingest capsules, after effect protect metals await signal mask.\n\nThat is all the instruction there was. That is all there needs to be."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:place:ending-believer"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "The Signal"
+        ],
+        [
+          "exit",
+          "down"
+        ]
+      ],
+      "content": "You wait.\n\nThe static from below resolves — slowly, the way a signal finds its station — into something that is almost a tone, and then is a tone, ascending, precise, coming from a direction that is not any direction you have a word for.\n\nThe lead mask covers your eyes. The darkness behind it is complete and absolute and, after a moment, is not darkness.\n\n&nbsp;\n\nThe case was never solved. The cause of death was never established. No trace of the capsules was found. The lead masks were logged as evidence and later lost.\n\nManoel Pereira da Cruz and Miguel José Viana were buried in Campos dos Goytacazes in September 1966. The shortwave was returned to Miguel's family. His sister kept it. She said it still worked.\n\nSergio is not in any record."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:quest:witness"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Stay"
+        ],
+        [
+          "quest-type",
+          "endgame",
+          "open"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:vintem:feature:manoel"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:vintem:feature:miguel"
+        ]
+      ],
+      "content": "You owed them a witness. Nobody else was going to come."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:quest:rationalist"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Report"
+        ],
+        [
+          "quest-type",
+          "endgame",
+          "open"
+        ]
+      ],
+      "content": "He is safe. He will never know."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:sound:wind-ambient"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "sound"
+        ],
+        [
+          "noise"
+        ],
+        [
+          "lpf",
+          "800"
+        ],
+        [
+          "hpf",
+          "120"
+        ],
+        [
+          "gain",
+          "0.5"
+        ],
+        [
+          "room",
+          "0.6"
+        ],
+        [
+          "roomsize",
+          "8"
+        ],
+        [
+          "loop",
+          "1"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:sound:static-loop"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "sound"
+        ],
+        [
+          "noise"
+        ],
+        [
+          "lpf",
+          "3200"
+        ],
+        [
+          "hpf",
+          "900"
+        ],
+        [
+          "gain",
+          "0.3"
+        ],
+        [
+          "room",
+          "0.2"
+        ],
+        [
+          "loop",
+          "1"
+        ],
+        [
+          "degrade-by",
+          "0.15"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:sound:signal-tone"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "sound"
+        ],
+        [
+          "s",
+          "sine"
+        ],
+        [
+          "note",
+          "c4 d4 e4 g4 a4"
+        ],
+        [
+          "attack",
+          "1.5"
+        ],
+        [
+          "sustain",
+          "4"
+        ],
+        [
+          "release",
+          "3.0"
+        ],
+        [
+          "gain",
+          "0.7"
+        ],
+        [
+          "room",
+          "0.8"
+        ],
+        [
+          "roomsize",
+          "10"
+        ],
+        [
+          "slow",
+          "3"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "vintem:portal:to-ending-believer"
+        ],
+        [
+          "t",
+          "vintem"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:vintem:place:ending-believer",
+          "down",
+          ""
+        ]
+      ],
+      "content": ""
+    }
+  ]
+}

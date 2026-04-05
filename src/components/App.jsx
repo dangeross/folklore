@@ -135,13 +135,13 @@ export default function App() {
 
   useEffect(() => {
     const titles = {
-      landing: 'Foakloar — Text Adventure Worlds',
-      lobby: 'Explore — Foakloar',
-      guide: route.guidePage ? `${route.guidePage} — Foakloar Guide` : 'Guide — Foakloar',
-      profile: 'Profile — Foakloar',
-      game: route.worldSlug ? `${route.worldSlug} — Foakloar` : 'Foakloar',
+      landing: 'Folklore — Text Adventure Worlds',
+      lobby: 'Explore — Folklore',
+      guide: route.guidePage ? `${route.guidePage} — Folklore Guide` : 'Guide — Folklore',
+      profile: 'Profile — Folklore',
+      game: route.worldSlug ? `${route.worldSlug} — Folklore` : 'Folklore',
     };
-    document.title = titles[route.page] || 'Foakloar';
+    document.title = titles[route.page] || 'Folklore';
   }, [route]);
 
   const worldTag = route.worldSlug;
@@ -678,7 +678,7 @@ export default function App() {
     // Check drafts for a world event title (pre-publish)
     const worldDraft = drafts.find((d) => d.tags?.find((t) => t[0] === 'type')?.[1] === 'world');
     const draftTitle = worldDraft?.tags?.find((t) => t[0] === 'title')?.[1];
-    return draftTitle || worldTag || 'foakloar';
+    return draftTitle || worldTag || 'folklore';
   }, [worldConfig, drafts, worldTag]);
   // effectiveMode is derived from collaboration + preview toggle in trustInfo
   const effectiveMode = trustInfo?.effectiveMode || 'community';

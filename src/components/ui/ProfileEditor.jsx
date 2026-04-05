@@ -12,7 +12,7 @@ import Tooltip from './Tooltip.jsx';
 import { RELAY_URLS } from '../../config.js';
 
 /** Cache key used by useProfile — invalidated after a successful save. */
-const CACHE_PREFIX = 'foakloar:profile:';
+const CACHE_PREFIX = 'folklore:profile:';
 
 const FIELDS = [
   {

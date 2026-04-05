@@ -841,7 +841,7 @@ describe('validateEvent — d-tag conventions', () => {
         ['t', 'voidrun'],
         ['type', 'world'],
         ['title', 'Voidrun'],
-        ['w', 'foakloar'],
+        ['w', 'folklore'],
       ],
       content: '',
     };
@@ -858,7 +858,7 @@ describe('validateEvent — d-tag conventions', () => {
         ['t', 'voidrun'],
         ['type', 'world'],
         ['title', 'Voidrun'],
-        ['w', 'foakloar'],
+        ['w', 'folklore'],
       ],
       content: '',
     };

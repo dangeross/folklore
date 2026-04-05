@@ -1543,6 +1543,7 @@ A reusable outcome definition. Consequences are fired by portals, NPCs, or `on-i
 | `consume-item` | Item `a`-tag | Removes item from inventory |
 | `deal-damage` | Integer string | Reduces player health |
 | `set-state` | State string, optional event `a`-tag | Transitions this event (or a referenced event) to a new state — same shape as `on-interact` |
+| `set-counter` | Counter name, value, optional event `a`-tag | Sets a named counter to a specific value. Without external ref, targets the world-scoped counter of that name. Useful for resetting countdowns after a consequence without wiping all counters. |
 
 State keys for `clears`: `inventory`, `states`, `counters`, `cryptoKeys`, `dialogueVisited`, `paymentAttempts`, `visited`.
 
@@ -1577,13 +1578,14 @@ When a consequence fires, its tags execute in this fixed order regardless of tag
 1. `give-item` — add items to inventory
 2. `consume-item` — remove items from inventory
 3. `deal-damage` — reduce player health
-4. `set-state` — transition event states (self or external)
-5. **Drop inventory to current place** — if `clears inventory` is present
-6. `clears inventory` — empty player inventory array
-7. `clears states` — wipe states map
-8. `clears counters` — wipe counters map
-9. `clears` other keys — in declaration order
-10. `respawn` — move player to declared place (always last)
+4. `set-counter` — set named counter(s) to specific value(s)
+5. `set-state` — transition event states (self or external)
+6. **Drop inventory to current place** — if `clears inventory` is present
+7. `clears inventory` — empty player inventory array
+8. `clears states` — wipe states map
+9. `clears counters` — wipe counters map
+10. `clears` other keys — in declaration order
+11. `respawn` — move player to declared place (always last)
 
 Drop before clear, respawn last. The engine uses `currentPlace` at consequence dispatch time for the drop location — this is always known.
 
@@ -1854,7 +1856,7 @@ The `transition` table enforces legal state changes — the client blocks any `s
 
 ### 2.13 Scenario Events (Dev Only)
 
-Scenarios are **dev-only test fixtures** for large worlds. They let an author jump directly into a specific game state — room, quest states, inventory, counters — without replaying the whole world. They are **never published to NOSTR relays** and exist only in `localStorage` under the key `foakloar:scenarios:<worldSlug>`.
+Scenarios are **dev-only test fixtures** for large worlds. They let an author jump directly into a specific game state — room, quest states, inventory, counters — without replaying the whole world. They are **never published to NOSTR relays** and exist only in `localStorage` under the key `folklore:scenarios:<worldSlug>`.
 
 Scenarios are imported via the Drafts panel ("Import Scenarios" button) and applied via the Scenarios panel in the event graph (genesis/collaborator pubkeys only, or fully-draft worlds).
 
@@ -2234,7 +2236,7 @@ The world event is a replaceable event (`kind: 30078`). The genesis author can u
   "tags": [
     ["d",             "the-lake:world"],
     ["t",             "the-lake"],
-    ["w",             "foakloar"],   // indexed tag — enables relay discovery
+    ["w",             "folklore"],   // indexed tag — enables relay discovery
     ["type",          "world"],
 
     // Identity
@@ -2291,7 +2293,7 @@ The world event is a replaceable event (`kind: 30078`). The genesis author can u
 
 | Tag | Value | Purpose |
 |-----|-------|---------|
-| `w` | `"foakloar"` | Protocol identifier — always this exact lowercase value. Single-letter indexed tag enabling relay discovery: `{ kinds: [30078], '#w': ['foakloar'] }`. Only on world events. |
+| `w` | `"folklore"` | Protocol identifier — always this exact lowercase value. Single-letter indexed tag enabling relay discovery: `{ kinds: [30078], '#w': ['folklore'] }`. Only on world events. |
 | `title` | String | Display name |
 | `author` | String | World author display name |
 | `version` | Semver string | World version |
@@ -2612,7 +2614,7 @@ Volume optional — defaults to `1.0`.
 
 ---
 
-**Sound events and the `w` tag:** `type: sound` events do not carry the `["w", "foakloar"]` discovery tag. They are referenced by `a`-tag from other events — not discovered via relay filtering. Only `type: world` events need the `w` tag.
+**Sound events and the `w` tag:** `type: sound` events do not carry the `["w", "folklore"]` discovery tag. They are referenced by `a`-tag from other events — not discovered via relay filtering. Only `type: world` events need the `w` tag.
 
 **Two sound models:**
 - `sound` tags on events — passive, scope-driven. Plays while event is relevant.
@@ -2684,16 +2686,16 @@ The prefix is the first 4 bytes (8 hex chars) of the author's pubkey — enough 
 
 NOSTR relays only index single-letter tags. Custom tags like `type` are not indexed, making "find all FOAKLOAR worlds on this relay" impossible with a standard query.
 
-World events carry a `["w", "foakloar"]` tag — a single-letter indexed tag that enables open discovery:
+World events carry a `["w", "folklore"]` tag — a single-letter indexed tag that enables open discovery:
 
 ```javascript
 // Find all FOAKLOAR world events on a relay
-{ kinds: [30078], '#w': ['foakloar'] }
+{ kinds: [30078], '#w': ['folklore'] }
 ```
 
 Rules:
-- **Only world events** carry `["w", "foakloar"]`. Content events (places, items, features, NPCs) do not — discovery works from the world event outward via the genesis pubkey.
-- **Always lowercase `"foakloar"`** — the canonical value. Any other casing is invisible to the standard query.
+- **Only world events** carry `["w", "folklore"]`. Content events (places, items, features, NPCs) do not — discovery works from the world event outward via the genesis pubkey.
+- **Always lowercase `"folklore"`** — the canonical value. Any other casing is invisible to the standard query.
 - `#w` enables open discovery. NIP-51 curated lists (section 6.2.1) layer curation on top.
 
 ---

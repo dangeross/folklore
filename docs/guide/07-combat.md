@@ -1,6 +1,6 @@
 # Combat: Weapons, NPCs, and Player Death
 
-Combat in foakloar is not a separate system. It is the `on-*` dispatcher applied to health values. The schema provides the data; the client resolves each round. Different worlds can define entirely different combat feels purely through tag values.
+Combat in folklore is not a separate system. It is the `on-*` dispatcher applied to health values. The schema provides the data; the client resolves each round. Different worlds can define entirely different combat feels purely through tag values.
 
 This guide covers weapons, NPC combat stats, the attack round sequence, player health, death consequences, and NPC death rewards.
 

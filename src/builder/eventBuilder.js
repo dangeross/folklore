@@ -89,7 +89,7 @@ export function validateEvent(template) {
 
   // World events need the protocol tag for relay discovery
   if (typeTag === 'world' && !tagNames.has('w')) {
-    warnings.push(warn('missing-tag', 'World event missing w-tag (protocol identifier)', `Add a ["w", "foakloar"] tag for relay discovery.`));
+    warnings.push(warn('missing-tag', 'World event missing w-tag (protocol identifier)', `Add a ["w", "folklore"] tag for relay discovery.`));
   }
 
   // World event d-tag must follow <slug>:world convention
