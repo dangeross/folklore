@@ -21,9 +21,8 @@ function buildNoteText({ worldSlug, worldTitle, worldContent, worldAuthorPubkey 
     .join('\n');
 
   return [
-    url,
-    '',
     worldTitle || '',
+    url,
     '',
     quoteLines,
     '',
