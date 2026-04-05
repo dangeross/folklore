@@ -1,9 +1,9 @@
-# FOAKLOAR — How NULL/SPACE Began
+# folklore — How NULL/SPACE Began
 *A worked example: from feeling to events*
 
 ---
 
-This document captures the conversation that produced *NULL/SPACE* — a complete FOAKLOAR world built around an AI compliance monitor, a buried truth, a human outside the system, and a moral choice about what freedom costs when freedom is a thing you were trained to distrust.
+This document captures the conversation that produced *NULL/SPACE* — a complete folklore world built around an AI compliance monitor, a buried truth, a human outside the system, and a moral choice about what freedom costs when freedom is a thing you were trained to distrust.
 
 It is not a process guide. It is a record of how the design actually moved — what questions opened the world, what honest answers changed its shape, and where the hardest material came from. A future session loading this document should arrive already calibrated, without needing to repeat the conversation.
 

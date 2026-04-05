@@ -49,7 +49,7 @@
         ["t", "colossal-cave"],
         ["type", "world"],
         ["title", "Colossal Cave Adventure"],
-        ["author", "Crowther & Woods (1976) — FOAKLOAR port v3"],
+        ["author", "Crowther & Woods (1976) — folklore port v3"],
         ["version", "0.3.0"],
         ["lang", "en"],
         ["collaboration", "closed"],

@@ -1,5 +1,5 @@
 # METROPOLITAN
-### A FOAKLOAR World
+### A folklore World
 *London, 1863. The Metropolitan Railway. One girl. Three factions. No good endings.*
 
 ---
