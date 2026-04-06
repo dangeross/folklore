@@ -1206,7 +1206,7 @@ export default function App() {
         <div ref={logEndRef} />
       </div>
 
-      {status === 'ready' && (
+      {(status === 'ready' || status === 'expanded') && (
         <form onSubmit={onSubmit} className="flex gap-2 shrink-0 pb-1" autoComplete="off">
           <span style={{ color: craftingActive ? 'var(--colour-puzzle)' : 'var(--colour-text)' }}>
             {dialogueActive ? '#' : puzzleActive ? '?' : craftingActive ? '+' : '>'}
