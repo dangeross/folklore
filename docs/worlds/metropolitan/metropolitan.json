@@ -2374,7 +2374,7 @@
         ],
         [
           "counter",
-          "coins",
+          "pennies",
           "3"
         ],
         [
@@ -2399,7 +2399,7 @@
         ],
         [
           "hud",
-          "Coins: {{coins}}"
+          "Pennies: {{pennies}}"
         ],
         [
           "bpm",
@@ -4350,6 +4350,15 @@
           "purchase"
         ],
         [
+          "requires-counter",
+          "buy",
+          "",
+          "pennies",
+          ">=",
+          "3",
+          "Threepence for a ticket. You don't have enough."
+        ],
+        [
           "on-interact",
           "buy",
           "",
@@ -4361,11 +4370,11 @@
           "buy",
           "",
           "sub-counter",
-          "coins",
-          "2"
+          "pennies",
+          "3"
         ]
       ],
-      "content": "A small window in the station wall, a grille across the lower half. The clerk behind it has the face of a man who has sold the same ticket ten thousand times and sees no reason to vary the transaction.\n\nThird class to any station on the Metropolitan line: two pennies. *Buy* a ticket to board."
+      "content": "A small window in the station wall, a grille across the lower half. The clerk behind it has the face of a man who has sold the same ticket ten thousand times and sees no reason to vary the transaction.\n\nThird class to any station on the Metropolitan line: threepence. *Buy* a ticket to board."
     },
     {
       "kind": 30078,
@@ -4398,6 +4407,15 @@
           "purchase"
         ],
         [
+          "requires-counter",
+          "buy",
+          "",
+          "pennies",
+          ">=",
+          "3",
+          "Threepence for a ticket. You don't have enough."
+        ],
+        [
           "on-interact",
           "buy",
           "",
@@ -4409,11 +4427,11 @@
           "buy",
           "",
           "sub-counter",
-          "coins",
-          "2"
+          "pennies",
+          "3"
         ]
       ],
-      "content": "The ticket window for the Metropolitan line at King's Cross. The clerk barely looks up. Third class west: two pennies. West means Baker Street, Portland Road, Gower Street, Edgware Road, Paddington — the whole line opening up for the price of two coins. *Buy* a ticket to board."
+      "content": "The ticket window for the Metropolitan line at King's Cross. The clerk barely looks up. Third class west: threepence. West means Baker Street, Portland Road, Gower Street, Edgware Road, Paddington — the whole line opening up for the price of three coppers. *Buy* a ticket to board."
     },
     {
       "kind": 30078,
@@ -5470,7 +5488,7 @@
           "player",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "2"
         ],
         [
@@ -5699,11 +5717,20 @@
           "dialogue"
         ],
         [
+          "requires-counter",
+          "",
+          "",
+          "pennies",
+          ">=",
+          "1",
+          "You don't have a penny to spare."
+        ],
+        [
           "on-enter",
           "player",
           "",
           "sub-counter",
-          "coins",
+          "pennies",
           "1"
         ],
         [
@@ -5732,6 +5759,15 @@
           "dialogue"
         ],
         [
+          "requires-counter",
+          "",
+          "",
+          "pennies",
+          ">=",
+          "1",
+          "You don't have a penny to spare."
+        ],
+        [
           "option",
           "Pay her",
           "30078:<PUBKEY>:metropolitan:dialogue:flower-seller-information"
@@ -5741,7 +5777,7 @@
           "player",
           "",
           "sub-counter",
-          "coins",
+          "pennies",
           "1"
         ]
       ],
@@ -5895,7 +5931,7 @@
           "player",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "4"
         ],
         [
@@ -6043,7 +6079,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "3"
         ],
         [
@@ -6105,7 +6141,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "4"
         ],
         [
@@ -7796,7 +7832,7 @@
           "player",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "3"
         ],
         [
@@ -7910,7 +7946,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "3"
         ],
         [
@@ -7984,7 +8020,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "3"
         ],
         [
@@ -8058,7 +8094,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "2"
         ],
         [
@@ -8134,7 +8170,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "4"
         ],
         [
@@ -8210,7 +8246,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "2"
         ],
         [
@@ -10880,7 +10916,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "6"
         ],
         [
@@ -10964,7 +11000,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "6"
         ],
         [
@@ -11083,7 +11119,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "8"
         ],
         [
@@ -11155,7 +11191,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "6"
         ],
         [
@@ -11221,7 +11257,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "10"
         ],
         [
@@ -15745,7 +15781,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "8"
         ],
         [
@@ -17467,7 +17503,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "12"
         ],
         [
@@ -17526,7 +17562,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "10"
         ],
         [
@@ -17592,7 +17628,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "14"
         ],
         [
@@ -17665,7 +17701,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "12"
         ],
         [
@@ -17724,7 +17760,7 @@
           "on-complete",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "20"
         ],
         [
@@ -19159,7 +19195,7 @@
           "player",
           "",
           "add-counter",
-          "coins",
+          "pennies",
           "30"
         ]
       ],

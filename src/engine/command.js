@@ -3,7 +3,7 @@
  * and counter reconciliation to GameEngine prototype.
  */
 
-import { getTag, getTags, checkRequires, getDefaultState } from './world.js';
+import { getTag, getTags, checkRequires, checkRequiresCounter, getDefaultState } from './world.js';
 import { stripArticles, buildVerbMap, parseInput } from './parser.js';
 import { evalCounterLow } from './actions.js';
 import { findRoamingNpcsAtPlace } from './npc.js';
@@ -396,6 +396,12 @@ export function mixCommand(Engine) {
         const placeState = this.player.getState(placeDtag) ?? getDefaultState(placeEvent);
         if (placeState !== stateGuard) continue;
       }
+      // Check requires-counter gates before dispatching
+      const rcCheck = checkRequiresCounter(placeEvent, verb, this.player.state, this.events);
+      if (!rcCheck.allowed) {
+        this._emit(rcCheck.reason, 'error');
+        return true;
+      }
       const action = tag[3];
       const actionTarget = tag[4];
       const extRef = tag[5];
@@ -450,6 +456,12 @@ export function mixCommand(Engine) {
       if (stateGuard) {
         const worldState = this.player.getState(worldDtag) ?? getDefaultState(worldEvent);
         if (worldState !== stateGuard) continue;
+      }
+      // Check requires-counter gates before dispatching
+      const rcCheck = checkRequiresCounter(worldEvent, verb, this.player.state, this.events);
+      if (!rcCheck.allowed) {
+        this._emit(rcCheck.reason, 'error');
+        return true;
       }
       const action = tag[3];
       const actionTarget = tag[4];

@@ -124,6 +124,83 @@ export function checkRequires(event, playerState, events) {
 }
 
 /**
+ * Check requires-counter tags on an event against player counters.
+ *
+ * Tag shape:
+ *   ["requires-counter", "<verb-or-blank>", "<event-ref-or-blank>", "<counter>", "<op>", "<N>", "<fail-msg>"]
+ *
+ * Operators: >= <= > < =
+ * Blank verb matches any verb (event-level gate).
+ * Blank event-ref auto-resolves: checks the event's own counters first, then the world event.
+ *
+ * @param {Object} event
+ * @param {string|null} verb — the verb being used; null/blank matches any
+ * @param {Object} playerState
+ * @param {Map} events
+ * @returns {{ allowed: boolean, reason?: string }}
+ */
+export function checkRequiresCounter(event, verb, playerState, events) {
+  const tags = getTags(event, 'requires-counter');
+  if (tags.length === 0) return { allowed: true };
+
+  const eventDtag = getTag(event, 'd');
+
+  // Lazily find world event for auto-resolution
+  let worldDtag = null;
+  const getWorldDtag = () => {
+    if (worldDtag !== null) return worldDtag;
+    const worldEvent = events ? [...events.values()].find((e) => getTag(e, 'type') === 'world') : null;
+    worldDtag = worldEvent ? (getTag(worldEvent, 'd') ?? '') : '';
+    return worldDtag;
+  };
+
+  for (const tag of tags) {
+    const tagVerb    = tag[1] || '';
+    const eventRef   = tag[2] || '';
+    const counterName = tag[3] || '';
+    const op         = tag[4] || '>=';
+    const threshold  = parseInt(tag[5], 10) || 0;
+    const failMsg    = tag[6] || "You can't do that.";
+
+    if (!counterName) continue;
+    // Verb filter: blank = any verb
+    if (tagVerb && verb && tagVerb !== verb) continue;
+
+    // Resolve counter key
+    let counterKey;
+    if (eventRef) {
+      counterKey = `${eventRef}:${counterName}`;
+    } else {
+      const localKey = `${eventDtag}:${counterName}`;
+      const localVal = playerState.counters?.[localKey];
+      if (localVal !== undefined) {
+        counterKey = localKey;
+      } else {
+        const wd = getWorldDtag();
+        const worldKey = wd ? `${wd}:${counterName}` : null;
+        counterKey = (worldKey && playerState.counters?.[worldKey] !== undefined) ? worldKey : localKey;
+      }
+    }
+
+    const value = playerState.counters?.[counterKey] ?? 0;
+    let passes;
+    switch (op) {
+      case '>=': passes = value >= threshold; break;
+      case '<=': passes = value <= threshold; break;
+      case '>':  passes = value > threshold;  break;
+      case '<':  passes = value < threshold;  break;
+      case '=':
+      case '==': passes = value === threshold; break;
+      default:   passes = false;
+    }
+
+    if (!passes) return { allowed: false, reason: failMsg };
+  }
+
+  return { allowed: true };
+}
+
+/**
  * Find a feature or item in the current place by noun match.
  */
 export function findByNoun(events, placeEvent, noun) {

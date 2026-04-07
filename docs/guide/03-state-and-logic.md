@@ -133,6 +133,47 @@ Gate on a feature's state:
 
 Multiple `requires` tags use AND logic — all must pass. The client renders the first failed description.
 
+### Gating on counter values (requires-counter)
+
+When you need to gate an interaction on a **numeric** value rather than a named state, use `requires-counter`. It checks a counter against a threshold using a comparison operator.
+
+```json
+["requires-counter", "<verb-or-blank>", "<event-ref-or-blank>", "<counter>", "<op>", "<N>", "<fail-msg>"]
+```
+
+- **verb** — scope to a specific verb; blank matches any verb (or portal traversal)
+- **event-ref** — which event owns the counter; blank = auto-resolve (current event first, then world event)
+- **counter** — counter name (`coins`, `reputation`, etc.)
+- **op** — `>=` (default), `<=`, `>`, `<`, `=`
+- **N** — integer threshold
+- **fail-msg** — shown when the check fails; blank uses "You can't do that."
+
+Valid on: `feature`, `item`, `npc`, `place`, `portal`, `dialogue`, `world`.
+
+**Example — shop purchase gated by coins:**
+
+```json
+// On a feature or NPC, gate the 'buy' verb
+["requires-counter", "buy", "", "coins", ">=", "3", "You can't afford that."]
+```
+
+**Example — bridge toll portal:**
+
+```json
+// On a portal — blank verb applies to all traversal
+["requires-counter", "", "", "coins", ">=", "1", "The bridge keeper demands 1 coin."]
+```
+
+**Example — dialogue option unlocked by reputation:**
+
+```json
+// On a dialogue node — blank verb (dialogue has no verbs)
+["requires-counter", "", "30078:<PUBKEY>:my-world:world:my-world", "reputation", ">=", "5",
+  "They don't trust you enough to share that."]
+```
+
+`requires-counter` stacks with `requires` — both must pass. Multiple `requires-counter` tags also stack (AND logic).
+
 ### Common mistake: bare strings
 
 Requires always uses **event references** (`30078:<pubkey>:<d-tag>`), never bare strings like `"has-key"` or `"lantern-lit"`. The engine resolves the reference to find the event, checks its type, then evaluates the condition. There is no flag system — all state lives on events.

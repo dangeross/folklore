@@ -2,7 +2,7 @@
  * Dialogue mixin — adds dialogue methods to GameEngine prototype.
  */
 
-import { getTag, getTags, checkRequires } from './world.js';
+import { getTag, getTags, checkRequires, checkRequiresCounter } from './world.js';
 import { isEventTrusted } from './trust.js';
 
 export function mixDialogue(Engine) {
@@ -85,7 +85,8 @@ export function mixDialogue(Engine) {
           // Security: skip options whose destination author is untrusted
           if (this.config.trustSet && isEventTrusted(destNode, this.config.trustSet, this.config.clientMode) === 'hidden') continue;
           const destReq = checkRequires(destNode, this.player.state, this.events);
-          if (destReq.allowed) {
+          const destRcReq = checkRequiresCounter(destNode, null, this.player.state, this.events);
+          if (destReq.allowed && destRcReq.allowed) {
             visibleOptions.push({ label, nextDtag });
           }
         } else {

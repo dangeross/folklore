@@ -172,6 +172,19 @@ export const TAG_SCHEMAS = {
       { name: 'desc', type: 'text', required: false, placeholder: 'Failure message' },
     ],
   },
+  'requires-counter': {
+    label: 'Requires Counter',
+    desc: 'Gate: a counter must satisfy an operator comparison (>=, <=, >, <, =)',
+    repeatable: true,
+    fields: [
+      { name: 'verb', type: 'text', required: false, placeholder: 'verb or blank (any)' },
+      { name: 'event-ref', type: 'text', required: false, placeholder: 'event ref or blank (auto)' },
+      { name: 'counter', type: 'text', required: true, placeholder: 'counter name' },
+      { name: 'op', type: 'text', required: false, placeholder: '>= (default)' },
+      { name: 'n', type: 'text', required: true, placeholder: 'threshold (e.g. 5)' },
+      { name: 'desc', type: 'text', required: false, placeholder: 'Failure message' },
+    ],
+  },
 
   // ── Exit (place variant: slot-only; portal variant: place-ref + slot + label) ─
   exit: {
@@ -648,19 +661,19 @@ export const TAG_SCHEMAS = {
 
 /** Which tags are valid for each event type */
 export const TAGS_BY_EVENT_TYPE = {
-  place:       ['title', 'content-type', 'exit', 'item', 'feature', 'npc', 'clue', 'noun', 'verb', 'state', 'transition', 'requires', 'requires-not', 'on-interact', 'on-enter', 'on-drop', 'on-player-health', 'media', 'sound', 'bpm', 'cw', 'puzzle', 'colour'],
-  portal:      ['title', 'exit', 'state', 'transition', 'requires', 'requires-not', 'consequence', 'cw', 'content-type', 'sound', 'transition-effect', 'transition-duration', 'transition-clear'],
-  item:        ['title', 'noun', 'verb', 'state', 'transition', 'on-interact', 'on-move', 'on-counter', 'counter', 'contains', 'requires', 'requires-not', 'damage', 'hit-chance', 'content-type', 'media', 'sound'],
-  feature:     ['title', 'noun', 'verb', 'state', 'transition', 'on-interact', 'on-drop', 'on-counter', 'counter', 'contains', 'requires', 'requires-not', 'content-type', 'media', 'sound'],
+  place:       ['title', 'content-type', 'exit', 'item', 'feature', 'npc', 'clue', 'noun', 'verb', 'state', 'transition', 'requires', 'requires-not', 'requires-counter', 'on-interact', 'on-enter', 'on-drop', 'on-player-health', 'media', 'sound', 'bpm', 'cw', 'puzzle', 'colour'],
+  portal:      ['title', 'exit', 'state', 'transition', 'requires', 'requires-not', 'requires-counter', 'consequence', 'cw', 'content-type', 'sound', 'transition-effect', 'transition-duration', 'transition-clear'],
+  item:        ['title', 'noun', 'verb', 'state', 'transition', 'on-interact', 'on-move', 'on-counter', 'counter', 'contains', 'requires', 'requires-not', 'requires-counter', 'damage', 'hit-chance', 'content-type', 'media', 'sound'],
+  feature:     ['title', 'noun', 'verb', 'state', 'transition', 'on-interact', 'on-drop', 'on-counter', 'counter', 'contains', 'requires', 'requires-not', 'requires-counter', 'content-type', 'media', 'sound'],
   clue:        ['title', 'noun', 'state', 'transition', 'content-type', 'requires', 'requires-not', 'media', 'puzzle', 'sound'],
   puzzle:      ['title', 'puzzle-type', 'answer-hash', 'salt', 'ordered', 'requires', 'on-complete', 'on-fail', 'counter', 'on-counter', 'content-type', 'sound'],
   recipe:      ['title', 'noun', 'verb', 'state', 'transition', 'requires', 'on-complete', 'on-fail', 'counter', 'on-counter', 'ordered', 'content-type', 'sound'],
   payment:     ['title', 'amount', 'unit', 'lnurl', 'on-complete', 'content-type', 'sound'],
-  npc:         ['title', 'noun', 'verb', 'state', 'transition', 'dialogue', 'on-interact', 'on-encounter', 'on-attacked', 'on-health', 'on-player-health', 'on-enter', 'on-move', 'on-counter', 'counter', 'speed', 'roam-type', 'order', 'route', 'stash', 'roams-when', 'inventory', 'health', 'damage', 'hit-chance', 'requires', 'requires-not', 'content-type', 'sound'],
-  dialogue:    ['option', 'on-option', 'requires', 'requires-not', 'on-enter', 'content-type', 'sound'],
+  npc:         ['title', 'noun', 'verb', 'state', 'transition', 'dialogue', 'on-interact', 'on-encounter', 'on-attacked', 'on-health', 'on-player-health', 'on-enter', 'on-move', 'on-counter', 'counter', 'speed', 'roam-type', 'order', 'route', 'stash', 'roams-when', 'inventory', 'health', 'damage', 'hit-chance', 'requires', 'requires-not', 'requires-counter', 'content-type', 'sound'],
+  dialogue:    ['option', 'on-option', 'requires', 'requires-not', 'requires-counter', 'on-enter', 'content-type', 'sound'],
   consequence: ['respawn', 'clears', 'give-item', 'consume-item', 'deal-damage', 'set-state', 'content-type', 'sound'],
   sound:       ['note', 's', 'oscillator', 'noise', 'gain', 'slow', 'fast', 'pan', 'lpf', 'hpf', 'bpf', 'bpq', 'lpq', 'hpq', 'ftype', 'vowel', 'crush', 'shape', 'distort', 'coarse', 'room', 'roomsize', 'roomfade', 'roomlp', 'roomdim', 'delay', 'delaytime', 'delayfeedback', 'phaser', 'phaserdepth', 'phasercenter', 'phasersweep', 'rev', 'palindrome', 'degrade-by', 'jux', 'arp', 'sustain', 'attack', 'decay', 'release', 'lpenv', 'lpattack', 'lpdecay', 'lpsustain', 'lprelease', 'hpenv', 'hpattack', 'hpdecay', 'hpsustain', 'hprelease', 'bpenv', 'bpattack', 'bpdecay', 'bpsustain', 'bprelease', 'fanchor', 'penv', 'pattack', 'pdecay', 'prelease', 'pcurve', 'panchor', 'fm', 'fmh', 'fmattack', 'fmdecay', 'fmsustain', 'fmenv', 'vib', 'vibmod', 'tremolodepth', 'tremolosync', 'tremoloskew', 'tremolophase', 'tremoloshape', 'velocity', 'postgain', 'compressor', 'n', 'begin', 'end', 'speed', 'cut', 'loop', 'loop-begin', 'loop-end', 'loop-at', 'clip', 'chop', 'striate', 'fit', 'orbit', 'dry', 'xfade', 'early', 'late', 'swing', 'iter', 'ply', 'sample'],
-  world:       ['title', 'author', 'version', 'lang', 'voice', 'tag', 'cw', 'start', 'inventory', 'relay', 'collaboration', 'collaborator', 'health', 'max-health', 'max-inventory', 'on-player-health', 'on-interact', 'on-inventory-full', 'on-move', 'counter', 'on-counter', 'hud', 'map', 'theme', 'colour', 'font', 'cursor', 'effects', 'scanlines', 'glow', 'flicker', 'vignette', 'noise', 'sound', 'bpm', 'samples', 'content-type', 'media', 'w'],
+  world:       ['title', 'author', 'version', 'lang', 'voice', 'tag', 'cw', 'start', 'inventory', 'relay', 'collaboration', 'collaborator', 'health', 'max-health', 'max-inventory', 'on-player-health', 'on-interact', 'on-inventory-full', 'on-move', 'requires-counter', 'counter', 'on-counter', 'hud', 'map', 'theme', 'colour', 'font', 'cursor', 'effects', 'scanlines', 'glow', 'flicker', 'vignette', 'noise', 'sound', 'bpm', 'samples', 'content-type', 'media', 'w'],
   vouch:       ['pubkey', 'scope', 'can-vouch'],
   revoke:      ['pubkey'],
   quest:       ['title', 'quest-type', 'involves', 'requires', 'requires-not', 'on-complete', 'content-type', 'sound'],

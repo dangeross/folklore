@@ -409,6 +409,31 @@ Examples:
 ["requires-not", "30078:<pubkey>:the-lake:item:brass-lantern", "on", ""]
 ```
 
+#### requires-counter
+
+Gates an interaction (or portal traversal, or dialogue option) on a counter value comparison. Multiple tags stack with AND logic. The verb field scopes the gate to a specific verb — blank matches any.
+
+```json
+["requires-counter", "<verb-or-blank>", "<event-ref-or-blank>", "<counter>", "<op>", "<N>", "<fail-msg-or-blank>"]
+```
+
+**Operators:** `>=` (default), `<=`, `>`, `<`, `=`
+
+**Counter resolution:** When event-ref is blank, the engine looks for the counter on the event itself first (key `<event-dtag>:<counter>`), then falls back to the world event (key `<world-dtag>:<counter>`). Specify an explicit event-ref to read a counter from another event.
+
+Valid on: `feature`, `item`, `npc`, `place`, `portal`, `dialogue`, `world`.
+
+```json
+// Gate a purchase verb — player must have ≥ 3 coins
+["requires-counter", "buy", "", "coins", ">=", "3", "You can't afford that."]
+
+// Gate portal traversal — world-level toll
+["requires-counter", "", "", "coins", ">=", "1", "The bridge toll is 1 coin."]
+
+// Gate a dialogue option on another event's counter
+["requires-counter", "", "30078:<pubkey>:the-lake:world:the-lake", "reputation", ">=", "5", "You haven't earned enough trust."]
+```
+
 Hidden portals or features start in `state: hidden` — not rendered until a `set-state visible` action targets them.
 
 Event states are set via `set-state` in `on-interact`. The state guard (position 2) gates whether the action fires — blank means any state, a value means only when the entity is in that state. The optional final argument targets another event — omit to apply to self:

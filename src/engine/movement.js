@@ -3,7 +3,7 @@
  */
 
 import {
-  getTag, getTags, resolveExits, resolveExitsWithTrust, checkRequires,
+  getTag, getTags, resolveExits, resolveExitsWithTrust, checkRequires, checkRequiresCounter,
 } from './world.js';
 import { getTrustLevel } from './trust.js';
 
@@ -228,11 +228,15 @@ export function mixMovement(Engine) {
     const routableExits = matchingExits.filter((e) => {
       const isTrap = e.portalEvent.tags.some((t) => t[0] === 'consequence');
       if (isTrap) return true;
-      return checkRequires(e.portalEvent, this.player.state, this.events).allowed;
+      if (!checkRequires(e.portalEvent, this.player.state, this.events).allowed) return false;
+      if (!checkRequiresCounter(e.portalEvent, null, this.player.state, this.events).allowed) return false;
+      return true;
     });
     if (routableExits.length === 0) {
       const req = checkRequires(matchingExits[0].portalEvent, this.player.state, this.events);
-      this._emit(req.reason, 'error');
+      if (!req.allowed) { this._emit(req.reason, 'error'); return; }
+      const rcReq = checkRequiresCounter(matchingExits[0].portalEvent, null, this.player.state, this.events);
+      this._emit(rcReq.reason, 'error');
       return;
     }
 

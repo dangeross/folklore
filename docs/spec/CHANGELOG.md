@@ -5,6 +5,25 @@
 
 ## [Unreleased] — April 2026
 
+### Added — `requires-counter` tag
+
+Gates an interaction, portal traversal, or dialogue option on a counter value comparison. Always 7 elements:
+
+```json
+["requires-counter", "<verb-or-blank>", "<event-ref-or-blank>", "<counter>", "<op>", "<N>", "<fail-msg-or-blank>"]
+```
+
+- **verb** — scope to a specific verb; blank matches any
+- **event-ref** — which event's counter to read; blank = auto-resolve (local event first, then world event)
+- **counter** — counter name
+- **op** — comparison operator: `>=` (default), `<=`, `>`, `<`, `=`
+- **N** — integer threshold
+- **fail-msg** — shown when blocked; blank uses "You can't do that."
+
+Valid on: `feature`, `item`, `npc`, `place`, `portal`, `dialogue`, `world`. Multiple tags stack (AND logic). Stacks with `requires`/`requires-not`.
+
+---
+
 ### Added — `add-counter`, `sub-counter`, `mul-counter`, `div-counter` action types
 
 Four arithmetic counter actions replace the limited `increment`/`decrement` pair. All share the same positional shape as `set-counter`:

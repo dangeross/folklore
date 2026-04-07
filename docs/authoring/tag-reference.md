@@ -265,6 +265,7 @@ D-tag: `<slug>:world`
 | `transition` | `["transition", "<from>", "<to>", "<text?>"]` (repeatable) | opt | — |
 | `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
+| `requires-counter` | `["requires-counter", "<verb>", "<ref>", "<counter>", "<op>", "<N>", "<desc>"]` (repeatable) | opt | gate on counter value comparison |
 | `on-interact` | `["on-interact", "<verb>", "<state-guard-or-''>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | fires when player types a bare verb in this room; checked before world on-interact |
 | `on-enter` | `["on-enter", "player", "<state-guard-or-''\>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | — |
 | `on-drop` | `["on-drop", "<item-ref-or-''>", "<state-guard-or-''>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | fires when item dropped in this place (plain `drop X`) |
@@ -290,6 +291,7 @@ D-tag: `<slug>:world`
 | `transition` | `["transition", "<from>", "<to>", "<text?>"]` (repeatable) | opt | — |
 | `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
+| `requires-counter` | `["requires-counter", "<verb>", "<ref>", "<counter>", "<op>", "<N>", "<desc>"]` (repeatable) | opt | gate on counter value comparison |
 | `consequence` | `["consequence", "<consequence-ref>"]` | opt | portal death trap ref |
 | `cw` | `["cw", "<warning>"]` (repeatable) | opt | content warning label |
 | `sound` | `["sound", "<sound-ref>", "effect", "<volume>"]` (repeatable) | opt | one-shot on traversal (door creak, footsteps) |
@@ -337,6 +339,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `contains` | `["contains", "<item-ref>", "<state>", "<fail-msg>"]` (repeatable) | opt | nested item, revealed at state |
 | `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
+| `requires-counter` | `["requires-counter", "<verb>", "<ref>", "<counter>", "<op>", "<N>", "<desc>"]` (repeatable) | opt | gate on counter value comparison |
 | `damage` | `["damage", "<number>"]` | opt (weapons) | — |
 | `hit-chance` | `["hit-chance", "0.0-1.0"]` | opt | probability 0.0-1.0 |
 | `media` | `["media", "<mime>", "<value>"]` (repeatable) | opt | — |
@@ -381,6 +384,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `contains` | `["contains", "<item-ref>", "<state>", "<fail-msg>"]` (repeatable) | opt | nested item, revealed at state |
 | `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
+| `requires-counter` | `["requires-counter", "<verb>", "<ref>", "<counter>", "<op>", "<N>", "<desc>"]` (repeatable) | opt | gate on counter value comparison |
 | `media` | `["media", "<mime>", "<value>"]` (repeatable) | opt | — |
 | `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
 
@@ -416,6 +420,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `inventory` | `["inventory", "<item-ref>"]` (repeatable) | opt | Native item the NPC starts with. Shown on `examine`. Never auto-dropped — use `give-item` in a trigger to transfer to the player. Separate from items stolen via `steals-item`. |
 | `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
+| `requires-counter` | `["requires-counter", "<verb>", "<ref>", "<counter>", "<op>", "<N>", "<desc>"]` (repeatable) | opt | gate on counter value comparison |
 | `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
 
 **Content field:** REQUIRED. **NPC placement:** Add `["npc", "<npc-ref>"]` to the **place** event. Use `inventory` (not `item`) for NPC-held items. `steals-item` tracks stolen items separately — `deposits` only drops stolen items, never native inventory.
@@ -427,6 +432,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `option` | `["option", "<label>", "<next-dialogue-ref?>"]` (repeatable) | opt | — |
 | `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
+| `requires-counter` | `["requires-counter", "<verb>", "<ref>", "<counter>", "<op>", "<N>", "<desc>"]` (repeatable) | opt | gate on counter value comparison (verb field is always blank on dialogue) |
 | `on-enter` | `["on-enter", "player", "<state-guard-or-''\>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | — |
 | `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
 
@@ -768,6 +774,29 @@ Always 4 elements. Always uses event refs (`30078:<64-char-hex-pubkey>:<d-tag>`)
 ```
 ["requires",     "<event-ref>", "<state-or-blank>", "<fail-description-or-blank>"]
 ["requires-not", "<event-ref>", "<state-or-blank>", "<fail-description-or-blank>"]
+```
+
+## Requires-Counter Shape
+
+Gates an interaction, portal traversal, or dialogue option on a counter value comparison. Always 7 elements:
+
+```
+["requires-counter", "<verb-or-blank>", "<event-ref-or-blank>", "<counter>", "<op>", "<N>", "<fail-msg-or-blank>"]
+```
+
+- **verb** — scope to a specific verb; blank matches any verb (or portal traversal)
+- **event-ref** — which event's counter to read; blank = auto-resolve (local event first, then world event)
+- **counter** — counter name (e.g. `coins`, `reputation`)
+- **op** — comparison operator: `>=` (default), `<=`, `>`, `<`, `=`
+- **N** — integer threshold
+- **fail-msg** — shown to player when blocked; blank uses default "You can't do that."
+
+Valid on: `feature`, `item`, `npc`, `place`, `portal`, `clue`, `dialogue`, `world`.
+
+```json
+["requires-counter", "buy",  "",  "coins",      ">=", "3",  "You can't afford that."]
+["requires-counter", "",     "",  "coins",       ">=", "1",  "The bridge toll is 1 coin."]
+["requires-counter", "",     "30078:<pubkey>:my-world:world:my-world", "reputation", ">=", "5", "You haven't earned enough trust."]
 ```
 
 ## Sound Play Tag (on non-sound events)

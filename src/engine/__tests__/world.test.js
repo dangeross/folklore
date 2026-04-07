@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   getTag, getTags, dtagFromRef, aTagOf, getDefaultState, findTransition,
-  checkRequires, findByNoun, resolveExits,
+  checkRequires, checkRequiresCounter, findByNoun, resolveExits,
 } from '../world.js';
 import {
   ref, PUBKEY, WORLD,
@@ -269,6 +269,145 @@ describe('findByNoun', () => {
     const place = makePlace('room');
     const events = buildEvents(place);
     expect(findByNoun(events, place, 'dragon')).toBeNull();
+  });
+});
+
+// ── checkRequiresCounter ─────────────────────────────────────────────────
+
+describe('checkRequiresCounter', () => {
+  const featureDtag = `${WORLD}:feature:door`;
+  const featureRef  = ref(featureDtag);
+
+  function makeFeatureWithRC(tags) {
+    return makeEvent(featureDtag, [['type', 'feature'], ...tags]);
+  }
+
+  it('returns allowed when no requires-counter tags', () => {
+    const event = makeFeatureWithRC([]);
+    expect(checkRequiresCounter(event, 'open', freshState(), new Map())).toEqual({ allowed: true });
+  });
+
+  it('passes when counter meets >= threshold', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'coins', '>=', '3', 'Not enough coins.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:coins`]: 5 } });
+    expect(checkRequiresCounter(event, 'open', state, buildEvents(event))).toEqual({ allowed: true });
+  });
+
+  it('blocks when counter is below >= threshold', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'coins', '>=', '3', 'Not enough coins.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:coins`]: 2 } });
+    const result = checkRequiresCounter(event, 'open', state, buildEvents(event));
+    expect(result.allowed).toBe(false);
+    expect(result.reason).toBe('Not enough coins.');
+  });
+
+  it('passes <= operator when counter is at or below threshold', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'health', '<=', '5', 'Too healthy.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:health`]: 3 } });
+    expect(checkRequiresCounter(event, 'inspect', state, buildEvents(event))).toEqual({ allowed: true });
+  });
+
+  it('blocks <= operator when counter is above threshold', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'health', '<=', '5', 'Too healthy.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:health`]: 10 } });
+    expect(checkRequiresCounter(event, 'inspect', state, buildEvents(event)).allowed).toBe(false);
+  });
+
+  it('passes = operator when counter equals threshold', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'score', '=', '10', 'Wrong score.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:score`]: 10 } });
+    expect(checkRequiresCounter(event, 'check', state, buildEvents(event))).toEqual({ allowed: true });
+  });
+
+  it('passes > operator strictly above threshold', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'coins', '>', '3', 'Need more than 3.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:coins`]: 4 } });
+    expect(checkRequiresCounter(event, 'open', state, buildEvents(event))).toEqual({ allowed: true });
+  });
+
+  it('blocks > operator when counter equals threshold', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'coins', '>', '3', 'Need more than 3.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:coins`]: 3 } });
+    expect(checkRequiresCounter(event, 'open', state, buildEvents(event)).allowed).toBe(false);
+  });
+
+  it('filters by verb — skips non-matching verb tags', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', 'buy', '', 'coins', '>=', '10', 'Need 10 coins to buy.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:coins`]: 1 } });
+    // verb 'inspect' doesn't match 'buy' — gate is skipped
+    expect(checkRequiresCounter(event, 'inspect', state, buildEvents(event))).toEqual({ allowed: true });
+  });
+
+  it('applies verb-scoped gate when verb matches', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', 'buy', '', 'coins', '>=', '10', 'Need 10 coins to buy.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:coins`]: 1 } });
+    expect(checkRequiresCounter(event, 'buy', state, buildEvents(event)).allowed).toBe(false);
+  });
+
+  it('blank verb tag matches any verb', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'coins', '>=', '5', 'Not enough.'],
+    ]);
+    const state = freshState({ counters: { [`${featureDtag}:coins`]: 3 } });
+    expect(checkRequiresCounter(event, 'anything', state, buildEvents(event)).allowed).toBe(false);
+  });
+
+  it('treats missing counter as 0', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'coins', '>=', '1', 'Need coins.'],
+    ]);
+    const state = freshState(); // no counters
+    expect(checkRequiresCounter(event, 'open', state, buildEvents(event)).allowed).toBe(false);
+  });
+
+  it('uses explicit event-ref for counter key', () => {
+    const otherDtag = `${WORLD}:feature:vault`;
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', ref(otherDtag), 'coins', '>=', '5', 'Not enough.'],
+    ]);
+    // Counter lives on vault, not door
+    const state = freshState({ counters: { [`${ref(otherDtag)}:coins`]: 7 } });
+    expect(checkRequiresCounter(event, 'open', state, buildEvents(event))).toEqual({ allowed: true });
+  });
+
+  it('falls back to world counter when local counter absent', () => {
+    const worldDtag = `${WORLD}:world:${WORLD}`;
+    const worldEvent = makeEvent(worldDtag, [['type', 'world']]);
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'coins', '>=', '3', 'Not enough.'],
+    ]);
+    // coins stored on world, not on door
+    const state = freshState({ counters: { [`${worldDtag}:coins`]: 5 } });
+    const events = buildEvents(worldEvent, event);
+    expect(checkRequiresCounter(event, 'open', state, events)).toEqual({ allowed: true });
+  });
+
+  it('uses default fail message when desc is blank', () => {
+    const event = makeFeatureWithRC([
+      ['requires-counter', '', '', 'coins', '>=', '99'],
+    ]);
+    const state = freshState();
+    const result = checkRequiresCounter(event, 'open', state, buildEvents(event));
+    expect(result.allowed).toBe(false);
+    expect(result.reason).toBe("You can't do that.");
   });
 });
 

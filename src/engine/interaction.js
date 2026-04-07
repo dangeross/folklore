@@ -4,7 +4,7 @@
  */
 
 import {
-  getTag, getTags, checkRequires, findByNoun, getDefaultState, findTransition,
+  getTag, getTags, checkRequires, checkRequiresCounter, findByNoun, getDefaultState, findTransition,
 } from './world.js';
 import { stripArticles, findInventoryItem } from './parser.js';
 import { evalCounterLow, evalSequencePuzzles } from './actions.js';
@@ -155,6 +155,12 @@ export function mixInteraction(Engine) {
     // the pre-interaction state even if a self-set-state tag fires first and mutates
     // currentState (which is needed for transition-finding logic in later self-set-states).
     const guardState = currentState;
+    // Check requires-counter gates before processing on-interact tags
+    const rcCheck = checkRequiresCounter(event, verb, this.player.state, this.events);
+    if (!rcCheck.allowed) {
+      this._emit(rcCheck.reason, 'error');
+      return true;
+    }
     for (const tag of getTags(event, 'on-interact')) {
       if (tag[1] !== verb) continue;
       // State guard at position 2 — blank = any state, otherwise must match current state
