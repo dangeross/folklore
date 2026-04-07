@@ -456,9 +456,6 @@ export function mixInteraction(Engine) {
         const consumeDtag = targetState || dtag;
         if (this.player.hasItem(consumeDtag)) {
           this.player.removeItem(consumeDtag);
-          const consumeEvent = this.events.get(consumeDtag);
-          const consumeTitle = consumeEvent ? getTag(consumeEvent, 'title') : consumeDtag;
-          this._emit(`${consumeTitle} is consumed.`, 'item');
         }
         acted = true;
       } else {

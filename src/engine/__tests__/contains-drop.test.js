@@ -193,8 +193,6 @@ describe('on-drop — feature trigger (targeted)', () => {
     await engine.handleCommand('drop coin in chest');
     // consume-item fires — coin removed from inventory and not on ground
     expect(engine.player.hasItem(ref(`${WORLD}:item:coin`))).toBe(false);
-    const msgs = engine.flush();
-    expect(msgs.some((m) => m.text?.includes('consumed') || m.text?.includes('Dropped'))).toBe(true);
   });
 
   it('blocks with "You can\'t do that." when state guard fails', async () => {

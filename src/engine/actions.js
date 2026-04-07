@@ -225,9 +225,6 @@ export function evalSequencePuzzles(place, events, player, emit, emitSound, trus
       } else if (action === 'consume-item' && value) {
         if (player.hasItem(value)) {
           player.removeItem(value);
-          const consumeEvent = events.get(value);
-          const consumeTitle = consumeEvent ? getTag(consumeEvent, 'title') : value;
-          emit(`${consumeTitle} is consumed.`, 'item');
         }
       } else if (action === 'give-crypto-key') {
         player.addCryptoKey(value);

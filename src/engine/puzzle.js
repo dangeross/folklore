@@ -246,9 +246,6 @@ export function mixPuzzle(Engine) {
         } else if (action === 'consume-item' && value) {
           if (this.player.hasItem(value)) {
             this.player.removeItem(value);
-            const consumeEvent = this.events.get(value);
-            const consumeTitle = consumeEvent ? getTag(consumeEvent, 'title') : value;
-            this._emit(`${consumeTitle} is consumed.`, 'item');
           }
         } else if (action === 'sound' && value) {
           this._emitSound(value, extRef || '1');
