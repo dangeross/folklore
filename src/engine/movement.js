@@ -223,8 +223,21 @@ export function mixMovement(Engine) {
     const matchingExits = allExits.filter((e) => e.slot === direction);
     if (matchingExits.length === 0) { this._emit("You can't go that way.", 'error'); return; }
 
-    const trustedExits = matchingExits.filter((e) => e.trustLevel === 'trusted');
-    const unverifiedExits = matchingExits.filter((e) => e.trustLevel === 'unverified');
+    // Pre-filter by requires before trust disambiguation.
+    // Portals with a consequence tag bypass this — they are traps that fire on requires failure.
+    const routableExits = matchingExits.filter((e) => {
+      const isTrap = e.portalEvent.tags.some((t) => t[0] === 'consequence');
+      if (isTrap) return true;
+      return checkRequires(e.portalEvent, this.player.state, this.events).allowed;
+    });
+    if (routableExits.length === 0) {
+      const req = checkRequires(matchingExits[0].portalEvent, this.player.state, this.events);
+      this._emit(req.reason, 'error');
+      return;
+    }
+
+    const trustedExits = routableExits.filter((e) => e.trustLevel === 'trusted');
+    const unverifiedExits = routableExits.filter((e) => e.trustLevel === 'unverified');
 
     let exit;
 

@@ -356,9 +356,14 @@ export function mixCommand(Engine) {
     if (dirMatch) {
       const dir = dirMatch[1];
       const choiceIndex = dirMatch[2] ? parseInt(dirMatch[2], 10) : null;
-      const visibleExits = this.exits;
+      const { exits: visibleExits, allClaimedSlots } = this.exitData;
       if (visibleExits.find((e) => e.slot === dir)) {
         this.handleMove(dir, choiceIndex);
+        return;
+      }
+      // Slot claimed but no portal currently visible (hidden state, requires blocked, trust hidden)
+      if (allClaimedSlots?.has(dir)) {
+        this._emit("You can't go that way.", 'error');
         return;
       }
     }

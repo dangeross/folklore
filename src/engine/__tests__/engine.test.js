@@ -1710,3 +1710,102 @@ describe('clue display', () => {
     expect(output.some(e => (e.text || e.html || '').includes('Secret text'))).toBe(false);
   });
 });
+
+// ── Exit routing: requires pre-filtering (#23) and claimed-slot messaging (#24) ──
+
+describe('exit routing — requires pre-filter and claimed-slot messaging', () => {
+  function makeWorld2() {
+    return makeEvent(`${WORLD}:world`, [
+      ['type', 'world'], ['title', 'Test'], ['w', 'folklore'],
+      ['start', ref(`${WORLD}:place:start`)],
+    ], '');
+  }
+
+  it('#24 — claims-but-hidden slot emits "You can\'t go that way." not "I don\'t understand"', async () => {
+    // Portal with state: hidden — slot is declared on place but portal is invisible
+    const room1 = makePlace('start', { exits: ['north'] });
+    const room2 = makePlace('dest', { exits: ['south'] });
+    const portal = makePortal('p', [
+      [`${WORLD}:place:start`, 'north'],
+      [`${WORLD}:place:dest`, 'south'],
+    ], { state: 'hidden' });
+    const engine = createEngine([makeWorld2(), room1, room2, portal], { place: ref(`${WORLD}:place:start`) });
+    engine.enterRoom(ref(`${WORLD}:place:start`));
+    engine.flush();
+    await engine.handleCommand('north');
+    const out = engine.flush();
+    expect(out.some((m) => m.text === "You can't go that way.")).toBe(true);
+    expect(out.some((m) => m.text === "I don't understand that.")).toBe(false);
+  });
+
+  it('#23 — requires-blocked portal on slot emits failure reason, not disambiguation', async () => {
+    const key = makeItem('key', { nouns: [['key']] });
+    const keyRef = ref(`${WORLD}:item:key`);
+    const room1 = makePlace('start', { exits: ['north'] });
+    const room2 = makePlace('dest', { exits: ['south'] });
+    const portal = makePortal('p', [
+      [`${WORLD}:place:start`, 'north'],
+      [`${WORLD}:place:dest`, 'south'],
+    ], { requires: [[keyRef, '', 'You need the key.']] });
+    // Player does not have key
+    const engine = createEngine([makeWorld2(), room1, room2, portal, key], { place: ref(`${WORLD}:place:start`) });
+    engine.enterRoom(ref(`${WORLD}:place:start`));
+    engine.flush();
+    await engine.handleCommand('north');
+    const out = engine.flush();
+    expect(out.some((m) => m.text === 'You need the key.')).toBe(true);
+    // Should NOT have navigated
+    expect(engine.currentPlace).toBe(ref(`${WORLD}:place:start`));
+  });
+
+  it('#23 — two portals on same slot, requires filters to one → navigate silently', async () => {
+    const key = makeItem('key', { nouns: [['key']] });
+    const keyRef = ref(`${WORLD}:item:key`);
+    const room1 = makePlace('start', { exits: ['north'] });
+    const room2 = makePlace('day-dest', { exits: ['south'] });
+    const room3 = makePlace('night-dest', { exits: ['south'] });
+    // day portal requires key; night portal requires NOT key
+    const dayPortal = makePortal('day', [
+      [`${WORLD}:place:start`, 'north'],
+      [`${WORLD}:place:day-dest`, 'south'],
+    ], { requires: [[keyRef, '', 'Only with the key.']] });
+    const nightPortal = makePortal('night', [
+      [`${WORLD}:place:start`, 'north'],
+      [`${WORLD}:place:night-dest`, 'south'],
+    ]);
+    // Player has key → day portal passes, night portal also passes (no requires) → disambiguation
+    // Player has no key → day portal blocked, night portal passes → silent route
+    const engineNoKey = createEngine(
+      [makeWorld2(), room1, room2, room3, dayPortal, nightPortal, key],
+      { place: ref(`${WORLD}:place:start`) }
+    );
+    engineNoKey.enterRoom(ref(`${WORLD}:place:start`));
+    engineNoKey.flush();
+    await engineNoKey.handleCommand('north');
+    // Should have navigated silently to night-dest
+    expect(engineNoKey.currentPlace).toBe(ref(`${WORLD}:place:night-dest`));
+  });
+
+  it('#23 — two portals on same slot, both pass requires → disambiguation shown', async () => {
+    const room1 = makePlace('start', { exits: ['north'] });
+    const room2 = makePlace('dest-a', { exits: ['south'] });
+    const room3 = makePlace('dest-b', { exits: ['south'] });
+    const portalA = makePortal('pa', [
+      [`${WORLD}:place:start`, 'north', 'Path A'],
+      [`${WORLD}:place:dest-a`, 'south'],
+    ]);
+    const portalB = makePortal('pb', [
+      [`${WORLD}:place:start`, 'north', 'Path B'],
+      [`${WORLD}:place:dest-b`, 'south'],
+    ]);
+    const engine = createEngine([makeWorld2(), room1, room2, room3, portalA, portalB], { place: ref(`${WORLD}:place:start`) });
+    engine.enterRoom(ref(`${WORLD}:place:start`));
+    engine.flush();
+    await engine.handleCommand('north');
+    const out = engine.flush();
+    // Should show disambiguation, not navigate
+    expect(engine.currentPlace).toBe(ref(`${WORLD}:place:start`));
+    expect(out.some((m) => m.text?.includes('Multiple paths'))).toBe(true);
+  });
+});
+
