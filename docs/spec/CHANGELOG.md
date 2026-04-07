@@ -5,6 +5,26 @@
 
 ## [Unreleased] — April 2026
 
+### Added — `add-counter`, `sub-counter`, `mul-counter`, `div-counter` action types
+
+Four arithmetic counter actions replace the limited `increment`/`decrement` pair. All share the same positional shape as `set-counter`:
+
+```json
+["on-interact", "<verb>", "<state-guard>", "add-counter", "<counter-name>", "<amount>", "<ext-ref?>"]
+["on-interact", "<verb>", "<state-guard>", "sub-counter", "<counter-name>", "<amount>", "<ext-ref?>"]
+["on-interact", "<verb>", "<state-guard>", "mul-counter", "<counter-name>", "<amount>", "<ext-ref?>"]
+["on-interact", "<verb>", "<state-guard>", "div-counter", "<counter-name>", "<amount>", "<ext-ref?>"]
+```
+
+- `add-counter` — adds `<amount>` to the named counter
+- `sub-counter` — subtracts `<amount>`, floors at 0
+- `mul-counter` — multiplies by `<amount>`
+- `div-counter` — divides by `<amount>` (integer floor; ignored if `<amount>` is 0)
+
+All amounts are parsed as integers (floats are floored). Valid on all triggers that support counter actions: `on-interact`, `on-complete`, `on-enter`, `on-encounter`, `on-attacked`, `on-fail`, `on-move`, `on-drop`.
+
+**Deprecation:** `increment` and `decrement` are deprecated shorthands for `add-counter`/`sub-counter` with amount `1`. They continue to work indefinitely.
+
 ### Added — Scenario events (dev only, spec section 2.13)
 
 Scenarios are dev-only test fixtures — never published to NOSTR relays. They write a resolved player state to `localStorage` and reload the page, jumping the author directly to a specific game state without replaying the world.
@@ -26,7 +46,7 @@ The map is toggled by the `map` built-in command (reserved when the world has a 
 
 **Player state:** `portalsUsed` array added — a flat array of portal refs (strings). Written on every directional move and `traverse` action. Idempotent — each portal ref recorded once. Map derives edge endpoints from the portal's `exit` tags at render time.
 
-**Spec:** `on-encounter` now supports `increment` and `set-counter` (same rationale as `decrement`, which was already permitted).
+**Spec:** `on-encounter` now supports counter actions (same rationale as `decrement`, which was already permitted).
 
 **Spec:** `on-option` tag added to dialogue events — fires actions when a player selects a specific dialogue choice without requiring a separate leaf node.
 
@@ -44,7 +64,7 @@ The `on-move` trigger is now valid on world events, firing globally on every pla
 
 - **state-guard** (position 1): blank = fires on every move; specific value = fires only when the world is in that state.
 - Fires after item and NPC `on-move` handlers.
-- Supports same actions as item `on-move`: `set-state`, `deal-damage`, `consequence`, `decrement`, `increment`, `set-counter`, `sound`.
+- Supports same actions as item `on-move`: `set-state`, `deal-damage`, `consequence`, `add-counter`, `sub-counter`, `mul-counter`, `div-counter`, `set-counter`, `sound`.
 
 Also fixed: item `on-move` now correctly treats a blank state guard as "any state" (previously only fired when item state exactly matched the guard, which prevented blank-guard item on-move from ever firing).
 

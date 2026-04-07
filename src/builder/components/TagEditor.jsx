@@ -485,11 +485,14 @@ function TagField({ field, value, onChange, events, tagName, siblingValues }) {
  * its type and placeholder based on the selected action.
  */
 function resolveField(field, fieldName, values) {
-  if (fieldName !== 'target') return field;
   const action = values.action;
   if (!action) return field;
   const override = ACTION_TARGET_FIELD[action];
   if (!override) return field;
+  if (fieldName === 'event-ref' && override.eventRefOverride) {
+    return { ...field, ...override.eventRefOverride };
+  }
+  if (fieldName !== 'target') return field;
   return { ...field, type: override.type, placeholder: override.placeholder, eventTypeFilter: override.eventTypeFilter };
 }
 

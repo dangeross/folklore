@@ -92,18 +92,18 @@ export function mixPuzzle(Engine) {
   };
 
   /**
-   * Apply a counter action (decrement, increment, set-counter) on an event.
+   * Apply a counter action on an event.
    *
-   * On-interact positions:
-   *   increment/decrement: ["on-interact", verb, action, counterName, externalRef?]
-   *   set-counter:         ["on-interact", verb, "set-counter", counterName, value, externalRef?]
+   * On-interact tag positions:
+   *   increment/decrement:                  [verb, "", action, counterName, externalRef?]
+   *   set-counter / add/sub/mul/div-counter: [verb, "", action, counterName, amount, externalRef?]
    *
-   * @param {string} action — 'decrement', 'increment', or 'set-counter'
+   * @param {string} action — 'decrement'|'increment'|'set-counter'|'add-counter'|'sub-counter'|'mul-counter'|'div-counter'
    * @param {string} eventDtag — the event this tag is declared on (self)
-   * @param {string} counterName — counter name (position 3)
-   * @param {string} valueOrRef — position 4: value for set-counter, or external ref for inc/dec
+   * @param {string} counterName — counter name (position 4 in tag)
+   * @param {string} valueOrRef — position 5: numeric amount for set/add/sub/mul/div-counter, or external ref for inc/dec
    * @param {Object} event — the event object (for on-counter evaluation)
-   * @param {string} [externalRef] — position 5: external ref for set-counter
+   * @param {string} [externalRef] — position 6: external event ref for set/add/sub/mul/div-counter
    */
   Engine.prototype._applyCounterAction = function(action, eventDtag, counterName, valueOrRef, event, externalRef) {
     if (!counterName) return;
@@ -128,14 +128,15 @@ export function mixPuzzle(Engine) {
         }
       }
     }
-    if (action === 'set-counter' && externalRef) {
-      // set-counter: position 4 = value, position 5 = external ref
+    const isArithmetic = action === 'add-counter' || action === 'sub-counter' || action === 'mul-counter' || action === 'div-counter';
+    if ((action === 'set-counter' || isArithmetic) && externalRef) {
+      // set/add/sub/mul/div-counter: position 5 = amount, position 6 = external ref
       targetDtag = externalRef;
       targetEvent = this.events.get(externalRef);
       // Security: verify external target author is trusted
       if (this.config.trustSet && targetEvent && isEventTrusted(targetEvent, this.config.trustSet, this.config.clientMode) === 'hidden') return;
     } else if ((action === 'increment' || action === 'decrement') && valueOrRef && this.events.has(valueOrRef)) {
-      // increment/decrement: position 4 = external ref (if it resolves to an event)
+      // increment/decrement (deprecated): position 4 = external ref (if it resolves to an event)
       targetDtag = valueOrRef;
       targetEvent = this.events.get(valueOrRef);
       // Security: verify external target author is trusted
@@ -149,12 +150,27 @@ export function mixPuzzle(Engine) {
 
     let newVal;
     if (action === 'decrement') {
+      // Deprecated: use sub-counter with amount "1"
       if (current <= 0) return;
       newVal = Math.max(0, current - 1);
     } else if (action === 'increment') {
+      // Deprecated: use add-counter with amount "1"
       newVal = (current || 0) + 1;
     } else if (action === 'set-counter') {
       newVal = parseInt(valueOrRef, 10) || 0;
+    } else if (action === 'add-counter') {
+      const amount = parseInt(valueOrRef, 10) || 0;
+      newVal = (current || 0) + amount;
+    } else if (action === 'sub-counter') {
+      const amount = parseInt(valueOrRef, 10) || 0;
+      newVal = Math.max(0, (current || 0) - amount);
+    } else if (action === 'mul-counter') {
+      const amount = parseInt(valueOrRef, 10) || 1;
+      newVal = (current || 0) * amount;
+    } else if (action === 'div-counter') {
+      const amount = parseInt(valueOrRef, 10) || 1;
+      if (amount === 0) return; // guard against divide-by-zero
+      newVal = Math.floor((current || 0) / amount);
     }
 
     this.player.setCounter(key, newVal);

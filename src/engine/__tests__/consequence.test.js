@@ -502,6 +502,99 @@ describe('counter actions', () => {
   });
 });
 
+// ── Arithmetic counter actions ──────────────────────────────────────
+
+describe('arithmetic counter actions', () => {
+  function makeForge(action, amount, extraTags = []) {
+    const arena = makePlace('arena', { features: [`${WORLD}:feature:forge`] });
+    const forge = makeFeature('forge', {
+      verbs: [['examine'], ['pump']],
+      nouns: [['forge']],
+      onInteract: [[`pump`, action, 'heat', amount]],
+      extraTags: [['counter', 'heat', '0'], ...extraTags],
+    });
+    const events = buildEvents(arena, forge);
+    const engine = makeEngine(events, { place: ref(`${WORLD}:place:arena`) });
+    engine.currentPlace = ref(`${WORLD}:place:arena`);
+    engine.player.setCounter(`${ref(`${WORLD}:feature:forge`)}:heat`, 10);
+    return engine;
+  }
+
+  it('add-counter adds the specified amount', () => {
+    const engine = makeForge('add-counter', '5');
+    engine.processFeatureInteract(
+      engine.events.get(ref(`${WORLD}:feature:forge`)),
+      ref(`${WORLD}:feature:forge`), 'pump', null
+    );
+    expect(engine.player.getCounter(`${ref(`${WORLD}:feature:forge`)}:heat`)).toBe(15);
+  });
+
+  it('sub-counter subtracts the specified amount and floors at 0', () => {
+    const engine = makeForge('sub-counter', '4');
+    engine.processFeatureInteract(
+      engine.events.get(ref(`${WORLD}:feature:forge`)),
+      ref(`${WORLD}:feature:forge`), 'pump', null
+    );
+    expect(engine.player.getCounter(`${ref(`${WORLD}:feature:forge`)}:heat`)).toBe(6);
+  });
+
+  it('sub-counter floors at 0, not negative', () => {
+    const engine = makeForge('sub-counter', '20');
+    engine.processFeatureInteract(
+      engine.events.get(ref(`${WORLD}:feature:forge`)),
+      ref(`${WORLD}:feature:forge`), 'pump', null
+    );
+    expect(engine.player.getCounter(`${ref(`${WORLD}:feature:forge`)}:heat`)).toBe(0);
+  });
+
+  it('mul-counter multiplies by the specified amount', () => {
+    const engine = makeForge('mul-counter', '3');
+    engine.processFeatureInteract(
+      engine.events.get(ref(`${WORLD}:feature:forge`)),
+      ref(`${WORLD}:feature:forge`), 'pump', null
+    );
+    expect(engine.player.getCounter(`${ref(`${WORLD}:feature:forge`)}:heat`)).toBe(30);
+  });
+
+  it('div-counter divides and floors the result', () => {
+    const engine = makeForge('div-counter', '3');
+    engine.player.setCounter(`${ref(`${WORLD}:feature:forge`)}:heat`, 7);
+    engine.processFeatureInteract(
+      engine.events.get(ref(`${WORLD}:feature:forge`)),
+      ref(`${WORLD}:feature:forge`), 'pump', null
+    );
+    expect(engine.player.getCounter(`${ref(`${WORLD}:feature:forge`)}:heat`)).toBe(2);
+  });
+
+  it('div-counter with amount 0 is silently ignored', () => {
+    const engine = makeForge('div-counter', '0');
+    engine.processFeatureInteract(
+      engine.events.get(ref(`${WORLD}:feature:forge`)),
+      ref(`${WORLD}:feature:forge`), 'pump', null
+    );
+    // Counter unchanged
+    expect(engine.player.getCounter(`${ref(`${WORLD}:feature:forge`)}:heat`)).toBe(10);
+  });
+
+  it('add-counter triggers on-counter threshold crossing', () => {
+    const engine = makeForge('add-counter', '5', [
+      ['state', 'cold'],
+      ['transition', 'cold', 'hot', 'The forge roars to life.'],
+      ['on-counter', 'up', 'heat', '12', 'set-state', 'hot'],
+    ]);
+    engine.player.setState(ref(`${WORLD}:feature:forge`), 'cold');
+    engine.processFeatureInteract(
+      engine.events.get(ref(`${WORLD}:feature:forge`)),
+      ref(`${WORLD}:feature:forge`), 'pump', null
+    );
+    // 10 + 5 = 15 — crossed threshold of 12 upward
+    expect(engine.player.getCounter(`${ref(`${WORLD}:feature:forge`)}:heat`)).toBe(15);
+    expect(engine.player.getState(ref(`${WORLD}:feature:forge`))).toBe('hot');
+    const msg = engine.output.find((o) => o.text === 'The forge roars to life.');
+    expect(msg).toBeTruthy();
+  });
+});
+
 // ── Phase 24: flees action ──────────────────────────────────────────
 
 describe('flees action', () => {

@@ -56,7 +56,9 @@ describe('type tag options', () => {
 const SPEC_ACTION_TYPES = [
   'set-state', 'traverse', 'give-item', 'consume-item',
   'deal-damage', 'deal-damage-npc', 'heal', 'consequence',
-  'steals-item', 'deposits', 'flees', 'decrement', 'increment', 'set-counter',
+  'steals-item', 'deposits', 'flees',
+  'add-counter', 'sub-counter', 'mul-counter', 'div-counter', 'set-counter',
+  'decrement', 'increment', // deprecated
   'sound', 'activate',
 ];
 

@@ -17,23 +17,28 @@
 const ACTION_TYPES = [
   'set-state', 'traverse', 'give-item', 'consume-item',
   'deal-damage', 'deal-damage-npc', 'heal', 'consequence',
-  'steals-item', 'deposits', 'flees', 'decrement', 'increment', 'set-counter', 'activate',
+  'steals-item', 'deposits', 'flees',
+  'add-counter', 'sub-counter', 'mul-counter', 'div-counter', 'set-counter',
+  'decrement', 'increment', // deprecated — use add-counter / sub-counter
+  'activate',
 ];
 
 // Trigger × Action compatibility matrix from spec
 // Each trigger only shows its valid action types in the dropdown
+const COUNTER_ACTIONS = ['add-counter', 'sub-counter', 'mul-counter', 'div-counter', 'set-counter', 'decrement', 'increment'];
+
 export const TRIGGER_ACTIONS = {
-  'on-interact':           ['set-state', 'give-item', 'consume-item', 'traverse', 'deal-damage', 'deal-damage-npc', 'heal', 'consequence', 'decrement', 'increment', 'set-counter', 'sound', 'activate'],
-  'on-complete':           ['set-state', 'give-item', 'consume-item', 'traverse', 'heal', 'consequence', 'decrement', 'increment', 'set-counter', 'sound', 'activate'],
-  'on-enter':              ['set-state', 'give-item', 'consume-item', 'deal-damage', 'consequence', 'decrement', 'increment', 'set-counter', 'sound'],
-  'on-encounter':          ['set-state', 'deal-damage', 'consequence', 'steals-item', 'deposits', 'flees', 'decrement', 'increment', 'set-counter', 'sound'],
-  'on-attacked':           ['set-state', 'deal-damage', 'deal-damage-npc', 'consequence', 'steals-item', 'flees', 'decrement', 'increment', 'set-counter', 'sound'],
-  'on-fail':               ['set-state', 'deal-damage', 'consequence', 'decrement', 'increment', 'set-counter', 'sound'],
+  'on-interact':           ['set-state', 'give-item', 'consume-item', 'traverse', 'deal-damage', 'deal-damage-npc', 'heal', 'consequence', ...COUNTER_ACTIONS, 'sound', 'activate'],
+  'on-complete':           ['set-state', 'give-item', 'consume-item', 'traverse', 'heal', 'consequence', ...COUNTER_ACTIONS, 'sound', 'activate'],
+  'on-enter':              ['set-state', 'give-item', 'consume-item', 'deal-damage', 'consequence', ...COUNTER_ACTIONS, 'sound'],
+  'on-encounter':          ['set-state', 'deal-damage', 'consequence', 'steals-item', 'deposits', 'flees', ...COUNTER_ACTIONS, 'sound'],
+  'on-attacked':           ['set-state', 'deal-damage', 'deal-damage-npc', 'consequence', 'steals-item', 'flees', ...COUNTER_ACTIONS, 'sound'],
+  'on-fail':               ['set-state', 'deal-damage', 'consequence', ...COUNTER_ACTIONS, 'sound'],
   'on-health':             ['set-state', 'give-item', 'traverse', 'consequence', 'flees', 'deposits', 'sound'],
   'on-player-health':      ['set-state', 'traverse', 'consequence', 'sound'],
   'on-health-zero':        ['set-state', 'give-item', 'consequence', 'deposits', 'sound'],
   'on-player-health-zero': ['set-state', 'traverse', 'consequence', 'sound'],
-  'on-move':               ['set-state', 'deal-damage', 'consequence', 'decrement', 'increment', 'set-counter', 'sound'],
+  'on-move':               ['set-state', 'deal-damage', 'consequence', ...COUNTER_ACTIONS, 'sound'],
   'on-counter':            ['set-state', 'give-item', 'deal-damage', 'heal', 'consequence', 'sound'],
   'on-drop':               ['set-state', 'give-item', 'consume-item', 'decrement', 'increment', 'set-counter', 'consequence', 'sound'],
 };
@@ -53,9 +58,13 @@ export const ACTION_TARGET_FIELD = {
   'deal-damage-npc':{ type: 'event-ref', placeholder: 'target NPC (blank = current)', eventTypeFilter: 'npc', hidesEventRef: true },
   'heal':           { type: 'number', placeholder: 'heal amount', hidesEventRef: true },
   'consequence':    { type: 'event-ref', placeholder: 'consequence event', eventTypeFilter: 'consequence', hidesEventRef: true },
-  'decrement':      { type: 'text', placeholder: 'counter name', hidesEventRef: true },
-  'increment':      { type: 'text', placeholder: 'counter name', hidesEventRef: true },
-  'set-counter':    { type: 'text', placeholder: 'counter:value (e.g. battery:100)', hidesEventRef: true },
+  'add-counter':    { type: 'text', placeholder: 'counter name', eventRefOverride: { type: 'text', placeholder: 'amount (e.g. 5)' } },
+  'sub-counter':    { type: 'text', placeholder: 'counter name', eventRefOverride: { type: 'text', placeholder: 'amount (e.g. 5)' } },
+  'mul-counter':    { type: 'text', placeholder: 'counter name', eventRefOverride: { type: 'text', placeholder: 'multiplier (e.g. 2)' } },
+  'div-counter':    { type: 'text', placeholder: 'counter name', eventRefOverride: { type: 'text', placeholder: 'divisor (e.g. 2)' } },
+  'set-counter':    { type: 'text', placeholder: 'counter name', eventRefOverride: { type: 'text', placeholder: 'value (e.g. 100)' } },
+  'decrement':      { type: 'text', placeholder: 'counter name', hidesEventRef: true }, // deprecated
+  'increment':      { type: 'text', placeholder: 'counter name', hidesEventRef: true }, // deprecated
   'deposits':       { type: 'text', placeholder: '(blank)', hidesEventRef: true },
   'flees':          { type: 'text', placeholder: '(blank)', hidesEventRef: true },
   'sound':          { type: 'text', placeholder: 'Strudel pattern (e.g. note("c3 e3 g3").s("sine"))', hidesEventRef: true },

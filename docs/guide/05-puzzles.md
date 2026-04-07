@@ -170,15 +170,15 @@ Multiple `on-complete` tags can stack. In the tutorial world, the sequence puzzl
 Riddle puzzles support `on-fail` tags that fire when the player enters an incorrect answer:
 
 ```json
-["on-fail", "", "deal-damage", "2"],
-["on-fail", "", "decrement",   "attempts"]
+["on-fail", "", "deal-damage",  "2"],
+["on-fail", "", "sub-counter",  "attempts", "1"]
 ```
 
 Combined with counters and `on-counter`, you can build attempt-limited puzzles:
 
 ```json
 ["counter",    "attempts", "3"],
-["on-fail",    "", "decrement",   "attempts"],
+["on-fail",    "", "sub-counter",  "attempts", "1"],
 ["on-counter", "down", "attempts", "0", "consequence", "30078:<PUBKEY>:my-world:consequence:alarm"]
 ```
 

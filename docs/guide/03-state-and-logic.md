@@ -156,16 +156,20 @@ The first value is the counter name, the second is the initial value. An event c
 Counter values change through actions fired by `on-*` triggers:
 
 ```json
-["on-interact", "crank", "", "increment", "cranks"]
+["on-interact", "crank", "", "add-counter", "cranks", "1"]
 ```
 
-Three counter actions exist:
+Five counter actions exist:
 
 | Action | Effect |
 |--------|--------|
-| `increment` | Adds 1 to the counter |
-| `decrement` | Subtracts 1 from the counter |
+| `add-counter` | Adds `<amount>` to the counter |
+| `sub-counter` | Subtracts `<amount>` from the counter (floors at 0) |
+| `mul-counter` | Multiplies the counter by `<amount>` |
+| `div-counter` | Divides the counter by `<amount>` (integer floor; divide-by-zero silently ignored) |
 | `set-counter` | Sets the counter to an exact value |
+
+All amounts are integers (floats are floored). `sub-counter` never goes below 0.
 
 ### Thresholds with on-counter
 
@@ -188,30 +192,41 @@ Example — a well that raises its bucket after 3 cranks:
   "The bucket rises from the depths, water sloshing."]
 ```
 
-Each `crank well` command fires `increment cranks`. When the counter reaches 3, `on-counter` fires `set-state raised`, and the transition text plays. The message comes from the transition, not from the `on-counter` tag — this keeps all player-facing text in one consistent place.
+Each `crank well` command fires `add-counter cranks 1`. When the counter reaches 3, `on-counter` fires `set-state raised`, and the transition text plays. The message comes from the transition, not from the `on-counter` tag — this keeps all player-facing text in one consistent place.
 
 ### Counter design patterns
 
-**Fuel/battery drain:** decrement a counter on each move, trigger warnings at thresholds:
+**Fuel/battery drain:** subtract from a counter on each move, trigger warnings at thresholds:
 
 ```json
 ["counter",    "battery", "300"],
+["on-move",    "", "sub-counter", "battery", "1"],
 ["on-counter", "down", "battery", "50",  "set-state", "flickering"],
 ["on-counter", "down", "battery", "0",   "set-state", "dead"]
 ```
 
-**Multi-step mechanism:** increment on interaction, trigger at a threshold:
+**Multi-step mechanism:** add on interaction, trigger at a threshold:
 
 ```json
 ["counter",    "cranks", "0"],
+["on-interact", "crank", "", "add-counter", "cranks", "1"],
 ["on-counter", "up", "cranks", "3", "set-state", "raised"]
 ```
 
-**Hit counter:** increment on attack, trigger a consequence at a threshold:
+**Hit counter:** add on attack, trigger a consequence at a threshold:
 
 ```json
 ["counter",    "hits", "0"],
+["on-attacked", "", "add-counter", "hits", "1"],
 ["on-counter", "up", "hits", "5", "set-state", "broken"]
+```
+
+**Rapid charge:** multiply a counter for escalating effects:
+
+```json
+["counter",    "charge", "1"],
+["on-interact", "pump", "", "mul-counter", "charge", "2"],
+["on-counter",  "up", "charge", "16", "set-state", "overloaded"]
 ```
 
 ---

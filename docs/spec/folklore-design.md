@@ -602,9 +602,13 @@ Examples:
 | `steals-item` | `any` or item `a`-tag | Takes item from player inventory into NPC's stolen list |
 | `deposits` | — | NPC drops all stolen items at current place (native `inventory` is unaffected) |
 | `flees` | — | Emits a departure message. Pair with `set-state` to activate roaming — see below. |
-| `decrement` | Counter name | Reduces named counter by 1 |
-| `increment` | Counter name | Increases named counter by 1 |
+| `add-counter` | Counter name, amount | Increases named counter by `amount` |
+| `sub-counter` | Counter name, amount | Decreases named counter by `amount` (floors at 0) |
+| `mul-counter` | Counter name, amount | Multiplies named counter by `amount` |
+| `div-counter` | Counter name, amount | Divides named counter by `amount` (integer floor, divide-by-zero ignored) |
 | `set-counter` | Counter name, value | Sets named counter to a specific value |
+| `increment` | Counter name | *(Deprecated — use `add-counter` with amount `1`)* Increases named counter by 1 |
+| `decrement` | Counter name | *(Deprecated — use `sub-counter` with amount `1`)* Reduces named counter by 1 |
 | `sound` | Pattern string, optional volume | Fires a one-shot sound effect |
 
 **`flees` and NPC movement:** `flees` is a message-only action — it tells the player the NPC has fled. Actual NPC movement is handled by `set-state` activating the `roams-when` condition. The intended pattern:
@@ -626,19 +630,19 @@ New action types can be added without changing the tag structure — the dispatc
 
 ✓ = valid and meaningful  —  = not applicable or nonsensical in this context
 
-| Trigger | `set-state` | `give-item` | `consume-item` | `traverse` | `deal-damage` | `deal-damage-npc` | `heal` | `consequence` | `steals-item` | `deposits` | `flees` | `decrement` | `increment` | `set-counter` | `sound` | `activate` |
-|---------|-------------|-------------|----------------|------------|---------------|-------------------|--------|---------------|---------------|------------|---------|-------------|-------------|---------------|---------|------------|
-| `on-interact` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `on-complete` | ✓ | ✓ | ✓ | ✓ | — | — | ✓ | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `on-enter` | ✓ | ✓ | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | — |
-| `on-encounter` | ✓ | — | — | — | ✓ | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
-| `on-attacked` | ✓ | — | — | — | ✓ | ✓ | — | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | — |
-| `on-health` | ✓ | ✓ | — | ✓ | — | — | — | ✓ | — | ✓ | — | — | — | — | ✓ | — |
-| `on-player-health` | ✓ | — | — | ✓ | — | — | — | ✓ | — | — | — | — | — | — | ✓ | — |
-| `on-move` | ✓ | — | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | — |
-| `on-counter` | ✓ | ✓ | — | — | ✓ | — | ✓ | ✓ | — | — | — | — | — | — | ✓ | — |
-| `on-fail` | ✓ | — | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | — | — | ✓ | — |
-| `on-drop` | ✓ | ✓ | ✓ | — | — | — | — | ✓ | — | — | — | — | — | — | ✓ | — |
+| Trigger | `set-state` | `give-item` | `consume-item` | `traverse` | `deal-damage` | `deal-damage-npc` | `heal` | `consequence` | `steals-item` | `deposits` | `flees` | `add-counter` | `sub-counter` | `mul-counter` | `div-counter` | `set-counter` | `sound` | `activate` |
+|---------|-------------|-------------|----------------|------------|---------------|-------------------|--------|---------------|---------------|------------|---------|---------------|---------------|---------------|---------------|---------------|---------|------------|
+| `on-interact` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `on-complete` | ✓ | ✓ | ✓ | ✓ | — | — | ✓ | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `on-enter` | ✓ | ✓ | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
+| `on-encounter` | ✓ | — | — | — | ✓ | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
+| `on-attacked` | ✓ | — | — | — | ✓ | ✓ | — | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
+| `on-health` | ✓ | ✓ | — | ✓ | — | — | — | ✓ | — | ✓ | — | — | — | — | — | — | ✓ | — |
+| `on-player-health` | ✓ | — | — | ✓ | — | — | — | ✓ | — | — | — | — | — | — | — | — | ✓ | — |
+| `on-move` | ✓ | — | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
+| `on-counter` | ✓ | ✓ | — | — | ✓ | — | ✓ | ✓ | — | — | — | — | — | — | — | — | ✓ | — |
+| `on-fail` | ✓ | — | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | — | — | — | ✓ | — |
+| `on-drop` | ✓ | ✓ | ✓ | — | — | — | — | ✓ | — | — | — | ✓ | ✓ | — | — | — | ✓ | — |
 
 **Notes:**
 - `steals-item`, `deposits`, `flees` are NPC-only actions — only meaningful on `on-encounter` and `on-attacked` where an NPC is the actor
@@ -648,15 +652,15 @@ New action types can be added without changing the tag structure — the dispatc
 - `give-item` on `on-health` — NPC drops loot on death
 - `traverse` on `on-health` — teleport player on NPC death (reward chamber, cutscene location)
 - `activate` triggers the target event's native mechanic — recipe (crafting), puzzle (prompt), or payment (invoice). Used to scope recipes/puzzles to a feature interaction.
-- `increment`/`decrement`/`set-counter` on `on-attacked` — track hits taken, shield durability, attack counters
+- `add-counter`/`sub-counter`/`mul-counter`/`div-counter`/`set-counter` on `on-attacked` — track hits taken, shield durability, attack counters
 - `on-fail` only fires on `riddle` and `cipher` puzzles — sequence/observe puzzles have no wrong-answer state
 - The matrix reflects intent, not hard enforcement. The client should handle unexpected combinations gracefully rather than erroring.
 
 #### counter
 
-A named numeric value tracked in player state. Declared on any event type — item, feature, NPC, place, **world**. Decrements or increments via `on-*` handlers. Two triggers fire based on counter value:
+A named numeric value tracked in player state. Declared on any event type — item, feature, NPC, place, **world**. Modified via counter actions on `on-*` handlers. Two triggers fire based on counter value:
 
-World-scoped counters are player-owned (stored in `player.counters` as `<world-d-tag>:<name>`). Any trigger from any event can increment/decrement them by referencing the counter name — the engine resolves world counters automatically when the name matches a counter declared on the world event.
+World-scoped counters are player-owned (stored in `player.counters` as `<world-d-tag>:<name>`). Any trigger from any event can modify them by referencing the counter name — the engine resolves world counters automatically when the name matches a counter declared on the world event.
 
 - `on-counter` — fires when the counter reaches or crosses a threshold. `0` is just another threshold value — no special case needed.
 
@@ -706,20 +710,24 @@ The client tracks threshold crossings per counter per threshold value — multip
 
 **Counter actions — tag positions:**
 
-Counter actions follow the same `on-interact` shape as all other actions, with the state guard in position 2. Counter name follows the action type, value (for `set-counter`) follows that. External target is an optional final element — the `a`-tag of another event whose counter to modify:
+Counter actions follow the same `on-interact` shape as all other actions, with the state guard in position 2. Counter name is at position 4, numeric amount at position 5, optional external event `a`-tag at position 6:
 
 ```json
 // Self-targeting (counter on this event)
-["on-interact", "use",    "", "increment",   "hits"],
-["on-interact", "use",    "", "decrement",   "battery"],
+["on-interact", "pump",   "", "add-counter", "heat",    "10"],
+["on-interact", "drain",  "", "sub-counter", "heat",    "5"],
+["on-interact", "double", "", "mul-counter", "heat",    "2"],
+["on-interact", "halve",  "", "div-counter", "heat",    "2"],
 ["on-interact", "refill", "", "set-counter", "battery", "300"],
 
 // External targeting (counter on another event)
-["on-interact", "pump",   "", "increment",   "heat",    "30078:<PUBKEY>:forge:feature:forge"],
+["on-interact", "pump",   "", "add-counter", "heat",    "10", "30078:<PUBKEY>:forge:feature:forge"],
 ["on-interact", "use",    "", "set-counter", "charge",  "50", "30078:<PUBKEY>:forge:item:battery"]
 ```
 
-`increment` and `decrement` always change by 1. `set-counter` sets to the exact value in position 4. For external targets, the counter name must exist on the target event — if not, the action is silently ignored.
+All arithmetic counter amounts are parsed as integers (floats are floored). `sub-counter` floors at 0. `div-counter` ignores a divisor of 0. For external targets, the counter name must exist on the target event — if not, the action is silently ignored.
+
+`increment` and `decrement` are **deprecated** shorthands for `add-counter`/`sub-counter` with amount `1`. They continue to work but authors should prefer the new forms.
 
 Multiple counters on a single event:
 

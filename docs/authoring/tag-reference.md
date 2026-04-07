@@ -32,7 +32,7 @@ Machine-readable reference for LLM world authoring. All events are `kind: 30078`
 | `["on-interact", "open", "set-state", "open"]` without state guard | State guard (position 2) is required: `["on-interact", "open", "", "set-state", "open"]`. Blank = any state. |
 | Using `puzzle-type: cipher` with a `puzzle` tag on a place | Cipher/riddle puzzles need an `on-interact` on a **feature** to activate. Only `sequence` puzzles auto-evaluate from place `puzzle` tags |
 | `answer-hash` without knowing the format | Hash is `SHA256(answer + salt)` as hex. Example: answer `"bottle"`, salt `"my-world:puzzle:riddle:v1"` → `SHA256("bottlemy-world:puzzle:riddle:v1")` |
-| `set-state` before `consume-item`/`increment` on same verb+guard | State guard is checked per-tag. If `set-state` fires first, the state changes and subsequent tags with the old guard are skipped. Put `set-state` **last**: `consume-item` → `increment` → `set-state` |
+| `set-state` before `consume-item`/`add-counter` on same verb+guard | State guard is checked per-tag. If `set-state` fires first, the state changes and subsequent tags with the old guard are skipped. Put `set-state` **last**: `consume-item` → `add-counter` → `set-state` |
 
 ---
 ## Identity Tags (all events)
@@ -129,7 +129,7 @@ Valid on **place** events only (this usage). Fires when the player types a bare 
 - **On a place:** fires when `drop X` is used in the room (any drop, no feature target needed).
 - **On a feature:** fires ONLY when `drop X in/on/into Y` explicitly targets the feature. Plain `drop X` does not trigger it; item falls to floor silently.
 - item-ref blank = any item. state-guard blank = any state.
-- Valid actions: `set-state`, `give-item`, `consume-item`, `decrement`, `increment`, `set-counter`, `consequence`, `sound`.
+- Valid actions: `set-state`, `give-item`, `consume-item`, `add-counter`, `sub-counter`, `mul-counter`, `div-counter`, `set-counter`, `consequence`, `sound`.
 - **All matching tags fire**, in declaration order — same semantics as `on-interact`. Multiple tags with the same item-ref + state-guard key all execute.
 
 ### Threshold triggers (extra fields for direction + threshold)
@@ -168,13 +168,24 @@ The action tail is always: `"<action>", "<target>"` — with an optional `"<ext-
 | `sound` | sound ref | `["on-interact", "ring", "", "sound", "30078:<pk>:...:sound:bell"]` |
 | `activate` | event ref (recipe, puzzle, or payment) | `["on-interact", "use", "", "activate", "30078:<pk>:...:recipe"]` |
 
-### Counter actions (target = counter name + value)
+### Counter actions
 
-| Action | Target elements | Full example |
-|--------|----------------|-------------|
-| `decrement` | counter, amount | `["on-move", "on", "decrement", "battery", "1"]` |
-| `increment` | counter, amount | `["on-interact", "crank", "", "increment", "cranks", "1"]` |
-| `set-counter` | counter, value | `["on-interact", "reset", "", "set-counter", "cranks", "0"]` |
+Counter actions take a counter name at position 4, a numeric amount at position 5, and an optional external event ref at position 6:
+
+| Action | Effect | Full example |
+|--------|--------|-------------|
+| `add-counter` | Adds amount | `["on-interact", "crank", "", "add-counter", "cranks", "3"]` |
+| `sub-counter` | Subtracts amount (floors at 0) | `["on-interact", "drain", "", "sub-counter", "battery", "10"]` |
+| `mul-counter` | Multiplies by amount | `["on-interact", "heat", "", "mul-counter", "temp", "2"]` |
+| `div-counter` | Divides by amount (floor; div-by-0 ignored) | `["on-interact", "cool", "", "div-counter", "temp", "2"]` |
+| `set-counter` | Sets to exact value | `["on-interact", "reset", "", "set-counter", "cranks", "0"]` |
+| `increment` | *(Deprecated)* Adds 1 | `["on-move", "", "increment", "moves"]` |
+| `decrement` | *(Deprecated)* Subtracts 1, floors at 0 | `["on-move", "", "decrement", "battery"]` |
+
+External targeting (counter on another event): append the event `a`-tag as position 6:
+```json
+["on-interact", "pump", "", "add-counter", "heat", "5", "30078:<pk>:...:feature:forge"]
+```
 
 ### Notes
 

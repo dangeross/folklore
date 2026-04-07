@@ -335,7 +335,11 @@ export class GameEngine {
 
       case 'increment':
       case 'decrement':
-      case 'set-counter': {
+      case 'set-counter':
+      case 'add-counter':
+      case 'sub-counter':
+      case 'mul-counter':
+      case 'div-counter': {
         this._applyCounterAction(action, selfDtag, target, extRef, selfEvent, opts.extraRef);
         return true;
       }
