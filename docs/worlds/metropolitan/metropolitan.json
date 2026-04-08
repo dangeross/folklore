@@ -17270,38 +17270,7 @@
       ],
       "content": "A single page from a solicitor's ledger — the real ledger, not the coded one. Payments, names, dates. The authorising signature at the bottom of every entry: Harwick.\n\nThe entries describe payments made from Metropolitan Railway Company funds to individuals across three categories: medical professionals, legal witnesses, and — in the final column, listed without description — *community officers*. Men in the Shambles, she understands now. Men in the Quill.\n\nThe page connects all three factions to a single source of funds. A single name.\n\nHarwick sent her here to destroy this. She read it instead. She folded it. It is in her coat.\n\nShe knows what it is. She does not yet know what to do with it."
     },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:item:concern-payment"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "item"
-        ],
-        [
-          "title",
-          "An Envelope"
-        ],
-        [
-          "noun",
-          "envelope",
-          "money",
-          "payment"
-        ],
-        [
-          "state",
-          "default"
-        ]
-      ],
-      "content": "A thick envelope. Inside: more money than she has been paid for all previous work combined. Harwick's final payment.\n\nShe counts it on the train back to Farringdon. Then she counts it again.\n\nShe has the money. She has the page. She has the survey with her family's address on it. She has a key Rook gave her that opens something under King's Cross. She has a clue from a sealed survey report in a university corridor.\n\nAll three factions believe she is working for them. None of them know she is working for herself.\n\nThe train enters the tunnel."
-    },
+
     {
       "kind": 30078,
       "tags": [
@@ -19223,42 +19192,7 @@
       ],
       "content": "He is still for a moment.\n\n*Then there's nothing I can do for you*, he says. *And nothing I can do for your family.*\n\nHe stands — she has seen him stand once before, the day he introduced her to Rook. He is shorter than she is now. She does not think she has grown; she thinks she has simply stopped looking up at him.\n\n*You should go*, he says. *Before someone finds you here.*\n\nHe sits back down. He picks up the object from the table — the same small object he was always examining — and looks at it.\n\nShe leaves. She does not look back. Behind her she can hear him breathing."
     },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:dialogue:harwick-night-train"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "dialogue"
-        ],
-        [
-          "on-enter",
-          "player",
-          "",
-          "set-state",
-          "active",
-          "30078:<PUBKEY>:metropolitan:quest:harwick-train"
-        ],
-        [
-          "option",
-          "Approach him.",
-          "30078:<PUBKEY>:metropolitan:dialogue:harwick-approached"
-        ],
-        [
-          "option",
-          "Stay hidden and listen.",
-          "30078:<PUBKEY>:metropolitan:dialogue:harwick-overheard"
-        ]
-      ],
-      "content": "Harwick is in the corner seat. He has not looked at her end of the carriage.\n\nHe is speaking quietly to himself — or to someone who is not there — going through something in his mind. She can catch fragments: a date, a name she does not recognise, something that sounds like a legal argument being rehearsed.\n\nHe knows the game has changed. He is preparing."
-    },
+
     {
       "kind": 30078,
       "tags": [
@@ -21134,45 +21068,7 @@
       ],
       "content": "He watches the proceedings with the attention of someone taking notes in their head. He has not spoken yet. He is waiting to understand the shape of what is being asked before he commits to any position.\n\nThis is, Ida understands, exactly what Harwick would do."
     },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:item:assembled-evidence"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "item"
-        ],
-        [
-          "title",
-          "Everything"
-        ],
-        [
-          "noun",
-          "evidence",
-          "documents",
-          "everything"
-        ],
-        [
-          "state",
-          "default"
-        ],
-        [
-          "on-interact",
-          "examine",
-          "",
-          "sound",
-          "30078:<PUBKEY>:metropolitan:sound:document-sting"
-        ]
-      ],
-      "content": "The ledger page. The demolition survey. The dig records from the sealed chamber. The visiting card Fenn gave her. The receipt from the fence at King's Cross, still in her pocket from the first job.\n\nSeven months of work. Everything she was meant to deliver and didn't, everything she wasn't meant to find and did.\n\nShe holds it all in both hands in the walled garden and the gas lamp flickers and the three men are waiting.\n\nThis is the most powerful she has ever been. It will last exactly as long as the next decision takes."
-    },
+
     {
       "kind": 30078,
       "tags": [
