@@ -145,11 +145,11 @@ export function mixDialogue(Engine) {
     }
   };
 
-  Engine.prototype.startDialogue = function(npcDtag) {
+  Engine.prototype.startDialogue = function(npcDtag, overrideEntryDtag = null) {
     const npc = this.events.get(npcDtag);
     if (!npc) { this._emit("They don't seem interested in talking.", 'error'); return; }
 
-    const entryDtag = this.resolveDialogueEntry(npc);
+    const entryDtag = overrideEntryDtag || this.resolveDialogueEntry(npc);
     if (!entryDtag) {
       this._emit("They don't seem interested in talking.", 'error');
       return;

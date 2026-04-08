@@ -341,11 +341,12 @@ export function mixInteraction(Engine) {
       return;
     }
 
-    // NPC examine — emit description + carrying list then return
+    // NPC examine — emit description + carrying list, then process on-interact: examine tags
     if (getTag(event, 'type') === 'npc') {
       const desc = event.content;
       if (desc) this._emit(desc, 'narrative');
       this._emitNpcCarrying(dtag);
+      this._fireNpcOnInteract(event, dtag, 'examine');
       return;
     }
 
@@ -548,6 +549,32 @@ export function mixInteraction(Engine) {
     return null;
   };
 
+  // ── NPC on-interact dispatch ──────────────────────────────────────────
+
+  /**
+   * Process on-interact tags on an NPC event for the given verb.
+   * Checks state guard (position 2) against current NPC state.
+   * Returns true if at least one action was dispatched.
+   */
+  Engine.prototype._fireNpcOnInteract = function(npcEvent, npcDtag, verb) {
+    const npcState = this.player.getNpcState(npcDtag)?.state;
+    let acted = false;
+    for (const tag of getTags(npcEvent, 'on-interact')) {
+      if (tag[1] !== verb) continue;
+      const stateGuard = tag[2];
+      if (stateGuard && npcState && stateGuard !== npcState) continue;
+      const action = tag[3];
+      const target = tag[4];
+      const extRef = tag[5];
+      const dispatched = this._dispatchAction({
+        action, target, extRef,
+        selfDtag: npcDtag, selfEvent: npcEvent,
+      });
+      if (dispatched) acted = true;
+    }
+    return acted;
+  };
+
   // ── Unified interaction dispatch ──────────────────────────────────────
 
   Engine.prototype.handleInteraction = function(verb_, targetNoun, instrumentNoun, verbAlias) {
@@ -607,6 +634,7 @@ export function mixInteraction(Engine) {
         const desc = event.content;
         if (desc) this._emit(desc, 'narrative');
         this._emitNpcCarrying(dtag);
+        this._fireNpcOnInteract(event, dtag, 'examine');
       } else if (verb === 'talk') {
         this.startDialogue(dtag);
       } else if (verb === 'attack') {
@@ -630,7 +658,10 @@ export function mixInteraction(Engine) {
         }
         this._handleAttack(event, dtag, weaponMatch.event, weaponMatch.dtag);
       } else {
-        this._emit("You can't do that.", 'error');
+        // Try NPC on-interact tags for custom verbs (e.g. watch, observe)
+        if (!this._fireNpcOnInteract(event, dtag, verb)) {
+          this._emit("You can't do that.", 'error');
+        }
       }
     } else if (type === 'recipe') {
       if (verb === 'examine') {

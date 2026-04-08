@@ -4966,6 +4966,12 @@
           "complete"
         ],
         [
+          "dialogue",
+          "30078:<PUBKEY>:metropolitan:dialogue:callow-reckoning",
+          "30078:<PUBKEY>:metropolitan:quest:act3-begins",
+          "complete"
+        ],
+        [
           "on-enter",
           "30078:<PUBKEY>:metropolitan:place:callows-court",
           "",
@@ -5313,6 +5319,12 @@
           "option",
           "How did you find me?",
           "30078:<PUBKEY>:metropolitan:dialogue:callow-assessment-2"
+        ],
+        [
+          "requires-not",
+          "30078:<PUBKEY>:metropolitan:quest:act3-begins",
+          "complete",
+          ""
         ],
         [
           "on-enter",
@@ -6156,7 +6168,7 @@
           "",
           "consume-item",
           "30078:<PUBKEY>:metropolitan:item:job-5-instructions"
-        ],
+        ]
       ],
       "content": "The watch moved through a fence on Gray's Inn Road. The watch itself is gone. Callow wants proof it passed through — a receipt, a record, something that shows where it went. The fence is in the back room of the lodging house south of King's Cross."
     },
@@ -16719,6 +16731,12 @@
           "30078:<PUBKEY>:metropolitan:dialogue:harwick-cornered",
           "30078:<PUBKEY>:metropolitan:quest:concern-job-5",
           "complete"
+        ],
+        [
+          "dialogue",
+          "30078:<PUBKEY>:metropolitan:dialogue:harwick-approached",
+          "30078:<PUBKEY>:metropolitan:quest:act3-begins",
+          "complete"
         ]
       ],
       "content": "A man of fifty, thin, with the particular quality of people who have been careful for so long that it has become indistinguishable from their character. His clothes are precise without being fashionable. His hands are always still.\n\nHarwick reads a room before he speaks in it. He read Ida in the time it took her to cross from the door to the desk. What he concluded is not visible on his face.\n\nHis name is in three different places she has found. He does not know that yet."
@@ -18118,6 +18136,20 @@
           "on-complete",
           "",
           "set-state",
+          "hidden",
+          "30078:<PUBKEY>:metropolitan:portal:lane-to-callows"
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "hidden",
+          "30078:<PUBKEY>:metropolitan:portal:lane-to-farringdon-approach"
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
           "visible",
           "30078:<PUBKEY>:metropolitan:portal:farringdon-night-to-train"
         ],
@@ -18177,6 +18209,10 @@
         [
           "exit",
           "east"
+        ],
+        [
+          "exit",
+          "south"
         ],
         [
           "noun",
@@ -18479,6 +18515,10 @@
           "man"
         ],
         [
+          "feature",
+          "30078:<PUBKEY>:metropolitan:feature:harwick-train-observation"
+        ],
+        [
           "npc",
           "30078:<PUBKEY>:metropolitan:npc:harwick"
         ],
@@ -18521,6 +18561,57 @@
         ]
       ],
       "content": "The last westbound first class carriage. Nearly empty — two other passengers at the far end, not looking at each other or anyone else.\n\nHarwick is in the corner seat. He does not know she is in this carriage. He is looking out the window at the tunnel wall, which gives her nothing to read.\n\nShe can observe him or approach him. Either way she will learn something before Paddington."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "metropolitan:feature:harwick-train-observation"
+        ],
+        [
+          "t",
+          "metropolitan"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "noun",
+          "harwick",
+          "man",
+          "passenger",
+          "solicitor"
+        ],
+        [
+          "verb",
+          "watch",
+          "observe"
+        ],
+        [
+          "on-interact",
+          "watch",
+          "",
+          "start-dialogue",
+          "30078:<PUBKEY>:metropolitan:dialogue:harwick-overheard"
+        ],
+        [
+          "on-interact",
+          "observe",
+          "",
+          "start-dialogue",
+          "30078:<PUBKEY>:metropolitan:dialogue:harwick-overheard"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "",
+          "start-dialogue",
+          "30078:<PUBKEY>:metropolitan:dialogue:harwick-overheard"
+        ]
+      ],
+      "content": ""
     },
     {
       "kind": 30078,
@@ -19575,6 +19666,36 @@
           "visible",
           "hidden",
           ""
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "metropolitan:portal:court-night-to-farringdon"
+        ],
+        [
+          "t",
+          "metropolitan"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:metropolitan:place:saffron-hill-court-night",
+          "south",
+          "South toward Farringdon."
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:metropolitan:place:farringdon-approach",
+          "north",
+          "Back north to the court."
         ]
       ],
       "content": ""

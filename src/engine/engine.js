@@ -360,6 +360,15 @@ export class GameEngine {
         return true;
       }
 
+      case 'start-dialogue': {
+        // Start a specific dialogue node directly, bypassing resolveDialogueEntry.
+        // target = full a-tag of the dialogue entry node; selfDtag = NPC dtag.
+        const dialogueRef = target || extRef;
+        if (!dialogueRef || !selfDtag) return false;
+        this.startDialogue(selfDtag, dialogueRef);
+        return true;
+      }
+
       default:
         return false;
     }
@@ -488,7 +497,8 @@ export class GameEngine {
       const fCurrentState = this.player.getState(fDTag) ?? fDefaultState;
       if (fCurrentState === 'hidden') continue;
       const fUv = this._uvLabel(fTrust);
-      this._emit(`${featurePresenceText(getTag(feature, 'title'))}${fUv}`, 'feature');
+      const fTitle = getTag(feature, 'title');
+      if (fTitle) this._emit(`${featurePresenceText(fTitle)}${fUv}`, 'feature');
     }
 
     // Static NPCs (placed by the room)
