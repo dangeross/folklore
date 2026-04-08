@@ -20206,18 +20206,6 @@
           "south"
         ],
         [
-          "exit",
-          "east"
-        ],
-        [
-          "exit",
-          "west"
-        ],
-        [
-          "exit",
-          "north"
-        ],
-        [
           "noun",
           "garden",
           "confrontation",
@@ -20610,7 +20598,7 @@
         ["quest-type", "endgame"],
         ["requires", "30078:<PUBKEY>:metropolitan:world", "choice-bury", ""]
       ],
-      "content": "The signed paper is in her coat beside the ledger page and the survey. She has leverage over three factions and documentation of a conspiracy. She is twelve years old and she has been awake for two days and she is walking through Clerkenwell in the dark and she knows the names of the streets on the clearance list because she read the survey carefully.\n\nHer family's address is not on it anymore.\n\nThe other addresses are.\n\nShe does not know the families. She has never been to those courts. They are not her family, and she told Rook that plainly, and he looked at her with an expression she did not entirely understand and said nothing.\n\nThe signed paper gets her family safe. It does not get anyone else safe. She knew this when she made the choice. She paid the cost. The cost is not done being paid.\n\nThe trains are still running."
+      "content": "She walks home.\n\nThe signed paper is in her coat beside the ledger page and the survey. She has leverage over three factions and documentation of a conspiracy. She is twelve years old and she has been awake for two days and she is walking through Clerkenwell in the dark and she knows the names of the streets on the clearance list because she read the survey carefully.\n\nHer family's address is not on it anymore.\n\nThe other addresses are.\n\nShe does not know the families. She has never been to those courts. They are not her family, and she told Rook that plainly, and he looked at her with an expression she did not entirely understand and said nothing.\n\nThe signed paper gets her family safe. It does not get anyone else safe. She knew this when she made the choice. She paid the cost. The cost is not done being paid.\n\nSaffron Hill court at dawn. The washing lines. The cobblestones. The smell of the tannery two streets east.\n\nShe goes inside. She puts the documents somewhere she will not look at them. She cannot find them there in the morning.\n\nThe trains are still running."
     },
     {
       "kind": 30078,
@@ -20622,148 +20610,9 @@
         ["quest-type", "endgame"],
         ["requires", "30078:<PUBKEY>:metropolitan:world", "choice-law", ""]
       ],
-      "content": "Briggs takes the statement at King's Cross the following morning, in the third-class waiting room, at the bench by the window.\n\nHe writes carefully. He asks precise questions. He thanks her when it is done — not effusively, just the word, and he means it.\n\n*What happens now?* she asks.\n\n*I file it*, he says. *The Metropolitan Police refer it to the appropriate authorities. The appropriate authorities take six months to decide it falls under a different jurisdiction. That jurisdiction takes another six months.* He looks at the documents. *It could take years.*\n\n*But it could work*, she says.\n\n*It could*, he says. *Possibly. If nothing goes wrong.*\n\nHe is honest. That is the thing about Briggs. He is honest even when honesty sounds like this.\n\nShe walks out onto the King's Cross forecourt. The flower seller is at her pitch. She looks at Ida with the attention of a woman who sees everything and prices it accordingly.\n\nIda buys a bunch of violets. She does not know why."
-    },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:place:ending-expose"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "place"
-        ],
-        [
-          "title",
-          "Expose"
-        ],
-        [
-          "exit",
-          "west"
-        ],
-        [
-          "noun",
-          "ending",
-          "fleet street",
-          "times"
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:world",
-          "choice-expose",
-          ""
-        ],
-        [
-          "sound",
-          "30078:<PUBKEY>:metropolitan:sound:ending-expose",
-          "ambient",
-          "0.8"
-        ]
-      ],
-      "content": "Fleet Street at dawn. The Times offices. She hands the documents through a window to a man who takes them with the professional calm of someone who has received this kind of delivery before.\n\nThe story breaks in three days.\n\nThe clearance is stopped — or delayed. The legal challenge around the dig chamber's land title will take years, possibly longer. Harwick resigns. Fenn is quietly disbarred. Rook does not resign — the Shambles does not work that way — but the Smithfield operation becomes smaller and quieter for a while.\n\nSaffron Hill stands. For now. For another year at least, possibly more.\n\nIda walks back east along the Embankment as the sun comes up. The Thames is the colour of old iron. The city is beginning its morning.\n\nShe cannot be invisible anymore. The journalist, when the story breaks, will describe his source as *a young woman, remarkable familiarity with the Metropolitan Railway, declined to give her name.* The description is brief. It will be enough for the people who need to recognise it.\n\nEvery door that was open because no one noticed her is closed.\n\nShe has traded her greatest asset for the city's gratitude, which is worth nothing and everything depending on the day.\n\nThe trains are still running."
-    },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:place:ending-bury"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "place"
-        ],
-        [
-          "title",
-          "Bury"
-        ],
-        [
-          "exit",
-          "west"
-        ],
-        [
-          "exit",
-          "east"
-        ],
-        [
-          "noun",
-          "ending",
-          "home",
-          "saffron hill"
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:world",
-          "choice-bury",
-          ""
-        ],
-        [
-          "sound",
-          "30078:<PUBKEY>:metropolitan:sound:ending-bury",
-          "ambient",
-          "0.8"
-        ]
-      ],
-      "content": "She walks home.\n\nThe signed paper is in her coat beside the ledger page and the survey. She has leverage over three factions and documentation of a conspiracy. She is twelve years old and she has been awake for two days and she is walking through Clerkenwell in the dark and she knows the names of the streets on the clearance list because she read the survey carefully.\n\nHer family's address is not on it anymore.\n\nThe other addresses are.\n\nShe does not know the families. She has never been to those courts. They are not her family, and she told Rook that plainly, and he looked at her with an expression she did not entirely understand and said nothing.\n\nThe signed paper gets her family safe. It does not get anyone else safe. She knew this when she made the choice. She paid the cost. The cost is not done being paid.\n\nSaffron Hill court at dawn. The washing lines. The cobblestones. The smell of the tannery two streets east.\n\nShe goes inside. She puts the documents somewhere she will not look at them. She cannot find them there in the morning.\n\nThe trains are still running."
-    },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:place:ending-law"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "place"
-        ],
-        [
-          "title",
-          "The Law"
-        ],
-        [
-          "exit",
-          "west"
-        ],
-        [
-          "exit",
-          "south"
-        ],
-        [
-          "noun",
-          "ending",
-          "briggs",
-          "constable"
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:world",
-          "choice-law",
-          ""
-        ],
-        [
-          "sound",
-          "30078:<PUBKEY>:metropolitan:sound:ending-law",
-          "ambient",
-          "0.8"
-        ]
-      ],
       "content": "Briggs takes the statement at King's Cross the following morning, in the third-class waiting room, at the bench by the window.\n\nHe writes carefully. He asks precise questions. He thanks her when it is done — not effusively, just the word, and he means it.\n\n*What happens now?* she asks.\n\n*I file it*, he says. *The Metropolitan Police refer it to the appropriate authorities. The appropriate authorities take six months to decide it falls under a different jurisdiction. That jurisdiction takes another six months.* He looks at the documents. *It could take years.*\n\n*But it could work*, she says.\n\n*It could*, he says. *Possibly. If nothing goes wrong.*\n\nHe is honest. That is the thing about Briggs. He is honest even when honesty sounds like this.\n\nShe walks out onto the King's Cross forecourt. The flower seller is at her pitch. She looks at Ida with the attention of a woman who sees everything and prices it accordingly.\n\nIda buys a bunch of violets. She does not know why.\n\nThe trains are still running."
     },
+
     {
       "kind": 30078,
       "tags": [
@@ -20846,114 +20695,7 @@
       ],
       "content": ""
     },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:portal:confrontation-to-expose"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "portal"
-        ],
-        [
-          "exit",
-          "30078:<PUBKEY>:metropolitan:place:garden-confrontation",
-          "east",
-          "East. Fleet Street. The Times."
-        ],
-        [
-          "exit",
-          "30078:<PUBKEY>:metropolitan:place:ending-expose",
-          "west",
-          "Back."
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:world",
-          "choice-expose",
-          ""
-        ]
-      ],
-      "content": ""
-    },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:portal:confrontation-to-bury"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "portal"
-        ],
-        [
-          "exit",
-          "30078:<PUBKEY>:metropolitan:place:garden-confrontation",
-          "west",
-          "West. Home. Saffron Hill."
-        ],
-        [
-          "exit",
-          "30078:<PUBKEY>:metropolitan:place:ending-bury",
-          "east",
-          "Back."
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:world",
-          "choice-bury",
-          ""
-        ]
-      ],
-      "content": ""
-    },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:portal:confrontation-to-law"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "portal"
-        ],
-        [
-          "exit",
-          "30078:<PUBKEY>:metropolitan:place:garden-confrontation",
-          "north",
-          "North. King's Cross. Briggs."
-        ],
-        [
-          "exit",
-          "30078:<PUBKEY>:metropolitan:place:ending-law",
-          "south",
-          "Back."
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:world",
-          "choice-law",
-          ""
-        ]
-      ],
-      "content": ""
-    },
+
     {
       "kind": 30078,
       "tags": [
