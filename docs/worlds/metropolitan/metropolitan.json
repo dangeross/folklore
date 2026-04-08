@@ -4359,6 +4359,23 @@
           "Threepence for a ticket. You don't have enough."
         ],
         [
+          "state",
+          "open"
+        ],
+        [
+          "transition",
+          "open",
+          "open",
+          "The clerk slides a ticket under the grille without looking up. Three pennies go the other way."
+        ],
+        [
+          "on-interact",
+          "buy",
+          "",
+          "set-state",
+          "open"
+        ],
+        [
           "on-interact",
           "buy",
           "",
@@ -4414,6 +4431,23 @@
           ">=",
           "3",
           "Threepence for a ticket. You don't have enough."
+        ],
+        [
+          "state",
+          "open"
+        ],
+        [
+          "transition",
+          "open",
+          "open",
+          "The clerk slides a ticket under the grille. Three pennies across."
+        ],
+        [
+          "on-interact",
+          "buy",
+          "",
+          "set-state",
+          "open"
         ],
         [
           "on-interact",
@@ -4683,7 +4717,7 @@
           "The ticket is clipped by the guard and returned."
         ]
       ],
-      "content": "A small card, printed on one side. *Metropolitan Railway — Third Class — Any Station*. Two pennies' worth of access to the whole line.\n\nIda turns it over in her fingers. West means Baker Street. Baker Street means something new."
+      "content": "A small card, printed on one side. *Metropolitan Railway — Third Class — Any Station*. Threepence worth of access to the whole line.\n\nIda turns it over in her fingers. West means Baker Street. Baker Street means something new."
     },
     {
       "kind": 30078,
