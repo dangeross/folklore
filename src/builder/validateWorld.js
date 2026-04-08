@@ -382,7 +382,96 @@ export function validateWorld(events, answers = {}) {
     }
   }
 
-  // ── 8. Answer hash mismatch (sync check — collect for async verify) ────
+  // ── 8. Quest auto-cascade detection ─────────────────────────────────────
+  //
+  // _evalQuests() runs after every room entry and dialogue on-enter. It
+  // completes any quest whose requires are ALL passively satisfied without
+  // player interaction. Two patterns cause silent auto-cascades:
+  //
+  //   A) requires an NPC in its *initial* state — always true at world start
+  //   B) all requires are quest-chain checks — no interaction gate at all
+  //
+  // Both are warnings (not errors) — some cascades are intentional.
+
+  // Build a map of npc d-tag → initial state
+  const npcInitialState = new Map();
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'npc') continue;
+    const nDTag = getTagValue(event, 'd');
+    const initState = getTagValue(event, 'state');
+    if (nDTag && initState) npcInitialState.set(nDTag, initState);
+  }
+
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'quest') continue;
+    const dTag = getTagValue(event, 'd') || '?';
+    const requires = getTags(event, 'requires');
+    if (requires.length === 0) continue;
+
+    let hasInteractionGuard = false;  // any requires that needs player action
+    let hasSelfActiveGuard = false;   // requires self: active
+
+    for (const req of requires) {
+      const targetRef = req[1];
+      const requiredState = req[2];
+      if (!targetRef || !isEventRef(targetRef)) continue;
+
+      const targetDTag = extractDTagFromRef(targetRef);
+      const targetType = inferTypeFromDTag(targetDTag);
+
+      // Self-active guard: requires self to be active
+      if (targetDTag === dTag && requiredState === 'active') {
+        hasSelfActiveGuard = true;
+        hasInteractionGuard = true;
+        continue;
+      }
+
+      if (targetType === 'npc') {
+        const initState = npcInitialState.get(targetDTag);
+        if (initState && initState === requiredState) {
+          // Rule A: requires NPC in its starting state — always satisfied
+          warnings.push({
+            dTag,
+            category: 'auto-cascade',
+            message: `requires NPC "${targetDTag}" in state "${requiredState}" — that is the NPC's initial state, so this requires is always satisfied at world start`,
+            tag: req.join(', '),
+            fix: `Change the requires to a post-interaction state (e.g. "observed", "suspicious"), set that state via a dialogue on-enter, and require self "active" so the quest only completes after the player has the interaction.`,
+          });
+          // Still counts as having an NPC guard — just a broken one
+        } else if (initState && initState !== requiredState) {
+          // NPC in a non-initial state — player must interact to change it
+          hasInteractionGuard = true;
+        }
+      } else if (targetType === 'item') {
+        // Item state guard — requires interaction to acquire/change
+        hasInteractionGuard = true;
+      } else if (targetType === 'quest') {
+        // Quest-chain requires — passive, _evalQuests can satisfy recursively
+        // (not an interaction guard on its own)
+      } else {
+        // world, dialogue, portal, etc. — treated as passive for this check
+      }
+    }
+
+    // Rule B: all requires are quest-chain (or world-state) with no interaction guard
+    if (!hasInteractionGuard && !hasSelfActiveGuard && requires.length > 0) {
+      const allQuestChain = requires.every((req) => {
+        const targetDTag = extractDTagFromRef(req[1]);
+        const t = inferTypeFromDTag(targetDTag);
+        return t === 'quest' || t === 'world' || !t;
+      });
+      if (allQuestChain) {
+        warnings.push({
+          dTag,
+          category: 'auto-cascade',
+          message: `all requires are quest/world-state checks — quest may auto-complete via _evalQuests without any player interaction`,
+          fix: `If player interaction is required, add ["requires", "<self-ref>", "active", ""] and have a dialogue on-enter set it active. If the cascade is intentional (e.g. a chain milestone), this warning can be ignored.`,
+        });
+      }
+    }
+  }
+
+  // ── 9. Answer hash mismatch (sync check — collect for async verify) ────
   const puzzlesToVerify = [];
   for (const event of events) {
     const eventType = getTagValue(event, 'type');

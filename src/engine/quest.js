@@ -72,6 +72,51 @@ export function mixQuest(Engine) {
     }
   };
 
+  /**
+   * Fire on-complete handlers for a quest that was just set to complete
+   * directly (via on-interact set-state, bypassing _evalQuests).
+   * Called from _dispatchAction when applyExternalSetState returns questCompleted.
+   */
+  Engine.prototype._fireQuestOnComplete = function(questRef) {
+    const questEvent = this.events.get(questRef);
+    if (!questEvent) return;
+
+    const questType = getTag(questEvent, 'quest-type') || 'open';
+    const isEndgame = questType === 'endgame';
+
+    if (isEndgame) {
+      this._emit('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'endgame-separator');
+      if (questEvent.content) {
+        this._emitHtml(renderMarkdown(questEvent.content), 'endgame');
+      }
+      this._emit('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'endgame-separator');
+      const modeTag = questEvent.tags.find((t) => t[0] === 'quest-type');
+      const mode = modeTag?.[2] === 'open' ? 'soft' : 'hard';
+      this.gameOver = mode;
+      if (mode === 'hard') {
+        this._emit('Type "restart" to play again.', 'endgame-prompt');
+      } else {
+        this._emit('The story continues. You may keep exploring, or type "restart" to play again.', 'endgame-prompt');
+      }
+    } else {
+      const title = getTag(questEvent, 'title') || 'Quest';
+      this._emit(`Quest complete: ${title}`, 'success');
+    }
+
+    for (const tag of getTags(questEvent, 'on-complete')) {
+      const action = tag[2];
+      const value = tag[3];
+      const extRef = tag[4];
+      this._dispatchAction({
+        action, target: value, extRef,
+        selfDtag: questRef, selfEvent: questEvent,
+      });
+    }
+
+    // Cascade: quest completion may satisfy other quests
+    this._evalQuests();
+  };
+
   /** Show quest log — active and completed quests. */
   Engine.prototype._showQuestLog = function() {
     // Filter out endgame quests — they're internal win-state detectors

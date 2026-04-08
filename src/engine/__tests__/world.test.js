@@ -196,6 +196,26 @@ describe('checkRequires', () => {
       expect(result.reason).toBe('You already have the key.');
     });
 
+    it('fails when quest is in forbidden state', () => {
+      const questDtag = `${WORLD}:quest:side-quest`;
+      const quest = makeEvent(questDtag, [['type', 'quest']]);
+      const ev = makeEvent('test', [
+        ['type', 'dialogue'],
+        ['requires-not', ref(questDtag), 'complete', "You've already done that."],
+      ]);
+      const events = buildEvents(quest, ev);
+
+      // Quest not complete — passes
+      const state1 = freshState({ states: { [ref(questDtag)]: 'active' } });
+      expect(checkRequires(ev, state1, events).allowed).toBe(true);
+
+      // Quest complete — blocked
+      const state2 = freshState({ states: { [ref(questDtag)]: 'complete' } });
+      const result = checkRequires(ev, state2, events);
+      expect(result.allowed).toBe(false);
+      expect(result.reason).toBe("You've already done that.");
+    });
+
     it('checks item state for requires-not', () => {
       const lantern = makeItem('lantern');
       const ev = makeEvent('test', [

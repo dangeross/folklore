@@ -96,7 +96,15 @@ export function applyExternalSetState(targetRef, targetState, events, player, em
     const currentState = player.getState(targetRef);
     if (currentState !== targetState) {
       player.setState(targetRef, targetState);
+      if (targetState === 'complete') {
+        return { acted: true, puzzleActivated: null, questCompleted: targetRef };
+      }
     }
+    return { acted: true, puzzleActivated: null };
+  }
+
+  if (targetType === 'world') {
+    player.setState(targetRef, targetState);
     return { acted: true, puzzleActivated: null };
   }
 

@@ -82,6 +82,11 @@ export function checkRequires(event, playerState, events) {
       if (expectedState && currentState !== expectedState) {
         return { allowed: false, reason: failDesc };
       }
+    } else if (refType === 'world') {
+      const currentState = playerState.states?.[ref];
+      if (expectedState && currentState !== expectedState) {
+        return { allowed: false, reason: failDesc };
+      }
     } else {
       return { allowed: false, reason: failDesc };
     }
@@ -110,7 +115,8 @@ export function checkRequires(event, playerState, events) {
       if (forbiddenState && currentState === forbiddenState) {
         return { allowed: false, reason: failDesc };
       }
-    } else if (refType === 'feature') {
+    } else if (refType === 'feature' || refType === 'npc' || refType === 'portal' ||
+               refType === 'quest' || refType === 'clue' || refType === 'place') {
       const currentState = playerState.states?.[ref];
       if (forbiddenState && currentState === forbiddenState) {
         return { allowed: false, reason: failDesc };

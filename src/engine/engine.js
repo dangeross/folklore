@@ -223,6 +223,7 @@ export class GameEngine {
             this.config.trustSet, this.config.clientMode,
           );
           if (result.puzzleActivated) this.puzzleActive = result.puzzleActivated;
+          if (result.questCompleted) this._fireQuestOnComplete(result.questCompleted);
           return result.acted;
         }
         // Self — NPC or regular entity

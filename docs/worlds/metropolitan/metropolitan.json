@@ -5377,7 +5377,7 @@
           "set-state",
           "active",
           "30078:<PUBKEY>:metropolitan:quest:callow-job-1"
-        ],
+        ]
       ],
       "content": "*Saffron Hill is not a large place*, he says. *You've lived in that court your whole life. Your father coughs. Your mother mends.* A pause. *Three younger ones.* He says it without emphasis, which is the most effective way to say it. *I found you in about an hour.*"
     },
@@ -7102,14 +7102,6 @@
           "empty",
           "consume-item",
           "30078:<PUBKEY>:metropolitan:item:wrapped-package"
-        ],
-        [
-          "on-interact",
-          "leave",
-          "empty",
-          "set-state",
-          "complete",
-          "30078:<PUBKEY>:metropolitan:quest:callow-job-2"
         ]
       ],
       "content": "The third bench from the tunnel mouth on the westbound platform. Plain wood, no back. The gap between the bench legs and the wall is deep enough to conceal something small if it is left carefully. *Leave* the package here if you have it."
@@ -7263,6 +7255,12 @@
           "dialogue",
           "30078:<PUBKEY>:metropolitan:dialogue:rook-senior",
           "30078:<PUBKEY>:metropolitan:quest:shambles-job-3",
+          "complete"
+        ],
+        [
+          "dialogue",
+          "30078:<PUBKEY>:metropolitan:dialogue:confrontation-opens",
+          "30078:<PUBKEY>:metropolitan:quest:tunnel-access",
           "complete"
         ]
       ],
@@ -9023,7 +9021,7 @@
           "dialogue",
           "30078:<PUBKEY>:metropolitan:dialogue:briggs-encounter-3",
           "30078:<PUBKEY>:metropolitan:quest:briggs-chain-2",
-          "complete"
+          "active"
         ],
         [
           "speed",
@@ -11105,15 +11103,9 @@
         ],
         [
           "requires",
-          "30078:<PUBKEY>:metropolitan:quest:quill-job-2",
-          "complete",
-          ""
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:item:forged-ledger-key",
-          "",
-          "The ledger key is needed to read the coded entries."
+          "30078:<PUBKEY>:metropolitan:feature:green-ledger-shelf",
+          "read",
+          "She has not yet read the green ledger."
         ],
         [
           "on-complete",
@@ -11133,21 +11125,8 @@
           "on-complete",
           "",
           "set-state",
-          "name-memorised",
-          "30078:<PUBKEY>:metropolitan:world"
-        ],
-        [
-          "on-complete",
-          "",
-          "set-state",
           "active",
           "30078:<PUBKEY>:metropolitan:quest:quill-job-4"
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:world",
-          "name-memorised",
-          "Ida has not yet read the green ledger."
         ],
         [
           "on-complete",
@@ -11183,9 +11162,9 @@
         ],
         [
           "requires",
-          "30078:<PUBKEY>:metropolitan:quest:quill-job-3",
-          "complete",
-          ""
+          "30078:<PUBKEY>:metropolitan:item:quill-delivery-letter",
+          "delivered",
+          "She has not yet delivered the letter."
         ],
         [
           "on-complete",
@@ -11214,12 +11193,6 @@
           "set-state",
           "complete",
           "30078:<PUBKEY>:metropolitan:quest:side-letter"
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:item:quill-delivery-letter",
-          "",
-          "She does not yet have the letter to deliver."
         ]
       ],
       "content": "Deliver a letter to a woman at Portland Road station, Wednesday morning train from Paddington. Grey dress, travelling alone. The letter goes into her hand only — no one else's. If anyone is watching the woman, abort and report back."
@@ -11277,7 +11250,7 @@
         [
           "requires",
           "30078:<PUBKEY>:metropolitan:npc:blackmail-receiver",
-          "default",
+          "observed",
           "She has not yet traced the money to its destination."
         ]
       ],
@@ -11429,12 +11402,6 @@
           "30078:<PUBKEY>:metropolitan:place:solicitors-office",
           "down",
           "Back down to the street."
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:quest:quill-job-3",
-          "active",
-          "The office is occupied. Wednesday is the only clear day."
         ]
       ],
       "content": ""
@@ -13443,8 +13410,8 @@
         [
           "requires",
           "30078:<PUBKEY>:metropolitan:quest:quill-job-4",
-          "complete",
-          "The address is in her head. She has no reason to knock yet."
+          "",
+          "She does not have the letter yet."
         ],
         [
           "sound",
@@ -14053,8 +14020,8 @@
           "player",
           "",
           "set-state",
-          "complete",
-          "30078:<PUBKEY>:metropolitan:quest:quill-job-4"
+          "delivered",
+          "30078:<PUBKEY>:metropolitan:item:quill-delivery-letter"
         ]
       ],
       "content": "*I know*, she says. *He told me you were thorough.* Not a compliment or a criticism — purely information. *Sit down.*\n\nShe tells Ida about the blackmail money. Three hands, three journeys. The Quill wants to know where it ends. Not to stop it — to know. Knowledge is the only currency that compounds."
@@ -14278,6 +14245,14 @@
         [
           "type",
           "dialogue"
+        ],
+        [
+          "on-enter",
+          "player",
+          "",
+          "set-state",
+          "observed",
+          "30078:<PUBKEY>:metropolitan:npc:blackmail-receiver"
         ]
       ],
       "content": "He takes the basket from the woman at the Lamb and Flag with the ease of a regular transaction. He lifts the cloth, removes the package, tucks it away. He hands the basket back.\n\nHe has a Smithfield accent. He orders another drink without looking at anyone. The money ends here."
@@ -14615,8 +14590,8 @@
         [
           "requires",
           "30078:<PUBKEY>:metropolitan:quest:quill-job-4",
-          "complete",
-          "The address is in her head. She has no reason to knock yet."
+          "",
+          "She does not have the letter yet."
         ]
       ],
       "content": ""
@@ -16363,6 +16338,10 @@
           "30078:<PUBKEY>:metropolitan:npc:harwick"
         ],
         [
+          "feature",
+          "30078:<PUBKEY>:metropolitan:feature:harwick-desk"
+        ],
+        [
           "requires",
           "30078:<PUBKEY>:metropolitan:item:service-girl-papers",
           "",
@@ -16738,7 +16717,7 @@
         [
           "dialogue",
           "30078:<PUBKEY>:metropolitan:dialogue:harwick-cornered",
-          "30078:<PUBKEY>:metropolitan:quest:ledger-kept",
+          "30078:<PUBKEY>:metropolitan:quest:concern-job-5",
           "complete"
         ]
       ],
@@ -17454,6 +17433,12 @@
           ""
         ],
         [
+          "requires",
+          "30078:<PUBKEY>:metropolitan:quest:concern-introduction",
+          "active",
+          ""
+        ],
+        [
           "on-complete",
           "",
           "add-counter",
@@ -18154,7 +18139,7 @@
           "on-complete",
           "",
           "set-state",
-          "visible",
+          "hidden",
           "30078:<PUBKEY>:metropolitan:portal:paddington-arrival-night-to-edgware"
         ],
         [
@@ -19027,6 +19012,14 @@
           "set-state",
           "complete",
           "30078:<PUBKEY>:metropolitan:quest:act3-begins"
+        ],
+        [
+          "on-enter",
+          "player",
+          "",
+          "set-state",
+          "active",
+          "30078:<PUBKEY>:metropolitan:quest:callow-final"
         ]
       ],
       "content": "He looks at her for a long moment.\n\n*You kept something*, he says. Not a question. *From Harwick's job.* He says Harwick's name without inflection, which means he has known about Harwick for longer than she has. *And now all three of them are looking for you, which means whatever you kept is worth more than the job paid.*\n\nHe does not look angry. He looks tired in a way she has not seen before.\n\n*Sit down*, he says."
@@ -19153,6 +19146,14 @@
         [
           "type",
           "dialogue"
+        ],
+        [
+          "on-enter",
+          "player",
+          "",
+          "set-state",
+          "active",
+          "30078:<PUBKEY>:metropolitan:quest:harwick-train"
         ],
         [
           "option",
@@ -19374,6 +19375,12 @@
           ""
         ],
         [
+          "requires",
+          "30078:<PUBKEY>:metropolitan:quest:callow-final",
+          "active",
+          ""
+        ],
+        [
           "involves",
           "30078:<PUBKEY>:metropolitan:npc:callow"
         ]
@@ -19423,9 +19430,16 @@
           "30078:<PUBKEY>:metropolitan:quest:endgame"
         ],
         [
+          "on-complete",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:metropolitan:portal:paddington-night-to-garden"
+        ],
+        [
           "requires",
           "30078:<PUBKEY>:metropolitan:world",
-          "evidence-found",
+          "conspiracy-clear",
           "She has not yet read the dig records."
         ]
       ],
@@ -19458,6 +19472,12 @@
           "requires",
           "30078:<PUBKEY>:metropolitan:quest:act3-begins",
           "complete",
+          ""
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:metropolitan:quest:harwick-train",
+          "active",
           ""
         ],
         [
@@ -20075,8 +20095,8 @@
         ],
         [
           "requires",
-          "30078:<PUBKEY>:metropolitan:quest:endgame",
-          "active",
+          "30078:<PUBKEY>:metropolitan:quest:tunnel-access",
+          "complete",
           "The garden is behind a wall north of the station. She has no reason to go there yet."
         ],
         [
@@ -20171,8 +20191,8 @@
         ],
         [
           "requires",
-          "30078:<PUBKEY>:metropolitan:quest:endgame",
-          "active",
+          "30078:<PUBKEY>:metropolitan:quest:tunnel-access",
+          "complete",
           ""
         ],
         [
@@ -20348,14 +20368,8 @@
         [
           "requires",
           "30078:<PUBKEY>:metropolitan:world",
-          "evidence-found",
-          "Without the dig records, the story cannot be proved."
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:world",
           "conspiracy-clear",
-          ""
+          "Without the dig records, the story cannot be proved."
         ],
         [
           "on-enter",
@@ -20370,8 +20384,16 @@
           "player",
           "",
           "set-state",
+          "choice-made",
+          "30078:<PUBKEY>:metropolitan:world"
+        ],
+        [
+          "on-enter",
+          "player",
+          "",
+          "set-state",
           "complete",
-          "30078:<PUBKEY>:metropolitan:quest:endgame"
+          "30078:<PUBKEY>:metropolitan:quest:endgame-expose"
         ]
       ],
       "content": "She names the Times offices on Fleet Street. She names the journalist — she knows his route, she has ridden beside him on Thursdays.\n\nThe three men are very still.\n\n*If I walk out of this garden and go east*, she says, *by morning there is a story. The dig records, the ledger page, the survey. A journalist who has already been asking questions about compulsory purchase in Clerkenwell.*\n\nFenn opens his mouth. She looks at him and he closes it.\n\n*Saffron Hill comes off the list*, she says. *Tonight. In writing. Signed by all three of you.*\n\nThe Concern's man looks at Rook. Rook looks at Fenn. Fenn looks at Ida.\n\n*All right*, he says."
@@ -20404,8 +20426,16 @@
           "player",
           "",
           "set-state",
+          "choice-made",
+          "30078:<PUBKEY>:metropolitan:world"
+        ],
+        [
+          "on-enter",
+          "player",
+          "",
+          "set-state",
           "complete",
-          "30078:<PUBKEY>:metropolitan:quest:endgame"
+          "30078:<PUBKEY>:metropolitan:quest:endgame-bury"
         ]
       ],
       "content": "She folds the ledger page. She puts the survey in her coat.\n\n*Saffron Hill comes off the list*, she says. *In writing, signed, before I leave this garden. My family is on the protected relocation schedule — not the displacement list.* She looks at each of them. *In exchange, what I have stays where it is.*\n\nRook says: *And the other streets on the list?*\n\nShe looks at him.\n\n*Are not my family*, she says.\n\nThe words cost something. She can feel the cost. She pays it anyway.\n\nThe Concern's man produces paper. Fenn produces a pen. They write. They sign. Rook watches.\n\nWhen it is done she takes the paper and walks south."
@@ -20427,14 +20457,14 @@
         ],
         [
           "requires",
-          "30078:<PUBKEY>:metropolitan:world",
-          "briggs-trusted",
+          "30078:<PUBKEY>:metropolitan:quest:briggs-chain-3",
+          "complete",
           "Briggs is not here. She did not build that trust."
         ],
         [
           "requires",
           "30078:<PUBKEY>:metropolitan:world",
-          "evidence-found",
+          "conspiracy-clear",
           "Without the dig records, the law has nothing to act on."
         ],
         [
@@ -20450,8 +20480,16 @@
           "player",
           "",
           "set-state",
+          "choice-made",
+          "30078:<PUBKEY>:metropolitan:world"
+        ],
+        [
+          "on-enter",
+          "player",
+          "",
+          "set-state",
           "complete",
-          "30078:<PUBKEY>:metropolitan:quest:endgame"
+          "30078:<PUBKEY>:metropolitan:quest:endgame-law"
         ]
       ],
       "content": "She looks at Briggs at the wall.\n\nHe has been watching the whole thing. He looks back at her.\n\nShe crosses the garden and hands him the ledger page, the survey, and the dig records. All of it. Everything.\n\nThe three men are very still.\n\nBriggs looks at the documents. He looks at the three men. He looks at Ida.\n\n*I'll need a statement*, he says.\n\n*I know*, she says.\n\nRook makes a sound — not quite a laugh, not quite anything else. *You're an honest constable*, he says to Briggs. *In London. In 1863.* He shakes his head slowly. *God help you.*\n\n*Probably*, Briggs says."
@@ -20477,18 +20515,12 @@
         ],
         [
           "quest-type",
-          "endgame"
+          "open"
         ],
         [
           "requires",
-          "30078:<PUBKEY>:metropolitan:quest:tunnel-access",
-          "complete",
-          ""
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:quest:act3-begins",
-          "complete",
+          "30078:<PUBKEY>:metropolitan:world",
+          "garden-done",
           ""
         ],
         [
@@ -20499,7 +20531,43 @@
           "30078:<PUBKEY>:metropolitan:world"
         ]
       ],
-      "content": "The garden. The three factions. The choice.\n\nThis is what the line was for."
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "metropolitan:quest:endgame-expose"],
+        ["t", "metropolitan"],
+        ["type", "quest"],
+        ["title", "Expose"],
+        ["quest-type", "endgame"],
+        ["requires", "30078:<PUBKEY>:metropolitan:world", "choice-expose", ""]
+      ],
+      "content": "Fleet Street at dawn. The Times offices. She hands the documents through a window to a man who takes them with the professional calm of someone who has received this kind of delivery before.\n\nThe story breaks in three days.\n\nThe clearance is stopped — or delayed. The legal challenge around the dig chamber's land title will take years, possibly longer. Harwick resigns. Fenn is quietly disbarred. Rook does not resign — the Shambles does not work that way — but the Smithfield operation becomes smaller and quieter for a while.\n\nSaffron Hill stands. For now. For another year at least, possibly more.\n\nIda walks back east along the Embankment as the sun comes up. The Thames is the colour of old iron. The city is beginning its morning.\n\nShe cannot be invisible anymore. The journalist, when the story breaks, will describe his source as *a young woman, remarkable familiarity with the Metropolitan Railway, declined to give her name.* The description is brief. It will be enough for the people who need to recognise it.\n\nEvery door that was open because no one noticed her is closed.\n\nShe has traded her greatest asset for the city's gratitude, which is worth nothing and everything depending on the day.\n\nThe trains are still running."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "metropolitan:quest:endgame-bury"],
+        ["t", "metropolitan"],
+        ["type", "quest"],
+        ["title", "Bury"],
+        ["quest-type", "endgame"],
+        ["requires", "30078:<PUBKEY>:metropolitan:world", "choice-bury", ""]
+      ],
+      "content": "The signed paper is in her coat beside the ledger page and the survey. She has leverage over three factions and documentation of a conspiracy. She is twelve years old and she has been awake for two days and she is walking through Clerkenwell in the dark and she knows the names of the streets on the clearance list because she read the survey carefully.\n\nHer family's address is not on it anymore.\n\nThe other addresses are.\n\nShe does not know the families. She has never been to those courts. They are not her family, and she told Rook that plainly, and he looked at her with an expression she did not entirely understand and said nothing.\n\nThe signed paper gets her family safe. It does not get anyone else safe. She knew this when she made the choice. She paid the cost. The cost is not done being paid.\n\nThe trains are still running."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "metropolitan:quest:endgame-law"],
+        ["t", "metropolitan"],
+        ["type", "quest"],
+        ["title", "The Law"],
+        ["quest-type", "endgame"],
+        ["requires", "30078:<PUBKEY>:metropolitan:world", "choice-law", ""]
+      ],
+      "content": "Briggs takes the statement at King's Cross the following morning, in the third-class waiting room, at the bench by the window.\n\nHe writes carefully. He asks precise questions. He thanks her when it is done — not effusively, just the word, and he means it.\n\n*What happens now?* she asks.\n\n*I file it*, he says. *The Metropolitan Police refer it to the appropriate authorities. The appropriate authorities take six months to decide it falls under a different jurisdiction. That jurisdiction takes another six months.* He looks at the documents. *It could take years.*\n\n*But it could work*, she says.\n\n*It could*, he says. *Possibly. If nothing goes wrong.*\n\nHe is honest. That is the thing about Briggs. He is honest even when honesty sounds like this.\n\nShe walks out onto the King's Cross forecourt. The flower seller is at her pitch. She looks at Ida with the attention of a woman who sees everything and prices it accordingly.\n\nIda buys a bunch of violets. She does not know why."
     },
     {
       "kind": 30078,

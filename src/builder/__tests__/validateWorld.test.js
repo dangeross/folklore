@@ -275,6 +275,157 @@ describe('verifyPuzzleHashes', () => {
   });
 });
 
+// ── Quest auto-cascade detection ─────────────────────────────────────────────
+
+describe('validateWorld — auto-cascade detection', () => {
+  // ── Rule A: NPC initial-state requires ──────────────────────────────────
+
+  it('warns when quest requires NPC in its initial state (always satisfied)', () => {
+    const events = [
+      makeEvent('test:npc:guard', 'npc', [['state', 'patrolling']]),
+      makeEvent('test:quest:observe', 'quest', [
+        ['requires', ref('test:npc:guard'), 'patrolling', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    const w = warnings.find((w) => w.category === 'auto-cascade');
+    expect(w).toBeDefined();
+    expect(w.message).toContain('initial state');
+    expect(w.dTag).toBe('test:quest:observe');
+    expect(w.fix).toBeTruthy();
+  });
+
+  it('no auto-cascade warning when quest requires NPC in a non-initial state', () => {
+    const events = [
+      makeEvent('test:npc:guard', 'npc', [['state', 'patrolling']]),
+      makeEvent('test:quest:follow', 'quest', [
+        ['requires', ref('test:npc:guard'), 'suspicious', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.filter((w) => w.category === 'auto-cascade')).toHaveLength(0);
+  });
+
+  it('no auto-cascade warning when NPC has no declared initial state', () => {
+    const events = [
+      makeEvent('test:npc:stranger', 'npc', []),
+      makeEvent('test:quest:meet', 'quest', [
+        ['requires', ref('test:npc:stranger'), 'default', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.filter((w) => w.category === 'auto-cascade')).toHaveLength(0);
+  });
+
+  // ── Rule B: all-passive (quest-chain only) requires ──────────────────────
+
+  it('warns when quest has only quest-chain requires and no interaction guard', () => {
+    const events = [
+      makeEvent('test:quest:gate', 'quest', []),
+      makeEvent('test:quest:cascade', 'quest', [
+        ['requires', ref('test:quest:gate'), 'complete', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    const w = warnings.find((w) => w.category === 'auto-cascade' && w.dTag === 'test:quest:cascade');
+    expect(w).toBeDefined();
+    expect(w.message).toContain('auto-complete');
+    expect(w.fix).toBeTruthy();
+  });
+
+  it('no all-passive warning when quest has a self-active guard', () => {
+    const events = [
+      makeEvent('test:quest:gate', 'quest', []),
+      makeEvent('test:quest:guarded', 'quest', [
+        ['requires', ref('test:quest:gate'), 'complete', ''],
+        ['requires', ref('test:quest:guarded'), 'active', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.filter((w) => w.category === 'auto-cascade' && w.dTag === 'test:quest:guarded')).toHaveLength(0);
+  });
+
+  it('no all-passive warning when quest requires NPC in non-initial state', () => {
+    const events = [
+      makeEvent('test:npc:constable', 'npc', [['state', 'patrolling']]),
+      makeEvent('test:quest:gate', 'quest', []),
+      makeEvent('test:quest:chain', 'quest', [
+        ['requires', ref('test:quest:gate'), 'complete', ''],
+        ['requires', ref('test:npc:constable'), 'suspicious', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.filter((w) => w.category === 'auto-cascade' && w.dTag === 'test:quest:chain')).toHaveLength(0);
+  });
+
+  it('no all-passive warning when quest requires an item (interaction gate)', () => {
+    const events = [
+      makeEvent('test:item:key', 'item', []),
+      makeEvent('test:quest:gate', 'quest', []),
+      makeEvent('test:quest:chain', 'quest', [
+        ['requires', ref('test:quest:gate'), 'complete', ''],
+        ['requires', ref('test:item:key'), '', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.filter((w) => w.category === 'auto-cascade' && w.dTag === 'test:quest:chain')).toHaveLength(0);
+  });
+
+  it('warns for multiple quest-chain requires with no interaction guard', () => {
+    const events = [
+      makeEvent('test:quest:a', 'quest', []),
+      makeEvent('test:quest:b', 'quest', []),
+      makeEvent('test:quest:final', 'quest', [
+        ['requires', ref('test:quest:a'), 'complete', ''],
+        ['requires', ref('test:quest:b'), 'complete', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.filter((w) => w.category === 'auto-cascade' && w.dTag === 'test:quest:final')).toHaveLength(1);
+  });
+
+  it('quests with no requires are not flagged', () => {
+    const events = [
+      makeEvent('test:quest:empty', 'quest', []),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.filter((w) => w.category === 'auto-cascade')).toHaveLength(0);
+  });
+
+  // ── Combined: both rules can fire on same quest ──────────────────────────
+
+  it('flags both initial-state NPC requires and all-passive on the same quest', () => {
+    const events = [
+      makeEvent('test:npc:receiver', 'npc', [['state', 'default']]),
+      makeEvent('test:quest:gate', 'quest', []),
+      makeEvent('test:quest:broken', 'quest', [
+        ['requires', ref('test:quest:gate'), 'complete', ''],
+        ['requires', ref('test:npc:receiver'), 'default', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    const cascadeWarnings = warnings.filter((w) => w.category === 'auto-cascade' && w.dTag === 'test:quest:broken');
+    // Rule A fires for the initial-state NPC requires
+    expect(cascadeWarnings.some((w) => w.message.includes('initial state'))).toBe(true);
+    // Rule B does NOT fire additionally because the NPC requires IS a guard (broken but present)
+  });
+
+  it('auto-cascade warnings include structured dTag, category, message, fix', () => {
+    const events = [
+      makeEvent('test:quest:prereq', 'quest', []),
+      makeEvent('test:quest:subject', 'quest', [
+        ['requires', ref('test:quest:prereq'), 'complete', ''],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    const w = warnings.find((w) => w.category === 'auto-cascade');
+    expect(w.dTag).toBe('test:quest:subject');
+    expect(w.category).toBe('auto-cascade');
+    expect(typeof w.message).toBe('string');
+    expect(typeof w.fix).toBe('string');
+  });
+});
+
 // ── Hints: discoverability ────────────────────────────────────────────────────
 
 describe('validateWorld — hints', () => {
