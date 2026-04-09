@@ -5146,7 +5146,7 @@
           "dialogue",
           "30078:<PUBKEY>:metropolitan:dialogue:fence-cooperative",
           "30078:<PUBKEY>:metropolitan:item:stolen-watch",
-          "held"
+          ""
         ]
       ],
       "content": "A man at a table with a lamp and a set of jeweller's tools arranged in front of him. He looked up when the door opened and has not looked away since.\n\nHe is not frightened, exactly. He is recalibrating."
@@ -5943,6 +5943,13 @@
           "",
           "give-item",
           "30078:<PUBKEY>:metropolitan:item:fence-receipt"
+        ],
+        [
+          "on-enter",
+          "player",
+          "",
+          "give-item",
+          "30078:<PUBKEY>:metropolitan:item:stolen-watch"
         ],
         [
           "on-enter",
@@ -7838,43 +7845,6 @@
           "set-state",
           "complete",
           "30078:<PUBKEY>:metropolitan:quest:shambles-job-2"
-        ],
-        [
-          "on-enter",
-          "player",
-          "",
-          "give-item",
-          "30078:<PUBKEY>:metropolitan:item:reply-word"
-        ],
-        [
-          "on-enter",
-          "player",
-          "",
-          "set-state",
-          "active",
-          "30078:<PUBKEY>:metropolitan:quest:callow-job-3b"
-        ],
-        [
-          "on-enter",
-          "player",
-          "",
-          "consume-item",
-          "30078:<PUBKEY>:metropolitan:item:job-3-instructions"
-        ],
-        [
-          "on-enter",
-          "player",
-          "",
-          "add-counter",
-          "pennies",
-          "3"
-        ],
-        [
-          "on-enter",
-          "player",
-          "",
-          "give-item",
-          "30078:<PUBKEY>:metropolitan:item:job-4-instructions"
         ]
       ],
       "content": "Ida delivers the message exactly as Callow gave it to her — word for word, no interpretation, no summary. This is what she was told to do.\n\nThe foreman listens without interrupting. When she finishes he is quiet for a moment.\n\n*Right*, he says again. Then a single word back — short, unremarkable, clearly a code.\n\nShe memorises it and turns to go."
@@ -8163,6 +8133,12 @@
           "",
           "give-item",
           "30078:<PUBKEY>:metropolitan:item:job-5-instructions"
+        ],
+        [
+          "on-complete",
+          "",
+          "give-item",
+          "30078:<PUBKEY>:metropolitan:item:luggage-pass"
         ]
       ],
       "content": "Return to Callow with the foreman's reply word. The message is only complete when the reply is delivered."
@@ -13336,6 +13312,10 @@
           "30078:<PUBKEY>:metropolitan:npc:ucl-student"
         ],
         [
+          "item",
+          "30078:<PUBKEY>:metropolitan:item:ucl-notebook"
+        ],
+        [
           "sound",
           "30078:<PUBKEY>:metropolitan:sound:saffron-hill-ambient",
           "ambient",
@@ -13630,8 +13610,8 @@
         [
           "dialogue",
           "30078:<PUBKEY>:metropolitan:dialogue:student-notebook",
-          "30078:<PUBKEY>:metropolitan:quest:side-ucl-notebook",
-          "active"
+          "30078:<PUBKEY>:metropolitan:item:ucl-notebook",
+          ""
         ]
       ],
       "content": "A young man of about twenty, ink on his hands, carrying more books than he can comfortably manage. He has the slightly stunned quality of someone in their first year of serious study.\n\nHe dropped his notebook somewhere between the library and the courtyard. He has not yet noticed."
