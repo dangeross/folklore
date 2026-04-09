@@ -242,7 +242,65 @@ export function validateWorld(events, answers = {}) {
     }
   }
 
-  // ── 6. Verb alias collisions per place ──────────────────────────────────
+  // ── 6. Portal cardinal direction check ──────────────────────────────────
+  // When a portal has exactly two exit slots and both are recognised direction
+  // words, they must be cardinal/ordinal opposites. north/east is disorienting;
+  // north/south is correct. Custom slot names (e.g. "passage") are skipped.
+  const DIRECTION_OPPOSITES = {
+    north: 'south', south: 'north',
+    east: 'west', west: 'east',
+    up: 'down', down: 'up',
+    in: 'out', out: 'in',
+    northeast: 'southwest', southwest: 'northeast',
+    northwest: 'southeast', southeast: 'northwest',
+  };
+
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'portal') continue;
+    const portalDTag = getTagValue(event, 'd') || '?';
+    const exitTags = getTags(event, 'exit');
+    if (exitTags.length !== 2) continue; // one-way or multi-leg — skip
+    const slotA = exitTags[0][2];
+    const slotB = exitTags[1][2];
+    if (!slotA || !slotB) continue;
+    // Only flag if both slots are recognised directional words
+    if (!(slotA in DIRECTION_OPPOSITES) || !(slotB in DIRECTION_OPPOSITES)) continue;
+    if (DIRECTION_OPPOSITES[slotA] !== slotB) {
+      hints.push({
+        dTag: portalDTag,
+        category: 'portal-direction',
+        message: `Portal exits "${slotA}" and "${slotB}" are not opposites — entering from the ${slotA} and exiting via ${slotB} is disorienting`,
+        tag: `["exit", "...", "${slotA}"] / ["exit", "...", "${slotB}"]`,
+        fix: `Change the return exit to "${DIRECTION_OPPOSITES[slotA]}" so the portal is symmetric: go ${slotA} → return ${DIRECTION_OPPOSITES[slotA]}.`,
+      });
+    }
+  }
+
+  // ── 7. Orphaned NPCs ─────────────────────────────────────────────────────
+  // An NPC not referenced by any place's ["npc", ...] tag cannot be encountered
+  // by the player. Flag as a warning (some NPCs may be spawned dynamically).
+  const placedNpcRefs = new Set();
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'place') continue;
+    for (const tag of getTags(event, 'npc')) {
+      const refDTag = extractDTagFromRef(tag[1]);
+      if (refDTag) placedNpcRefs.add(refDTag);
+    }
+  }
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'npc') continue;
+    const npcDTag = getTagValue(event, 'd') || '?';
+    if (!placedNpcRefs.has(npcDTag)) {
+      warnings.push({
+        dTag: npcDTag,
+        category: 'orphaned-npc',
+        message: `NPC is not placed in any place — players cannot encounter it`,
+        fix: `Add ["npc", "<ref>"] to a place event, or if this NPC appears dynamically via an action, this warning can be ignored.`,
+      });
+    }
+  }
+
+  // ── 10. Verb alias collisions per place ─────────────────────────────────
   for (const event of events) {
     if (getTagValue(event, 'type') !== 'place') continue;
     const placeDTag = getTagValue(event, 'd') || '?';
@@ -311,7 +369,7 @@ export function validateWorld(events, answers = {}) {
     }
   }
 
-  // ── 6. Discoverability: thin noun aliases ──────────────────────────────
+  // ── 11. Discoverability: thin noun aliases ───────────────────────────────
   // Flag entities whose only noun aliases are long compound words
   for (const event of events) {
     const eventType = getTagValue(event, 'type');
@@ -332,7 +390,7 @@ export function validateWorld(events, answers = {}) {
     }
   }
 
-  // ── 7. Discoverability: undiscoverable verbs ──────────────────────────
+  // ── 12. Discoverability: undiscoverable verbs ────────────────────────────
   // Flag on-interact verbs not hinted in visible text at the same place
   const COMMON_VERBS = new Set(['examine', 'take', 'pick up', 'get', 'drop', 'talk', 'attack', 'look', 'open', 'close', 'read', 'use', 'give']);
   for (const event of events) {
@@ -382,7 +440,7 @@ export function validateWorld(events, answers = {}) {
     }
   }
 
-  // ── 8. Quest auto-cascade detection ─────────────────────────────────────
+  // ── 13. Quest auto-cascade detection ─────────────────────────────────────
   //
   // _evalQuests() runs after every room entry and dialogue on-enter. It
   // completes any quest whose requires are ALL passively satisfied without
@@ -471,7 +529,112 @@ export function validateWorld(events, answers = {}) {
     }
   }
 
-  // ── 9. Answer hash mismatch (sync check — collect for async verify) ────
+  // ── 14. Dialogue item condition with non-empty state ─────────────────────
+  // dialogue tag shape: ["dialogue", "<dialogue-ref>", "<requires-ref>", "<requires-state>"]
+  // When the requires-ref is an item, the state field is almost always a bug:
+  // the engine only sets states on items via explicit set-state actions, never
+  // via "held" or similar. Empty string means "check inventory possession".
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'npc') continue;
+    const npcDTag = getTagValue(event, 'd') || '?';
+    for (const tag of getTags(event, 'dialogue')) {
+      const requiresRef = tag[2];
+      const requiresState = tag[3];
+      if (!requiresRef || !requiresState || !isEventRef(requiresRef)) continue;
+      const requiresDTag = extractDTagFromRef(requiresRef);
+      if (!requiresDTag) continue;
+      const requiresType = inferTypeFromDTag(requiresDTag);
+      if (requiresType === 'item') {
+        warnings.push({
+          dTag: npcDTag,
+          category: 'dialogue-item-state',
+          message: `dialogue condition references item "${requiresDTag}" with state "${requiresState}" — item states are almost never set; the condition will always be false`,
+          tag: tag.join(', '),
+          fix: `Change the dialogue tag's state field to "" to check that the player holds the item, or remove the condition entirely.`,
+        });
+      }
+    }
+  }
+
+  // ── 15. Quest state conflict: on-enter active vs on-complete complete ─────
+  // If a dialogue's on-enter sets quest X to "active", but a quest's on-complete
+  // sets X to "complete", the dialogue could fire after the chain completes X —
+  // resetting it to active and causing double-completion on next _evalQuests pass.
+  // on-enter shape: ["on-enter", "<who>", "<state-guard>", "<action>", "<target>", "<ext-ref>"]
+  // on-complete shape: ["on-complete", "<who>", "<action>", "<target>", "<ext-ref>"]
+  const completedViaOnComplete = new Map(); // questDTag → completing quest dTag
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'quest') continue;
+    const completingDTag = getTagValue(event, 'd');
+    for (const tag of getTags(event, 'on-complete')) {
+      const action = tag[2];
+      const state = tag[3];
+      const targetRef = tag[4];
+      if (action === 'set-state' && state === 'complete' && isEventRef(targetRef)) {
+        const targetDTag = extractDTagFromRef(targetRef);
+        if (targetDTag) completedViaOnComplete.set(targetDTag, completingDTag);
+      }
+    }
+  }
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'dialogue') continue;
+    const dialogueDTag = getTagValue(event, 'd') || '?';
+    for (const tag of getTags(event, 'on-enter')) {
+      const action = tag[3];
+      const state = tag[4];
+      const targetRef = tag[5];
+      if (action === 'set-state' && state === 'active' && isEventRef(targetRef)) {
+        const targetDTag = extractDTagFromRef(targetRef);
+        const completingQuest = completedViaOnComplete.get(targetDTag);
+        if (completingQuest) {
+          warnings.push({
+            dTag: dialogueDTag,
+            category: 'quest-state-conflict',
+            message: `on-enter sets quest "${targetDTag}" to active, but "${completingQuest}" already sets it to complete via on-complete — if this dialogue fires after that chain, the quest resets and double-completes`,
+            tag: tag.join(', '),
+            fix: `Remove the set-state active tag from this dialogue's on-enter. The quest should be activated by its own requires chain, not reset here.`,
+          });
+        }
+      }
+    }
+  }
+
+  // ── 16. Orphaned items ────────────────────────────────────────────────────
+  // An item that is never placed in a place AND never targeted by a give-item
+  // action cannot be obtained by the player. Scan all on-* tags for give-item.
+  const reachableItemRefs = new Set();
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'place') continue;
+    for (const tag of getTags(event, 'item')) {
+      const refDTag = extractDTagFromRef(tag[1]);
+      if (refDTag) reachableItemRefs.add(refDTag);
+    }
+  }
+  for (const event of events) {
+    for (const tag of event.tags || []) {
+      if (!tag[0]?.startsWith('on-')) continue;
+      for (let i = 1; i < tag.length - 1; i++) {
+        if (tag[i] === 'give-item' && isEventRef(tag[i + 1])) {
+          const refDTag = extractDTagFromRef(tag[i + 1]);
+          if (refDTag) reachableItemRefs.add(refDTag);
+        }
+      }
+    }
+  }
+  for (const event of events) {
+    if (getTagValue(event, 'type') !== 'item') continue;
+    const itemDTag = getTagValue(event, 'd') || '?';
+    if (!reachableItemRefs.has(itemDTag)) {
+      warnings.push({
+        dTag: itemDTag,
+        category: 'orphaned-item',
+        message: `Item is never placed in a place or given via a give-item action — players cannot obtain it`,
+        fix: `Add ["item", "<ref>"] to a place event, or add a ["give-item", "<ref>"] action to an on-complete, on-enter, or on-interact trigger.`,
+      });
+    }
+  }
+
+  // ── 17. Answer hash mismatch (sync check — collect for async verify) ────
   const puzzlesToVerify = [];
   for (const event of events) {
     const eventType = getTagValue(event, 'type');

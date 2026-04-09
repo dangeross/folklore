@@ -499,3 +499,315 @@ describe('validateWorld — hints', () => {
     expect(hints.some((h) => h.category === 'undiscoverable-verb')).toBe(false);
   });
 });
+
+// ── Portal direction check ────────────────────────────────────────────────────
+
+describe('validateWorld — portal direction', () => {
+  it('hints when portal exits are recognised directions but not opposites', () => {
+    const events = [
+      makeEvent('test:place:a', 'place', [['exit', 'north']]),
+      makeEvent('test:place:b', 'place', [['exit', 'east']]),
+      makeEvent('test:portal:bad', 'portal', [
+        ['exit', ref('test:place:a'), 'north'],
+        ['exit', ref('test:place:b'), 'east'],
+      ]),
+    ];
+    const { hints, warnings } = validateWorld(events);
+    expect(hints.some((h) => h.category === 'portal-direction' && h.dTag === 'test:portal:bad')).toBe(true);
+    expect(warnings.some((w) => w.category === 'portal-direction')).toBe(false);
+    const h = hints.find((h) => h.category === 'portal-direction');
+    expect(h.message).toContain('north');
+    expect(h.message).toContain('east');
+    expect(h.fix).toContain('south');
+  });
+
+  it('no hint when portal exits are proper opposites (north/south)', () => {
+    const events = [
+      makeEvent('test:place:a', 'place', [['exit', 'north']]),
+      makeEvent('test:place:b', 'place', [['exit', 'south']]),
+      makeEvent('test:portal:good', 'portal', [
+        ['exit', ref('test:place:a'), 'north'],
+        ['exit', ref('test:place:b'), 'south'],
+      ]),
+    ];
+    const { hints } = validateWorld(events);
+    expect(hints.some((h) => h.category === 'portal-direction')).toBe(false);
+  });
+
+  it('no hint when portal exits are proper opposites (up/down)', () => {
+    const events = [
+      makeEvent('test:place:a', 'place', [['exit', 'up']]),
+      makeEvent('test:place:b', 'place', [['exit', 'down']]),
+      makeEvent('test:portal:stairs', 'portal', [
+        ['exit', ref('test:place:a'), 'up'],
+        ['exit', ref('test:place:b'), 'down'],
+      ]),
+    ];
+    const { hints } = validateWorld(events);
+    expect(hints.some((h) => h.category === 'portal-direction')).toBe(false);
+  });
+
+  it('no hint when portal uses custom (non-directional) slot names', () => {
+    const events = [
+      makeEvent('test:place:a', 'place', [['exit', 'passage']]),
+      makeEvent('test:place:b', 'place', [['exit', 'entrance']]),
+      makeEvent('test:portal:custom', 'portal', [
+        ['exit', ref('test:place:a'), 'passage'],
+        ['exit', ref('test:place:b'), 'entrance'],
+      ]),
+    ];
+    const { hints } = validateWorld(events);
+    expect(hints.some((h) => h.category === 'portal-direction')).toBe(false);
+  });
+
+  it('no hint for one-way portal (single exit tag)', () => {
+    const events = [
+      makeEvent('test:place:a', 'place', [['exit', 'north']]),
+      makeEvent('test:portal:oneway', 'portal', [
+        ['exit', ref('test:place:a'), 'north'],
+      ]),
+    ];
+    const { hints } = validateWorld(events);
+    expect(hints.some((h) => h.category === 'portal-direction')).toBe(false);
+  });
+
+  it('hints for east/west mismatch (east/north)', () => {
+    const events = [
+      makeEvent('test:place:a', 'place', [['exit', 'east']]),
+      makeEvent('test:place:b', 'place', [['exit', 'north']]),
+      makeEvent('test:portal:ew', 'portal', [
+        ['exit', ref('test:place:a'), 'east'],
+        ['exit', ref('test:place:b'), 'north'],
+      ]),
+    ];
+    const { hints } = validateWorld(events);
+    expect(hints.some((h) => h.category === 'portal-direction')).toBe(true);
+  });
+});
+
+// ── Orphaned NPCs ─────────────────────────────────────────────────────────────
+
+describe('validateWorld — orphaned NPCs', () => {
+  it('warns when an NPC is not placed in any place', () => {
+    const events = [
+      makeEvent('test:place:room', 'place', [], 'A room.'),
+      makeEvent('test:npc:ghost', 'npc', [['title', 'The Ghost']], 'A ghost.'),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'orphaned-npc' && w.dTag === 'test:npc:ghost')).toBe(true);
+    const w = warnings.find((w) => w.category === 'orphaned-npc');
+    expect(w.fix).toBeTruthy();
+  });
+
+  it('no warning when NPC is placed in a place', () => {
+    const events = [
+      makeEvent('test:place:room', 'place', [
+        ['npc', ref('test:npc:guard')],
+      ], 'A room.'),
+      makeEvent('test:npc:guard', 'npc', [['title', 'Guard']], 'A guard.'),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'orphaned-npc')).toBe(false);
+  });
+
+  it('no orphaned-npc warning when no NPC events exist', () => {
+    const events = [
+      makeEvent('test:place:room', 'place', [], 'A room.'),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'orphaned-npc')).toBe(false);
+  });
+
+  it('flags multiple orphaned NPCs independently', () => {
+    const place = makeEvent('test:place:room', 'place', [
+      ['npc', ref('test:npc:placed')],
+    ], 'A room.');
+    const events = [
+      place,
+      makeEvent('test:npc:placed', 'npc', [['title', 'Placed']], 'Here.'),
+      makeEvent('test:npc:lost-a', 'npc', [['title', 'Lost A']], 'Nowhere.'),
+      makeEvent('test:npc:lost-b', 'npc', [['title', 'Lost B']], 'Nowhere.'),
+    ];
+    const { warnings } = validateWorld(events);
+    const orphans = warnings.filter((w) => w.category === 'orphaned-npc');
+    expect(orphans).toHaveLength(2);
+    expect(orphans.map((w) => w.dTag).sort()).toEqual(['test:npc:lost-a', 'test:npc:lost-b']);
+  });
+});
+
+// ── Dialogue item condition non-empty state ───────────────────────────────────
+
+describe('validateWorld — dialogue item condition', () => {
+  it('warns when dialogue item condition has non-empty state ("held")', () => {
+    const events = [
+      makeEvent('test:npc:vendor', 'npc', [
+        ['dialogue', ref('test:dialogue:special'), ref('test:item:coin'), 'held'],
+      ]),
+      makeEvent('test:dialogue:special', 'dialogue'),
+      makeEvent('test:item:coin', 'item', [['title', 'Coin']]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'dialogue-item-state' && w.dTag === 'test:npc:vendor')).toBe(true);
+    const w = warnings.find((w) => w.category === 'dialogue-item-state');
+    expect(w.message).toContain('held');
+    expect(w.fix).toContain('""');
+  });
+
+  it('no warning when dialogue item condition has empty state', () => {
+    const events = [
+      makeEvent('test:npc:vendor', 'npc', [
+        ['dialogue', ref('test:dialogue:special'), ref('test:item:coin'), ''],
+      ]),
+      makeEvent('test:dialogue:special', 'dialogue'),
+      makeEvent('test:item:coin', 'item', [['title', 'Coin']]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'dialogue-item-state')).toBe(false);
+  });
+
+  it('no warning when dialogue condition references a quest (not item)', () => {
+    const events = [
+      makeEvent('test:npc:vendor', 'npc', [
+        ['dialogue', ref('test:dialogue:special'), ref('test:quest:done'), 'complete'],
+      ]),
+      makeEvent('test:dialogue:special', 'dialogue'),
+      makeEvent('test:quest:done', 'quest', [['title', 'Done']]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'dialogue-item-state')).toBe(false);
+  });
+
+  it('no warning when dialogue tag has no state field', () => {
+    const events = [
+      makeEvent('test:npc:vendor', 'npc', [
+        ['dialogue', ref('test:dialogue:default')],
+      ]),
+      makeEvent('test:dialogue:default', 'dialogue'),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'dialogue-item-state')).toBe(false);
+  });
+});
+
+// ── Quest state conflict ──────────────────────────────────────────────────────
+
+describe('validateWorld — quest state conflict', () => {
+  it('warns when dialogue on-enter sets quest active that a quest on-complete sets complete', () => {
+    const events = [
+      makeEvent('test:quest:chain', 'quest', [
+        ['on-complete', '', 'set-state', 'complete', ref('test:quest:sub')],
+      ]),
+      makeEvent('test:quest:sub', 'quest'),
+      makeEvent('test:dialogue:bad', 'dialogue', [
+        ['on-enter', 'player', '', 'set-state', 'active', ref('test:quest:sub')],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'quest-state-conflict' && w.dTag === 'test:dialogue:bad')).toBe(true);
+    const w = warnings.find((w) => w.category === 'quest-state-conflict');
+    expect(w.message).toContain('test:quest:sub');
+    expect(w.message).toContain('test:quest:chain');
+  });
+
+  it('no warning when on-enter active target is not completed by any quest on-complete', () => {
+    const events = [
+      makeEvent('test:quest:sub', 'quest'),
+      makeEvent('test:dialogue:safe', 'dialogue', [
+        ['on-enter', 'player', '', 'set-state', 'active', ref('test:quest:sub')],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'quest-state-conflict')).toBe(false);
+  });
+
+  it('no warning when on-enter sets quest complete (not active)', () => {
+    const events = [
+      makeEvent('test:quest:chain', 'quest', [
+        ['on-complete', '', 'set-state', 'complete', ref('test:quest:sub')],
+      ]),
+      makeEvent('test:quest:sub', 'quest'),
+      makeEvent('test:dialogue:ok', 'dialogue', [
+        ['on-enter', 'player', '', 'set-state', 'complete', ref('test:quest:sub')],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'quest-state-conflict')).toBe(false);
+  });
+});
+
+// ── Orphaned items ────────────────────────────────────────────────────────────
+
+describe('validateWorld — orphaned items', () => {
+  it('warns when item is never placed or given', () => {
+    const events = [
+      makeEvent('test:place:room', 'place', [], 'A room.'),
+      makeEvent('test:item:key', 'item', [['title', 'Key']]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'orphaned-item' && w.dTag === 'test:item:key')).toBe(true);
+    const w = warnings.find((w) => w.category === 'orphaned-item');
+    expect(w.fix).toBeTruthy();
+  });
+
+  it('no warning when item is placed in a place', () => {
+    const events = [
+      makeEvent('test:place:room', 'place', [
+        ['item', ref('test:item:key')],
+      ], 'A room.'),
+      makeEvent('test:item:key', 'item', [['title', 'Key']]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'orphaned-item')).toBe(false);
+  });
+
+  it('no warning when item is given via quest on-complete give-item', () => {
+    const events = [
+      makeEvent('test:place:room', 'place', [], 'A room.'),
+      makeEvent('test:item:reward', 'item', [['title', 'Reward']]),
+      makeEvent('test:quest:done', 'quest', [
+        ['on-complete', '', 'give-item', ref('test:item:reward')],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'orphaned-item')).toBe(false);
+  });
+
+  it('no warning when item is given via dialogue on-enter give-item', () => {
+    const events = [
+      makeEvent('test:place:room', 'place', [], 'A room.'),
+      makeEvent('test:item:note', 'item', [['title', 'Note']]),
+      makeEvent('test:dialogue:give', 'dialogue', [
+        ['on-enter', 'player', '', 'give-item', ref('test:item:note')],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'orphaned-item')).toBe(false);
+  });
+
+  it('no warning when item is given via feature on-interact give-item', () => {
+    const events = [
+      makeEvent('test:place:room', 'place', [], 'A room.'),
+      makeEvent('test:item:gem', 'item', [['title', 'Gem']]),
+      makeEvent('test:feature:chest', 'feature', [
+        ['on-interact', 'open', '', 'give-item', ref('test:item:gem')],
+      ]),
+    ];
+    const { warnings } = validateWorld(events);
+    expect(warnings.some((w) => w.category === 'orphaned-item')).toBe(false);
+  });
+
+  it('flags multiple orphaned items independently', () => {
+    const events = [
+      makeEvent('test:place:room', 'place', [
+        ['item', ref('test:item:placed')],
+      ], 'A room.'),
+      makeEvent('test:item:placed', 'item', [['title', 'Placed']]),
+      makeEvent('test:item:lost-a', 'item', [['title', 'Lost A']]),
+      makeEvent('test:item:lost-b', 'item', [['title', 'Lost B']]),
+    ];
+    const { warnings } = validateWorld(events);
+    const orphans = warnings.filter((w) => w.category === 'orphaned-item');
+    expect(orphans).toHaveLength(2);
+    expect(orphans.map((w) => w.dTag).sort()).toEqual(['test:item:lost-a', 'test:item:lost-b']);
+  });
+});
