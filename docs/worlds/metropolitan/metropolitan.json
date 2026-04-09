@@ -4028,6 +4028,14 @@
           "30078:<PUBKEY>:metropolitan:feature:train-window"
         ],
         [
+          "npc",
+          "30078:<PUBKEY>:metropolitan:npc:blackmail-carrier-1"
+        ],
+        [
+          "npc",
+          "30078:<PUBKEY>:metropolitan:npc:blackmail-carrier-2"
+        ],
+        [
           "sound",
           "30078:<PUBKEY>:metropolitan:sound:train-moving",
           "ambient",
@@ -5179,34 +5187,6 @@
         ]
       ],
       "content": "He has been doing this a long time. The chair proves it — not the chair itself but what the chair has become through use. He does not hurry. He does not need to hurry. Whatever he is waiting for, he has learned that it arrives on its own schedule.\n\nThis is useful to know."
-    },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:item:debt-terms"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "item"
-        ],
-        [
-          "title",
-          "The Terms"
-        ],
-        [
-          "noun",
-          "debt",
-          "terms",
-          "arrangement"
-        ]
-      ],
-      "content": "Five jobs. Then the debt is clear.\n\nHe said it in the court at the east end of the lane, as though the terms were already agreed. The first job will come from the man at the back of Smithfield Market — she'll know him when she sees him. The others will follow.\n\nThe terms are straightforward. The timeline is not. *Then the debt is clear* is not the same as *after five jobs the debt is clear*. Ida did not ask about this. She thinks about it on the way home."
     },
     {
       "kind": 30078,
@@ -6861,6 +6841,10 @@
           "30078:<PUBKEY>:metropolitan:npc:fruit-seller"
         ],
         [
+          "npc",
+          "30078:<PUBKEY>:metropolitan:npc:shambles-job5-trader"
+        ],
+        [
           "requires",
           "30078:<PUBKEY>:metropolitan:quest:shambles-introduction",
           "",
@@ -7301,6 +7285,12 @@
           "dialogue",
           "30078:<PUBKEY>:metropolitan:dialogue:rook-senior",
           "30078:<PUBKEY>:metropolitan:quest:shambles-job-3",
+          "complete"
+        ],
+        [
+          "dialogue",
+          "30078:<PUBKEY>:metropolitan:dialogue:rook-gives-tunnel-key",
+          "30078:<PUBKEY>:metropolitan:quest:shambles-job-5",
           "complete"
         ],
         [
@@ -9367,12 +9357,6 @@
           ""
         ],
         [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:npc:constable-briggs",
-          "cautious",
-          ""
-        ],
-        [
           "on-complete",
           "",
           "set-state",
@@ -9413,12 +9397,6 @@
           "requires",
           "30078:<PUBKEY>:metropolitan:quest:briggs-chain-2",
           "complete",
-          ""
-        ],
-        [
-          "requires",
-          "30078:<PUBKEY>:metropolitan:npc:constable-briggs",
-          "cautious",
           ""
         ],
         [
@@ -14787,6 +14765,10 @@
           "30078:<PUBKEY>:metropolitan:npc:blackmail-receiver"
         ],
         [
+          "npc",
+          "30078:<PUBKEY>:metropolitan:npc:concern-watcher"
+        ],
+        [
           "feature",
           "30078:<PUBKEY>:metropolitan:feature:inn-fireplace"
         ],
@@ -15055,38 +15037,6 @@
         ]
       ],
       "content": "A wooden crate she has moved before. The same iron banding, the same stencilled mark she does not recognise. Heavier than it should be for its size.\n\nShe was told to move it from this arch to the King's Cross luggage entrance via the luggage van. She has a pass. She has done this before. *Move* it when ready."
-    },
-    {
-      "kind": 30078,
-      "tags": [
-        [
-          "d",
-          "metropolitan:feature:passage-north-exit"
-        ],
-        [
-          "t",
-          "metropolitan"
-        ],
-        [
-          "type",
-          "feature"
-        ],
-        [
-          "title",
-          "North End"
-        ],
-        [
-          "noun",
-          "north end",
-          "exit",
-          "opening"
-        ],
-        [
-          "state",
-          "default"
-        ]
-      ],
-      "content": "The passage opens onto a side street near the Paddington approach. From here she can reach the canal basin and the western stations without going above the main road.\n\nUseful. Rook was right to tell her."
     },
     {
       "kind": 30078,
