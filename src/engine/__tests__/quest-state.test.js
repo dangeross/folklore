@@ -222,3 +222,89 @@ describe('quest log filtering', () => {
     expect(text).not.toContain('Quest-b');
   });
 });
+
+// ── on-complete set-counter with external ref ──────────────────────────────
+describe('quest on-complete set-counter with external ref', () => {
+  /**
+   * Regression: quest.js only read tag[4] as extRef, so set-counter's 5th
+   * element (the external event ref) was silently dropped.  _applyCounterAction
+   * therefore targeted the wrong event (world fallback) instead of the named
+   * external event, leaving that event's counter un-reset.
+   */
+  it('resets an external event counter when on-complete fires', () => {
+    // Feature (e.g. a pot) with a counter named "total" initialised to 3
+    const pot = makeFeature('pot', {
+      state: 'simmering',
+      extraTags: [['counter', 'total', '3']],
+    });
+    const potRef = ref(`${WORLD}:feature:pot`);
+
+    // Quest auto-completes (no requires), fires set-counter total 0 on pot
+    const quest = makeQuest('order-1', {
+      requires: [],
+      onComplete: [
+        ['', 'set-counter', 'total', '0', potRef],
+      ],
+    });
+    const questRef = ref(`${WORLD}:quest:order-1`);
+
+    const place = makePlace('start', { features: [`${WORLD}:feature:pot`] });
+
+    const events = buildEvents(pot, quest, place);
+    const engine = makeEngine(events, { place: ref(`${WORLD}:place:start`) });
+
+    // Manually initialise the pot's counter in player state (as engine would on room entry)
+    engine.player.setCounter(`${potRef}:total`, 3);
+
+    // Enter the room so the engine has a currentPlace; then eval quests
+    engine.currentPlace = ref(`${WORLD}:place:start`);
+    engine._evalQuests();
+
+    // Quest should be complete
+    expect(engine.player.getState(questRef)).toBe('complete');
+    // Pot's total counter should now be 0, not 3
+    expect(engine.player.getCounter(`${potRef}:total`)).toBe(0);
+  });
+
+  it('falls back to world event when no external ref is given', () => {
+    // World event with a "potato" counter — engine constructor auto-initialises it
+    const worldEvent = {
+      kind: 30078,
+      pubkey: 'testpubkey0000000000000000000000000000000000000000000000000000',
+      created_at: 1,
+      tags: [
+        ['d', `${WORLD}:world`],
+        ['type', 'world'],
+        ['title', 'Test'],
+        ['counter', 'potato', '2'],
+      ],
+      content: '',
+    };
+    // World counters are keyed by bare d-tag, not full a-tag ref
+    const worldCounterKey = `${WORLD}:world:potato`;
+
+    const quest = makeQuest('order-1', {
+      requires: [],
+      onComplete: [
+        // no external ref — should fall back to world counter
+        ['', 'set-counter', 'potato', '0'],
+      ],
+    });
+    const questRef = ref(`${WORLD}:quest:order-1`);
+    const place = makePlace('start', {});
+
+    const events = buildEvents(worldEvent, quest, place);
+    // Engine constructor auto-initialises world counters from world event tags
+    const engine = makeEngine(events, { place: ref(`${WORLD}:place:start`) });
+
+    // Verify the engine seeded the counter correctly from the world event
+    expect(engine.player.getCounter(worldCounterKey)).toBe(2);
+
+    engine.currentPlace = ref(`${WORLD}:place:start`);
+    engine._evalQuests();
+
+    expect(engine.player.getState(questRef)).toBe('complete');
+    // Counter should have been reset to 0 via world event fallback
+    expect(engine.player.getCounter(worldCounterKey)).toBe(0);
+  });
+});

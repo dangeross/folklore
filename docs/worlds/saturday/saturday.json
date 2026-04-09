@@ -1,0 +1,494 @@
+{
+  "worldTag": "saturday",
+  "events": [
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:world"],
+        ["t", "saturday"],
+        ["w", "folklore"],
+        ["type", "world"],
+        ["title", "Saturday"],
+        ["start", "30078:<PUBKEY>:saturday:place:home"],
+        ["collaboration", "closed"],
+        ["counter", "coins", "0"],
+        ["hud", "Coins: {{coins}}"]
+      ],
+      "content": "A Saturday morning. There are things to do — and things to spend money on."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:place:home"],
+        ["t", "saturday"],
+        ["type", "place"],
+        ["title", "Front Room"],
+        ["npc", "30078:<PUBKEY>:saturday:npc:mum"],
+        ["feature", "30078:<PUBKEY>:saturday:feature:chore-list"],
+        ["feature", "30078:<PUBKEY>:saturday:feature:sofa"],
+        ["exit", "north"],
+        ["exit", "east"],
+        ["exit", "upstairs"],
+        ["exit", "south"]
+      ],
+      "content": "Mum is in her usual chair with a mug of tea. She looks like she has been up since before the birds. There is a sofa against the wall — worth searching.\n\nKitchen is north. Back garden east. Upstairs to your bedroom. South is the street — the toy shop is down there."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:place:kitchen"],
+        ["t", "saturday"],
+        ["type", "place"],
+        ["title", "The Kitchen"],
+        ["feature", "30078:<PUBKEY>:saturday:feature:sink"],
+        ["npc", "30078:<PUBKEY>:saturday:npc:dad"],
+        ["exit", "south"]
+      ],
+      "content": "A narrow kitchen. The sink is piled with last night's dishes. Dad is at the table with the racing pages and a mug that has gone cold.\n\nFront room is south."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:place:garden"],
+        ["t", "saturday"],
+        ["type", "place"],
+        ["title", "The Back Garden"],
+        ["feature", "30078:<PUBKEY>:saturday:feature:lawn"],
+        ["exit", "west"]
+      ],
+      "content": "A rectangular strip of grass. Overdue a cut. The mower is in the shed beside it. One of its wheels wobbles.\n\nFront room is west."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:place:bedroom"],
+        ["t", "saturday"],
+        ["type", "place"],
+        ["title", "Your Bedroom"],
+        ["feature", "30078:<PUBKEY>:saturday:feature:floor"],
+        ["exit", "downstairs"]
+      ],
+      "content": "You know which piles are which. Mum does not see it that way.\n\nDownstairs is the front room."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:place:cornershop"],
+        ["t", "saturday"],
+        ["type", "place"],
+        ["title", "The Corner Shop"],
+        ["feature", "30078:<PUBKEY>:saturday:feature:sweets-stand"],
+        ["exit", "north"],
+        ["exit", "south"]
+      ],
+      "content": "A narrow shop with a bell above the door. Newspapers, bread, tins of things. A rotating stand of sweets near the counter. There is a handwritten sign: No Ball Games. You are not playing ball games.\n\nHome is north. Patel's Toys is south."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:place:toyshop"],
+        ["t", "saturday"],
+        ["type", "place"],
+        ["title", "Patel's Toys"],
+        ["npc", "30078:<PUBKEY>:saturday:npc:shopkeeper"],
+        ["feature", "30078:<PUBKEY>:saturday:feature:yoyo-shelf"],
+        ["feature", "30078:<PUBKEY>:saturday:feature:figure-shelf"],
+        ["feature", "30078:<PUBKEY>:saturday:feature:car-shelf"],
+        ["exit", "north"]
+      ],
+      "content": "A small shop that smells of cardboard and ambition. Hand-written price tags. Behind the counter stands Mr Patel.\n\nNorth is home."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:portal:home-kitchen"],
+        ["t", "saturday"],
+        ["type", "portal"],
+        ["exit", "30078:<PUBKEY>:saturday:place:home", "north", ""],
+        ["exit", "30078:<PUBKEY>:saturday:place:kitchen", "south", ""]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:portal:home-garden"],
+        ["t", "saturday"],
+        ["type", "portal"],
+        ["exit", "30078:<PUBKEY>:saturday:place:home", "east", ""],
+        ["exit", "30078:<PUBKEY>:saturday:place:garden", "west", ""]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:portal:home-bedroom"],
+        ["t", "saturday"],
+        ["type", "portal"],
+        ["exit", "30078:<PUBKEY>:saturday:place:home", "upstairs", ""],
+        ["exit", "30078:<PUBKEY>:saturday:place:bedroom", "downstairs", ""]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:portal:home-cornershop"],
+        ["t", "saturday"],
+        ["type", "portal"],
+        ["exit", "30078:<PUBKEY>:saturday:place:home", "south", ""],
+        ["exit", "30078:<PUBKEY>:saturday:place:cornershop", "north", ""]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:portal:cornershop-toyshop"],
+        ["t", "saturday"],
+        ["type", "portal"],
+        ["exit", "30078:<PUBKEY>:saturday:place:cornershop", "south", ""],
+        ["exit", "30078:<PUBKEY>:saturday:place:toyshop", "north", ""]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:feature:chore-list"],
+        ["t", "saturday"],
+        ["type", "feature"],
+        ["title", "Chore List"],
+        ["state", "posted"],
+        ["noun", "chore list", "list", "note", "chores", "envelope"]
+      ],
+      "content": "Mum's handwriting on a torn envelope:\n\nWashing up — 2 coins\nTidying your room — 2 coins\nMowing the lawn — 3 coins\n\nToy shop is south. Back by four."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:feature:sofa"],
+        ["t", "saturday"],
+        ["type", "feature"],
+        ["title", "The Sofa"],
+        ["state", "unsearched"],
+        ["noun", "sofa", "couch", "cushions"],
+        ["verb", "search", "look down", "check"],
+        ["on-interact", "search", "unsearched", "add-counter", "coins", "1"],
+        ["on-interact", "search", "unsearched", "set-state", "searched"],
+        ["on-interact", "search", "searched", "set-state", "searched"],
+        ["transition", "unsearched", "searched", "Down the back of the cushions: a coin, a pen lid, and something that might once have been a grape. (+1 coin)"],
+        ["transition", "searched", "searched", "Just the pen lid now."]
+      ],
+      "content": "A three-seater in a colour that used to have a name. Well sat-in. Things have a way of falling down the back."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:npc:dad"],
+        ["t", "saturday"],
+        ["type", "npc"],
+        ["title", "Dad"],
+        ["noun", "dad", "father"],
+        ["dialogue", "30078:<PUBKEY>:saturday:dialogue:dad-coin"],
+        ["dialogue", "30078:<PUBKEY>:saturday:dialogue:dad-after", "30078:<PUBKEY>:saturday:npc:dad", "chatted"]
+      ],
+      "content": "Dad at the kitchen table with the racing pages and a mug that has gone cold. He doesn't know this yet."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:dialogue:dad-coin"],
+        ["t", "saturday"],
+        ["type", "dialogue"],
+        ["on-enter", "player", "", "add-counter", "coins", "1"],
+        ["on-enter", "player", "", "set-state", "chatted", "30078:<PUBKEY>:saturday:npc:dad"]
+      ],
+      "content": "He reaches into his pocket without looking up from the racing pages. Here, he says. Don't tell your mother. (+1 coin)"
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:dialogue:dad-after"],
+        ["t", "saturday"],
+        ["type", "dialogue"]
+      ],
+      "content": "He's back to the racing pages."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:feature:sink"],
+        ["t", "saturday"],
+        ["type", "feature"],
+        ["title", "The Sink"],
+        ["state", "dirty"],
+        ["noun", "sink", "dishes", "washing up", "washing-up", "plates"],
+        ["verb", "wash", "clean", "do"],
+        ["on-interact", "wash", "dirty", "add-counter", "coins", "2"],
+        ["on-interact", "wash", "dirty", "set-state", "done"],
+        ["on-interact", "wash", "done", "set-state", "done"],
+        ["transition", "dirty", "done", "You wash up. The plates dry on the rack. (+2 coins)"],
+        ["transition", "done", "done", "Already done."]
+      ],
+      "content": "A pile of plates, mugs, and at least one saucepan. Nothing terrible."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:feature:lawn"],
+        ["t", "saturday"],
+        ["type", "feature"],
+        ["title", "The Lawn"],
+        ["state", "long"],
+        ["noun", "lawn", "grass", "garden", "mower"],
+        ["verb", "mow", "cut"],
+        ["on-interact", "mow", "long", "add-counter", "coins", "3"],
+        ["on-interact", "mow", "long", "set-state", "done"],
+        ["on-interact", "mow", "done", "set-state", "done"],
+        ["transition", "long", "done", "You mow the lawn in long, satisfying strips. (+3 coins)"],
+        ["transition", "done", "done", "Already done."]
+      ],
+      "content": "The grass is getting shaggy. The mower is in the shed beside it. One of its wheels wobbles."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:feature:floor"],
+        ["t", "saturday"],
+        ["type", "feature"],
+        ["title", "The Floor"],
+        ["state", "messy"],
+        ["noun", "floor", "mess", "room", "stuff", "clothes"],
+        ["verb", "tidy", "clean", "sort"],
+        ["on-interact", "tidy", "messy", "add-counter", "coins", "2"],
+        ["on-interact", "tidy", "messy", "set-state", "done"],
+        ["on-interact", "tidy", "done", "set-state", "done"],
+        ["transition", "messy", "done", "You sort the clothes into rough piles, shove them in the wardrobe, and call it done. (+2 coins)"],
+        ["transition", "done", "done", "Already done."]
+      ],
+      "content": "A floor that is more clothes than carpet. There is probably a desk under there. Mum would say tidy it."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:feature:sweets-stand"],
+        ["t", "saturday"],
+        ["type", "feature"],
+        ["title", "Sweets Stand"],
+        ["state", "normal"],
+        ["noun", "sweets stand", "sweets", "stand", "candy"],
+        ["verb", "buy"],
+        ["requires-counter", "buy", "", "coins", ">=", "1", "You haven't got a coin to spare."],
+        ["on-interact", "buy", "normal", "sub-counter", "coins", "1"],
+        ["on-interact", "buy", "normal", "give-item", "30078:<PUBKEY>:saturday:item:sweets"],
+        ["on-interact", "buy", "normal", "set-state", "bought"]
+      ],
+      "content": "A rotating wire stand packed with paper bags and foil twists. Everything is 1 coin. Buy something."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:feature:yoyo-shelf"],
+        ["t", "saturday"],
+        ["type", "feature"],
+        ["title", "Yo-yo"],
+        ["state", "normal"],
+        ["noun", "yo-yo", "yoyo"],
+        ["verb", "buy"],
+        ["requires-counter", "buy", "", "coins", ">=", "3", "That costs 3 coins. You don't have enough yet."],
+        ["on-interact", "buy", "normal", "set-state", "sold"],
+        ["on-interact", "buy", "normal", "sub-counter", "coins", "3"],
+        ["on-interact", "buy", "normal", "give-item", "30078:<PUBKEY>:saturday:item:yo-yo"],
+        ["transition", "normal", "sold", "You hand over 3 coins. Mr Patel puts the yo-yo in a paper bag."]
+      ],
+      "content": "A classic wooden yo-yo. The string is already attached. — 3 coins. (buy)"
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:feature:figure-shelf"],
+        ["t", "saturday"],
+        ["type", "feature"],
+        ["title", "Action Figure"],
+        ["state", "normal"],
+        ["noun", "action figure", "figure", "soldier"],
+        ["verb", "buy"],
+        ["requires-counter", "buy", "", "coins", ">=", "5", "That costs 5 coins. You don't have enough yet."],
+        ["on-interact", "buy", "normal", "set-state", "sold"],
+        ["on-interact", "buy", "normal", "sub-counter", "coins", "5"],
+        ["on-interact", "buy", "normal", "give-item", "30078:<PUBKEY>:saturday:item:action-figure"],
+        ["transition", "normal", "sold", "You hand over 5 coins. The action figure is yours."]
+      ],
+      "content": "A plastic soldier in moulded armour. Articulated arms. — 5 coins. (buy)"
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:feature:car-shelf"],
+        ["t", "saturday"],
+        ["type", "feature"],
+        ["title", "Remote Control Car"],
+        ["state", "normal"],
+        ["noun", "remote control car", "rc car", "car", "remote car"],
+        ["verb", "buy"],
+        ["requires-counter", "buy", "", "coins", ">=", "7", "That costs 7 coins. You'll need to do all three chores."],
+        ["on-interact", "buy", "normal", "set-state", "sold"],
+        ["on-interact", "buy", "normal", "sub-counter", "coins", "7"],
+        ["on-interact", "buy", "normal", "give-item", "30078:<PUBKEY>:saturday:item:rc-car"],
+        ["transition", "normal", "sold", "You hand over all 7 coins. Mr Patel lifts the box down from the high shelf. It's bigger than you expected. He puts it on the counter. It takes up most of the counter."]
+      ],
+      "content": "A red remote control car in a large box, pushed to the back of the top shelf. The box shows it doing things on a beach. There is no beach nearby. Batteries included, apparently. — 7 coins. (buy)"
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:item:sweets"],
+        ["t", "saturday"],
+        ["type", "item"],
+        ["title", "Bag of Sweets"],
+        ["noun", "sweets", "bag of sweets", "bag"]
+      ],
+      "content": "A small paper bag, slightly warm. Already half gone."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:item:yo-yo"],
+        ["t", "saturday"],
+        ["type", "item"],
+        ["title", "Yo-yo"],
+        ["noun", "yo-yo", "yoyo"]
+      ],
+      "content": "A wooden yo-yo. It goes down reliably. Up is less certain."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:item:action-figure"],
+        ["t", "saturday"],
+        ["type", "item"],
+        ["title", "Action Figure"],
+        ["noun", "action figure", "figure"]
+      ],
+      "content": "A plastic soldier. The left arm is already slightly loose. This is normal."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:item:rc-car"],
+        ["t", "saturday"],
+        ["type", "item"],
+        ["title", "Remote Control Car"],
+        ["noun", "remote control car", "rc car", "car"]
+      ],
+      "content": "A red remote control car. You'll need to find batteries when you get home. Not Mum's batteries."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:npc:mum"],
+        ["t", "saturday"],
+        ["type", "npc"],
+        ["title", "Mum"],
+        ["noun", "mum"],
+        ["dialogue", "30078:<PUBKEY>:saturday:dialogue:mum-default"],
+        ["dialogue", "30078:<PUBKEY>:saturday:dialogue:mum-all-done", "30078:<PUBKEY>:saturday:quest:mums-list", "complete"]
+      ],
+      "content": "Mum is in the armchair with a mug of tea. She looks like she has been up since before the birds."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:npc:shopkeeper"],
+        ["t", "saturday"],
+        ["type", "npc"],
+        ["title", "Mr Patel"],
+        ["noun", "mr patel", "patel", "shopkeeper", "shop keeper", "man"]
+      ],
+      "content": "Mr Patel behind the counter. He has a calculator and a crossword. Both are getting equal attention."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:dialogue:mum-default"],
+        ["t", "saturday"],
+        ["type", "dialogue"]
+      ],
+      "content": "Washing up, lawn, bedroom. The list is on the side. Toy shop's open till four."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:dialogue:mum-all-done"],
+        ["t", "saturday"],
+        ["type", "dialogue"]
+      ],
+      "content": "You've done everything. Go on then."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:quest:mums-list"],
+        ["t", "saturday"],
+        ["type", "quest"],
+        ["title", "Mum's List"],
+        ["requires", "30078:<PUBKEY>:saturday:feature:sink", "done", "Wash up"],
+        ["requires", "30078:<PUBKEY>:saturday:feature:lawn", "done", "Mow the lawn"],
+        ["requires", "30078:<PUBKEY>:saturday:feature:floor", "done", "Tidy bedroom"],
+        ["involves", "30078:<PUBKEY>:saturday:feature:sink"],
+        ["involves", "30078:<PUBKEY>:saturday:feature:lawn"],
+        ["involves", "30078:<PUBKEY>:saturday:feature:floor"]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "saturday:quest:best-saturday"],
+        ["t", "saturday"],
+        ["type", "quest"],
+        ["quest-type", "endgame"],
+        ["title", "Best Saturday"],
+        ["requires", "30078:<PUBKEY>:saturday:feature:car-shelf", "sold", ""]
+      ],
+      "content": "You walk home with the RC car under your arm. It's bigger than you expected and heavier. Mum is going to ask about the batteries.\n\nBest Saturday."
+    }
+
+  ]
+}

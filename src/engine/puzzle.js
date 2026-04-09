@@ -52,10 +52,11 @@ export function mixPuzzle(Engine) {
       const action = tag[2];
       const value = tag[3];
       const extRef = tag[4];
-
+      // tag[5] is the external event ref for counter actions (add/set/sub-counter)
       this._dispatchAction({
         action, target: value, extRef,
         selfDtag: this.puzzleActive, selfEvent: puzzleEvent,
+        opts: { extraRef: tag[5] },
       });
     }
 

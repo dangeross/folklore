@@ -58,10 +58,12 @@ export function mixQuest(Engine) {
         const action = tag[2];
         const value = tag[3];
         const extRef = tag[4];
-
+        // tag[5] is the external event ref for counter actions (add/set/sub-counter)
+        // where tag[4] is the amount and tag[5] is the target event
         this._dispatchAction({
           action, target: value, extRef,
           selfDtag: dtag, selfEvent: event,
+          opts: { extraRef: tag[5] },
         });
       }
     }
@@ -107,9 +109,11 @@ export function mixQuest(Engine) {
       const action = tag[2];
       const value = tag[3];
       const extRef = tag[4];
+      // tag[5] is the external event ref for counter actions (add/set/sub-counter)
       this._dispatchAction({
         action, target: value, extRef,
         selfDtag: questRef, selfEvent: questEvent,
+        opts: { extraRef: tag[5] },
       });
     }
 

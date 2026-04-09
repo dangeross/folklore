@@ -1,0 +1,297 @@
+{
+  "worldTag": "short-order",
+  "events": [
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:world"],
+        ["t", "short-order"],
+        ["type", "world"],
+        ["title", "Short Order"],
+        ["start", "30078:<PUBKEY>:short-order:place:kitchen"],
+        ["collaboration", "closed"],
+        ["state", "open"],
+        ["counter", "potato", "0"],
+        ["counter", "carrot", "0"],
+        ["counter", "onion", "0"]
+      ],
+      "content": "A text adventure about soup."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:place:kitchen"],
+        ["t", "short-order"],
+        ["type", "place"],
+        ["title", "The Kitchen"],
+        ["feature", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["feature", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["feature", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["feature", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["feature", "30078:<PUBKEY>:short-order:feature:hatch"]
+      ],
+      "content": "A galley kitchen the width of a corridor. Three ingredient bins line the left wall — potato, carrot, onion. The pot sits on the hob. At the far end, a serving hatch opens onto the street.\n\nA man in a high-vis jacket is peering through the hatch. Something warm, he says. Doesn't matter much what.\n\n(Add ingredients to the pot. When the right ones are in, the order completes. Pour the pot to start over. Don't let it burn.)"
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:feature:potato-bin"],
+        ["t", "short-order"],
+        ["type", "feature"],
+        ["title", "Potato Bin"],
+        ["state", "normal"],
+        ["noun", "potato bin", "potato", "potatoes", "spud", "spuds"],
+        ["verb", "add"],
+        ["requires-counter", "add", "30078:<PUBKEY>:short-order:feature:pot", "total", "<=", "3", "The pot is full. Pour it out first."],
+        ["on-interact", "add", "normal", "add-counter", "potato", "1"],
+        ["on-interact", "add", "normal", "add-counter", "total", "1", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["on-interact", "add", "normal", "set-state", "added"],
+        ["on-interact", "add", "added", "add-counter", "potato", "1"],
+        ["on-interact", "add", "added", "add-counter", "total", "1", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["transition", "normal", "added", "You grab a potato and drop it in. It makes a satisfying thunk."]
+      ],
+      "content": "A wooden bin of potatoes. They are mostly round. One is not."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:feature:carrot-bin"],
+        ["t", "short-order"],
+        ["type", "feature"],
+        ["title", "Carrot Bin"],
+        ["state", "normal"],
+        ["noun", "carrot bin", "carrot", "carrots"],
+        ["verb", "add"],
+        ["requires-counter", "add", "30078:<PUBKEY>:short-order:feature:pot", "total", "<=", "3", "The pot is full. Pour it out first."],
+        ["on-interact", "add", "normal", "add-counter", "carrot", "1"],
+        ["on-interact", "add", "normal", "add-counter", "total", "1", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["on-interact", "add", "normal", "set-state", "added"],
+        ["on-interact", "add", "added", "add-counter", "carrot", "1"],
+        ["on-interact", "add", "added", "add-counter", "total", "1", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["transition", "normal", "added", "A carrot goes in. Orange."]
+      ],
+      "content": "A bin of carrots. Aggressively orange."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:feature:onion-bin"],
+        ["t", "short-order"],
+        ["type", "feature"],
+        ["title", "Onion Bin"],
+        ["state", "normal"],
+        ["noun", "onion bin", "onion", "onions"],
+        ["verb", "add"],
+        ["requires-counter", "add", "30078:<PUBKEY>:short-order:feature:pot", "total", "<=", "3", "The pot is full. Pour it out first."],
+        ["on-interact", "add", "normal", "add-counter", "onion", "1"],
+        ["on-interact", "add", "normal", "add-counter", "total", "1", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["on-interact", "add", "normal", "set-state", "added"],
+        ["on-interact", "add", "added", "add-counter", "onion", "1"],
+        ["on-interact", "add", "added", "add-counter", "total", "1", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["transition", "normal", "added", "An onion drops in. Your eyes object briefly."]
+      ],
+      "content": "A bin of onions that smells like all its predecessors."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:feature:pot"],
+        ["t", "short-order"],
+        ["type", "feature"],
+        ["title", "The Pot"],
+        ["state", "empty"],
+        ["noun", "pot", "pan", "hob", "stove"],
+        ["verb", "pour", "dump", "empty"],
+        ["counter", "total", "0"],
+        ["on-counter", "up", "total", "1", "set-state", "simmering"],
+        ["on-counter", "up", "total", "4", "set-state", "burnt"],
+        ["on-counter", "down", "total", "0", "set-state", "empty"],
+        ["transition", "empty", "simmering", ""],
+        ["transition", "simmering", "burnt", "A smell arrives that is not food. The pot has crossed a line."],
+        ["transition", "burnt", "empty", "You pour it out. The drain accepts the contents without comment."],
+        ["transition", "simmering", "empty", "You pour out the pot. Fresh start."],
+        ["on-interact", "pour", "simmering", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["on-interact", "pour", "simmering", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["on-interact", "pour", "simmering", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-interact", "pour", "simmering", "set-counter", "potato", "0"],
+        ["on-interact", "pour", "simmering", "set-counter", "carrot", "0"],
+        ["on-interact", "pour", "simmering", "set-counter", "onion", "0"],
+        ["on-interact", "pour", "simmering", "set-counter", "total", "0"],
+        ["on-interact", "pour", "burnt", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["on-interact", "pour", "burnt", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["on-interact", "pour", "burnt", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-interact", "pour", "burnt", "set-counter", "potato", "0"],
+        ["on-interact", "pour", "burnt", "set-counter", "carrot", "0"],
+        ["on-interact", "pour", "burnt", "set-counter", "onion", "0"],
+        ["on-interact", "pour", "burnt", "set-counter", "total", "0"]
+      ],
+      "content": "A large enamel pot on the hob. It has heard a lot of soup."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:feature:hatch"],
+        ["t", "short-order"],
+        ["type", "feature"],
+        ["title", "The Hatch"],
+        ["state", "order-1"],
+        ["noun", "hatch", "window", "serving hatch", "counter"],
+        ["transition", "order-1", "order-2", "The man takes his bowl without looking up from his phone. A moment later a small face appears at the hatch. I want the orange one and the purple one, she says. Her mother behind her looks mortified."],
+        ["transition", "order-2", "order-3", "The child carries the bowl away two-handed, very carefully. A very large man fills the opening. Everything, he says. All of it."],
+        ["transition", "order-3", "order-4", "The large man moves on. A younger man leans in, squinting. My mate Keith was here earlier. He said it was well good. Can I have what he had?"],
+        ["transition", "order-4", "order-5", "Keith's mate nods and departs. The hatch darkens. A man in a white coat appears, bearing a clipboard. Environmental Health, he says. I'll be observing your preparation process today."],
+        ["transition", "order-5", "done", "The inspector writes something in his notebook. He caps his pen. Adequate, he says. He does not elaborate. He leaves."]
+      ],
+      "content": "A serving hatch at the far end of the kitchen. The street beyond is audible but not visible."
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:quest:order-1"],
+        ["t", "short-order"],
+        ["type", "quest"],
+        ["title", "Something Beige"],
+        ["requires", "30078:<PUBKEY>:short-order:feature:potato-bin", "added", "Add a potato"],
+        ["requires-not", "30078:<PUBKEY>:short-order:feature:carrot-bin", "added", "No carrot"],
+        ["requires-not", "30078:<PUBKEY>:short-order:feature:onion-bin", "added", "No onion"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-complete", "", "set-counter", "potato", "0"],
+        ["on-complete", "", "set-counter", "carrot", "0"],
+        ["on-complete", "", "set-counter", "onion", "0"],
+        ["on-complete", "", "set-counter", "total", "0", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["on-complete", "", "set-state", "order-2", "30078:<PUBKEY>:short-order:feature:hatch"],
+        ["on-complete", "", "set-state", "active", "30078:<PUBKEY>:short-order:quest:order-2"]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:quest:order-2"],
+        ["t", "short-order"],
+        ["type", "quest"],
+        ["title", "The Orange and Purple One"],
+        ["requires", "30078:<PUBKEY>:short-order:quest:order-2", "active", ""],
+        ["requires", "30078:<PUBKEY>:short-order:feature:carrot-bin", "added", "Add carrot"],
+        ["requires", "30078:<PUBKEY>:short-order:feature:onion-bin", "added", "Add onion"],
+        ["requires-not", "30078:<PUBKEY>:short-order:feature:potato-bin", "added", "No potato"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-complete", "", "set-counter", "potato", "0"],
+        ["on-complete", "", "set-counter", "carrot", "0"],
+        ["on-complete", "", "set-counter", "onion", "0"],
+        ["on-complete", "", "set-counter", "total", "0", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["on-complete", "", "set-state", "order-3", "30078:<PUBKEY>:short-order:feature:hatch"],
+        ["on-complete", "", "set-state", "active", "30078:<PUBKEY>:short-order:quest:order-3"]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:quest:order-3"],
+        ["t", "short-order"],
+        ["type", "quest"],
+        ["title", "Everything Please"],
+        ["requires", "30078:<PUBKEY>:short-order:quest:order-3", "active", ""],
+        ["requires", "30078:<PUBKEY>:short-order:feature:potato-bin", "added", "Add potato"],
+        ["requires", "30078:<PUBKEY>:short-order:feature:carrot-bin", "added", "Add carrot"],
+        ["requires", "30078:<PUBKEY>:short-order:feature:onion-bin", "added", "Add onion"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-complete", "", "set-counter", "potato", "0"],
+        ["on-complete", "", "set-counter", "carrot", "0"],
+        ["on-complete", "", "set-counter", "onion", "0"],
+        ["on-complete", "", "set-counter", "total", "0", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["on-complete", "", "set-state", "order-4", "30078:<PUBKEY>:short-order:feature:hatch"],
+        ["on-complete", "", "set-state", "active", "30078:<PUBKEY>:short-order:quest:order-4"]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:quest:order-4"],
+        ["t", "short-order"],
+        ["type", "quest"],
+        ["title", "Like My Mate Had"],
+        ["requires", "30078:<PUBKEY>:short-order:quest:order-4", "active", ""],
+        ["requires", "30078:<PUBKEY>:short-order:feature:potato-bin", "added", "Add potato"],
+        ["requires-not", "30078:<PUBKEY>:short-order:feature:carrot-bin", "added", "No carrot"],
+        ["requires-not", "30078:<PUBKEY>:short-order:feature:onion-bin", "added", "No onion"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-complete", "", "set-counter", "potato", "0"],
+        ["on-complete", "", "set-counter", "carrot", "0"],
+        ["on-complete", "", "set-counter", "onion", "0"],
+        ["on-complete", "", "set-counter", "total", "0", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["on-complete", "", "set-state", "order-5", "30078:<PUBKEY>:short-order:feature:hatch"],
+        ["on-complete", "", "set-state", "active", "30078:<PUBKEY>:short-order:quest:order-5"]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:quest:order-5"],
+        ["t", "short-order"],
+        ["type", "quest"],
+        ["title", "The Inspection"],
+        ["requires", "30078:<PUBKEY>:short-order:quest:order-5", "active", ""],
+        ["requires", "30078:<PUBKEY>:short-order:feature:potato-bin", "added", "Add potato"],
+        ["requires", "30078:<PUBKEY>:short-order:feature:carrot-bin", "added", "Add carrot"],
+        ["requires", "30078:<PUBKEY>:short-order:feature:onion-bin", "added", "Add onion"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["involves", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:potato-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:carrot-bin"],
+        ["on-complete", "", "set-state", "normal", "30078:<PUBKEY>:short-order:feature:onion-bin"],
+        ["on-complete", "", "set-counter", "potato", "0"],
+        ["on-complete", "", "set-counter", "carrot", "0"],
+        ["on-complete", "", "set-counter", "onion", "0"],
+        ["on-complete", "", "set-counter", "total", "0", "30078:<PUBKEY>:short-order:feature:pot"],
+        ["on-complete", "", "set-state", "done", "30078:<PUBKEY>:short-order:feature:hatch"]
+      ],
+      "content": ""
+    },
+
+    {
+      "kind": 30078,
+      "tags": [
+        ["d", "short-order:quest:service-complete"],
+        ["t", "short-order"],
+        ["type", "quest"],
+        ["title", "Service"],
+        ["quest-type", "endgame", "open"],
+        ["requires", "30078:<PUBKEY>:short-order:quest:order-5", "complete", ""]
+      ],
+      "content": "The inspector writes *adequate* in his notebook.\n\nHe does not elaborate. He caps his pen with a small click and moves on down the street.\n\nThe kitchen is quiet for the first time all day. The pot is empty. The bins are as they were. Outside, someone else is already queuing."
+    }
+
+  ]
+}

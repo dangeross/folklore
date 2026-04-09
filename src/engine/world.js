@@ -219,7 +219,8 @@ export function findByNoun(events, placeEvent, noun) {
       if (!event) continue;
 
       const title = getTag(event, 'title')?.toLowerCase() || '';
-      if (title.toLowerCase().includes(noun)) return { event, dtag, type };
+      // Use word-boundary match so "pot" doesn't match "Potato Bin" (prefix-only)
+      if (title && new RegExp(`\\b${noun.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(title)) return { event, dtag, type };
 
       const nounTags = getTags(event, 'noun');
       for (const nt of nounTags) {

@@ -276,13 +276,27 @@ describe('findByNoun', () => {
     expect(result.dtag).toBe(ref(`${WORLD}:feature:lever`));
   });
 
-  it('finds item by title substring', () => {
+  it('finds item by title word match', () => {
     const sword = makeItem('rusty sword', { nouns: [['sword']] });
     const place = makePlace('room', { items: [`${WORLD}:item:rusty sword`] });
     const events = buildEvents(place, sword);
     const result = findByNoun(events, place, 'rusty');
     expect(result).not.toBeNull();
     expect(result.type).toBe('item');
+  });
+
+  it('does not match noun as prefix of title word', () => {
+    // "pot" should NOT match "Potato Bin" — it is only a prefix, not a whole word
+    const bin = makeFeature('potato-bin', {});
+    bin.tags = bin.tags.map((t) => t[0] === 'title' ? ['title', 'Potato Bin'] : t);
+    const pot = makeFeature('pot', {});
+    pot.tags = pot.tags.map((t) => t[0] === 'title' ? ['title', 'The Pot'] : t);
+    const place = makePlace('room', { features: [`${WORLD}:feature:potato-bin`, `${WORLD}:feature:pot`] });
+    const events = buildEvents(place, bin, pot);
+    const result = findByNoun(events, place, 'pot');
+    expect(result).not.toBeNull();
+    // Should match the actual pot, not the potato bin
+    expect(result.dtag).toBe(ref(`${WORLD}:feature:pot`));
   });
 
   it('returns null for unknown noun', () => {

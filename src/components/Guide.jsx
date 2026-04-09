@@ -44,6 +44,7 @@ const ADVANCED = [
 const SHOWCASES = [
   { id: 'cartographers-instrument', title: "The Cartographer's Instrument", subtitle: 'A musical puzzle world' },
   { id: 'the-courier', title: 'The Courier', subtitle: 'A logistics puzzle in five rooms' },
+  { id: 'saturday', title: 'Saturday', subtitle: 'Counters, economy, budget decisions' },
 ];
 
 const PAGES = [...TUTORIALS, ...SHOWCASES, ...ADVANCED];
