@@ -20,6 +20,7 @@ export default function DraftListPanel({
   drafts,
   events,
   worldSlug,
+  publishStatus,
   onClose,
   onEdit,
   onDelete,
@@ -350,6 +351,21 @@ export default function DraftListPanel({
               Import Scenarios
             </DOSButton>
           </>
+        )}
+
+        {/* Publish failure warning */}
+        {publishStatus?.failed > 0 && !publishProgress && (
+          <div style={{ fontSize: '0.6rem', color: 'var(--colour-error)', marginBottom: '0.25rem' }}>
+            ⚠ Last publish: {publishStatus.failed}/{publishStatus.total} failed
+            {Object.keys(publishStatus.relayErrors || {}).length > 0 && (
+              <span style={{ color: 'var(--colour-dim)' }}>
+                {' '}({Object.entries(publishStatus.relayErrors).map(([url, n]) => {
+                  try { return `${new URL(url).hostname}: ${n}`; } catch { return `${url}: ${n}`; }
+                }).join(', ')})
+              </span>
+            )}
+            {' — '}republish to retry
+          </div>
         )}
 
         {/* Bulk publish */}

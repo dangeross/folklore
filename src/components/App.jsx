@@ -32,7 +32,7 @@ import SharePanel from './SharePanel.jsx';
 import IdentityButton from './ui/IdentityButton.jsx';
 import LoginPanel from './ui/LoginPanel.jsx';
 import ProfileEditor from './ui/ProfileEditor.jsx';
-import { loadDrafts, saveDraft, updateDraft, deleteDraft, clearDrafts, importEvents, exportDrafts, bulkPublish, retryFailed, loadAnswers } from '../builder/draftStore.js';
+import { loadDrafts, saveDraft, updateDraft, deleteDraft, clearDrafts, importEvents, exportDrafts, bulkPublish, retryFailed, loadAnswers, savePublishStatus, loadPublishStatus, clearPublishStatus } from '../builder/draftStore.js';
 import { validateWorld, verifyPuzzleHashes } from '../builder/validateWorld.js';
 import { useTypeahead } from '../hooks/useTypeahead.js';
 import RelaySettingsPanel from './RelaySettingsPanel.jsx';
@@ -176,6 +176,7 @@ export default function App() {
   const [drafts, setDrafts] = useState(() => loadDrafts(worldTag || ''));
   const draftAnswers = useMemo(() => loadAnswers(worldTag || ''), [worldTag, drafts]); // eslint-disable-line react-hooks/exhaustive-deps
   const [publishResult, setPublishResult] = useState(null); // { published, failed, errors, details }
+  const [publishStatus, setPublishStatus] = useState(() => loadPublishStatus(worldTag || '')); // persisted failure summary
   const [showRelaySettings, setShowRelaySettings] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const [showTrust, setShowTrust] = useState(false);
@@ -989,6 +990,13 @@ export default function App() {
           onRetryFailed={async () => {
             const updated = await retryFailed(publishResult, pool);
             setPublishResult(updated);
+            if (updated.failed === 0) {
+              clearPublishStatus(worldTag);
+              setPublishStatus(null);
+            } else {
+              savePublishStatus(worldTag, updated);
+              setPublishStatus(loadPublishStatus(worldTag));
+            }
           }}
         />
       )}
@@ -1056,6 +1064,7 @@ export default function App() {
           drafts={drafts}
           events={mergedEvents}
           worldSlug={worldTag}
+          publishStatus={publishStatus}
           pendingImportData={pendingImportRef.current?.data || null}
           onPendingImportConsumed={() => { pendingImportRef.current = null; }}
           zIndex={undefined}
@@ -1110,6 +1119,13 @@ export default function App() {
             const result = await bulkPublish(worldTag, identity.pubkey, identity.signer, pool, { onProgress });
             setDrafts(loadDrafts(worldTag));
             setPublishResult(result);
+            if (result.failed > 0) {
+              savePublishStatus(worldTag, result);
+              setPublishStatus(loadPublishStatus(worldTag));
+            } else {
+              clearPublishStatus(worldTag);
+              setPublishStatus(null);
+            }
           }}
           onDeleteAll={() => {
             clearDrafts(worldTag);

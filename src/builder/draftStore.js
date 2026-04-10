@@ -13,6 +13,7 @@
  */
 
 const STORAGE_PREFIX = 'drafts:';
+const PUBLISH_STATUS_PREFIX = 'publishStatus:';
 export const PUBKEY_PLACEHOLDER = '<PUBKEY>';
 
 /**
@@ -490,6 +491,45 @@ export function resolvePubkeyPlaceholder(event, pubkey) {
  * @param {Function} [options.onProgress] - called after each event with { total, published, failed, details }
  * @returns {Promise<{ published: number, failed: number, errors: string[], details: Array }>}
  */
+/**
+ * Persist a lightweight publish failure summary for a world.
+ * Only saved when failed > 0 so the UI can warn the author on next open.
+ *
+ * Shape: { failed, total, relayErrors: { url: count }, timestamp }
+ */
+export function savePublishStatus(worldSlug, result) {
+  if (!result) return;
+  const { failed, details } = result;
+  const total = (result.published || 0) + (result.failed || 0);
+  const relayErrors = {};
+  for (const d of details || []) {
+    for (const [url, status] of Object.entries(d.relays || {})) {
+      if (status === 'failed') relayErrors[url] = (relayErrors[url] || 0) + 1;
+    }
+  }
+  const status = { failed, total, relayErrors, timestamp: Date.now() };
+  try {
+    localStorage.setItem(`${PUBLISH_STATUS_PREFIX}${worldSlug}`, JSON.stringify(status));
+  } catch { /* storage full — not critical */ }
+}
+
+/** Load the last publish failure summary, or null if none / all clean. */
+export function loadPublishStatus(worldSlug) {
+  try {
+    const raw = localStorage.getItem(`${PUBLISH_STATUS_PREFIX}${worldSlug}`);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Clear the stored publish status (call after a fully successful publish). */
+export function clearPublishStatus(worldSlug) {
+  try {
+    localStorage.removeItem(`${PUBLISH_STATUS_PREFIX}${worldSlug}`);
+  } catch { /* ignore */ }
+}
+
 export async function bulkPublish(worldSlug, pubkey, signer, pool, options = {}) {
   const { publishEvent, encryptEventContent } = await import('./eventBuilder.js');
   const store = readStore(worldSlug);
