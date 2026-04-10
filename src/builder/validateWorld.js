@@ -212,6 +212,13 @@ export function validateWorld(events, answers = {}) {
   }
 
   // ── 5. Portal exit slot validation ──────────────────────────────────────
+  // Only validate standard navigable directions — custom slot names (e.g.
+  // "remember", "arrive") are traverse-internal and don't need a place exit tag.
+  const STANDARD_SLOTS = new Set([
+    'north', 'south', 'east', 'west', 'up', 'down', 'in', 'out', 'back',
+    'northeast', 'northwest', 'southeast', 'southwest',
+    'enter', 'exit', 'leave',
+  ]);
   // Build a map of place d-tags → declared exit slots
   const placeExitSlots = new Map();
   for (const event of events) {
@@ -220,7 +227,9 @@ export function validateWorld(events, answers = {}) {
     const slots = new Set(getTags(event, 'exit').map((t) => t[1]));
     placeExitSlots.set(placeDTag, slots);
   }
-  // Check each portal's exit tags claim slots that exist on the place
+  // Check each portal's exit tags claim slots that exist on the place.
+  // Only checked for standard navigable directions; traverse-only portals
+  // use custom slot names and are intentionally exempt.
   for (const event of events) {
     if (getTagValue(event, 'type') !== 'portal') continue;
     const portalDTag = getTagValue(event, 'd') || '?';
@@ -228,6 +237,7 @@ export function validateWorld(events, answers = {}) {
       const placeRef = exitTag[1];
       const slot = exitTag[2];
       if (!placeRef || !slot) continue;
+      if (!STANDARD_SLOTS.has(slot)) continue; // traverse-internal slot — skip
       const placeDTag = extractDTagFromRef(placeRef) || placeRef;
       const declaredSlots = placeExitSlots.get(placeDTag);
       if (declaredSlots && !declaredSlots.has(slot)) {

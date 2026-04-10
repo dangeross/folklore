@@ -713,14 +713,6 @@
         [
           "feature",
           "30078:<PUBKEY>:frontier:feature:old-photograph"
-        ],
-        [
-          "exit",
-          "remember"
-        ],
-        [
-          "exit",
-          "return"
         ]
       ],
       "content": "Low-ceilinged and amber-lit, Rennick's doubles as general store, post office, and the closest thing Harrow has to a public square. Shelves of dry goods line one wall. The bar runs the length of the other. A notice board near the door is thick with papers — wanted posters, lost notices, a hand-drawn map of trail conditions that someone updates irregularly.\n\nCole Rennick works the bar with the particular economy of someone who has done this for thirty years and doesn't intend to stop."
@@ -6419,10 +6411,6 @@
           "colour",
           "npc",
           "#d4c088"
-        ],
-        [
-          "exit",
-          "arrive"
         ]
       ],
       "content": "The same saloon, but everything is new. The wood isn't stained yet. The bar gleams. The air smells of fresh pine and tobacco, not age and dust.\n\nTwo men sit at the bar. One of them is Cole Rennick — young, unlined, laughing at something. The other man sits with his back to you."
