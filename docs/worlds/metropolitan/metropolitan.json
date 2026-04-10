@@ -5256,6 +5256,12 @@
           "set-state",
           "active",
           "30078:<PUBKEY>:metropolitan:quest:debt-begins"
+        ],
+        [
+          "requires-not",
+          "30078:<PUBKEY>:metropolitan:quest:debt-begins",
+          "complete",
+          ""
         ]
       ],
       "content": "She looks at Ida for a moment. Then at the shelf. *There's bread*, she says. *Not much.*\n\nA pause. She picks up the cloth she was folding. *A man came this morning. While you were out. He asked for you by name.* She does not look up. *He said he'd be at the court at the east end of the lane. That you'd know what it was about.*\n\nShe does not ask what it is about. Ida does not tell her."
@@ -5347,6 +5353,12 @@
           "set-state",
           "active",
           "30078:<PUBKEY>:metropolitan:quest:debt-begins"
+        ],
+        [
+          "requires-not",
+          "30078:<PUBKEY>:metropolitan:quest:debt-begins",
+          "complete",
+          ""
         ]
       ],
       "content": "Callow looks at Ida for a long moment. The kind of look that is taking stock, not expressing anything.\n\n*You took something that wasn't yours*, he says. *At King's Cross. Yesterday morning.* He does not raise his voice. *The wallet. You still have it.*\n\nIt is not a question."
@@ -17035,6 +17047,18 @@
           "set-state",
           "complete",
           "30078:<PUBKEY>:metropolitan:quest:concern-job-4"
+        ],
+        [
+          "requires-not",
+          "30078:<PUBKEY>:metropolitan:quest:concern-job-5",
+          "active",
+          ""
+        ],
+        [
+          "requires-not",
+          "30078:<PUBKEY>:metropolitan:quest:concern-job-5",
+          "complete",
+          ""
         ]
       ],
       "content": "*Good*, he says. He makes the note. He looks at her for a moment longer than usual.\n\n*One final task*, he says. *There is a document in a solicitor's office on Baker Street. A single page from a ledger. I need it destroyed — not removed, destroyed. The office will be empty on Wednesday.* He looks at her steadily. *This is the last task. After this, the engagement ends.*\n\nHe opens a drawer and places a key on the desk. *The office is above a tobacconist. You've been there before.*\n\nHe knows she has. He has known for some time."
@@ -17234,7 +17258,6 @@
       ],
       "content": "A single page from a solicitor's ledger — the real ledger, not the coded one. Payments, names, dates. The authorising signature at the bottom of every entry: Harwick.\n\nThe entries describe payments made from Metropolitan Railway Company funds to individuals across three categories: medical professionals, legal witnesses, and — in the final column, listed without description — *community officers*. Men in the Shambles, she understands now. Men in the Quill.\n\nThe page connects all three factions to a single source of funds. A single name.\n\nHarwick sent her here to destroy this. She read it instead. She folded it. It is in her coat.\n\nShe knows what it is. She does not yet know what to do with it."
     },
-
     {
       "kind": 30078,
       "tags": [
@@ -18511,6 +18534,10 @@
           "feature"
         ],
         [
+          "title",
+          "Harwick"
+        ],
+        [
           "noun",
           "harwick",
           "man",
@@ -18523,28 +18550,63 @@
           "observe"
         ],
         [
+          "state",
+          "default"
+        ],
+        [
+          "transition",
+          "default",
+          "observed",
+          "She stays in her seat and watches him in the window reflection.\n\nHe is talking to himself — quietly, precisely, the rhythm of a legal argument. She catches: *compulsory purchase confirmation, Q3, the Clerkenwell schedule moves forward regardless.* Then: *the girl is a complication, not a threat. Complications resolve.*\n\nHe looks out the window.\n\n*Saffron Hill is on the confirmed list*, he says. To himself, or to the tunnel wall. *Nothing changes that.*\n\nIda looks at the window. Her own face looks back.\n\nThe train enters Paddington."
+        ],
+        [
           "on-interact",
           "watch",
-          "",
-          "start-dialogue",
-          "30078:<PUBKEY>:metropolitan:dialogue:harwick-overheard"
+          "default",
+          "set-state",
+          "observed"
+        ],
+        [
+          "on-interact",
+          "watch",
+          "default",
+          "set-state",
+          "complete",
+          "30078:<PUBKEY>:metropolitan:quest:harwick-train"
+        ],
+        [
+          "on-interact",
+          "watch",
+          "default",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:metropolitan:clue:harwick-overheard"
         ],
         [
           "on-interact",
           "observe",
-          "",
-          "start-dialogue",
-          "30078:<PUBKEY>:metropolitan:dialogue:harwick-overheard"
+          "default",
+          "set-state",
+          "observed"
         ],
         [
           "on-interact",
-          "examine",
-          "",
-          "start-dialogue",
-          "30078:<PUBKEY>:metropolitan:dialogue:harwick-overheard"
+          "observe",
+          "default",
+          "set-state",
+          "complete",
+          "30078:<PUBKEY>:metropolitan:quest:harwick-train"
+        ],
+        [
+          "on-interact",
+          "observe",
+          "default",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:metropolitan:clue:harwick-overheard"
         ]
       ],
-      "content": ""
+      "content": "A well-dressed man in a dark coat, sitting across the compartment. His lips move faintly as he rehearses something."
     },
     {
       "kind": 30078,
@@ -19156,7 +19218,6 @@
       ],
       "content": "He is still for a moment.\n\n*Then there's nothing I can do for you*, he says. *And nothing I can do for your family.*\n\nHe stands — she has seen him stand once before, the day he introduced her to Rook. He is shorter than she is now. She does not think she has grown; she thinks she has simply stopped looking up at him.\n\n*You should go*, he says. *Before someone finds you here.*\n\nHe sits back down. He picks up the object from the table — the same small object he was always examining — and looks at it.\n\nShe leaves. She does not look back. Behind her she can hear him breathing."
     },
-
     {
       "kind": 30078,
       "tags": [
@@ -19239,11 +19300,6 @@
         [
           "type",
           "consequence"
-        ],
-        [
-          "set-counter",
-          "moves-act3",
-          "40"
         ],
         [
           "respawn",
@@ -20543,40 +20599,99 @@
     {
       "kind": 30078,
       "tags": [
-        ["d", "metropolitan:quest:endgame-expose"],
-        ["t", "metropolitan"],
-        ["type", "quest"],
-        ["title", "Expose"],
-        ["quest-type", "endgame"],
-        ["requires", "30078:<PUBKEY>:metropolitan:world", "choice-expose", ""]
+        [
+          "d",
+          "metropolitan:quest:endgame-expose"
+        ],
+        [
+          "t",
+          "metropolitan"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Expose"
+        ],
+        [
+          "quest-type",
+          "endgame"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:metropolitan:world",
+          "choice-expose",
+          ""
+        ]
       ],
       "content": "Fleet Street at dawn. The Times offices. She hands the documents through a window to a man who takes them with the professional calm of someone who has received this kind of delivery before.\n\nThe story breaks in three days.\n\nThe clearance is stopped — or delayed. The legal challenge around the dig chamber's land title will take years, possibly longer. Harwick resigns. Fenn is quietly disbarred. Rook does not resign — the Shambles does not work that way — but the Smithfield operation becomes smaller and quieter for a while.\n\nSaffron Hill stands. For now. For another year at least, possibly more.\n\nIda walks back east along the Embankment as the sun comes up. The Thames is the colour of old iron. The city is beginning its morning.\n\nShe cannot be invisible anymore. The journalist, when the story breaks, will describe his source as *a young woman, remarkable familiarity with the Metropolitan Railway, declined to give her name.* The description is brief. It will be enough for the people who need to recognise it.\n\nEvery door that was open because no one noticed her is closed.\n\nShe has traded her greatest asset for the city's gratitude, which is worth nothing and everything depending on the day.\n\nThe trains are still running."
     },
     {
       "kind": 30078,
       "tags": [
-        ["d", "metropolitan:quest:endgame-bury"],
-        ["t", "metropolitan"],
-        ["type", "quest"],
-        ["title", "Bury"],
-        ["quest-type", "endgame"],
-        ["requires", "30078:<PUBKEY>:metropolitan:world", "choice-bury", ""]
+        [
+          "d",
+          "metropolitan:quest:endgame-bury"
+        ],
+        [
+          "t",
+          "metropolitan"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Bury"
+        ],
+        [
+          "quest-type",
+          "endgame"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:metropolitan:world",
+          "choice-bury",
+          ""
+        ]
       ],
       "content": "She walks home.\n\nThe signed paper is in her coat beside the ledger page and the survey. She has leverage over three factions and documentation of a conspiracy. She is twelve years old and she has been awake for two days and she is walking through Clerkenwell in the dark and she knows the names of the streets on the clearance list because she read the survey carefully.\n\nHer family's address is not on it anymore.\n\nThe other addresses are.\n\nShe does not know the families. She has never been to those courts. They are not her family, and she told Rook that plainly, and he looked at her with an expression she did not entirely understand and said nothing.\n\nThe signed paper gets her family safe. It does not get anyone else safe. She knew this when she made the choice. She paid the cost. The cost is not done being paid.\n\nSaffron Hill court at dawn. The washing lines. The cobblestones. The smell of the tannery two streets east.\n\nShe goes inside. She puts the documents somewhere she will not look at them. She cannot find them there in the morning.\n\nThe trains are still running."
     },
     {
       "kind": 30078,
       "tags": [
-        ["d", "metropolitan:quest:endgame-law"],
-        ["t", "metropolitan"],
-        ["type", "quest"],
-        ["title", "The Law"],
-        ["quest-type", "endgame"],
-        ["requires", "30078:<PUBKEY>:metropolitan:world", "choice-law", ""]
+        [
+          "d",
+          "metropolitan:quest:endgame-law"
+        ],
+        [
+          "t",
+          "metropolitan"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "The Law"
+        ],
+        [
+          "quest-type",
+          "endgame"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:metropolitan:world",
+          "choice-law",
+          ""
+        ]
       ],
       "content": "Briggs takes the statement at King's Cross the following morning, in the third-class waiting room, at the bench by the window.\n\nHe writes carefully. He asks precise questions. He thanks her when it is done — not effusively, just the word, and he means it.\n\n*What happens now?* she asks.\n\n*I file it*, he says. *The Metropolitan Police refer it to the appropriate authorities. The appropriate authorities take six months to decide it falls under a different jurisdiction. That jurisdiction takes another six months.* He looks at the documents. *It could take years.*\n\n*But it could work*, she says.\n\n*It could*, he says. *Possibly. If nothing goes wrong.*\n\nHe is honest. That is the thing about Briggs. He is honest even when honesty sounds like this.\n\nShe walks out onto the King's Cross forecourt. The flower seller is at her pitch. She looks at Ida with the attention of a woman who sees everything and prices it accordingly.\n\nIda buys a bunch of violets. She does not know why.\n\nThe trains are still running."
     },
-
     {
       "kind": 30078,
       "tags": [
@@ -20659,7 +20774,6 @@
       ],
       "content": ""
     },
-
     {
       "kind": 30078,
       "tags": [
@@ -20774,7 +20888,6 @@
       ],
       "content": "He watches the proceedings with the attention of someone taking notes in their head. He has not spoken yet. He is waiting to understand the shape of what is being asked before he commits to any position.\n\nThis is, Ida understands, exactly what Harwick would do."
     },
-
     {
       "kind": 30078,
       "tags": [
