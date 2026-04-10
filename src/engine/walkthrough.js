@@ -226,6 +226,11 @@ export async function smokeTest(events, configOverride) {
       const nouns = getTags(event, 'noun');
       if (nouns.length === 0) continue;
       const firstNoun = nouns[0][1]; // first alias
+      // Re-enter the place if a previous examine triggered a traverse (e.g. flashback)
+      if (engine.currentPlace !== placeRef) {
+        engine.enterRoom(placeRef);
+        engine.flush();
+      }
       await engine.handleCommand(`examine ${firstNoun}`);
       const output = engine.flush();
       const text = collectText(output);

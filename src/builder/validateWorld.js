@@ -522,7 +522,7 @@ export function validateWorld(events, answers = {}) {
         warnings.push({
           dTag,
           category: 'auto-cascade',
-          message: `all requires are quest/world-state checks — quest may auto-complete via _evalQuests without any player interaction`,
+          message: `all requires are quest/world-state checks — quest may complete automatically without any player interaction`,
           fix: `If player interaction is required, add ["requires", "<self-ref>", "active", ""] and have a dialogue on-enter set it active. If the cascade is intentional (e.g. a chain milestone), this warning can be ignored.`,
         });
       }
@@ -590,9 +590,9 @@ export function validateWorld(events, answers = {}) {
           warnings.push({
             dTag: dialogueDTag,
             category: 'quest-state-conflict',
-            message: `on-enter sets quest "${targetDTag}" to active, but "${completingQuest}" already sets it to complete via on-complete — if this dialogue fires after that chain, the quest resets and double-completes`,
+            message: `on-enter sets quest "${targetDTag}" to active, but "${completingQuest}" already sets it to complete — if this dialogue fires after that quest completes, the quest resets to active`,
             tag: tag.join(', '),
-            fix: `Remove the set-state active tag from this dialogue's on-enter. The quest should be activated by its own requires chain, not reset here.`,
+            fix: `Add ["requires-not", "<quest-ref>", "complete", ""] to this dialogue's event to prevent it firing after the quest is already complete.`,
           });
         }
       }

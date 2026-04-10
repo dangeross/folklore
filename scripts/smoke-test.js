@@ -59,10 +59,12 @@ function levelPrefix(level) {
 
 // ── Load ─────────────────────────────────────────────────────────────────────
 
-let events;
+let events, answers;
 try {
   const raw = readFileSync(resolve(file), 'utf8');
-  ({ events } = JSON.parse(raw));
+  const parsed = JSON.parse(raw);
+  ({ events } = parsed);
+  answers = parsed.answers || {};
 } catch (err) {
   console.error(c.red(`Failed to read "${file}": ${err.message}`));
   process.exit(1);
@@ -137,7 +139,7 @@ const {
   warnings: crossWarnings,
   hints: crossHints,
   puzzlesToVerify,
-} = validateWorld(events);
+} = validateWorld(events, answers);
 
 for (const i of crossErrors)         issues.push({ level: 'error',   eventType: getEventType(i.dTag), ...i });
 for (const i of crossWarnings)       issues.push({ level: 'warning', eventType: getEventType(i.dTag), ...i });

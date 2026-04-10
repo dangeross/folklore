@@ -596,6 +596,10 @@
           "30078:<PUBKEY>:frontier:sound:spur-distant-piano",
           "layer",
           "0.3"
+        ],
+        [
+          "exit",
+          "back"
         ]
       ],
       "content": "The main street of Harrow runs north to south, unpaved and dust-pale in the afternoon light. A handful of buildings face each other across the width of it. To the east, the land rises gently toward canyon country — the direction nobody looks at directly.\n\nWest, the land opens. No fences, no buildings — just the flat expanse of the frontier going on until it becomes sky. The old-timers in Harrow say there are things out there that haven't been named yet. Nobody who has gone far enough west has come back to contradict them.\n\nThe Spur bends both ways from here. South toward settled territory. And back east along the route most travellers came in on — a few days' ride to where the trail joins the main routes, and beyond that the places people came from. Some arrivals look that direction the way people look at things they left behind on purpose.\n\nThis is where everyone arrives. Some pass through. Some don't."
@@ -709,6 +713,14 @@
         [
           "feature",
           "30078:<PUBKEY>:frontier:feature:old-photograph"
+        ],
+        [
+          "exit",
+          "remember"
+        ],
+        [
+          "exit",
+          "return"
         ]
       ],
       "content": "Low-ceilinged and amber-lit, Rennick's doubles as general store, post office, and the closest thing Harrow has to a public square. Shelves of dry goods line one wall. The bar runs the length of the other. A notice board near the door is thick with papers — wanted posters, lost notices, a hand-drawn map of trail conditions that someone updates irregularly.\n\nCole Rennick works the bar with the particular economy of someone who has done this for thirty years and doesn't intend to stop."
@@ -6407,6 +6419,10 @@
           "colour",
           "npc",
           "#d4c088"
+        ],
+        [
+          "exit",
+          "arrive"
         ]
       ],
       "content": "The same saloon, but everything is new. The wood isn't stained yet. The bar gleams. The air smells of fresh pine and tobacco, not age and dust.\n\nTwo men sit at the bar. One of them is Cole Rennick — young, unlined, laughing at something. The other man sits with his back to you."

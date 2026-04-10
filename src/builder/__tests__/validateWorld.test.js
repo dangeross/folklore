@@ -329,7 +329,7 @@ describe('validateWorld — auto-cascade detection', () => {
     const { warnings } = validateWorld(events);
     const w = warnings.find((w) => w.category === 'auto-cascade' && w.dTag === 'test:quest:cascade');
     expect(w).toBeDefined();
-    expect(w.message).toContain('auto-complete');
+    expect(w.message).toContain('automatically');
     expect(w.fix).toBeTruthy();
   });
 
