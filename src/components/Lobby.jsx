@@ -21,6 +21,7 @@ import { listDraftWorlds, parseJsonLenient } from '../builder/draftStore.js';
 import { TIDE_THEME } from '../services/guideTheme.js';
 import ImportPreviewPanel from '../builder/components/ImportPreviewPanel.jsx';
 import { APP_PUBKEY } from '../config.js';
+import { navigateToGuide } from '../services/router.js';
 
 const BASE_LOBBY_MODES = [
   { value: 'curated', label: 'featured' },
@@ -214,6 +215,21 @@ export default function Lobby({
                   }}
                 >
                   {'  '}import
+                </button>
+                <button
+                  onClick={() => {
+                    setDropdownOpen(false);
+                    navigateToGuide();
+                  }}
+                  className="block w-full text-left px-2 py-1 cursor-pointer hover:opacity-80"
+                  style={{
+                    color: 'var(--colour-item)',
+                    background: 'none',
+                    border: 'none',
+                    font: 'inherit',
+                  }}
+                >
+                  {'  '}guide
                 </button>
               </div>
             </div>
