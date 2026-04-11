@@ -5,6 +5,12 @@
 
 ## [Unreleased] — April 2026
 
+### Clarified — portable vs feature-bound recipes
+
+Recipes with both `verb` and `noun` tags on the recipe event are **portable** — their verbs enter the global command vocabulary and the recipe can be triggered from any room. Recipes without a `noun` tag are **feature-bound** — they have no noun in scope and must be triggered via a feature's `on-interact activate` action, scoping them to that feature's place. No tag shape changes; this documents existing engine behaviour. Updated spec section 2.7, guide chapter 09, and tag reference accordingly.
+
+---
+
 ### Added — `requires-counter` tag
 
 Gates an interaction, portal traversal, or dialogue option on a counter value comparison. Always 7 elements:

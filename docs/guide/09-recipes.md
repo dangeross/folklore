@@ -102,6 +102,39 @@ This means `craft rod`, `combine rod`, and `make rod` all trigger the recipe. Th
 
 ---
 
+## Portable vs Feature-Bound Recipes
+
+How a recipe is triggered depends on whether it has a `noun` tag:
+
+### Portable recipes (with `noun` tag)
+
+A recipe with both `verb` and `noun` tags is **portable** — its verbs enter the global command vocabulary and the recipe can be triggered from anywhere, as long as the player has the required ingredients.
+
+```json
+["verb", "craft", "combine", "make"],
+["noun", "rod", "fishing rod"]
+```
+
+`craft rod` works from any room. This is the right choice for recipes representing skills or knowledge the player carries with them.
+
+### Feature-bound recipes (no `noun` tag on recipe)
+
+A recipe without a `noun` tag is **feature-bound** — it can only be triggered via a feature's `on-interact` using the `activate` action. The feature provides the noun and scopes the recipe to its place.
+
+```json
+// Feature in the smithy:
+["on-interact", "use", "", "activate", "30078:<PUBKEY>:my-world:recipe:forge-sword"]
+
+// Recipe — no noun tag:
+["verb", "use", "forge"],
+["requires", "30078:<PUBKEY>:my-world:item:iron-bar", "", "You need an iron bar."],
+["on-complete", "", "give-item", "30078:<PUBKEY>:my-world:item:sword"]
+```
+
+`use forge` only works when the smithy feature is in the current room. The verb `use` comes from the feature, not the recipe. Use this pattern when crafting should require a specific location or tool (a forge, a workbench, an altar).
+
+---
+
 ## Ordered Recipes
 
 Set `["ordered", "true"]` to require ingredients in a specific sequence. The client evaluates `requires` tags in tag order — the player must provide each item in turn.
@@ -219,7 +252,7 @@ Publish all events — ingredients, output, and recipe — to the same world tag
 ## Tips
 
 - **Examine shows ingredients** — Players can always `examine` a recipe to see what it requires. The engine shuffles the list for ordered recipes so the sequence is not spoiled.
-- **Recipes are not place-scoped** — Unlike items and features, recipes can be crafted from anywhere. The player does not need to be in a specific place — they just need the required items.
+- **Portable recipes work from anywhere** — A recipe with `verb` + `noun` tags can be triggered from any room. Use this for skills or formulas the player carries with them. A recipe without a `noun` tag is feature-bound and only works via a specific feature's `on-interact activate` action.
 - **Verb tags need aliases** — Players will try different words. If your recipe uses "craft", also add "combine" and "make" as aliases. Think about what feels natural for the action.
 - **Failure messages guide the player** — The third element of each `requires` tag is shown when the ingredient is missing. Write helpful messages: "You need some rope" is better than nothing.
 - **Chain recipes with items** — The output of one recipe can be an ingredient for another. A fishing rod recipe produces a rod; the rod is required to catch fish; the fish is an ingredient for a cooking recipe.

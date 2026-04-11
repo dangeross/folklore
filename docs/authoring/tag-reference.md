@@ -489,7 +489,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | Tag | Shape | Req? | Desc |
 |-----|-------|------|------|
 | `title` | `["title", "<name>"]` | yes | — |
-| `noun` | `["noun", "<canonical>", "<alias>", ...]` (repeatable) | opt | — |
+| `noun` | `["noun", "<canonical>", "<alias>", ...]` (repeatable) | opt | presence makes recipe portable (see below) |
 | `verb` | `["verb", "<canonical>", "<alias>", ...]` (repeatable) | opt | — |
 | `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `on-complete` | `["on-complete", "", "<action>", "<target>"]` (repeatable) | opt | — |
@@ -500,6 +500,8 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `on-counter` | `["on-counter", "<dir>", "<counter>", "<threshold>", "<action>", "<action-target?>"]` (repeatable) | opt | — |
 | `ordered` | `["ordered", "true"\|"false"]` | opt | sequence steps must be in order |
 | `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+
+**Portable vs feature-bound:** A recipe with both `verb` and `noun` tags is **portable** — its verbs are globally recognised and the recipe can be triggered from any room (`fix pickaxe`). A recipe without a `noun` tag is **feature-bound** — it has no noun in scope and must be activated via a feature's `on-interact activate` action, scoping it to that feature's place.
 
 **Content field:** optional. Shown on examine (with ingredient checklist) AND on successful craft (as completion prose).
 

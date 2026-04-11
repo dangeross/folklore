@@ -1200,6 +1200,10 @@ Everything else — conditions, outcomes, state transitions, NPC behaviour — i
 
 Defines what items combine to produce a new item. Structurally identical to a sequence puzzle — `requires` tags define what's needed, `on-complete` fires the outcome, `ordered: true` enforces sequence. The only difference is that `requires` references inventory items rather than world event states, and the client presents it as a crafting UI rather than a puzzle.
 
+Recipes come in two forms depending on whether they have a `noun` tag:
+
+**Portable recipe** — has `verb` + `noun` tags on the recipe itself. The recipe's verbs enter the global command vocabulary and the recipe can be triggered from any room. Use this for skills or formulas the player carries with them.
+
 ```json
 {
   "kind": 30078,
@@ -1208,6 +1212,8 @@ Defines what items combine to produce a new item. Structurally identical to a se
     ["d",           "the-lake:recipe:serpent-staff"],
     ["t",           "the-lake"],
     ["type",        "recipe"],
+    ["verb",        "assemble", "combine", "make"],
+    ["noun",        "staff", "serpent staff"],
     ["state",       "unknown"],
     ["transition",  "unknown", "known", "You piece together how the staff was made."],
     ["requires",    "30078:<pubkey>:the-lake:item:wooden-rod",   "", ""],
@@ -1220,6 +1226,21 @@ Defines what items combine to produce a new item. Structurally identical to a se
   "content": ""
 }
 ```
+
+**Feature-bound recipe** — has `verb` tag but **no `noun` tag**. Triggered exclusively via a feature's `on-interact activate` action. The feature provides the noun and scopes the recipe to its place. The verb on the recipe is informational (for display); the feature's own verb tag is what puts it in scope.
+
+```json
+// Feature in the smithy — provides the noun "forge" and scopes to its place:
+["on-interact", "use", "", "activate", "30078:<pubkey>:world:recipe:forge-sword"]
+
+// Recipe — no noun tag, scoped to the smithy:
+["verb", "use"],
+["requires",    "30078:<pubkey>:world:item:iron-bar", "", "You need an iron bar."],
+["on-complete", "", "give-item",    "30078:<pubkey>:world:item:sword"],
+["on-complete", "", "consume-item", "30078:<pubkey>:world:item:iron-bar"]
+```
+
+Other notes:
 
 - `content` — optional prose, shown on examine (ingredient checklist) and on successful craft (completion text). Use it to describe the crafting moment.
 - `ordered: true` — ingredients must be combined in sequence; client evaluates `requires` in tag order

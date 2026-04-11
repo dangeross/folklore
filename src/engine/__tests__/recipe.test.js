@@ -337,9 +337,13 @@ describe('recipe index cache', () => {
 });
 
 describe('recipe scope (verb not available outside target room)', () => {
-  it('recipe verb is absent from verb map when feature is not in current place', async () => {
+  // Feature-bound recipes have NO noun tag on the recipe event itself.
+  // The feature provides the noun and scopes the verb to its place.
+  // Only portable recipes (with noun tags) are globally accessible.
+  it('feature-bound recipe verb is absent from verb map when feature is not in current place', async () => {
     // A mechanism in room B with a "use" verb; player is in room A (clearing).
-    // Recipe verb "use" must NOT appear in the verb map when in the clearing.
+    // The recipe has NO noun tag — it is feature-bound. "use" only enters the
+    // verb map when the mechanism feature is in the current place.
     const amulet = makeItem('serpent-amulet', { nouns: [['amulet']] });
     const mechanism = makeFeature('mechanism', {
       verbs: [['use', 'activate']],
@@ -348,7 +352,7 @@ describe('recipe scope (verb not available outside target room)', () => {
     });
     const recipe = makeRecipe('activate-mechanism', {
       verbs: [['use', 'activate', 'place']],
-      nouns: [['mechanism']],
+      // No nouns: feature-bound recipe — scoped to the mechanism's place
       requires: [[ref(`${WORLD}:item:serpent-amulet`), '', '']],
       onComplete: [['', 'set-state', 'activated', ref(`${WORLD}:feature:mechanism`)]],
     });
@@ -374,7 +378,7 @@ describe('recipe scope (verb not available outside target room)', () => {
     expect(engine.craftingActive).toBeNull();
   });
 
-  it('recipe verb fires correctly when feature IS in current place', async () => {
+  it('feature-bound recipe verb fires correctly when feature IS in current place', async () => {
     const amulet = makeItem('serpent-amulet', { nouns: [['amulet']] });
     const mechanism = makeFeature('mechanism', {
       verbs: [['use', 'activate']],
@@ -383,7 +387,7 @@ describe('recipe scope (verb not available outside target room)', () => {
     });
     const recipe = makeRecipe('activate-mechanism', {
       verbs: [['use', 'activate', 'place']],
-      nouns: [['mechanism']],
+      // No nouns: feature-bound recipe
       requires: [[ref(`${WORLD}:item:serpent-amulet`), '', '']],
       onComplete: [['', 'set-state', 'activated', ref(`${WORLD}:feature:mechanism`)]],
       content: 'The mechanism activates.',
@@ -406,5 +410,108 @@ describe('recipe scope (verb not available outside target room)', () => {
     // (ordered=false, single item → completes immediately)
     const output = engine.output.map((o) => o.text);
     expect(output.some((t) => t.includes('The mechanism activates.'))).toBe(true);
+  });
+});
+
+describe('portable recipe scope (verb+noun on recipe, no feature required)', () => {
+  // Portable recipes have both verb and noun tags on the recipe event itself.
+  // Their verbs are added to the global verb map — they work from any room
+  // as long as the player has the required ingredients.
+
+  function makePortableSetup() {
+    const head = makeItem('pick-head', { nouns: [['head', 'pick head']] });
+    const handle = makeItem('handle', { nouns: [['handle']] });
+    const pickaxe = makeItem('pickaxe', { nouns: [['pickaxe']] });
+    const recipe = makeRecipe('assemble-pick', {
+      verbs: [['assemble', 'fix', 'make']],
+      nouns: [['pickaxe', 'pick']],
+      requires: [
+        [ref(`${WORLD}:item:pick-head`), '', ''],
+        [ref(`${WORLD}:item:handle`), '', ''],
+      ],
+      onComplete: [['', 'give-item', ref(`${WORLD}:item:pickaxe`)]],
+      content: 'You assemble the pickaxe.',
+    });
+    const roomA = makePlace('forest');
+    const roomB = makePlace('smithy');
+    return { head, handle, pickaxe, recipe, roomA, roomB };
+  }
+
+  it('portable recipe verb is in verb map even when no feature is present', async () => {
+    const { head, handle, pickaxe, recipe, roomA } = makePortableSetup();
+    const events = buildEvents(head, handle, pickaxe, recipe, roomA);
+    const engine = makeEngine(events, {
+      place: ref(`${WORLD}:place:forest`),
+      inventory: [ref(`${WORLD}:item:pick-head`), ref(`${WORLD}:item:handle`)],
+    });
+    engine.currentPlace = ref(`${WORLD}:place:forest`);
+
+    // "fix pickaxe" should trigger the recipe from the forest (no smithy feature here)
+    await engine.handleCommand('fix pickaxe');
+    const output = engine.output.map((o) => o.text);
+    expect(output.some((t) => t.includes('You assemble the pickaxe.'))).toBe(true);
+    expect(engine.player.hasItem(ref(`${WORLD}:item:pickaxe`))).toBe(true);
+  });
+
+  it('portable recipe alias verb works (fix = alias for assemble)', async () => {
+    const { head, handle, pickaxe, recipe, roomA } = makePortableSetup();
+    const events = buildEvents(head, handle, pickaxe, recipe, roomA);
+    const engine = makeEngine(events, {
+      place: ref(`${WORLD}:place:forest`),
+      inventory: [ref(`${WORLD}:item:pick-head`), ref(`${WORLD}:item:handle`)],
+    });
+    engine.currentPlace = ref(`${WORLD}:place:forest`);
+
+    await engine.handleCommand('make pick');
+    const output = engine.output.map((o) => o.text);
+    expect(output.some((t) => t.includes('You assemble the pickaxe.'))).toBe(true);
+  });
+
+  it('portable recipe reports missing ingredients when crafting incomplete', async () => {
+    const { head, handle, pickaxe, recipe, roomA } = makePortableSetup();
+    const events = buildEvents(head, handle, pickaxe, recipe, roomA);
+    // Player only has the head, missing the handle
+    const engine = makeEngine(events, {
+      place: ref(`${WORLD}:place:forest`),
+      inventory: [ref(`${WORLD}:item:pick-head`)],
+    });
+    engine.currentPlace = ref(`${WORLD}:place:forest`);
+
+    await engine.handleCommand('fix pickaxe');
+    const output = engine.output.map((o) => o.text);
+    // Should report missing ingredient, not "don't understand"
+    expect(output.some((t) => t.toLowerCase().includes("don't understand"))).toBe(false);
+    expect(engine.player.hasItem(ref(`${WORLD}:item:pickaxe`))).toBe(false);
+  });
+
+  it('portable recipe verb coexists with same-alias feature verb (entity-local resolution)', async () => {
+    // "fix" is an alias on BOTH the fence feature and the recipe.
+    // "fix fence" should use the fence's canonical; "fix pickaxe" should use the recipe.
+    const fence = makeFeature('fence', {
+      verbs: [['fix', 'repair']],
+      nouns: [['fence']],
+      state: 'broken',
+      transitions: [['broken', 'fixed', 'You fixed the fence.']],
+      onInteract: [['fix', 'set-state', 'fixed']],
+    });
+    const { head, handle, pickaxe, recipe, roomA } = makePortableSetup();
+    const place = makePlace('farm', { features: [`${WORLD}:feature:fence`] });
+    const events = buildEvents(place, fence, head, handle, pickaxe, recipe, roomA);
+    const engine = makeEngine(events, {
+      place: ref(`${WORLD}:place:farm`),
+      inventory: [ref(`${WORLD}:item:pick-head`), ref(`${WORLD}:item:handle`)],
+    });
+    engine.currentPlace = ref(`${WORLD}:place:farm`);
+
+    // "fix fence" — entity-local resolution uses fence's "fix" canonical
+    await engine.handleCommand('fix fence');
+    let output = engine.output.map((o) => o.text);
+    expect(output.some((t) => t.includes('You fixed the fence.'))).toBe(true);
+
+    // "fix pickaxe" — routes to recipe via _findRecipeByNoun
+    engine.output = [];
+    await engine.handleCommand('fix pickaxe');
+    output = engine.output.map((o) => o.text);
+    expect(output.some((t) => t.includes('You assemble the pickaxe.'))).toBe(true);
   });
 });

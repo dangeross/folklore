@@ -309,11 +309,17 @@ export function mixCommand(Engine) {
       this._getRoamingNpcList(),
     );
     const roamingEvents = roamingHere.map((r) => r.npcEvent);
-    // Recipe events are NOT added as extra verb sources — recipe verbs should only
-    // be available when a feature in the current place explicitly declares them via
-    // a verb tag. Adding recipes globally caused e.g. "use mechanism" to fire from
-    // any room because the recipe title matched the noun.
-    const verbMap = buildVerbMap(this.events, this.place, this.player.state.inventory, roamingEvents);
+    // Portable recipes (those with their own noun tags) contribute verbs to the
+    // global verb map — they can be triggered from anywhere ("fix pickaxe").
+    // Feature-bound recipes have no noun tag on the recipe itself; the feature
+    // provides the noun and scopes the verb to its place ("use mechanism").
+    const portableRecipes = [];
+    for (const ev of this.events.values()) {
+      if (getTag(ev, 'type') === 'recipe' && getTags(ev, 'noun').length > 0) {
+        portableRecipes.push(ev);
+      }
+    }
+    const verbMap = buildVerbMap(this.events, this.place, this.player.state.inventory, [...roamingEvents, ...portableRecipes]);
     const parsed = parseInput(trimmed, verbMap);
 
     if (parsed && parsed.noun1) {
@@ -365,6 +371,17 @@ export function mixCommand(Engine) {
       if (allClaimedSlots?.has(dir)) {
         this._emit("You can't go that way.", 'error');
         return;
+      }
+      // Slot declared on place but no portal exists yet (unexplored)
+      const placeEvent = this.events.get(this.currentPlace);
+      if (placeEvent) {
+        const declaredSlots = getTags(placeEvent, 'exit')
+          .map((t) => t[1])
+          .filter((s) => s && !s.startsWith('30078:'));
+        if (declaredSlots.includes(dir)) {
+          this._emit("You can't go that way.", 'error');
+          return;
+        }
       }
     }
 

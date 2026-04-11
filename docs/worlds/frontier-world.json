@@ -2244,6 +2244,11 @@
           "option",
           "What did you see?",
           "30078:<PUBKEY>:frontier:dialogue:rennick-personal"
+        ],
+        [
+          "option",
+          "I have a letter for you.",
+          "30078:<PUBKEY>:frontier:dialogue:rennick-letter"
         ]
       ],
       "content": "You've been here long enough that Rennick has made a decision about you. He leans on the bar. Speaks quietly.\n\n\"You're going in. I can tell. Most people who ask about The Hollow are going in. So let me tell you what I know.\""
@@ -2335,6 +2340,11 @@
           "option",
           "What is that mark?",
           "30078:<PUBKEY>:frontier:dialogue:rennick-mark"
+        ],
+        [
+          "option",
+          "I have a letter for you.",
+          "30078:<PUBKEY>:frontier:dialogue:rennick-letter"
         ]
       ],
       "content": "You mention the ledger — the mark next to one of the names. Rennick goes very still for a moment.\n\n\"You've got sharp eyes.\" He sets down the cloth."
