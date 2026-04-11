@@ -1948,6 +1948,12 @@
           "30078:<PUBKEY>:frontier:dialogue:dessa-full-account",
           "30078:<PUBKEY>:frontier:npc:dessa-vane",
           "trusted"
+        ],
+        [
+          "dialogue",
+          "30078:<PUBKEY>:frontier:dialogue:dessa-aftermath",
+          "30078:<PUBKEY>:frontier:quest:the-hollow",
+          "complete"
         ]
       ],
       "content": "Dessa Vane is older than Cole, sharper than she looks. She has been collecting accounts of The Hollow for forty years — letters, clippings, hand-drawn maps that don't agree with each other. She does not share this collection easily. But she has been keeping it alone for a long time.\n\nShe offers tea to everyone. If she sits down with her own cup, something has changed."
@@ -2631,6 +2637,30 @@
         ]
       ],
       "content": "She hands you the oilcloth folder.\n\n\"Take it. Copy what you need. Return it when you come back.\" A pause. \"I said *when*. Not if. Come back, and tell me what you found that I couldn't find by staying here.\""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "frontier:dialogue:dessa-aftermath"
+        ],
+        [
+          "t",
+          "frontier"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:frontier:quest:the-hollow",
+          "complete",
+          ""
+        ]
+      ],
+      "content": "She looks up from her desk the moment you come in — the kind of look that means she already knew, or suspected, or had been waiting.\n\n\"You came back.\" She says it the way she might write a date in a margin. A fact, confirmed.\n\nShe folds her hands and waits. Not asking. Leaving the door open.\n\nYou tell her what you found in the deep chamber. She listens without interrupting — which you understand now is a form of respect. She does not reach for her pen. She wants to hold it first, before it becomes record.\n\nWhen you finish, the room is quiet for a moment.\n\n\"Forty years,\" she says. \"Forty years of other people's accounts. What they survived. What they brought back. What they couldn't explain.\" A pause that has some weight to it. \"I told myself I was more useful here. That the archive was the work.\" She looks at the cabinet. \"I may have been wrong about that.\"\n\nShe reaches for a fresh sheet.\n\n\"I need your account. Everything you can remember, in sequence. Start from the canyon mouth.\" She looks up, and something in her has settled — or opened. \"This one I'm going to get right.\""
     },
     {
       "kind": 30078,
@@ -4863,9 +4893,9 @@
           "dialogue"
         ],
         [
-          "requires",
+          "requires-not",
           "30078:<PUBKEY>:frontier:npc:cole-rennick",
-          "visited",
+          "default",
           ""
         ],
         [
