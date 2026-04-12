@@ -4,7 +4,7 @@
  */
 
 import {
-  getTag, getTags, checkRequires,
+  getTag, getTags, checkRequires, checkRequiresCounter,
   getDefaultState, findTransition,
 } from './world.js';
 import { isRefTrusted, isEventTrusted } from './trust.js';
@@ -646,8 +646,14 @@ export class GameEngine {
       const requiresRef = tag[2];
       const requiresState = tag[3];
 
+      // Also check requires-counter on the candidate dialogue node itself
+      const nodeEvent = this.events.get(nodeRef);
+      const nodeRcReq = nodeEvent
+        ? checkRequiresCounter(nodeEvent, null, this.player.state, this.events)
+        : { allowed: true };
+
       if (!requiresRef) {
-        entryRef = nodeRef;
+        if (nodeRcReq.allowed) entryRef = nodeRef;
       } else {
         const reqEvent = this.events.get(requiresRef);
         const reqType = reqEvent ? getTag(reqEvent, 'type') : '';
@@ -675,7 +681,7 @@ export class GameEngine {
           passes = requiresState && currentState === requiresState;
         }
 
-        if (passes) entryRef = nodeRef;
+        if (passes && nodeRcReq.allowed) entryRef = nodeRef;
       }
     }
 

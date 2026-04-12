@@ -1682,8 +1682,8 @@ describe('clue display', () => {
     await engine.handleCommand('pull lever');
     const output = engine.flush();
     expect(output.some(e => (e.text || e.html || '').includes('Revealed text'))).toBe(true);
-    // markClueSeen fires after display — state is 'seen'
-    expect(engine.player.getState(clueRef)).toBe('seen');
+    // State stays at requested value ('visible') — no longer overwritten by markClueSeen
+    expect(engine.player.getState(clueRef)).toBe('visible');
   });
 
   it('set-state on clue with failing requires sets state but does not display', async () => {

@@ -94,25 +94,25 @@ export function validateWorld(events, answers = {}) {
   const hints = [];
   const { dTags, byDTag } = buildEventIndex(events);
 
-  // ── 0. World event existence and start-place ────────────────────────────
+  // ── 0. World event existence and start ────────────────────────────
   const worldEvents = events.filter((e) => getTagValue(e, 'type') === 'world');
   if (worldEvents.length === 0) {
     errors.push({
       dTag: '(world)',
       category: 'missing-world',
       message: 'No world event found — every world must have a type:world event',
-      fix: 'Create a world event with ["type", "world"], ["title", "..."], and ["start-place", "<place-ref>"].',
+      fix: 'Create a world event with ["type", "world"], ["title", "..."], and ["start", "<place-ref>"].',
     });
   } else {
     for (const worldEvent of worldEvents) {
       const worldDTag = getTagValue(worldEvent, 'd') || '?';
-      const startPlaceTag = getTags(worldEvent, 'start-place')[0];
+      const startPlaceTag = getTags(worldEvent, 'start')[0];
       if (!startPlaceTag || !startPlaceTag[1]) {
         errors.push({
           dTag: worldDTag,
-          category: 'missing-start-place',
-          message: 'World event has no start-place tag — the engine cannot determine where players begin',
-          fix: 'Add ["start-place", "30078:<pubkey>:<world>:place:<name>"] pointing to the starting place.',
+          category: 'missing-start',
+          message: 'World event has no start tag — the engine cannot determine where players begin',
+          fix: 'Add ["start", "30078:<pubkey>:<world>:place:<name>"] pointing to the starting place.',
         });
       } else {
         const startRef = startPlaceTag[1];
@@ -121,17 +121,17 @@ export function validateWorld(events, answers = {}) {
         if (!startEvent) {
           errors.push({
             dTag: worldDTag,
-            category: 'missing-start-place',
-            message: `start-place references "${startDTag}" which is not in this world`,
-            fix: `Create a place event with d-tag "${startDTag}", or update the start-place tag to reference an existing place.`,
+            category: 'missing-start',
+            message: `start references "${startDTag}" which is not in this world`,
+            fix: `Create a place event with d-tag "${startDTag}", or update the start tag to reference an existing place.`,
             tag: startPlaceTag.join(', '),
           });
         } else if (getTagValue(startEvent, 'type') !== 'place') {
           errors.push({
             dTag: worldDTag,
-            category: 'missing-start-place',
-            message: `start-place references "${startDTag}" but that event is not a place`,
-            fix: `The start-place must reference a type:place event. Update the tag or change the referenced event's type.`,
+            category: 'missing-start',
+            message: `start references "${startDTag}" but that event is not a place`,
+            fix: `The start must reference a type:place event. Update the tag or change the referenced event's type.`,
             tag: startPlaceTag.join(', '),
           });
         }

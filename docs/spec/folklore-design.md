@@ -1464,7 +1464,13 @@ Each dialogue node is its own event. Nodes are grouped by `d` tag namespacing �
 
 `dialogue` tags are valid on **any event** — NPC, feature, item, or place. A magical mirror, an ancient tome, an oracle stone, or a whispering item can all carry dialogue trees. The `talk` / `ask` verb and `on-interact` trigger the conversation regardless of the host event type.
 
-Any event can carry multiple `dialogue` tags — each an alternative entry point with an optional `requires` condition. The client evaluates them in order and uses the **last one whose `requires` passes** — so the most advanced applicable entry point wins. If none have `requires`, the first is used as the unconditional root.
+Any event can carry multiple `dialogue` tags — each an alternative entry point with an optional `requires` condition. The client evaluates them in order and uses the **last one that passes** — so the most advanced applicable entry point wins. If none have `requires`, the first unconditional tag is the root.
+
+The client checks two conditions when selecting a tier:
+- The `requires` condition on the `dialogue` tag itself (ref + state gate)
+- `requires-counter` tags on the target dialogue node event — useful for counter-based tier progression (e.g. CASS accuracy tier advancing as the player discovers sensor errors)
+
+Both must pass. A dialogue node with `requires-counter` that fails is skipped even if the NPC tag's ref/state passes.
 
 ```json
 ["dialogue", "30078:<pubkey>:the-lake:dialogue:hermit:greeting"]
@@ -1590,6 +1596,11 @@ A reusable outcome definition. Consequences are fired by portals, NPCs, or `on-i
 
 | Tag | Value | Effect |
 |-----|-------|--------|
+| `requires` | Event `a`-tag, optional state, optional description | Pre-flight gate — consequence is silently skipped if condition fails. Multiple tags = AND logic. |
+| `requires-not` | Event `a`-tag, optional state, optional description | Pre-flight gate (inverted) — consequence is silently skipped if condition passes. |
+| `transition-effect` | Effect name | Visual effect played when the consequence fires: `blackout`, `flash`, `fade`, `shake`, `glitch`, `invert`, `static`, `pulse`. |
+| `transition-duration` | Milliseconds | Duration of the transition effect. Defaults to `800`. |
+| `transition-clear` | `"true"` | Clears the game log when the consequence fires. |
 | `respawn` | Place `a`-tag | Moves player to this place — always fires last |
 | `clears` | State key | Wipes this part of player state — see below |
 | `give-item` | Item `a`-tag | Adds item to inventory |
@@ -1599,6 +1610,18 @@ A reusable outcome definition. Consequences are fired by portals, NPCs, or `on-i
 | `set-counter` | Counter name, value, optional event `a`-tag | Sets a named counter to a specific value. Without external ref, targets the world-scoped counter of that name. Useful for resetting countdowns after a consequence without wiping all counters. |
 
 State keys for `clears`: `inventory`, `states`, `counters`, `cryptoKeys`, `dialogueVisited`, `paymentAttempts`, `visited`.
+
+**Pre-flight requires:** `requires` and `requires-not` on a consequence act as a gate on the consequence itself, independent of any gate on the caller. If the pre-flight check fails the consequence body is silently skipped — the caller's other actions still proceed. Use this to make a single consequence conditional without duplicating the caller's trigger logic:
+
+```json
+// Only bad things happen if the player opens B1 without the PPG suit donned
+["on-interact", "open", "sealed", "set-state",   "open"]
+["on-interact", "open", "sealed", "consequence",  "30078:<pubkey>:world:consequence:b1-open-check"]
+
+// b1-open-check has requires-not gate — silently skipped if suit is donned
+["requires-not", "30078:<pubkey>:world:item:ppg-suit", "donned", ""]
+["deal-damage",  "10"]
+```
 
 ---
 
@@ -1628,19 +1651,21 @@ Dropped items appear in the place's ground inventory and behave exactly as if th
 
 When a consequence fires, its tags execute in this fixed order regardless of tag declaration order:
 
-1. `give-item` — add items to inventory
-2. `consume-item` — remove items from inventory
-3. `deal-damage` — reduce player health
-4. `set-counter` — set named counter(s) to specific value(s)
-5. `set-state` — transition event states (self or external)
-6. **Drop inventory to current place** — if `clears inventory` is present
-7. `clears inventory` — empty player inventory array
-8. `clears states` — wipe states map
-9. `clears counters` — wipe counters map
-10. `clears` other keys — in declaration order
-11. `respawn` — move player to declared place (always last)
+0. **Pre-flight** — `requires` / `requires-not` evaluated; if any fail, execution halts silently
+1. **Transition** — `transition-effect` / `transition-duration` / `transition-clear` emitted (fires before content so the effect plays over what follows)
+2. `give-item` — add items to inventory
+3. `consume-item` — remove items from inventory
+4. `deal-damage` — reduce player health
+5. `set-counter` — set named counter(s) to specific value(s)
+6. `set-state` — transition event states (self or external)
+7. **Drop inventory to current place** — if `clears inventory` is present
+8. `clears inventory` — empty player inventory array
+9. `clears states` — wipe states map
+10. `clears counters` — wipe counters map
+11. `clears` other keys — in declaration order
+12. `respawn` — move player to declared place (always last)
 
-Drop before clear, respawn last. The engine uses `currentPlace` at consequence dispatch time for the drop location — this is always known.
+Pre-flight first, transition next, drop before clear, respawn last. The engine uses `currentPlace` at consequence dispatch time for the drop location — this is always known.
 
 ---
 

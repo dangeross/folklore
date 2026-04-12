@@ -313,7 +313,7 @@ describe('validateEvent — warnings', () => {
         ['d', 'x:feature:lamp'], ['t', 'the-lake'], ['type', 'feature'],
         ['title', 'Lamp'], ['noun', 'lamp'],
         ['verb', 'examine'],
-        ['on-interact', 'examine', '', 'set-state', 'visible', '30078:<PUBKEY>:x:clue:y', 'extra-field'],
+        ['on-interact', 'examine', '', 'set-state', 'visible', '30078:<PUBKEY>:x:clue:y', 'extra-field', 'another-extra'],
       ],
       content: 'A lamp.',
     });

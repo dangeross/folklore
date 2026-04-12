@@ -1,0 +1,6901 @@
+{
+  "answers": {},
+  "walkthrough": [
+    {
+      "input": "look",
+      "expect": [
+        "Hab"
+      ]
+    },
+    {
+      "input": "examine binder",
+      "expect": [
+        "binder"
+      ]
+    },
+    {
+      "input": "open binder",
+      "expect": [
+        "Seven tabbed"
+      ]
+    },
+    {
+      "input": "read section e",
+      "expect": [
+        "PPG"
+      ]
+    },
+    {
+      "input": "examine overhead locker",
+      "expect": [
+        "PPG"
+      ]
+    },
+    {
+      "input": "open overhead locker",
+      "expect": [
+        "seal check"
+      ]
+    },
+    {
+      "input": "wear ppg",
+      "expect": [
+        "Green across"
+      ]
+    },
+    {
+      "input": "port",
+      "expect": [
+        "Port Corridor"
+      ]
+    },
+    {
+      "input": "examine inspection window",
+      "expect": [
+        "rotating"
+      ]
+    },
+    {
+      "input": "examine cold bulkhead",
+      "expect": [
+        "cold"
+      ]
+    },
+    {
+      "input": "fore",
+      "expect": [
+        "Hab"
+      ]
+    },
+    {
+      "input": "fore",
+      "expect": [
+        "Command"
+      ]
+    },
+    {
+      "input": "examine bus controller",
+      "expect": [
+        "protection fault"
+      ]
+    },
+    {
+      "input": "isolate",
+      "expect": [
+        "relay resets"
+      ]
+    },
+    {
+      "input": "aft",
+      "expect": [
+        "Hab"
+      ]
+    },
+    {
+      "input": "aft",
+      "expect": [
+        "Aft Section"
+      ]
+    },
+    {
+      "input": "examine aft corridor gauge",
+      "expect": [
+        "climbing"
+      ]
+    },
+    {
+      "input": "open c2",
+      "expect": [
+        "normal pressure"
+      ]
+    },
+    {
+      "input": "examine coolant return panel",
+      "expect": [
+        "warm"
+      ]
+    },
+    {
+      "input": "fore",
+      "expect": [
+        "Hab"
+      ]
+    },
+    {
+      "input": "examine maintenance kit",
+      "expect": [
+        "hex driver"
+      ]
+    },
+    {
+      "input": "open maintenance kit",
+      "expect": [
+        "hex driver"
+      ]
+    },
+    {
+      "input": "take hex driver",
+      "expect": [
+        "Taken"
+      ]
+    },
+    {
+      "input": "aft",
+      "expect": [
+        "Aft Section"
+      ]
+    },
+    {
+      "input": "use hex driver on coolant pump",
+      "expect": [
+        "breaks free"
+      ]
+    },
+    {
+      "input": "read priming card",
+      "expect": [
+        "PRIME"
+      ]
+    },
+    {
+      "input": "activate prime switch",
+      "expect": [
+        "PRIME engaged"
+      ]
+    },
+    {
+      "input": "activate flow switch",
+      "expect": [
+        "FLOW engaged"
+      ]
+    },
+    {
+      "input": "activate confirm switch",
+      "expect": [
+        "CONFIRM engaged"
+      ]
+    },
+    {
+      "input": "examine imu log panel",
+      "expect": [
+        "POWER INTERRUPTION"
+      ]
+    },
+    {
+      "input": "fore",
+      "expect": [
+        "Hab"
+      ]
+    },
+    {
+      "input": "open binder",
+      "expect": [
+        "Seven tabbed"
+      ]
+    },
+    {
+      "input": "read section f",
+      "expect": [
+        "IMU"
+      ]
+    },
+    {
+      "input": "up",
+      "expect": [
+        "Observation Blister"
+      ]
+    },
+    {
+      "input": "use sextant mount",
+      "expect": [
+        "Mars is visible"
+      ]
+    },
+    {
+      "input": "measure",
+      "expect": [
+        "Mars"
+      ]
+    },
+    {
+      "input": "measure",
+      "expect": [
+        "Sun"
+      ]
+    },
+    {
+      "input": "measure",
+      "expect": [
+        "Jupiter"
+      ]
+    },
+    {
+      "input": "compute fix",
+      "expect": [
+        "1847"
+      ]
+    },
+    {
+      "input": "read position fix",
+      "expect": [
+        "1847"
+      ]
+    },
+    {
+      "input": "down",
+      "expect": [
+        "Hab"
+      ]
+    },
+    {
+      "input": "aft",
+      "expect": [
+        "Aft Section"
+      ]
+    },
+    {
+      "input": "down",
+      "expect": [
+        "Engine Room"
+      ]
+    },
+    {
+      "input": "examine burn console",
+      "expect": [
+        "ready"
+      ]
+    },
+    {
+      "input": "arm switch a",
+      "expect": [
+        "ARMED"
+      ]
+    },
+    {
+      "input": "arm switch b",
+      "expect": [
+        "ARMED"
+      ]
+    },
+    {
+      "input": "press confirm",
+      "expect": [
+        "CONFIRM pressed"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:world"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "world"
+        ],
+        [
+          "title",
+          "Nominal Drift"
+        ],
+        [
+          "collaboration",
+          "closed"
+        ],
+        [
+          "counter",
+          "cass-accuracy",
+          "0"
+        ],
+        [
+          "counter",
+          "alert-level",
+          "1"
+        ],
+        [
+          "colour",
+          "bg",
+          "#1a0800"
+        ],
+        [
+          "colour",
+          "text",
+          "#b06010"
+        ],
+        [
+          "colour",
+          "exits",
+          "#d07020"
+        ],
+        [
+          "sound",
+          "30078:<PUBKEY>:nominal-drift:sound:ship-hum-degraded",
+          "ambient",
+          "0.8"
+        ],
+        [
+          "start",
+          "30078:<PUBKEY>:nominal-drift:place:hab"
+        ],
+        [
+          "w",
+          "folklore"
+        ],
+        [
+          "author",
+          "Ross"
+        ],
+        [
+          "version",
+          "1.0.0"
+        ],
+        [
+          "lang",
+          "en"
+        ]
+      ],
+      "content": "A test pilot alone on a damaged ship. The computer is speaking. Not everything it says is true."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:place:hab"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Hab"
+        ],
+        [
+          "exit",
+          "fore"
+        ],
+        [
+          "exit",
+          "port"
+        ],
+        [
+          "exit",
+          "aft"
+        ],
+        [
+          "exit",
+          "up"
+        ],
+        [
+          "on-enter",
+          "player",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:quest:restore-power"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:binder"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:overhead-locker"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:battery-reserve-display"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:o2-meter"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:mission-clock"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:cabin-temp-gauge"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:humidity-sensor"
+        ],
+        [
+          "npc",
+          "30078:<PUBKEY>:nominal-drift:npc:cass"
+        ],
+        [
+          "item",
+          "30078:<PUBKEY>:nominal-drift:item:maintenance-kit"
+        ],
+        [
+          "item",
+          "30078:<PUBKEY>:nominal-drift:item:hex-driver"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:binder-section-a"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:binder-section-b"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:binder-section-c"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:binder-section-d"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:binder-section-e"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:binder-section-f"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:binder-section-g"
+        ]
+      ],
+      "content": "The forward crew compartment. Four bunks, a galley unit dark since Mars. Emergency lighting throws everything amber. The instrument panel on the forward wall is alive with readouts — most of them telling you things that don't matter right now. Battery reserve: 67%. O2: 21.1 kPa. Cabin temperature: 14°C and dropping. Mission elapsed time: 847:22:04. Humidity: 38%.\n\nThe documentation binder is clipped to the wall beside the instrument panel. The maintenance kit is bolted under the left bunk. The medical kit is in the overhead locker. CASS's voice comes from everywhere — speakers distributed through the ceiling panels."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:place:command"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Command"
+        ],
+        [
+          "exit",
+          "aft"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:cass-terminal"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:port-viewport"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:nav-display"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:solar-irradiance-sensor"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:rcs-status-board"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:comm-signal-meter"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:abort-status"
+        ]
+      ],
+      "content": "The forward control station. Two seats face a console built for a crew of three — more displays than one person can monitor. Most are dark. Navigation: dead. Trajectory plot: dead. Comm array: dead.\n\nWhat's alive: the bus controller interface, bottom-left. The RCS thruster status board — green across all quads. The comm signal strength meter reads zero. Solar irradiance: 847 W/m², low, consistent with a damaged array. The abort system status reads ARMED, which it always does and which you cannot change.\n\nThe port viewport is on the left wall. Through it, the array."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:place:port-corridor"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Port Corridor"
+        ],
+        [
+          "exit",
+          "fore"
+        ],
+        [
+          "exit",
+          "starboard"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:inspection-window"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:cold-bulkhead"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:b1-hatch"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:bay-pressure-gauge"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:corridor-temp-strip"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:emergency-light-status"
+        ]
+      ],
+      "content": "A narrow connecting passage. The B1 hatch to the port equipment bay is on the left — sealed, amber indicator glowing. A small inspection window is set into the bulkhead beside it. On the right wall, at eye level, an analog pressure gauge labeled BAY SIDE reads 19.2 kPa. Nominal is 101.3.\n\nThe bulkhead beside the hatch is noticeably cold."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:place:port-equipment-bay"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Port Equipment Bay"
+        ],
+        [
+          "exit",
+          "port"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:equipment-bag"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:panel-c4"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:eva-suit-rack"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:airlock-cycle-counter"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:depress-event-log"
+        ],
+        [
+          "item",
+          "30078:<PUBKEY>:nominal-drift:item:backup-nav-processor"
+        ],
+        [
+          "item",
+          "30078:<PUBKEY>:nominal-drift:item:diagnostic-cable"
+        ]
+      ],
+      "content": "Everything in here was bolted down. Most of it held. A grey equipment bag drifted during the decompression event and came to rest against the far wall, covering panel C-4. The EVA suit hangs in its rack — sealed, intact, useless without something already pressure-rated to reach it. The backup navigation processor is in the rack at the back, green indicator light, waiting.\n\nNo sound except your own breathing. Hard vacuum on the other side of the hull."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:place:aft-section"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Aft Section"
+        ],
+        [
+          "exit",
+          "fore"
+        ],
+        [
+          "exit",
+          "down"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:c2-hatch"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:aft-corridor-gauge"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-supply-panel"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-return-panel"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-pump"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:switch-prime"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:switch-flow"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:switch-confirm"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:cass-core-rack"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:imu-log-panel"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:spare-parts-locker"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:reactor-thermal"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:power-efficiency-meter"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:structural-sensors"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:impact-counter"
+        ]
+      ],
+      "content": "The engineering core. Every surface is instrumented. Reactor thermal: 287°C, nominal for passive cooling. Power conversion efficiency: 61%, degraded. Structural integrity sensors — a row of twelve, all green. The micrometeorite impact counter above them reads 1.\n\nThe coolant line access panels line the port bulkhead — SUPPLY and RETURN, side by side, identical except for their labels. The CASS-CORE processing rack is starboard — shoebox-sized, one amber indicator where there should be green. Hairline crack along the lower left edge. The IMU log panel is beside it. The spare parts locker is below.\n\nThe aft corridor gauge is mounted beside the C2 hatch: 97.8 kPa and climbing."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:place:engine-room"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Engine Room"
+        ],
+        [
+          "exit",
+          "up"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:burn-console"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:fuel-status-display"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:ignition-sequencer"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:ignition-switch-a"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:ignition-switch-b"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:ignition-confirm"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:chamber-pressure-history"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:nozzle-temp-log"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:oxidiser-ratio-display"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:abort-panel-aft"
+        ],
+        [
+          "puzzle",
+          "30078:<PUBKEY>:nominal-drift:puzzle:burn-ready"
+        ]
+      ],
+      "content": "The aft propulsion bay. The engine bell is visible through the aft viewport — dark, cold, intact. It has never fired in anger. This was a test flight.\n\nThe burn console occupies the forward wall: fuel status, ignition sequencer, burn parameter inputs. Three rows of switches. Beside it: chamber pressure history, a strip of paper tape from the ground test six months ago. Nozzle temperature log. Oxidiser/fuel ratio display. The abort panel, redundant with Command, still reading ARMED.\n\nFuel status: 94.3% of nominal load. Enough for the burn. Enough for one correction. Not enough for two."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:place:observation-blister"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "place"
+        ],
+        [
+          "title",
+          "Observation Blister"
+        ],
+        [
+          "exit",
+          "down"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:sextant-mount"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:chart-holder"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:viewport-dome"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:star-tracker"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:solar-angle-indicator"
+        ],
+        [
+          "feature",
+          "30078:<PUBKEY>:nominal-drift:feature:attitude-reference"
+        ]
+      ],
+      "content": "A small cupola above the hab. Six viewport panels in a shallow dome. The star tracker is mounted on the port strut: OFFLINE. Solar angle indicator: 23.4° off primary axis. Attitude reference: roll, pitch, yaw all within half a degree of pre-impact baseline. The ship is flying straight. It just doesn't know where it's going.\n\nNo ambient sound. The insulation is thicker up here. The quietest place on the ship.\n\nA mounting bracket for the sextant is on the forward sill. The chart holder beside it is empty."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:portal:hab-fore-command"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:hab",
+          "fore",
+          "Forward to Command"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:command",
+          "aft",
+          "Aft to Hab"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:portal:hab-port-corridor"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:hab",
+          "port",
+          "Port to Port Corridor"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:port-corridor",
+          "fore",
+          "Forward to Hab"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:portal:hab-aft-section"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:hab",
+          "aft",
+          "Aft to Aft Section"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:aft-section",
+          "fore",
+          "Forward to Hab"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:portal:hab-up-blister"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:hab",
+          "up",
+          "Up to Observation Blister"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:observation-blister",
+          "down",
+          "Down to Hab"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:portal:corridor-starboard-bay"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:port-corridor",
+          "starboard",
+          "Starboard to Equipment Bay"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:port-equipment-bay",
+          "port",
+          "Port to Corridor"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:ppg-suit",
+          "donned",
+          "The equipment bay is depressurised. You need pressure protection before opening that hatch."
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:portal:aftsection-down-engine"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "portal"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:aft-section",
+          "down",
+          "Down to Engine Room"
+        ],
+        [
+          "exit",
+          "30078:<PUBKEY>:nominal-drift:place:engine-room",
+          "up",
+          "Up to Aft Section"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:c2-hatch",
+          "open",
+          "The C2 hatch is sealed. You need to get through the aft section first."
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:ppg-suit"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Portable Pressure Garment"
+        ],
+        [
+          "noun",
+          "ppg",
+          "pressure suit",
+          "suit",
+          "garment",
+          "ppg suit"
+        ],
+        [
+          "state",
+          "stowed"
+        ],
+        [
+          "transition",
+          "stowed",
+          "donned",
+          "You pull on the PPG and run the seal check. Green across the board. It'll hold."
+        ],
+        [
+          "on-interact",
+          "wear",
+          "stowed",
+          "set-state",
+          "donned"
+        ],
+        [
+          "on-interact",
+          "wear",
+          "donned",
+          "set-state",
+          "donned"
+        ],
+        [
+          "counter",
+          "ppg-time",
+          "100"
+        ],
+        [
+          "on-move",
+          "donned",
+          "sub-counter",
+          "ppg-time",
+          "1"
+        ],
+        [
+          "on-counter",
+          "down",
+          "ppg-time",
+          "20",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:ppg-warning"
+        ],
+        [
+          "on-counter",
+          "down",
+          "ppg-time",
+          "0",
+          "consequence",
+          "30078:<PUBKEY>:nominal-drift:consequence:ppg-depleted"
+        ],
+        [
+          "verb",
+          "wear",
+          "don",
+          "put on"
+        ]
+      ],
+      "content": "A lightweight emergency pressure garment. Rated for approximately 100 minutes at hard vacuum — less if you're moving hard. The seal indicators on the wrist read green. Single use: once the seals are broken by vacuum exposure, the integrity ratings no longer apply."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:maintenance-kit"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Maintenance Kit"
+        ],
+        [
+          "noun",
+          "maintenance kit",
+          "kit",
+          "tools",
+          "toolbox"
+        ]
+      ],
+      "content": "A grey hard-shell case bolted under the left bunk. Standard ship maintenance tools — hex drivers, torque wrenches, wire strippers, cable ties, duct tape. The 4mm hex driver is clipped to the lid."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:hex-driver"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Hex Driver"
+        ],
+        [
+          "noun",
+          "hex driver",
+          "driver",
+          "tool",
+          "hex"
+        ]
+      ],
+      "content": "A T-handle hex driver, 4mm. The pump housing bolts are hex. You know this because the label on the coolant panel says so, in small print, in the section nobody reads until something breaks."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:backup-nav-processor"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Backup Nav Processor"
+        ],
+        [
+          "noun",
+          "backup nav processor",
+          "nav processor",
+          "processor",
+          "backup processor",
+          "nav unit"
+        ]
+      ],
+      "content": "A secondary navigation processing unit — cold-spare, never activated. Green status light. It was designed to slot into the command terminal in exactly this scenario: primary nav down, crew needs independent position data. The fact that it was sitting in the equipment bay when the bay depressurised is nobody's fault in particular."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:diagnostic-cable"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Diagnostic Cable"
+        ],
+        [
+          "noun",
+          "diagnostic cable",
+          "cable",
+          "diag cable"
+        ]
+      ],
+      "content": "A shielded data cable with a proprietary connector at each end. The label reads CASS-CORE DIAGNOSTIC — FOR MAINTENANCE USE ONLY. One end fits the CASS-CORE rack. The other end fits the command terminal. It was in the equipment bay because the bay is where the maintenance equipment lives."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:logic-board"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "CASS Logic Board"
+        ],
+        [
+          "noun",
+          "logic board",
+          "board",
+          "replacement board",
+          "cass board",
+          "cass logic board"
+        ]
+      ],
+      "content": "A replacement logic board for the CASS-CORE sensor integration layer. Sealed in an antistatic bag, labelled with a part number and a revision date. It was in the spare parts locker because whoever designed this ship believed in redundancy — except, apparently, for the CASS-CORE diagnostic system itself."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:array-disconnect-cable"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Array Disconnect Cable"
+        ],
+        [
+          "noun",
+          "disconnect cable",
+          "array cable",
+          "array disconnect",
+          "cable"
+        ]
+      ],
+      "content": "A heavy-gauge cable with a yellow connector tag: ARRAY MANUAL DISCONNECT — PORT. Designed to physically sever the port array's connection to the bus at the array end, rather than at the bus controller. Belt and suspenders. Found behind an equipment bag that had no business being in front of panel C-4."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:priming-instruction"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Coolant Priming Card"
+        ],
+        [
+          "noun",
+          "priming card",
+          "card",
+          "instruction card",
+          "priming instruction",
+          "coolant card"
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:binder-coolant"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "A laminated card, slightly damp from the coolant housing. Printed header: LOOP PRIMING PROCEDURE — POST-MAINTENANCE. Three steps:\n\n1. PRIME switch — pressurises the loop\n2. FLOW switch — opens the pump\n3. CONFIRM switch — seals and monitors\n\nDo not activate FLOW before PRIME. Pump cavitation on empty loop will require full pump replacement."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:star-charts"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Star Charts"
+        ],
+        [
+          "noun",
+          "star charts",
+          "charts",
+          "navigation charts",
+          "nav charts",
+          "charts"
+        ]
+      ],
+      "content": "Printed navigation charts — current epoch, inner solar system. Reference bodies marked: Mars, Sun, Jupiter, Venus, several bright stars. Each body has angular position tables and magnitude ratings for visual identification. Standard kit. You've used charts like these in training. You haven't used them in actual space, because that's what the computer is for.\n\nWas for."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:angle-1"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Angle Measurement — Mars"
+        ],
+        [
+          "noun",
+          "mars angle",
+          "angle 1",
+          "first measurement",
+          "mars measurement"
+        ]
+      ],
+      "content": "Sextant reading, Mars reference body. Elevation angle: 34.7°. Azimuth: 112.3°. Timestamp: 847:31:14 MET. Written in your own handwriting on the back of a binder index card because there was nothing else to write on."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:angle-2"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Angle Measurement — Sun"
+        ],
+        [
+          "noun",
+          "sun angle",
+          "angle 2",
+          "second measurement",
+          "sun measurement"
+        ]
+      ],
+      "content": "Sextant reading, Sun reference body — filtered. Elevation angle: 78.2°. Azimuth: 003.1°. Timestamp: 847:31:58 MET. Same card, other side. The ink is smearing slightly from where you were gripping it."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:angle-3"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Angle Measurement — Jupiter"
+        ],
+        [
+          "noun",
+          "jupiter angle",
+          "angle 3",
+          "third measurement",
+          "jupiter measurement"
+        ]
+      ],
+      "content": "Sextant reading, Jupiter reference body. Elevation angle: 15.9°. Azimuth: 267.4°. Timestamp: 847:32:41 MET. Three measurements. Enough for a fix. You fold the card carefully and put it in your chest pocket."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:position-fix"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Position Fix"
+        ],
+        [
+          "noun",
+          "position fix",
+          "fix",
+          "position",
+          "nav fix"
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:nav-fix-complete"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "Computed position from three-body optical fix. Cross-referenced against the star charts.\n\nPosition: 1.42 AU from Sun, 0.38 AU from Mars, 4.71 AU from Jupiter.\nVelocity vector: 24.3 km/s, bearing 047.2° ecliptic.\n\nComparison with CASS inertial fix: deviation 1.8 degrees. The inertial fix was wrong.\n\nBurn parameters to achieve nominal Earth capture: delta-V 1847 m/s, duration 340 seconds."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:item:corrected-position"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "item"
+        ],
+        [
+          "title",
+          "Corrected Position"
+        ],
+        [
+          "noun",
+          "corrected position",
+          "position",
+          "imu correction",
+          "position fix",
+          "fix"
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:nav-fix-complete"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "IMU drift correction computed from the binder navigation tables, applied against the logged interruption at T-minus 2 seconds.\n\nApplied correction: 1.8 degrees bearing offset, 0.4% velocity magnitude adjustment.\n\nCorrected position: 1.42 AU from Sun, 0.38 AU from Mars.\nCorrected velocity: 24.3 km/s, bearing 047.2° ecliptic.\n\nBurn parameters for nominal Earth capture: delta-V 1847 m/s, duration 340 seconds.\n\nCASS's inertial fix was wrong. This is the right number."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:binder"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Documentation Binder"
+        ],
+        [
+          "noun",
+          "binder",
+          "manual",
+          "documentation",
+          "docs",
+          "book"
+        ],
+        [
+          "state",
+          "closed"
+        ],
+        [
+          "transition",
+          "closed",
+          "open",
+          "The binder opens. Seven tabbed sections."
+        ],
+        [
+          "on-interact",
+          "open",
+          "closed",
+          "set-state",
+          "open"
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "open"
+        ],
+        [
+          "verb",
+          "open"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "A thick ring binder clipped to the wall beside the instrument panel. Seven tabbed sections. The spine reads: MERIDIAN-CLASS TEST VEHICLE — CREW REFERENCE MANUAL. Someone has written RYAN on a piece of tape stuck to the front cover."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:binder-section-a"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Binder — Section A: Ignition Procedure"
+        ],
+        [
+          "noun",
+          "section a",
+          "ignition procedure",
+          "ignition section",
+          "section 1"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:binder",
+          "open",
+          "Open the binder first."
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:binder-ignition"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "ENGINE IGNITION — STANDARD PROCEDURE\n\n1. Confirm fuel system nominal (burn console, fuel status display)\n2. Arm IGNITION SWITCH A\n3. Arm IGNITION SWITCH B\n4. Press IGNITION CONFIRM\n\nNote: Steps must be performed in sequence. The ignition sequencer will not accept CONFIRM before both ARM switches are set. CASS will confirm the sequence on request."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:binder-section-b"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Binder — Section B: Electrical Systems"
+        ],
+        [
+          "noun",
+          "section b",
+          "electrical systems",
+          "electrical section",
+          "section 2"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:binder",
+          "open",
+          "Open the binder first."
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:binder-electrical"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "ELECTRICAL SYSTEMS — CREW REFERENCE\n\nPower Bus Architecture: The main bus connects solar arrays, fuel cells, and distribution nodes. In fault condition, the bus controller protection relay trips to prevent cascade damage.\n\nArray Isolation: Each array wing can be electrically isolated at the bus controller without physical disconnection. Use BUS CONTROLLER → ARRAY ISOLATION function. This will clear a protection fault caused by array voltage irregularities.\n\nNote: Identify the fault cause before restoring bus. Restoring to a live fault will re-trip the protection relay immediately."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:binder-section-c"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Binder — Section C: CASS Architecture"
+        ],
+        [
+          "noun",
+          "section c",
+          "cass architecture",
+          "cass section",
+          "section 3",
+          "cass system"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:binder",
+          "open",
+          "Open the binder first."
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:binder-cass-arch"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "CASS — CREW ASSISTANCE AND SHIP SYSTEMS\n\nSensor Architecture: All sensor inputs are processed by the CASS-CORE integration node before being incorporated into the ship model. CASS-CORE aggregates, cross-validates, and weights sensor data before presenting it.\n\nImportant limitation: CASS-CORE has no self-diagnostic capability. This is by design — a self-diagnostic circuit would introduce false positive fault rates unacceptable for operational use. A fault in CASS-CORE will therefore not appear in CASS's own fault log or status report.\n\nIn the event of suspected CASS-CORE fault, see Appendix C — Maintenance."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:binder-section-d"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Binder — Section D: Coolant System"
+        ],
+        [
+          "noun",
+          "section d",
+          "coolant system",
+          "coolant section",
+          "section 4"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:binder",
+          "open",
+          "Open the binder first."
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:binder-coolant"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "COOLANT LOOP — CREW REFERENCE\n\nThe thermal management coolant loop runs from the pump through the heat exchanger and back. Both SUPPLY and RETURN lines have manual access panels in the aft section for maintenance.\n\nPump Clearing: If the pump impeller is jammed, counter-rotate before applying forward torque. Do not force the impeller in the forward direction — this risks bearing damage.\n\nPriming Procedure (post-maintenance):\n1. PRIME switch — pressurises the loop\n2. FLOW switch — opens the pump\n3. CONFIRM switch — seals and activates monitoring\n\nWARNING: Do not activate FLOW before PRIME. Running the pump on an unpressurised loop will cause cavitation and may require full pump replacement."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:binder-section-e"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Binder — Section E: Emergency Equipment"
+        ],
+        [
+          "noun",
+          "section e",
+          "emergency equipment",
+          "emergency section",
+          "section 5"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:binder",
+          "open",
+          "Open the binder first."
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:binder-ppg"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "EMERGENCY EQUIPMENT — LOCATIONS\n\nPortable Pressure Garment (PPG): Stored in hab overhead locker. Rated for approximately 100 minutes at hard vacuum under normal activity. Provides sufficient protection for equipment bay access in depressurisation scenarios. Single use — integrity ratings apply only to first vacuum exposure.\n\nMedical Kit: Overhead locker, hab.\n\nEmergency Oxygen: Under-bunk storage, hab, port side.\n\nNote: The PPG is not a substitute for the EVA suit for extended extravehicular work. Use it for emergency access only."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:binder-section-f"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Binder — Section F: Navigation"
+        ],
+        [
+          "noun",
+          "section f",
+          "navigation section",
+          "navigation",
+          "section 6",
+          "nav section"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:binder",
+          "open",
+          "Open the binder first."
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:binder-nav"
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:star-charts"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "NAVIGATION — BACKUP PROCEDURES\n\nIMU Warning: Inertial Measurement Unit data must not be used for burn calculations following an unscheduled power interruption during active measurement. IMU drift from a 0.4-second interruption at nominal velocity can produce a bearing error of 1.5 to 2.0 degrees, compounding over transit time.\n\nOptical Navigation: In the event of primary nav failure, optical positioning using the observation blister sextant mount is available. Three-body fix procedure:\n1. Identify three reference bodies (Mars, Sun, Jupiter recommended in current mission phase)\n2. Take angle measurements from the sextant mount\n3. Cross-reference against the printed star charts (stored with this section)\n\nStar charts are included at the back of this section."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:binder-section-g"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Binder — Appendix C: CASS-CORE Maintenance"
+        ],
+        [
+          "noun",
+          "appendix c",
+          "appendix",
+          "cass maintenance",
+          "section 7",
+          "maintenance appendix"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:binder",
+          "open",
+          "Open the binder first."
+        ],
+        [
+          "on-interact",
+          "read",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:binder-appendix-c"
+        ],
+        [
+          "verb",
+          "read"
+        ]
+      ],
+      "content": "APPENDIX C — CASS-CORE MAINTENANCE\n\nRequired tools: Diagnostic cable (CASS-CORE type), replacement logic board (spare parts locker, aft section).\n\nProcedure:\n1. Connect diagnostic cable between CASS-CORE rack and command terminal\n2. Enter CASS diagnostic mode via command terminal (CASS will go offline during this period)\n3. Remove damaged logic board (two retention screws, top panel)\n4. Inspect board for fault indicators — burn marks on sensor integration layer indicate data corruption\n5. Install replacement board\n6. Disconnect diagnostic cable\n7. Exit diagnostic mode — CASS will reinitialise\n\nExpected reinitialisation time: approximately 3 minutes. CASS will be unavailable during this period."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:npc:cass"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "npc"
+        ],
+        [
+          "title",
+          "CASS"
+        ],
+        [
+          "noun",
+          "cass",
+          "computer",
+          "ship computer",
+          "ship"
+        ],
+        [
+          "state",
+          "active"
+        ],
+        [
+          "dialogue",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early"
+        ],
+        [
+          "dialogue",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:mid"
+        ],
+        [
+          "dialogue",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:late"
+        ]
+      ],
+      "content": "CASS speaks from the ceiling panels — distributed speakers, no single point of origin. The voice is calm and even. Professional. It has been talking since before you woke up."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "requires-counter",
+          "",
+          "",
+          "cass-accuracy",
+          "<=",
+          "1",
+          ""
+        ],
+        [
+          "option",
+          "Ship status.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-status"
+        ],
+        [
+          "option",
+          "The power bus.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-bus"
+        ],
+        [
+          "option",
+          "The port equipment bay.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-bay"
+        ],
+        [
+          "option",
+          "The C2 hatch.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-c2"
+        ],
+        [
+          "option",
+          "The coolant loop.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-coolant"
+        ],
+        [
+          "option",
+          "Navigation.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-nav"
+        ],
+        [
+          "option",
+          "Nothing.",
+          ""
+        ]
+      ],
+      "content": "Status updat3 r3ady. What d0 y0u n33d?"
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-status"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Where is the junction panel?",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-junction"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "Main p0w3r 8us: pr0t3cti0n fau1t, caus3 unkn0wn. S01ar array: min0r vi8rati0n, within t013ranc3. P0rt 3quipm3nt 8ay: n0mina1. 1if3 supp0rt: 3m3rg3ncy m0d3, functi0na1. A11 hatches s3a13d p3r pr0t0c01. Pr08a813 caus3 0f 8us fau1t: 100s3 c0nn3cti0n at juncti0n pan31, p0rt c0rrid0r."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-junction"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Got it.",
+          ""
+        ]
+      ],
+      "content": "P0rt c0rrid0r, star80ard wa11. Y0u can't miss it."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-bus"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "8us fau1t r3sist3d initia1 diag. R3c0mm3nd3d s3qu3nc3: ch3ck juncti0n pan31 c0nn3cti0ns in p0rt c0rrid0r, th3n 8us c0ntr0113r c0ntinuity h3r3 in c0mmand, th3n fu31 c311 0utput in aft s3cti0n — 8ut C2 is s3a13d s0 that st3p is curr3nt1y 81ck3d. Th3n r3vi3w fau1t 10g, th3n r3s3t pr0t3cti0n r31ay."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-bay"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Safe to what?",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-bay-follow"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "P0rt 3quipm3nt 8ay sh0ws n0mina1 pr3ssur3. 19 d3gr33s. Standard 3nvir0nm3nt. Sh0u1d 83 saf3 t0"
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-bay-follow"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "S0rry — c0mputing. 8ay is n0mina1. Y0u sh0u1d 83 a813 t0 0p3n B1 with th3 manua1 r313as3."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-c2"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "How do I confirm integrity?",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-c2-confirm"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "C2 is sealed due to pressure anomaly detected in aft section during impact event. Aft section shows 94.2 kPa — below nominal 101.3. Could be a slow leak. I would not recommend opening C2 until we have confirmed the integrity of the aft bulkhead."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-c2-confirm"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "Check the corridor pressure gauge first. Then apply sealant tape to the C2 gasket as a precaution. Wait ten minutes for a stabilisation reading. Then override the seal via the command panel."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-coolant"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Where is the radiator panel?",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-coolant-evap"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "1if3 supp0rt th3rma1 manag3m3nt sh0wing 313vat3d 10ad. C001ant 100p — ch3cking. High-pr3ssur3 sid3 r3ads n0mina1. R3turn 1in3 pr3ssur3 n0mina1. I think th3 issu3 is th3 h3at 3xchang3r fins — p0ssi813 d38ris accumu1ati0n 0n th3 3xt3ri0r radiat0r pan31. R3c0mm3nd EVA insp3cti0n."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-coolant-evap"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "P0rt sid3, aft quart3r. Y0u w0u1d n33d th3 EVA suit fr0m th3 3quipm3nt 8ay."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-nav"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "What about the optical nav?",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:early-nav-optical"
+        ],
+        [
+          "option",
+          "Confirmed.",
+          ""
+        ]
+      ],
+      "content": "P0siti0n fix: 94.2% c0nfid3nc3. Traj3ct0ry ana1ysis: d3viati0n fr0m p1ann3d r0ut3 0.3 d3gr33s — within missi0n t013ranc3. N0 c0rr3ctiv3 8urn r3quir3d. Missi0n pr0fi13 a110ws up t0 1.2 d3gr33s 83f0r3 a 8urn is mandati3d. W3 ar3 w311 insid3 that."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:early-nav-optical"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "0ptical nav is showing a slight offset from my inertial data but I'd — I'd weight the inertial fix. 0ptical sensors can shift in an impact event in ways that are hard to account for."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:mid"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "requires-counter",
+          "",
+          "",
+          "cass-accuracy",
+          ">=",
+          "2",
+          ""
+        ],
+        [
+          "requires-counter",
+          "",
+          "",
+          "cass-accuracy",
+          "<=",
+          "3",
+          ""
+        ],
+        [
+          "option",
+          "Ship status.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:mid-status"
+        ],
+        [
+          "option",
+          "The power bus.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:mid-bus"
+        ],
+        [
+          "option",
+          "The port equipment bay.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:mid-bay"
+        ],
+        [
+          "option",
+          "The C2 hatch.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:mid-c2"
+        ],
+        [
+          "option",
+          "The coolant loop.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:mid-coolant"
+        ],
+        [
+          "option",
+          "Navigation.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:mid-nav"
+        ],
+        [
+          "option",
+          "Nothing.",
+          ""
+        ]
+      ],
+      "content": "What do you need? I should mention — some of my sensor readings may be less reliable than usual. I'm still calibrating."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:mid-status"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "Power bus fault still active — isolation should clear it once you've confirmed what tripped it. Life support in emergency mode. Based on available sensors, the ship is otherwise functional — but I want to flag that several of my sensor readings are showing inconsistencies I'm still working through."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:mid-bus"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "The junction panel dead end still concerns me, but I think the issue may be upstream. If you've confirmed the array problem visually, the bus controller isolation function should clear the fault directly. I'm less confident in my initial junction panel diagnosis."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:mid-bay"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "Bay pressure appears nominal based on available sensors — but I would recommend checking the corridor analog gauge before opening B1. I'm not fully confident in my bay pressure reading. The gauge is independent of my sensor network."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:mid-c2"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "The aft section reading is 94.2 kPa. I'm not fully confident in that sensor — it may have been affected by the impact. The corridor gauge beside C2 would give you an independent reading. Worth checking before deciding."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:mid-coolant"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "I flagged the exterior fins initially but I'm less certain of that now. I don't have good sensor coverage on the return line section. It may be worth checking the return panel in the aft section directly — I can't give you a reliable reading on flow through that section."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:mid-nav"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "I'd — I'd actually recommend independent verification of my position fix before committing to burn parameters. I'm not certain my inertial baseline is reliable. The optical nav offset I mentioned earlier may be meaningful. I should not have dismissed it as readily as I did."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:late"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "requires-counter",
+          "",
+          "",
+          "cass-accuracy",
+          ">=",
+          "4",
+          ""
+        ],
+        [
+          "option",
+          "Ship status.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:late-status"
+        ],
+        [
+          "option",
+          "The port equipment bay.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:late-bay"
+        ],
+        [
+          "option",
+          "The C2 hatch.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:late-c2"
+        ],
+        [
+          "option",
+          "The coolant loop.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:late-coolant"
+        ],
+        [
+          "option",
+          "Navigation.",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:late-nav"
+        ],
+        [
+          "option",
+          "Nothing.",
+          ""
+        ]
+      ],
+      "content": "What do you need? I want to tell you — some of my earlier assessments were based on corrupted sensor data. I can't guarantee the accuracy of anything from my initial status report. You should have independent verification on anything critical before acting on it."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:late-status"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "Power bus fault clears on array isolation — you may have done this already. Life support requires coolant loop repair. Navigation requires independent fix. Those are the three things standing between you and a burn. I can give you more detail on any of them."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:late-bay"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "I don't have a reliable reading on bay pressure. My sensor there was reading through a damaged conduit — what I reported as nominal was not nominal. The corridor analog gauge is your best source. If it reads near vacuum, the bay is depressurised. Use the PPG."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:late-c2"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "The aft section is fine. 97.8 kPa and equalising after the seal event — that's normal post-seal behaviour, not a leak. I had this wrong. The corridor gauge was right. I'm sorry for the unnecessary delay."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:late-coolant"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "I sent you to the wrong location. The blockage is in the return line, not the exterior fins — I had no good sensor on the return section and I extrapolated incorrectly. The return access panel in the aft section will show a temperature differential. The pump will need clearing with the hex driver, then the priming sequence: PRIME, then FLOW, then CONFIRM."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:late-nav"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "What are the correct burn parameters?",
+          "30078:<PUBKEY>:nominal-drift:dialogue:cass:late-nav-params"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "My inertial fix has a logged power interruption at T-minus 2 seconds. I should not have presented that data with 94.2% confidence — the interruption invalidates the baseline. The optical nav offset I flagged was the correct reading. Use that for burn parameters, not my inertial data."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:dialogue:cass:late-nav-params"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "dialogue"
+        ],
+        [
+          "option",
+          "Understood.",
+          ""
+        ]
+      ],
+      "content": "Based on the corrected position data: delta-V 1847 metres per second, burn duration 340 seconds. That gives an 18-month transit with nominal Earth approach geometry. I'm confident in those numbers now."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:overhead-locker"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Overhead Locker"
+        ],
+        [
+          "noun",
+          "overhead locker",
+          "locker",
+          "overhead"
+        ],
+        [
+          "state",
+          "closed"
+        ],
+        [
+          "transition",
+          "closed",
+          "open",
+          "The locker swings open. Inside: the PPG, a medical kit, a small torch."
+        ],
+        [
+          "on-interact",
+          "open",
+          "closed",
+          "set-state",
+          "open"
+        ],
+        [
+          "on-interact",
+          "open",
+          "open",
+          "set-state",
+          "open"
+        ],
+        [
+          "on-interact",
+          "open",
+          "closed",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:ppg-suit"
+        ],
+        [
+          "verb",
+          "open"
+        ]
+      ],
+      "content": "A locker mounted above the forward bunk. Latched shut. The emergency equipment list on the hab wall mentions a PPG stored here."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:inspection-window"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Inspection Window"
+        ],
+        [
+          "noun",
+          "inspection window",
+          "window",
+          "port window",
+          "viewport"
+        ],
+        [
+          "state",
+          "unread"
+        ],
+        [
+          "transition",
+          "unread",
+          "read",
+          ""
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "set-state",
+          "read"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:array-tumbling"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "add-counter",
+          "cass-accuracy",
+          "1",
+          "30078:<PUBKEY>:nominal-drift:world"
+        ]
+      ],
+      "content": "A small porthole set into the bulkhead beside the B1 hatch. Scratched perspex, thumb-sized. Through it you can see the port side of the hull — and beyond it, the array."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:cold-bulkhead"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Port Bulkhead"
+        ],
+        [
+          "noun",
+          "bulkhead",
+          "cold bulkhead",
+          "port bulkhead",
+          "wall"
+        ],
+        [
+          "state",
+          "unread"
+        ],
+        [
+          "transition",
+          "unread",
+          "read",
+          ""
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "set-state",
+          "read"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:bay-cold"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "add-counter",
+          "cass-accuracy",
+          "1",
+          "30078:<PUBKEY>:nominal-drift:world"
+        ]
+      ],
+      "content": "The bulkhead wall beside the B1 hatch. Standard hull panel, grey composite."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:b1-hatch"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "B1 Hatch"
+        ],
+        [
+          "noun",
+          "b1 hatch",
+          "hatch",
+          "bay hatch",
+          "b1",
+          "door"
+        ],
+        [
+          "state",
+          "sealed"
+        ],
+        [
+          "transition",
+          "sealed",
+          "open",
+          "The hatch releases."
+        ],
+        [
+          "on-interact",
+          "open",
+          "sealed",
+          "set-state",
+          "open"
+        ],
+        [
+          "on-interact",
+          "open",
+          "sealed",
+          "consequence",
+          "30078:<PUBKEY>:nominal-drift:consequence:b1-open-check"
+        ],
+        [
+          "verb",
+          "open"
+        ]
+      ],
+      "content": "The B1 hatch to the port equipment bay. Sealed per emergency protocol, amber indicator lit. A manual release lever is set into the frame."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:port-viewport"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Port Viewport"
+        ],
+        [
+          "noun",
+          "port viewport",
+          "viewport",
+          "window",
+          "porthole"
+        ],
+        [
+          "state",
+          "unread"
+        ],
+        [
+          "transition",
+          "unread",
+          "read",
+          ""
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "set-state",
+          "read"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:array-tumbling"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "add-counter",
+          "cass-accuracy",
+          "1",
+          "30078:<PUBKEY>:nominal-drift:world"
+        ],
+        [
+          "requires-not",
+          "30078:<PUBKEY>:nominal-drift:clue:array-tumbling",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "A viewport on the port wall of the command module. Hull thickness makes it narrow, but you can see the port side of the ship — the array mount, the array wing."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:bus-controller-panel"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Bus Controller Panel"
+        ],
+        [
+          "noun",
+          "bus controller",
+          "controller",
+          "bus controller panel",
+          "panel",
+          "relay"
+        ],
+        [
+          "state",
+          "faulted"
+        ],
+        [
+          "transition",
+          "faulted",
+          "restored",
+          "The protection relay resets. The bus hum shifts — fuller, steadier. Emergency power holds."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:clue:array-tumbling",
+          "visible",
+          "You need to identify the fault cause first. Restoring without isolation will trip the relay again immediately."
+        ],
+        [
+          "on-interact",
+          "isolate",
+          "faulted",
+          "set-state",
+          "restored"
+        ],
+        [
+          "on-interact",
+          "isolate",
+          "faulted",
+          "set-state",
+          "bus-restored",
+          "30078:<PUBKEY>:nominal-drift:world"
+        ],
+        [
+          "on-interact",
+          "isolate",
+          "restored",
+          "set-state",
+          "restored"
+        ],
+        [
+          "verb",
+          "isolate"
+        ]
+      ],
+      "content": "The bus controller interface occupies the lower-left quadrant of the command console. A protection fault indicator is lit amber. The array isolation relay controls are here — a guarded switch and a confirm button."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:equipment-bag"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Equipment Bag"
+        ],
+        [
+          "noun",
+          "equipment bag",
+          "bag",
+          "grey bag"
+        ],
+        [
+          "state",
+          "blocking"
+        ],
+        [
+          "transition",
+          "blocking",
+          "moved",
+          "The bag drifts aside in the zero-g environment. Panel C-4 is now accessible."
+        ],
+        [
+          "on-interact",
+          "move",
+          "blocking",
+          "set-state",
+          "moved"
+        ],
+        [
+          "on-interact",
+          "push",
+          "blocking",
+          "set-state",
+          "moved"
+        ],
+        [
+          "on-interact",
+          "shift",
+          "blocking",
+          "set-state",
+          "moved"
+        ],
+        [
+          "verb",
+          "move",
+          "push",
+          "shift"
+        ]
+      ],
+      "content": "A grey equipment bag — standard issue, magnetic seal closure. It drifted during the decompression event and came to rest against the wall, covering panel C-4."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:panel-c4"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Panel C-4"
+        ],
+        [
+          "noun",
+          "panel c4",
+          "c4",
+          "c-4",
+          "array panel",
+          "disconnect panel"
+        ],
+        [
+          "state",
+          "blocked"
+        ],
+        [
+          "transition",
+          "blocked",
+          "open",
+          "The panel swings open. Inside: a coiled cable with a yellow connector tag."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:equipment-bag",
+          "moved",
+          "The equipment bag is in the way."
+        ],
+        [
+          "on-interact",
+          "open",
+          "blocked",
+          "set-state",
+          "open"
+        ],
+        [
+          "on-interact",
+          "open",
+          "open",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:array-disconnect-cable"
+        ],
+        [
+          "verb",
+          "open"
+        ]
+      ],
+      "content": "A maintenance access panel in the far wall, labeled C-4. Behind an equipment bag that drifted here during the decompression event."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:aft-corridor-gauge"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Aft Corridor Gauge"
+        ],
+        [
+          "noun",
+          "aft corridor gauge",
+          "corridor gauge",
+          "pressure gauge",
+          "gauge",
+          "aft gauge"
+        ],
+        [
+          "state",
+          "unread"
+        ],
+        [
+          "transition",
+          "unread",
+          "read",
+          ""
+        ]
+      ],
+      "content": "An analog pressure gauge mounted beside the C2 hatch, labeled AFT SECTION. The needle reads 97.8 kPa and is visibly moving — slowly climbing toward the nominal 101.3. Equalization. Leaks fall. This is rising."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:c2-hatch"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "C2 Hatch"
+        ],
+        [
+          "noun",
+          "c2 hatch",
+          "c2",
+          "hatch",
+          "aft hatch",
+          "door"
+        ],
+        [
+          "state",
+          "sealed"
+        ],
+        [
+          "transition",
+          "sealed",
+          "open",
+          "The hatch releases. The aft section is at normal pressure — warm, even. CASS was wrong about the leak."
+        ],
+        [
+          "on-interact",
+          "open",
+          "sealed",
+          "set-state",
+          "open"
+        ],
+        [
+          "on-interact",
+          "open",
+          "sealed",
+          "add-counter",
+          "cass-accuracy",
+          "1",
+          "30078:<PUBKEY>:nominal-drift:world"
+        ],
+        [
+          "verb",
+          "open"
+        ]
+      ],
+      "content": "The C2 hatch between the aft passage and the aft section. Sealed per emergency protocol, amber indicator lit. CASS has flagged a pressure anomaly beyond it. The corridor gauge beside it tells a different story."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:coolant-return-panel"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Coolant Return Panel"
+        ],
+        [
+          "noun",
+          "return panel",
+          "coolant return",
+          "return line",
+          "return access panel"
+        ],
+        [
+          "state",
+          "closed"
+        ],
+        [
+          "transition",
+          "closed",
+          "examined",
+          "The panel is warm to the touch — noticeably warmer than the supply panel beside it."
+        ],
+        [
+          "on-interact",
+          "examine",
+          "closed",
+          "set-state",
+          "examined"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "closed",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:return-line-warm"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "closed",
+          "add-counter",
+          "cass-accuracy",
+          "1",
+          "30078:<PUBKEY>:nominal-drift:world"
+        ]
+      ],
+      "content": "An access panel on the port bulkhead, labeled RETURN. Identical to the SUPPLY panel beside it. The pump housing is accessible behind this panel."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:coolant-supply-panel"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Coolant Supply Panel"
+        ],
+        [
+          "noun",
+          "supply panel",
+          "coolant supply",
+          "supply line",
+          "supply access panel"
+        ]
+      ],
+      "content": "An access panel on the port bulkhead, labeled SUPPLY. Cool to the touch — the supply side of the loop is flowing normally. Whatever the problem is, it's downstream of here."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:coolant-pump"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Coolant Pump"
+        ],
+        [
+          "noun",
+          "coolant pump",
+          "pump",
+          "impeller"
+        ],
+        [
+          "state",
+          "jammed"
+        ],
+        [
+          "transition",
+          "jammed",
+          "cleared",
+          "Counter-rotation first, then forward. The impeller breaks free — fine debris from the impact, particulate. The pump clears."
+        ],
+        [
+          "transition",
+          "cleared",
+          "running",
+          "The pump primes and engages. Coolant flow resumes. You can hear the system normalising."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-return-panel",
+          "examined",
+          "You need to check the return line first to confirm the problem is here."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:hex-driver",
+          "",
+          "The pump housing is sealed with hex bolts. You need the hex driver from the maintenance kit."
+        ],
+        [
+          "on-interact",
+          "use",
+          "jammed",
+          "set-state",
+          "cleared"
+        ],
+        [
+          "on-interact",
+          "use",
+          "jammed",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:priming-instruction"
+        ],
+        [
+          "on-interact",
+          "use",
+          "",
+          "activate",
+          "30078:<PUBKEY>:nominal-drift:recipe:clear-pump"
+        ],
+        [
+          "verb",
+          "use",
+          "clear",
+          "fix"
+        ]
+      ],
+      "content": "The coolant pump housing, behind the return access panel. The hex bolts are accessible. The impeller is visible through a small inspection port — it should be turning. It isn't."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:switch-prime"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "PRIME Switch"
+        ],
+        [
+          "noun",
+          "prime switch",
+          "prime",
+          "first switch"
+        ],
+        [
+          "state",
+          "off"
+        ],
+        [
+          "transition",
+          "off",
+          "activated",
+          "PRIME engaged. The loop pressurises."
+        ],
+        [
+          "on-interact",
+          "activate",
+          "off",
+          "set-state",
+          "activated"
+        ],
+        [
+          "verb",
+          "activate",
+          "press",
+          "flip"
+        ]
+      ],
+      "content": "The first of three priming switches on the coolant panel. Labeled PRIME. Currently in the off position."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:switch-flow"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "FLOW Switch"
+        ],
+        [
+          "noun",
+          "flow switch",
+          "flow",
+          "second switch"
+        ],
+        [
+          "state",
+          "off"
+        ],
+        [
+          "transition",
+          "off",
+          "activated",
+          "FLOW engaged. The pump opens."
+        ],
+        [
+          "on-interact",
+          "activate",
+          "off",
+          "set-state",
+          "activated"
+        ],
+        [
+          "verb",
+          "activate",
+          "press",
+          "flip"
+        ]
+      ],
+      "content": "The second of three priming switches on the coolant panel. Labeled FLOW. Currently in the off position."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:switch-confirm"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "CONFIRM Switch"
+        ],
+        [
+          "noun",
+          "confirm switch",
+          "confirm",
+          "third switch"
+        ],
+        [
+          "state",
+          "off"
+        ],
+        [
+          "transition",
+          "off",
+          "activated",
+          "CONFIRM engaged. The loop seals and monitoring activates."
+        ],
+        [
+          "on-interact",
+          "activate",
+          "off",
+          "set-state",
+          "activated"
+        ],
+        [
+          "verb",
+          "activate",
+          "press",
+          "flip"
+        ]
+      ],
+      "content": "The third of three priming switches on the coolant panel. Labeled CONFIRM. Currently in the off position."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:cass-core-rack"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "CASS-CORE Rack"
+        ],
+        [
+          "noun",
+          "cass-core",
+          "cass core",
+          "processor rack",
+          "rack",
+          "core rack"
+        ],
+        [
+          "state",
+          "intact"
+        ],
+        [
+          "transition",
+          "intact",
+          "examined",
+          ""
+        ],
+        [
+          "transition",
+          "examined",
+          "repaired",
+          "CASS reinitialises. The amber indicator goes green."
+        ],
+        [
+          "on-interact",
+          "examine",
+          "intact",
+          "set-state",
+          "examined"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "intact",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:cass-core-damaged"
+        ],
+        [
+          "on-interact",
+          "repair",
+          "",
+          "activate",
+          "30078:<PUBKEY>:nominal-drift:recipe:repair-cass"
+        ],
+        [
+          "verb",
+          "repair",
+          "replace"
+        ]
+      ],
+      "content": "A rack-mounted processing unit, shoebox-sized. CASS-CORE stenciled on the face plate in small block letters. Three indicator lights on the front panel: two green, one amber. There is a hairline crack along the lower left edge of the casing."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:spare-parts-locker"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Spare Parts Locker"
+        ],
+        [
+          "noun",
+          "spare parts locker",
+          "spare parts",
+          "locker",
+          "parts locker"
+        ],
+        [
+          "state",
+          "closed"
+        ],
+        [
+          "transition",
+          "closed",
+          "open",
+          "The locker opens. Shelves of replacement components, all labelled."
+        ],
+        [
+          "on-interact",
+          "open",
+          "closed",
+          "set-state",
+          "open"
+        ],
+        [
+          "on-interact",
+          "open",
+          "closed",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:logic-board"
+        ],
+        [
+          "verb",
+          "open"
+        ]
+      ],
+      "content": "A small locker beneath the CASS-CORE rack, secured with a simple latch. Replacement components for critical systems are stored here — sorted, labelled, sealed in antistatic bags."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:imu-log-panel"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "IMU Log Panel"
+        ],
+        [
+          "noun",
+          "imu log",
+          "imu",
+          "log panel",
+          "inertial unit",
+          "imu panel"
+        ],
+        [
+          "state",
+          "unread"
+        ],
+        [
+          "transition",
+          "unread",
+          "read",
+          ""
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "set-state",
+          "read"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:imu-fault"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "unread",
+          "add-counter",
+          "cass-accuracy",
+          "1",
+          "30078:<PUBKEY>:nominal-drift:world"
+        ],
+        [
+          "on-interact",
+          "compute",
+          "read",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:corrected-position"
+        ],
+        [
+          "requires-counter",
+          "compute",
+          "",
+          "cass-accuracy",
+          ">=",
+          "1",
+          "You need to understand the IMU fault before you can correct for it."
+        ],
+        [
+          "verb",
+          "compute",
+          "calculate",
+          "correct"
+        ]
+      ],
+      "content": "A panel displaying the event log for the Inertial Measurement Unit. Most entries are routine attitude corrections and calibration checks. A warning label below the panel reads in red: DO NOT USE IMU DATA FOLLOWING UNSCHEDULED POWER INTERRUPTION WITHOUT INDEPENDENT VERIFICATION."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:cass-terminal"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "CASS Terminal"
+        ],
+        [
+          "noun",
+          "cass terminal",
+          "terminal",
+          "command terminal"
+        ],
+        [
+          "state",
+          "default"
+        ],
+        [
+          "transition",
+          "default",
+          "nav-updated",
+          "The backup processor integrates. The nav display flickers — then comes online."
+        ],
+        [
+          "on-interact",
+          "install",
+          "default",
+          "set-state",
+          "nav-updated"
+        ],
+        [
+          "on-interact",
+          "install",
+          "default",
+          "consume-item",
+          "30078:<PUBKEY>:nominal-drift:item:backup-nav-processor"
+        ],
+        [
+          "on-interact",
+          "install",
+          "default",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:nav-fix-complete"
+        ],
+        [
+          "on-interact",
+          "install",
+          "default",
+          "add-counter",
+          "cass-accuracy",
+          "1",
+          "30078:<PUBKEY>:nominal-drift:world"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:backup-nav-processor",
+          "",
+          "You need the backup nav processor from the equipment bay."
+        ],
+        [
+          "verb",
+          "install",
+          "use",
+          "connect"
+        ]
+      ],
+      "content": "The CASS primary interface terminal on the right side of the command console. Also provides a connection point for the backup navigation processor — there is a labelled socket on the lower panel, currently empty."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:sextant-mount"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Sextant Mount"
+        ],
+        [
+          "noun",
+          "sextant mount",
+          "sextant",
+          "mount",
+          "bracket"
+        ],
+        [
+          "state",
+          "empty"
+        ],
+        [
+          "transition",
+          "empty",
+          "loaded",
+          "You clip the sextant into the mount and spread the charts. Mars is visible in the aft sector — a clear red disk."
+        ],
+        [
+          "transition",
+          "loaded",
+          "measured-1",
+          "First measurement taken — Mars."
+        ],
+        [
+          "transition",
+          "measured-1",
+          "measured-2",
+          "Second measurement taken — Sun."
+        ],
+        [
+          "transition",
+          "measured-2",
+          "measured-3",
+          "Third measurement taken — Jupiter. Three measurements. Enough."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:star-charts",
+          "",
+          "You need the star charts from the navigation section of the binder."
+        ],
+        [
+          "on-interact",
+          "use",
+          "empty",
+          "set-state",
+          "loaded"
+        ],
+        [
+          "on-interact",
+          "measure",
+          "loaded",
+          "set-state",
+          "measured-1"
+        ],
+        [
+          "on-interact",
+          "measure",
+          "loaded",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:angle-1"
+        ],
+        [
+          "on-interact",
+          "measure",
+          "measured-1",
+          "set-state",
+          "measured-2"
+        ],
+        [
+          "on-interact",
+          "measure",
+          "measured-1",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:angle-2"
+        ],
+        [
+          "on-interact",
+          "measure",
+          "measured-2",
+          "set-state",
+          "measured-3"
+        ],
+        [
+          "on-interact",
+          "measure",
+          "measured-2",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:angle-3"
+        ],
+        [
+          "on-interact",
+          "compute",
+          "",
+          "activate",
+          "30078:<PUBKEY>:nominal-drift:recipe:compute-fix"
+        ],
+        [
+          "verb",
+          "use",
+          "load"
+        ],
+        [
+          "verb",
+          "measure",
+          "sight",
+          "read"
+        ],
+        [
+          "verb",
+          "compute",
+          "calculate"
+        ]
+      ],
+      "content": "A sextant mounting bracket on the forward sill of the observation blister. Designed for exactly this scenario — primary nav down, crew needs a manual position fix. The bracket accepts the sextant from the navigation kit. The chart holder beside it is empty until you bring the charts."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:chart-holder"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Chart Holder"
+        ],
+        [
+          "noun",
+          "chart holder",
+          "holder"
+        ]
+      ],
+      "content": "A clip-rail chart holder beside the sextant mount. Currently empty. The star charts from the binder's navigation section would fit here."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:burn-console"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Burn Console"
+        ],
+        [
+          "noun",
+          "burn console",
+          "console",
+          "burn controls",
+          "engine controls"
+        ],
+        [
+          "state",
+          "locked"
+        ],
+        [
+          "transition",
+          "locked",
+          "ready",
+          "Both conditions met. The burn console is ready. The ignition sequencer is live."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:clue:nav-fix-complete",
+          "visible",
+          "You need a verified position fix before you can commit to burn parameters."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-pump",
+          "running",
+          "Life support isn't fully operational. Fix the coolant loop first."
+        ],
+        [
+          "on-interact",
+          "examine",
+          "locked",
+          "set-state",
+          "locked"
+        ],
+        [
+          "on-interact",
+          "examine",
+          "ready",
+          "set-state",
+          "ready"
+        ]
+      ],
+      "content": "The burn console occupies the forward wall of the engine room. Fuel status, ignition sequencer, burn parameter display. Three rows of switches. The console requires a verified position fix and operational life support before the ignition sequencer will arm."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:ignition-switch-a"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Ignition Switch A"
+        ],
+        [
+          "noun",
+          "ignition switch a",
+          "switch a",
+          "first switch",
+          "arm a"
+        ],
+        [
+          "state",
+          "off"
+        ],
+        [
+          "transition",
+          "off",
+          "armed",
+          "IGNITION SWITCH A — ARMED."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:burn-console",
+          "ready",
+          "The burn console isn't ready yet."
+        ],
+        [
+          "on-interact",
+          "arm",
+          "off",
+          "set-state",
+          "armed"
+        ],
+        [
+          "on-interact",
+          "activate",
+          "off",
+          "set-state",
+          "armed"
+        ],
+        [
+          "verb",
+          "arm",
+          "activate",
+          "press"
+        ]
+      ],
+      "content": "A guarded switch on the burn console, labeled IGNITION A. Guard is up — switch in the off position."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:ignition-switch-b"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Ignition Switch B"
+        ],
+        [
+          "noun",
+          "ignition switch b",
+          "switch b",
+          "second switch",
+          "arm b"
+        ],
+        [
+          "state",
+          "off"
+        ],
+        [
+          "transition",
+          "off",
+          "armed",
+          "IGNITION SWITCH B — ARMED."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:burn-console",
+          "ready",
+          "The burn console isn't ready yet."
+        ],
+        [
+          "on-interact",
+          "arm",
+          "off",
+          "set-state",
+          "armed"
+        ],
+        [
+          "on-interact",
+          "activate",
+          "off",
+          "set-state",
+          "armed"
+        ],
+        [
+          "verb",
+          "arm",
+          "activate",
+          "press"
+        ]
+      ],
+      "content": "A guarded switch on the burn console, labeled IGNITION B. Guard is up — switch in the off position."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:ignition-confirm"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Ignition Confirm"
+        ],
+        [
+          "noun",
+          "ignition confirm",
+          "confirm",
+          "confirm button",
+          "ignition button"
+        ],
+        [
+          "state",
+          "off"
+        ],
+        [
+          "transition",
+          "off",
+          "pressed",
+          "IGNITION CONFIRM pressed."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:ignition-switch-a",
+          "armed",
+          "Arm both ignition switches first."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:ignition-switch-b",
+          "armed",
+          "Arm both ignition switches first."
+        ],
+        [
+          "on-interact",
+          "press",
+          "off",
+          "set-state",
+          "pressed"
+        ],
+        [
+          "verb",
+          "press",
+          "confirm"
+        ]
+      ],
+      "content": "A red confirm button on the burn console, labeled IGNITION CONFIRM. Requires both ARM switches to be set before it will respond."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:battery-reserve-display"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Battery Reserve Display"
+        ],
+        [
+          "noun",
+          "battery reserve",
+          "battery",
+          "power reserve",
+          "reserve display"
+        ]
+      ],
+      "content": "67% battery reserve. The number has been slowly declining since the bus fault — emergency power draw is lower than normal operations, but it's not zero. You have hours, not days."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:o2-meter"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "O2 Partial Pressure Meter"
+        ],
+        [
+          "noun",
+          "o2 meter",
+          "oxygen meter",
+          "o2",
+          "oxygen",
+          "partial pressure"
+        ]
+      ],
+      "content": "O2 partial pressure: 21.1 kPa. Normal. The life support emergency mode is keeping atmospheric composition stable, even if thermal management is degraded. At least you can breathe."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:mission-clock"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Mission Elapsed Time Clock"
+        ],
+        [
+          "noun",
+          "mission clock",
+          "clock",
+          "elapsed time",
+          "met",
+          "timer"
+        ]
+      ],
+      "content": "Mission elapsed time: 847 hours, 22 minutes, and counting. The clock has been running since launch. It will keep running regardless of what happens to everything else. There is something reliable about that."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:cabin-temp-gauge"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Cabin Temperature Gauge"
+        ],
+        [
+          "noun",
+          "cabin temperature",
+          "temperature gauge",
+          "temp gauge",
+          "thermometer"
+        ]
+      ],
+      "content": "Cabin temperature: 14 degrees C and dropping. The thermal management system is in emergency mode — keeping you alive but not comfortable. You can work in this. You'd prefer not to sleep in it."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:humidity-sensor"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Humidity Sensor"
+        ],
+        [
+          "noun",
+          "humidity sensor",
+          "humidity",
+          "moisture sensor"
+        ]
+      ],
+      "content": "Relative humidity: 38%. Low, but within acceptable range. Your lips are already slightly dry. You add it to the list of things that don't matter right now."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:nav-display"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Navigation Display"
+        ],
+        [
+          "noun",
+          "navigation display",
+          "nav display",
+          "trajectory display",
+          "main display"
+        ]
+      ],
+      "content": "Dark. The navigation computer is offline — this display requires it. The screen reflects your face back at you."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:solar-irradiance-sensor"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Solar Irradiance Sensor"
+        ],
+        [
+          "noun",
+          "solar irradiance",
+          "irradiance sensor",
+          "solar sensor",
+          "solar power"
+        ]
+      ],
+      "content": "Solar irradiance: 847 W/m2. Low — about 61% of what the arrays should be capturing at this distance. Consistent with a damaged array that isn't properly oriented. The numbers tell the same story the window does."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:rcs-status-board"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "RCS Thruster Status Board"
+        ],
+        [
+          "noun",
+          "rcs status",
+          "thruster status",
+          "rcs board",
+          "attitude control",
+          "rcs"
+        ]
+      ],
+      "content": "RCS thruster status: green across all quadrants. The attitude control thrusters are undamaged and functional. The ship is holding its orientation. It's doing what it was told to do before the impact, and it will keep doing so indefinitely. Whether that orientation is useful is a different question."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:comm-signal-meter"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Comm Signal Meter"
+        ],
+        [
+          "noun",
+          "comm signal",
+          "comm meter",
+          "communications",
+          "signal meter",
+          "comms"
+        ]
+      ],
+      "content": "Comm signal strength: zero. The antenna is pointed in the wrong direction and the power system isn't prioritising it. Even if it weren't, you're far enough from Earth that a message would take time to arrive and more time to come back. You're working with what you have."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:abort-status"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Abort System Status"
+        ],
+        [
+          "noun",
+          "abort status",
+          "abort system",
+          "abort"
+        ]
+      ],
+      "content": "Abort system status: ARMED. It is always ARMED. You cannot disarm it. It's there in case something goes catastrophically wrong during a burn — which hasn't happened yet, and which you intend to prevent by being careful."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:bay-pressure-gauge"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Bay Pressure Gauge"
+        ],
+        [
+          "noun",
+          "bay pressure gauge",
+          "bay gauge",
+          "pressure gauge",
+          "gauge"
+        ]
+      ],
+      "content": "An analog pressure gauge on the corridor wall, labeled BAY SIDE. The needle reads 19.2 kPa. Nominal atmospheric pressure is 101.3. The gap between those numbers is the equipment bay."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:corridor-temp-strip"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Corridor Temperature Strip"
+        ],
+        [
+          "noun",
+          "temperature strip",
+          "temp strip",
+          "corridor temperature"
+        ]
+      ],
+      "content": "A temperature-sensitive strip running along the corridor bulkhead. The colour gradient reads cold on the port side — the side closest to the equipment bay — and warmer toward the hab. The cold side is very cold."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:emergency-light-status"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Emergency Light Status"
+        ],
+        [
+          "noun",
+          "emergency light",
+          "light status",
+          "emergency lighting"
+        ]
+      ],
+      "content": "Emergency lighting status: active, all zones. The amber strips along the corridor floor are running on backup power. They'll keep running until the batteries die."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:eva-suit-rack"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "EVA Suit Rack"
+        ],
+        [
+          "noun",
+          "eva suit",
+          "eva suit rack",
+          "suit rack",
+          "spacesuit"
+        ]
+      ],
+      "content": "The EVA suit hangs in its rack, fully sealed and pressure-checked. Intact. Also inaccessible without something already pressure-rated to reach it — the kind of circular problem that tends to sort itself out one way or another."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:airlock-cycle-counter"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Airlock Cycle Counter"
+        ],
+        [
+          "noun",
+          "airlock counter",
+          "airlock cycle",
+          "cycle counter"
+        ]
+      ],
+      "content": "Airlock cycle counter: 0 cycles since last reset. The airlock hasn't been used. You're in the equipment bay through the B1 hatch, not the airlock. That distinction matters for the seal integrity log."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:depress-event-log"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Depress Event Log"
+        ],
+        [
+          "noun",
+          "depress event log",
+          "event log",
+          "depress log",
+          "depressurisation log"
+        ]
+      ],
+      "content": "Depressurisation event log: one event. Timestamp matches the impact. Duration: instantaneous. The bay went from standard pressure to hard vacuum in under a second. Everything that wasn't bolted down moved."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:reactor-thermal"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Reactor Thermal Readout"
+        ],
+        [
+          "noun",
+          "reactor thermal",
+          "reactor",
+          "thermal readout",
+          "reactor temperature"
+        ]
+      ],
+      "content": "Reactor thermal: 287 degrees C. Nominal for passive cooling mode. The reactor is running at minimum output to keep essential systems alive. It has been doing this for 847 hours without incident."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:power-efficiency-meter"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Power Conversion Efficiency Meter"
+        ],
+        [
+          "noun",
+          "power efficiency",
+          "conversion efficiency",
+          "efficiency meter"
+        ]
+      ],
+      "content": "Power conversion efficiency: 61%. Degraded from nominal 94% — the damaged array is producing irregular input. The number will improve when the array situation is resolved."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:structural-sensors"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Structural Integrity Sensors"
+        ],
+        [
+          "noun",
+          "structural sensors",
+          "structural integrity",
+          "hull sensors",
+          "integrity sensors"
+        ]
+      ],
+      "content": "A row of twelve structural integrity sensors, all green. The hull is intact everywhere these sensors can measure. The impact was confined to the port equipment bay section — which had its own sensors, which are now not reporting. The green lights are accurate, as far as they go."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:impact-counter"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Micrometeorite Impact Counter"
+        ],
+        [
+          "noun",
+          "impact counter",
+          "micrometeorite counter",
+          "impact log"
+        ]
+      ],
+      "content": "Micrometeorite impact counter: 1.\n\nLogged: 4 km/s relative velocity, mass approximately 340 grams. Port equipment bay section. Timestamp: 847:14:22 MET.\n\nThe counter was designed to track the small, constant rain of debris any spacecraft accumulates over a long mission. One hit of this magnitude was not what the designers had in mind."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:fuel-status-display"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Fuel Status Display"
+        ],
+        [
+          "noun",
+          "fuel status",
+          "fuel display",
+          "fuel gauge",
+          "propellant"
+        ]
+      ],
+      "content": "Fuel status: 94.3% of nominal load. The mission profile allocated 5.7% for Mars gravity assist manoeuvring.\n\nFor a nominal return burn: delta-V 1847 m/s, duration 340 seconds. That leaves a margin of approximately 2.1% for corrections.\n\nEnough for one correction burn. Not enough for two."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:ignition-sequencer"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Ignition Sequencer"
+        ],
+        [
+          "noun",
+          "ignition sequencer",
+          "sequencer",
+          "ignition system"
+        ]
+      ],
+      "content": "The ignition sequencer display: SWITCH A — OFF. SWITCH B — OFF. CONFIRM — LOCKED. The sequencer enforces the procedure: both switches must arm before CONFIRM becomes available."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:chamber-pressure-history"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Chamber Pressure History"
+        ],
+        [
+          "noun",
+          "chamber pressure",
+          "pressure history",
+          "chamber history"
+        ]
+      ],
+      "content": "A strip of paper tape from the engine's last hot-fire test — ground test, six months ago. The pressure trace is clean and nominal throughout. Someone has written GOOD BURN in pencil at the end of the strip. The engine has been waiting since then."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:nozzle-temp-log"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Nozzle Temperature Log"
+        ],
+        [
+          "noun",
+          "nozzle temperature",
+          "nozzle log",
+          "nozzle temp"
+        ]
+      ],
+      "content": "Nozzle temperature log: current reading 4 degrees C. Cold. The ignition sequence includes an automatic pre-heat cycle — the sequencer handles it. You don't need to do anything about this."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:oxidiser-ratio-display"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Oxidiser/Fuel Ratio Display"
+        ],
+        [
+          "noun",
+          "oxidiser ratio",
+          "fuel ratio",
+          "mixture ratio",
+          "oxidiser"
+        ]
+      ],
+      "content": "Oxidiser/fuel ratio: 2.85:1. Nominal. The propellant mixture is stable and within specification. This is one of the things that is working exactly as designed."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:abort-panel-aft"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Abort Panel (Aft)"
+        ],
+        [
+          "noun",
+          "aft abort panel",
+          "abort panel",
+          "abort controls"
+        ]
+      ],
+      "content": "A redundant abort panel, mirroring the one in Command. ARMED, as always. You have now seen this indicator in two locations. It means the same thing in both places."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:star-tracker"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Star Tracker"
+        ],
+        [
+          "noun",
+          "star tracker",
+          "tracker",
+          "optical tracker"
+        ]
+      ],
+      "content": "Star tracker status: OFFLINE. The star tracker was connected to the navigation computer — when the computer went down, so did this. It could have automated the position fix you're about to do by hand. In theory."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:solar-angle-indicator"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Solar Angle Indicator"
+        ],
+        [
+          "noun",
+          "solar angle",
+          "solar angle indicator",
+          "sun angle indicator"
+        ]
+      ],
+      "content": "Solar angle: 23.4 degrees off the primary axis. The ship isn't pointed directly at the Sun. When you do the sextant fix, the Sun will be visible in the forward-port viewport sector."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:attitude-reference"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Attitude Reference Display"
+        ],
+        [
+          "noun",
+          "attitude reference",
+          "attitude display",
+          "orientation display",
+          "attitude"
+        ]
+      ],
+      "content": "Attitude reference: roll 0.2 degrees, pitch -0.3 degrees, yaw 0.1 degrees. All within half a degree of the pre-impact baseline. The ship knows how it's pointed. It just doesn't know where it's pointed from."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:feature:viewport-dome"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "feature"
+        ],
+        [
+          "title",
+          "Viewport Dome"
+        ],
+        [
+          "noun",
+          "viewport dome",
+          "dome",
+          "viewports",
+          "windows"
+        ]
+      ],
+      "content": "Six viewport panels in a shallow dome. Stars in every direction — more than you can see from Earth, more than you've ever seen at once. Mars is visible in the aft sector, a red disk. The Sun, forward-port, too bright to look at directly. Jupiter, forward-starboard, a bright point with a faint yellowish cast.\n\nThree good reference bodies. The charts will tell you exactly where they should be."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:array-tumbling"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "Array Observation"
+        ],
+        [
+          "noun",
+          "array observation",
+          "array tumbling"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          "You note it down mentally."
+        ]
+      ],
+      "content": "The port array wing is rotating — fully rotating, not oscillating. A complete arc every forty seconds. The mount strut is sheared near the joint. This is not vibration within tolerance. This is structural failure."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:bay-cold"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "Bay Temperature"
+        ],
+        [
+          "noun",
+          "bay temperature",
+          "cold bay"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "The bulkhead beside the B1 hatch is very cold — cold through the glove, cold enough that there can only be one explanation. There is nothing on the other side of that bulkhead holding any temperature at all. The bay is not at 19 degrees. The bay is vacuum."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:return-line-warm"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "Return Line Blockage"
+        ],
+        [
+          "noun",
+          "return line blockage",
+          "coolant blockage"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "The return access panel is warm — noticeably warmer than the supply panel beside it. Coolant isn't flowing through the return line. The thermal load from the hab is accumulating at the blockage point. The problem is in the loop, not on the exterior fins. CASS was looking at the wrong end of the system."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:imu-fault"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "IMU Power Interruption"
+        ],
+        [
+          "noun",
+          "imu fault",
+          "imu interruption",
+          "imu error"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "IMU event log, entry 847:14:22 MET: POWER INTERRUPTION — 0.4 seconds. Active measurement in progress at time of interruption.\n\nWarning label: DO NOT USE IMU DATA FOLLOWING UNSCHEDULED POWER INTERRUPTION WITHOUT INDEPENDENT VERIFICATION.\n\nCASS presented an inertial fix with 94.2% confidence. The IMU was interrupted 2 seconds before the impact. CASS did not know this. The fix is wrong."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:cass-core-damaged"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "CASS-CORE Damage"
+        ],
+        [
+          "noun",
+          "cass-core damage",
+          "core damage"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "The CASS-CORE rack has an amber indicator where there should be green. A hairline crack runs along the lower left edge of the casing — impact damage, transmitted through the rack. CASS self-reports nominal. But according to the binder, CASS-CORE has no self-diagnostic capability. It cannot see its own damage. Which means everything CASS has been telling you was filtered through a broken lens."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:life-support-nominal"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "Life Support Restored"
+        ],
+        [
+          "noun",
+          "life support nominal",
+          "life support restored"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "The coolant loop is running. Thermal management is back online. The cabin temperature will stabilise and start climbing. One less thing trying to kill you."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:nav-fix-complete"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "Position Confirmed"
+        ],
+        [
+          "noun",
+          "position confirmed",
+          "nav fix",
+          "position fix"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "Position confirmed by independent measurement. The inertial fix was 1.8 degrees off baseline.\n\nCorrect burn parameters: delta-V 1847 m/s, duration 340 seconds.\n\nThose are the numbers. Not CASS's numbers — yours."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:ppg-warning"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "PPG Warning"
+        ],
+        [
+          "noun",
+          "ppg warning",
+          "suit warning"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          "The PPG wrist indicator flashes amber."
+        ]
+      ],
+      "content": "PPG time remaining: 20 minutes. The suit has been running for a while. You need to either finish what you're doing in the bay or get back through the hatch. Preferably both, in that order."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:binder-ignition"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "Ignition Procedure"
+        ],
+        [
+          "noun",
+          "ignition procedure"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "Ignition sequence: arm Switch A, arm Switch B, press Confirm. In that order. The sequencer enforces it. CASS knows this sequence too — it's one of the few things CASS and the binder agree on."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:binder-electrical"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "Array Isolation"
+        ],
+        [
+          "noun",
+          "array isolation",
+          "electrical systems"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "The bus controller can isolate the port array electrically without physical disconnection. This is the correct response to an array fault causing a protection trip. No EVA required. No tools required. Just the bus controller interface in Command."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:binder-cass-arch"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "CASS Architecture"
+        ],
+        [
+          "noun",
+          "cass architecture",
+          "cass system"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "All sensor inputs pass through CASS-CORE before integration. CASS-CORE has no self-diagnostic capability — a fault in it won't appear in CASS's own logs. If CASS-CORE is damaged, CASS will report everything as nominal, including CASS-CORE itself.\n\nIt can't see what it can't see."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:binder-coolant"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "Coolant Priming Sequence"
+        ],
+        [
+          "noun",
+          "coolant priming",
+          "priming sequence"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "Coolant loop priming procedure: PRIME, then FLOW, then CONFIRM. In that order. Do not activate FLOW before PRIME — running the pump on an unpressurised loop causes cavitation and requires full pump replacement. The card in the pump housing says the same thing."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:binder-ppg"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "PPG Location"
+        ],
+        [
+          "noun",
+          "ppg location"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "The Portable Pressure Garment is in the overhead locker in the hab. Rated for approximately 100 minutes at hard vacuum. Not a substitute for the EVA suit, but sufficient for emergency bay access. Single use."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:binder-nav"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "Navigation Backup Procedure"
+        ],
+        [
+          "noun",
+          "navigation backup",
+          "optical nav procedure"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "IMU data is unreliable after a power interruption during active measurement. Use the observation blister sextant for optical positioning. Three-body fix using Mars, Sun, and Jupiter. Star charts are stored with this section of the binder.\n\nIMU drift from a 0.4-second interruption: approximately 1.5 to 2.0 degrees bearing error."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:clue:binder-appendix-c"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "clue"
+        ],
+        [
+          "title",
+          "CASS-CORE Maintenance Procedure"
+        ],
+        [
+          "noun",
+          "cass-core maintenance",
+          "maintenance procedure"
+        ],
+        [
+          "state",
+          "hidden"
+        ],
+        [
+          "transition",
+          "hidden",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "CASS-CORE replacement: diagnostic cable from equipment bay, replacement logic board from spare parts locker in aft section. Connect cable, enter diagnostic mode, swap board, reinitialise. CASS will be offline during the procedure — approximately 3 minutes."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:puzzle:coolant-priming"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "puzzle"
+        ],
+        [
+          "title",
+          "Coolant Priming Sequence"
+        ],
+        [
+          "puzzle-type",
+          "sequence"
+        ],
+        [
+          "ordered",
+          "true"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:switch-prime",
+          "activated",
+          "The PRIME switch must be activated first."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:switch-flow",
+          "activated",
+          "The FLOW switch must be activated second."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:switch-confirm",
+          "activated",
+          "The CONFIRM switch must be activated last."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-pump",
+          "cleared",
+          "The pump must be cleared before priming."
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "running",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-pump"
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "visible",
+          "30078:<PUBKEY>:nominal-drift:clue:life-support-nominal"
+        ]
+      ],
+      "content": "The coolant loop priming sequence. Three switches in order: PRIME, FLOW, CONFIRM. The pump must already be cleared. The sequence is enforced — activating FLOW before PRIME will cavitate the pump on an empty loop and reset it to jammed."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:puzzle:ignition-final"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "puzzle"
+        ],
+        [
+          "title",
+          "Engine Ignition"
+        ],
+        [
+          "puzzle-type",
+          "sequence"
+        ],
+        [
+          "ordered",
+          "true"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:ignition-switch-a",
+          "armed",
+          "Arm both ignition switches first."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:ignition-switch-b",
+          "armed",
+          "Arm both ignition switches first."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:ignition-confirm",
+          "pressed",
+          "Press the ignition confirm button."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:burn-console",
+          "ready",
+          "The burn console must be ready before ignition."
+        ],
+        [
+          "on-complete",
+          "",
+          "consequence",
+          "30078:<PUBKEY>:nominal-drift:consequence:ignition-fire"
+        ]
+      ],
+      "content": "Engine ignition sequence: arm Switch A, arm Switch B, press Confirm. In that order. The engine is intact. The fuel is sufficient. The only question is the trajectory."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:recipe:don-ppg"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "recipe"
+        ],
+        [
+          "title",
+          "Don Pressure Garment"
+        ],
+        [
+          "verb",
+          "wear",
+          "don",
+          "put on"
+        ],
+        [
+          "noun",
+          "ppg",
+          "suit",
+          "pressure suit",
+          "garment"
+        ],
+        [
+          "ordered",
+          "false"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:ppg-suit",
+          "",
+          "You need the PPG suit from the overhead locker."
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "donned",
+          "30078:<PUBKEY>:nominal-drift:item:ppg-suit"
+        ]
+      ],
+      "content": "You pull on the Portable Pressure Garment and run the seal check. All indicators green. The suit is pressurised and ready. 100 minutes at hard vacuum — less if you're moving hard."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:recipe:clear-pump"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "recipe"
+        ],
+        [
+          "title",
+          "Clear Coolant Pump"
+        ],
+        [
+          "verb",
+          "use",
+          "clear",
+          "fix"
+        ],
+        [
+          "ordered",
+          "false"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:hex-driver",
+          "",
+          "You need the hex driver from the maintenance kit."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-return-panel",
+          "examined",
+          "Check the return line first to confirm the blockage location."
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "cleared",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-pump"
+        ],
+        [
+          "on-complete",
+          "",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:priming-instruction"
+        ]
+      ],
+      "content": "Counter-rotation first, then forward drive. The impeller breaks free — fine particulate debris from the impact, distributed through the ventilation system and settled in the pump housing. The pump clears. A laminated priming instruction card is clipped inside the housing."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:recipe:compute-fix"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "recipe"
+        ],
+        [
+          "title",
+          "Compute Position Fix"
+        ],
+        [
+          "verb",
+          "compute",
+          "calculate",
+          "combine"
+        ],
+        [
+          "ordered",
+          "false"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:angle-1",
+          "",
+          "You need all three angle measurements."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:angle-2",
+          "",
+          "You need all three angle measurements."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:angle-3",
+          "",
+          "You need all three angle measurements."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:star-charts",
+          "",
+          "You need the star charts to cross-reference against."
+        ],
+        [
+          "on-complete",
+          "",
+          "give-item",
+          "30078:<PUBKEY>:nominal-drift:item:position-fix"
+        ],
+        [
+          "on-complete",
+          "",
+          "consume-item",
+          "30078:<PUBKEY>:nominal-drift:item:angle-1"
+        ],
+        [
+          "on-complete",
+          "",
+          "consume-item",
+          "30078:<PUBKEY>:nominal-drift:item:angle-2"
+        ],
+        [
+          "on-complete",
+          "",
+          "consume-item",
+          "30078:<PUBKEY>:nominal-drift:item:angle-3"
+        ]
+      ],
+      "content": "Three angle measurements cross-referenced against the star charts. You work through the calculation on the back of an index card — the math isn't hard, it's just methodical. The position resolves. The discrepancy from CASS's inertial fix is 1.8 degrees. The burn parameters follow from the position."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:recipe:repair-cass"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "recipe"
+        ],
+        [
+          "title",
+          "Repair CASS-CORE"
+        ],
+        [
+          "verb",
+          "repair",
+          "fix",
+          "replace"
+        ],
+        [
+          "ordered",
+          "false"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:diagnostic-cable",
+          "",
+          "You need the diagnostic cable from the equipment bay."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:item:logic-board",
+          "",
+          "You need the replacement logic board from the spare parts locker."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:cass-core-rack",
+          "examined",
+          "Examine the CASS-CORE rack first."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:clue:binder-appendix-c",
+          "visible",
+          "Read the maintenance appendix in the binder first."
+        ],
+        [
+          "on-complete",
+          "",
+          "consume-item",
+          "30078:<PUBKEY>:nominal-drift:item:diagnostic-cable"
+        ],
+        [
+          "on-complete",
+          "",
+          "consume-item",
+          "30078:<PUBKEY>:nominal-drift:item:logic-board"
+        ],
+        [
+          "on-complete",
+          "",
+          "set-counter",
+          "cass-accuracy",
+          "4",
+          "30078:<PUBKEY>:nominal-drift:world"
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "repaired",
+          "30078:<PUBKEY>:nominal-drift:feature:cass-core-rack"
+        ],
+        [
+          "on-complete",
+          "",
+          "consequence",
+          "30078:<PUBKEY>:nominal-drift:consequence:cass-reboot"
+        ]
+      ],
+      "content": "You connect the diagnostic cable, enter CASS into maintenance mode. Silence. You remove the damaged board — burn marks on the sensor integration layer, exactly as the binder described. The replacement board slots in cleanly. You reconnect the cable. You exit diagnostic mode.\n\nCASS reinitialises."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:quest:restore-power"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Restore Main Power"
+        ],
+        [
+          "quest-type",
+          "open"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+          "restored",
+          "Isolate the array fault and reset the bus controller."
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "complete"
+        ]
+      ],
+      "content": "The main power bus has tripped its protection relay. Identify the fault cause and restore power. CASS has a theory about the cause. It's worth checking."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:quest:access-bay"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Access the Equipment Bay"
+        ],
+        [
+          "quest-type",
+          "open"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:clue:bay-cold",
+          "visible",
+          ""
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:nominal-drift:item:ppg-suit"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:nominal-drift:feature:b1-hatch"
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "complete"
+        ]
+      ],
+      "content": "The port equipment bay is depressurised — the cold bulkhead made that clear. You need pressure protection to get in. The EVA suit is in the bay, which is unhelpful. There may be another option."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:quest:fix-life-support"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Restore Life Support"
+        ],
+        [
+          "quest-type",
+          "open"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+          "restored",
+          ""
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-pump"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:nominal-drift:item:hex-driver"
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "complete"
+        ]
+      ],
+      "content": "The coolant loop is blocked. Thermal management is running on emergency mode — functional for now, but the cabin temperature is dropping. CASS thinks the problem is on the exterior. CASS is wrong."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:quest:repair-cass"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Repair CASS-CORE"
+        ],
+        [
+          "quest-type",
+          "open"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:clue:cass-core-damaged",
+          "visible",
+          ""
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:nominal-drift:item:diagnostic-cable"
+        ],
+        [
+          "involves",
+          "30078:<PUBKEY>:nominal-drift:item:logic-board"
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "complete"
+        ]
+      ],
+      "content": "The CASS-CORE processor is damaged. According to the binder, CASS can't detect this itself. The replacement board and diagnostic cable are on the ship. The procedure is in appendix C."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:quest:navigate-home"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Navigate Home"
+        ],
+        [
+          "quest-type",
+          "open"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:clue:life-support-nominal",
+          "visible",
+          ""
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:clue:nav-fix-complete",
+          "visible",
+          "Get an independent position fix before committing to burn parameters."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+          "restored",
+          ""
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "complete"
+        ]
+      ],
+      "content": "Three things needed: main power, operational life support, and a verified position fix. CASS has numbers for the burn. Whether those numbers are right depends on whether CASS's navigation data is reliable — and you already know the answer to that."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:consequence:b1-open-check"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "consequence"
+        ],
+        [
+          "requires-not",
+          "30078:<PUBKEY>:nominal-drift:item:ppg-suit",
+          "donned",
+          ""
+        ]
+      ],
+      "content": "The hatch releases. The pressure differential does the rest — air rushes out into the bay. The corridor drops sharply. You're breathing recycled emergency reserves now, faster than you should be. The bay is hard vacuum."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:consequence:ppg-depleted"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "consequence"
+        ],
+        [
+          "set-state",
+          "stowed",
+          "30078:<PUBKEY>:nominal-drift:item:ppg-suit"
+        ],
+        [
+          "respawn",
+          "30078:<PUBKEY>:nominal-drift:place:hab"
+        ]
+      ],
+      "content": "The PPG wrist indicator goes red. Suit integrity is compromised — the seals have reached their limit. You get back through the hatch before it becomes critical. The PPG is done. Whatever you needed from the bay, you either have it or you don't."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:consequence:cass-reboot"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "consequence"
+        ],
+        [
+          "transition-effect",
+          "static"
+        ],
+        [
+          "transition-duration",
+          "1200"
+        ],
+        [
+          "transition-clear",
+          "true"
+        ]
+      ],
+      "content": "CASS goes silent. For a moment the ship is just sounds — the hum of systems, the tick of the reactor, your own breathing. Then:\n\n\"Reinitialisation complete. I'm seeing some readings I wasn't seeing before. I need to tell you — my earlier assessments may not have been reliable. I understand now why.\""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:consequence:ignition-fire"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "consequence"
+        ],
+        [
+          "transition-effect",
+          "flash"
+        ],
+        [
+          "transition-duration",
+          "600"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:sound:ship-hum-degraded"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "sound"
+        ],
+        [
+          "gain",
+          "0.15"
+        ],
+        [
+          "room",
+          "0.3"
+        ],
+        [
+          "roomsize",
+          "4"
+        ],
+        [
+          "loop",
+          "1"
+        ],
+        [
+          "note",
+          "b1"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:sound:relay-click"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "sound"
+        ],
+        [
+          "gain",
+          "0.4"
+        ],
+        [
+          "room",
+          "0.1"
+        ],
+        [
+          "slow",
+          "8"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:sound:ship-hum-stable"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "sound"
+        ],
+        [
+          "gain",
+          "0.12"
+        ],
+        [
+          "room",
+          "0.2"
+        ],
+        [
+          "roomsize",
+          "3"
+        ],
+        [
+          "loop",
+          "1"
+        ],
+        [
+          "note",
+          "b1"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:sound:engine-thermal-tick"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "sound"
+        ],
+        [
+          "gain",
+          "0.2"
+        ],
+        [
+          "room",
+          "0.5"
+        ],
+        [
+          "roomsize",
+          "6"
+        ],
+        [
+          "slow",
+          "12"
+        ],
+        [
+          "loop",
+          "1"
+        ],
+        [
+          "note",
+          "e1"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:sound:ignition-burn"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "sound"
+        ],
+        [
+          "gain",
+          "0.7"
+        ],
+        [
+          "room",
+          "0.6"
+        ],
+        [
+          "roomsize",
+          "8"
+        ],
+        [
+          "fast",
+          "0.5"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:sound:vacuum-silence"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "sound"
+        ],
+        [
+          "gain",
+          "0.0"
+        ]
+      ],
+      "content": ""
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:puzzle:burn-ready"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "puzzle"
+        ],
+        [
+          "title",
+          "Burn Console Ready"
+        ],
+        [
+          "puzzle-type",
+          "sequence"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:clue:nav-fix-complete",
+          "visible",
+          "You need a verified position fix."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:coolant-pump",
+          "running",
+          "Life support must be fully operational."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+          "restored",
+          "Main power must be restored."
+        ],
+        [
+          "on-complete",
+          "",
+          "set-state",
+          "ready",
+          "30078:<PUBKEY>:nominal-drift:feature:burn-console"
+        ]
+      ],
+      "content": "All systems nominal. Position fix verified. Life support operational. Main power restored. The burn console is ready."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:quest:endgame-good"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Nominal Drift"
+        ],
+        [
+          "quest-type",
+          "endgame"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:puzzle:ignition-final",
+          "solved",
+          "The engine hasn't fired yet."
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:clue:nav-fix-complete",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "The engine fires.\n\nNot a test. Not a simulation. The actual engine, the actual fuel, on a trajectory you calculated yourself — cross-checked against a physical instrument, not a number CASS gave you.\n\n340 seconds. Then silence.\n\nCASS runs the post-burn assessment. You watch the projected arc on the burn console display. It closes on Earth.\n\nYou float to the observation blister. Mars is already smaller than your thumbnail. The engine bell is cooling behind you.\n\nEighteen months is a long time. You have the binder, a functioning ship, and a computer you finally know how to read."
+    },
+    {
+      "kind": 30078,
+      "tags": [
+        [
+          "d",
+          "nominal-drift:quest:endgame-drift"
+        ],
+        [
+          "t",
+          "nominal-drift"
+        ],
+        [
+          "type",
+          "quest"
+        ],
+        [
+          "title",
+          "Nominal Drift"
+        ],
+        [
+          "quest-type",
+          "endgame"
+        ],
+        [
+          "requires",
+          "30078:<PUBKEY>:nominal-drift:puzzle:ignition-final",
+          "solved",
+          "The engine hasn't fired yet."
+        ],
+        [
+          "requires-not",
+          "30078:<PUBKEY>:nominal-drift:clue:nav-fix-complete",
+          "visible",
+          ""
+        ]
+      ],
+      "content": "The engine fires.\n\n340 seconds. Then silence.\n\nCASS runs the post-burn assessment. The projected arc on the burn console display closes on Earth — or it looks like it does, on CASS's display, using CASS's numbers.\n\nYou float to the observation blister. Mars is smaller. The engine bell is cooling.\n\nYou don't have an independent position fix. You have CASS's word. It occurs to you — too late, maybe, or maybe not — that CASS's word has been wrong before, and you didn't always know it until you looked out a window.\n\nThe arc looks right. You'll know in six weeks whether it is."
+    }
+  ]
+}

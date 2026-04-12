@@ -5,6 +5,18 @@
 
 ## [Unreleased] — April 2026
 
+### Added — `requires`/`requires-not` pre-flight gate on consequence events
+
+`requires` and `requires-not` are now valid on `consequence` events. They act as a pre-flight check evaluated before any consequence actions execute. If any gate fails, the consequence is silently skipped — the caller's other actions continue normally. This allows a single consequence to be conditional without duplicating trigger logic across all callers. Updated spec section 2.11 and tag-reference.
+
+### Added — transition effects on consequence events
+
+`transition-effect`, `transition-duration`, and `transition-clear` are now valid on `consequence` events and behave identically to the same tags on portals. The effect fires before any consequence actions so the animation plays over what follows (content, respawn). Updated spec section 2.11 (execution order) and tag-reference.
+
+### Clarified — dialogue tier selection evaluates `requires-counter` on candidate nodes
+
+When an NPC (or other entity) has multiple `dialogue` tags (tier progression), the client now also evaluates `requires-counter` tags on each candidate dialogue node event. The last tier that passes both the NPC tag's ref/state gate **and** the node's own `requires-counter` is selected. This enables purely counter-driven tier progression without needing a state gate on the NPC tag itself. Updated spec section 2.10.
+
 ### Clarified — portable vs feature-bound recipes
 
 Recipes with both `verb` and `noun` tags on the recipe event are **portable** — their verbs enter the global command vocabulary and the recipe can be triggered from any room. Recipes without a `noun` tag are **feature-bound** — they have no noun in scope and must be triggered via a feature's `on-interact activate` action, scoping them to that feature's place. No tag shape changes; this documents existing engine behaviour. Updated spec section 2.7, guide chapter 09, and tag reference accordingly.

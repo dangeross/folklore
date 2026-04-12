@@ -464,20 +464,22 @@ export function validateEvent(template) {
     }
 
     // on-interact / on-enter with too many elements
+    // Full shape: ["on-interact", verb, state-guard, action, target, ext-ref] = 7 elements max
+    // Full shape: ["on-enter",    filter, state-guard, action, target, ext-ref] = 7 elements max
     for (const tag of template.tags) {
-      if (tag[0] === 'on-interact' && tag.length > 6) {
+      if (tag[0] === 'on-interact' && tag.length > 7) {
         warnings.push(warn(
           'extra-fields',
-          `on-interact "${tag[1]}" has ${tag.length - 1} fields (expected max 5) — extra elements are ignored`,
-          `Remove the extra fields from ["on-interact", "${tag[1]}", ...]. The spec defines 5 fields: verb, state-guard, action, target, ext-ref.`,
+          `on-interact "${tag[1]}" has ${tag.length - 1} fields (expected max 6) — extra elements are ignored`,
+          `Remove the extra fields from ["on-interact", "${tag[1]}", ...]. The spec defines 6 fields: verb, state-guard, action, target, ext-ref.`,
           tag.join(', '),
         ));
       }
-      if (tag[0] === 'on-enter' && tag.length > 6) {
+      if (tag[0] === 'on-enter' && tag.length > 7) {
         warnings.push(warn(
           'extra-fields',
-          `on-enter has ${tag.length - 1} fields (expected max 5) — extra elements are ignored`,
-          `Remove the extra fields from ["on-enter", ...]. The spec defines 5 fields: filter, state-guard, action, target, ext-ref.`,
+          `on-enter has ${tag.length - 1} fields (expected max 6) — extra elements are ignored`,
+          `Remove the extra fields from ["on-enter", ...]. The spec defines 6 fields: filter, state-guard, action, target, ext-ref.`,
           tag.join(', '),
         ));
       }

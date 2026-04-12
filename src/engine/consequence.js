@@ -3,7 +3,7 @@
  * and heal methods to GameEngine prototype.
  */
 
-import { getTag, getTags, getDefaultState } from './world.js';
+import { getTag, getTags, getDefaultState, checkRequires } from './world.js';
 import { isEventTrusted } from './trust.js';
 import { applyExternalSetState } from './actions.js';
 import { findRoamingNpcsAtPlace } from './npc.js';
@@ -141,7 +141,7 @@ export function mixConsequence(Engine) {
   /**
    * Execute a consequence event (spec §2.11).
    * Fixed execution order regardless of tag declaration:
-   *   give-item → consume-item → deal-damage → set-counter → set-state → drop inventory → clears → content → respawn
+   *   [pre-flight: requires/requires-not] → transition → give-item → consume-item → deal-damage → set-counter → set-state → drop inventory → clears → content → respawn
    */
   Engine.prototype._executeConsequence = function(consequenceRef) {
     const event = this.events.get(consequenceRef);
@@ -149,6 +149,23 @@ export function mixConsequence(Engine) {
 
     // Security: verify consequence event's author is trusted
     if (this.config.trustSet && isEventTrusted(event, this.config.trustSet, this.config.clientMode) === 'hidden') return;
+
+    // Pre-flight: requires / requires-not gate on the consequence itself
+    const preReq = checkRequires(event, this.player.state, this.events);
+    if (!preReq.allowed) return;
+
+    // Transition effect (fires before any actions so the effect plays over what follows)
+    const effect = getTag(event, 'transition-effect');
+    const duration = getTag(event, 'transition-duration');
+    const clear = getTag(event, 'transition-clear');
+    if (effect || clear) {
+      this.output.push({
+        type: 'transition',
+        effect: effect || null,
+        duration: parseInt(duration, 10) || 800,
+        clear: clear === 'true',
+      });
+    }
 
     const tags = event.tags;
 

@@ -526,12 +526,18 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 
 | Tag | Shape | Req? | Desc |
 |-----|-------|------|------|
+| `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | pre-flight gate — skips execution if condition fails |
+| `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | pre-flight gate (inverted) |
+| `transition-effect` | `["transition-effect", "<effect>"]` | opt | visual effect on fire: `blackout`, `flash`, `fade`, `shake`, `glitch`, `invert`, `static`, `pulse` |
+| `transition-duration` | `["transition-duration", "<ms>"]` | opt | effect duration in ms (default `800`) |
+| `transition-clear` | `["transition-clear", "true"]` | opt | clears game log when consequence fires |
 | `respawn` | `["respawn", "<place-ref>"]` | opt | where player revives |
 | `clears` | `["clears", "<category>"]` (repeatable) | opt | reset category on death |
 | `give-item` | `["give-item", "<item-ref>"]` (repeatable) | opt | — |
 | `consume-item` | `["consume-item", "<item-ref>"]` (repeatable) | opt | — |
 | `deal-damage` | `["deal-damage", "<number>"]` | opt | — |
 | `set-state` | `["set-state", "<state>", "<event-ref>"]` (repeatable) | opt | — |
+| `set-counter` | `["set-counter", "<name>", "<value>", "<event-ref?>"]` (repeatable) | opt | set world-scoped (or external) counter to value |
 | `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
 
 `clears` categories: `inventory`, `states`, `counters`, `cryptoKeys`, `dialogueVisited`, `paymentAttempts`, `visited`. Content optional.
