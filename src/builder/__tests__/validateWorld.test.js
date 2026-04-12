@@ -173,6 +173,10 @@ describe('validateWorld — NIP-44 content', () => {
 
   it('no errors when puzzle, salt, and answer all present', () => {
     const events = [
+      makeEvent('test:world', 'world', [
+        ['title', 'Test World'],
+        ['start-place', ref('test:place:secret')],
+      ]),
       makeEvent('test:place:secret', 'place', [
         ['content-type', 'application/nip44', 'text/markdown'],
         ['puzzle', ref('test:puzzle:riddle')],
@@ -809,5 +813,61 @@ describe('validateWorld — orphaned items', () => {
     const orphans = warnings.filter((w) => w.category === 'orphaned-item');
     expect(orphans).toHaveLength(2);
     expect(orphans.map((w) => w.dTag).sort()).toEqual(['test:item:lost-a', 'test:item:lost-b']);
+  });
+});
+
+// ── World event / start-place ────────────────────────────────────────────────
+
+describe('validateWorld — world event and start-place', () => {
+  it('errors when no world event exists', () => {
+    const events = [
+      makeEvent('test:place:room', 'place'),
+    ];
+    const { errors } = validateWorld(events);
+    expect(errors.some((e) => e.category === 'missing-world')).toBe(true);
+  });
+
+  it('errors when world event has no start-place tag', () => {
+    const events = [
+      makeEvent('test:world', 'world', [['title', 'Test World']]),
+      makeEvent('test:place:start', 'place'),
+    ];
+    const { errors } = validateWorld(events);
+    expect(errors.some((e) => e.category === 'missing-start-place')).toBe(true);
+  });
+
+  it('errors when start-place ref points to non-existent event', () => {
+    const events = [
+      makeEvent('test:world', 'world', [
+        ['title', 'Test World'],
+        ['start-place', ref('test:place:missing')],
+      ]),
+    ];
+    const { errors } = validateWorld(events);
+    expect(errors.some((e) => e.category === 'missing-start-place' && e.message.includes('not in this world'))).toBe(true);
+  });
+
+  it('errors when start-place ref points to a non-place event', () => {
+    const events = [
+      makeEvent('test:world', 'world', [
+        ['title', 'Test World'],
+        ['start-place', ref('test:item:thing')],
+      ]),
+      makeEvent('test:item:thing', 'item', [['title', 'Thing']]),
+    ];
+    const { errors } = validateWorld(events);
+    expect(errors.some((e) => e.category === 'missing-start-place' && e.message.includes('not a place'))).toBe(true);
+  });
+
+  it('passes when world event has a valid start-place', () => {
+    const events = [
+      makeEvent('test:world', 'world', [
+        ['title', 'Test World'],
+        ['start-place', ref('test:place:start')],
+      ]),
+      makeEvent('test:place:start', 'place'),
+    ];
+    const { errors } = validateWorld(events);
+    expect(errors.filter((e) => e.category === 'missing-start-place' || e.category === 'missing-world')).toHaveLength(0);
   });
 });

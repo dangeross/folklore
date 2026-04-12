@@ -2603,6 +2603,14 @@
           "set-state",
           "trusted",
           "30078:<PUBKEY>:frontier:npc:dessa-vane"
+        ],
+        [
+          "on-enter",
+          "player",
+          "",
+          "set-state",
+          "active",
+          "30078:<PUBKEY>:frontier:quest:the-hollow"
         ]
       ],
       "content": "She pulls a key from around her neck and unlocks the lower drawer of the cabinet. Inside is a single folder, older than the others, wrapped in oilcloth.\n\n\"The partial Harlan account. What the survivors gave. And a map — drawn in two different hands, which I believe means it was begun by the expedition and continued by someone else, later, who had been inside.\" She sets it on the table. \"The second hand stops at the deep chamber. Whatever is beyond it, they either couldn't map or chose not to.\""
