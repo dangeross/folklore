@@ -124,7 +124,11 @@ export function mixDialogue(Engine) {
     }
 
     if (!selected.nextDtag) {
-      this._emit('The conversation ends.', 'narrative');
+      // Only emit "The conversation ends." for actual NPC hosts — not for
+      // feature/item dialogue (documents, terminals, interactive objects).
+      const hostEvent = this.events.get(this.dialogueActive.npcDtag);
+      const hostType = hostEvent ? getTag(hostEvent, 'type') : null;
+      if (hostType === 'npc') this._emit('The conversation ends.', 'narrative');
       this.dialogueActive = null;
     } else {
       // Check if the target is a payment event

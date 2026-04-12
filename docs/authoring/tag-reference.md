@@ -190,6 +190,7 @@ External targeting (counter on another event): append the event `a`-tag as posit
 ### Notes
 
 - `activate` triggers the target event's native mechanic: recipe → crafting prompt, puzzle → puzzle prompt, payment → payment flow.
+- `start-dialogue` opens a dialogue tree directly. Target is the entry dialogue node `a`-tag. Valid on `on-interact` (player uses verb on feature/item/NPC) and `on-enter` (NPC speaks immediately when player enters). The dialogue is attributed to the hosting event — its title becomes the speaker header.
 - `set-state` is the only action that supports an ext-ref (optional final element targeting another event). All other actions act on self or take a ref as the target directly.
 - `deposits` and `flees` take a blank target — they have no arguments.
 - `deal-damage-npc` takes a blank target — the combat target NPC is resolved from context.
@@ -405,7 +406,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `on-attacked` | `["on-attacked", "<weapon-filter>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | fires when NPC takes damage |
 | `on-health` | `["on-health", "<dir>", "<threshold>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | — |
 | `on-player-health` | `["on-player-health", "<dir>", "<threshold>", "<action>", "<target>"]` (repeatable) | opt | — |
-| `on-enter` | `["on-enter", "<place-ref>", "<state-guard-or-''>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | State guard blank = any state |
+| `on-enter` | `["on-enter", "<place-ref>", "<state-guard-or-''>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | fires when NPC arrives at a place; `start-dialogue` here makes the NPC speak immediately when the player enters |
 | `on-move` | `["on-move", "<state-guard>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | fires each player move |
 | `on-counter` | `["on-counter", "<dir>", "<counter>", "<threshold>", "<action>", "<target?>"]` (repeatable) | opt | — |
 | `counter` | `["counter", "<name>", "<initial>"]` (repeatable) | opt | — |

@@ -250,8 +250,10 @@ export default function Lobby({
             reader.onload = () => {
               try {
                 const data = parseJsonLenient(reader.result);
+                // Support both { events: [...] } and bare array formats
+                const eventList = Array.isArray(data) ? data : (data.events ?? []);
                 // Detect world slug from the imported data
-                const worldEvent = data.events?.find((ev) =>
+                const worldEvent = eventList.find((ev) =>
                   ev.tags?.find((t) => t[0] === 'type')?.[1] === 'world'
                 );
                 const detectedSlug = worldEvent?.tags?.find((t) => t[0] === 't')?.[1] || '';

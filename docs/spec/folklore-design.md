@@ -655,19 +655,19 @@ New action types can be added without changing the tag structure — the dispatc
 
 ✓ = valid and meaningful  —  = not applicable or nonsensical in this context
 
-| Trigger | `set-state` | `give-item` | `consume-item` | `traverse` | `deal-damage` | `deal-damage-npc` | `heal` | `consequence` | `steals-item` | `deposits` | `flees` | `add-counter` | `sub-counter` | `mul-counter` | `div-counter` | `set-counter` | `sound` | `activate` |
-|---------|-------------|-------------|----------------|------------|---------------|-------------------|--------|---------------|---------------|------------|---------|---------------|---------------|---------------|---------------|---------------|---------|------------|
-| `on-interact` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `on-complete` | ✓ | ✓ | ✓ | ✓ | — | — | ✓ | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `on-enter` | ✓ | ✓ | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
-| `on-encounter` | ✓ | — | — | — | ✓ | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
-| `on-attacked` | ✓ | — | — | — | ✓ | ✓ | — | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
-| `on-health` | ✓ | ✓ | — | ✓ | — | — | — | ✓ | — | ✓ | — | — | — | — | — | — | ✓ | — |
-| `on-player-health` | ✓ | — | — | ✓ | — | — | — | ✓ | — | — | — | — | — | — | — | — | ✓ | — |
-| `on-move` | ✓ | — | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
-| `on-counter` | ✓ | ✓ | — | — | ✓ | — | ✓ | ✓ | — | — | — | — | — | — | — | — | ✓ | — |
-| `on-fail` | ✓ | — | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | — | — | — | ✓ | — |
-| `on-drop` | ✓ | ✓ | ✓ | — | — | — | — | ✓ | — | — | — | ✓ | ✓ | — | — | — | ✓ | — |
+| Trigger | `set-state` | `give-item` | `consume-item` | `traverse` | `deal-damage` | `deal-damage-npc` | `heal` | `consequence` | `steals-item` | `deposits` | `flees` | `add-counter` | `sub-counter` | `mul-counter` | `div-counter` | `set-counter` | `sound` | `activate` | `start-dialogue` |
+|---------|-------------|-------------|----------------|------------|---------------|-------------------|--------|---------------|---------------|------------|---------|---------------|---------------|---------------|---------------|---------------|---------|------------|------------------|
+| `on-interact` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `on-complete` | ✓ | ✓ | ✓ | ✓ | — | — | ✓ | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
+| `on-enter` | ✓ | ✓ | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ |
+| `on-encounter` | ✓ | — | — | — | ✓ | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | — |
+| `on-attacked` | ✓ | — | — | — | ✓ | ✓ | — | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | — |
+| `on-health` | ✓ | ✓ | — | ✓ | — | — | — | ✓ | — | ✓ | — | — | — | — | — | — | ✓ | — | — |
+| `on-player-health` | ✓ | — | — | ✓ | — | — | — | ✓ | — | — | — | — | — | — | — | — | ✓ | — | — |
+| `on-move` | ✓ | — | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | — |
+| `on-counter` | ✓ | ✓ | — | — | ✓ | — | ✓ | ✓ | — | — | — | — | — | — | — | — | ✓ | — | — |
+| `on-fail` | ✓ | — | — | — | ✓ | — | — | ✓ | — | — | — | ✓ | ✓ | — | — | — | ✓ | — | — |
+| `on-drop` | ✓ | ✓ | ✓ | — | — | — | — | ✓ | — | — | — | ✓ | ✓ | — | — | — | ✓ | — | — |
 
 **Notes:**
 - `steals-item`, `deposits`, `flees` are NPC-only actions — only meaningful on `on-encounter` and `on-attacked` where an NPC is the actor
@@ -677,8 +677,10 @@ New action types can be added without changing the tag structure — the dispatc
 - `give-item` on `on-health` — NPC drops loot on death
 - `traverse` on `on-health` — teleport player on NPC death (reward chamber, cutscene location)
 - `activate` triggers the target event's native mechanic — recipe (crafting), puzzle (prompt), or payment (invoice). Used to scope recipes/puzzles to a feature interaction.
+- `start-dialogue` on `on-interact` — opens a dialogue tree when the player uses a verb on a feature, item, or NPC. Target is the entry dialogue node `a`-tag. The feature/item/NPC title is used as the speaker header. Use this instead of `dialogue` tags when the entry point should be fixed rather than condition-selected.
+- `start-dialogue` on `on-enter` — valid on NPC events only. Fires when the player enters the NPC's current place, immediately opening dialogue. Useful for NPCs that speak first — a greeting, a challenge, a warning. State guard (position 2) controls when it fires — blank = always, named state = only in that state.
 - `add-counter`/`sub-counter`/`mul-counter`/`div-counter`/`set-counter` on `on-attacked` — track hits taken, shield durability, attack counters
-- `on-fail` only fires on `riddle` and `cipher` puzzles — sequence/observe puzzles have no wrong-answer state
+- `on-fail` only fires on `riddle` and `cipher` puzzles — sequence puzzles have no wrong-answer state
 - The matrix reflects intent, not hard enforcement. The client should handle unexpected combinations gracefully rather than erroring.
 
 #### counter
@@ -1537,34 +1539,44 @@ A node that gives an item on visit:
 }
 ```
 
-**Feature dialogue — a speaking mirror:**
+**Feature dialogue — two patterns:**
 
-Any feature can host dialogue. The player types `talk to mirror` or `ask mirror` — the `talk`/`ask` verb is declared on the feature, and `on-interact` routes into the dialogue tree:
+Features (and items) can host dialogue in two ways:
+
+**Pattern 1 — `dialogue` tags with condition-selected entry point.** The `talk`/`ask` verb is declared on the feature; the client evaluates `dialogue` tags in order and uses the last passing one as entry:
 
 ```json
-{
-  "kind": 30078,
-  "tags": [
-    ["d",           "the-lake:feature:oracle-mirror"],
-    ["t",           "the-lake"],
-    ["type",        "feature"],
-    ["title",       "The Oracle Mirror"],
-    ["noun",        "mirror", "oracle", "glass"],
-    ["verb",        "examine", "look"],
-    ["verb",        "talk",    "ask",   "speak"],
-    ["dialogue",    "30078:<pubkey>:the-lake:dialogue:mirror:greeting"],
-    ["dialogue",    "30078:<pubkey>:the-lake:dialogue:mirror:after-sanctum",
-                    "30078:<pubkey>:the-lake:place:sanctum", "visited"]
-  ],
-  "content": "A mirror of black glass. It reflects nothing. It watches everything."
-}
+["verb",     "talk",    "ask",   "speak"],
+["dialogue", "30078:<pubkey>:the-lake:dialogue:mirror:greeting"],
+["dialogue", "30078:<pubkey>:the-lake:dialogue:mirror:after-sanctum",
+             "30078:<pubkey>:the-lake:place:sanctum", "visited"]
 ```
 
-The mirror's dialogue tree advances as the player progresses — it knows if the sanctum has been visited. No NPC event needed.
+The mirror's dialogue tree advances as the player progresses. No NPC event needed.
+
+**Pattern 2 — `on-interact start-dialogue` with a fixed entry point.** When the entry node is always the same (e.g. an interactive document, a terminal, a menu), use `start-dialogue` directly on `on-interact`. The verb that triggers it can be anything — `open`, `read`, `use`:
+
+```json
+["verb",        "open", "read"],
+["on-interact", "open", "", "start-dialogue", "30078:<pubkey>:the-lake:dialogue:binder:toc"]
+```
+
+This is the preferred pattern for interactive objects that aren't "speaking" — the dialogue header shows the feature title (`— Documentation Binder —`) rather than implying a conversation partner.
+
+**NPC immediate dialogue — `on-enter start-dialogue`:**
+
+An NPC can open dialogue automatically when the player enters its room. Add `on-enter` with `start-dialogue` on the NPC event:
+
+```json
+["on-enter", "player", "",        "start-dialogue", "30078:<pubkey>:world:dialogue:guard:greeting"]
+["on-enter", "player", "alert",   "start-dialogue", "30078:<pubkey>:world:dialogue:guard:challenge"]
+```
+
+The first fires on any entry (no state guard). The second fires only when the NPC is in state `alert`. The dialogue is attributed to the NPC — the header shows `— Guard —`. This is the correct pattern for NPCs that speak first without waiting to be addressed.
 
 **Client flow:**
-1. Player types `talk` / `ask` on a feature, item, or NPC → client resolves the target event
-2. Target event's `dialogue` tags evaluated in order — last passing `requires` wins as entry point
+1. Player types `talk` / `ask` on a feature, item, or NPC — or enters a room with an NPC that has `on-enter start-dialogue` — client resolves the target event
+2. If using `dialogue` tags: evaluated in order, last passing `requires` wins as entry point. If using `start-dialogue` action: entry node is the specified ref directly.
 3. Client renders entry node text and options
 4. For each `option`, evaluates destination node's `requires` — hides failing options
 5. Player selects option → client moves to destination node, repeats

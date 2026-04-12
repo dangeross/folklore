@@ -261,21 +261,24 @@ export function validateImport(worldSlug, data, publishedEvents) {
   let unchangedCount = 0;
   let updatedCount = 0;
 
-  if (!data || !Array.isArray(data.events)) {
-    return { valid: [], rejected: [], warnings: ['Invalid format: expected { events: [...] }'], worldSlug: null };
+  // Support both { events: [...] } and bare array formats
+  const eventList = Array.isArray(data) ? data : (Array.isArray(data?.events) ? data.events : null);
+
+  if (!eventList) {
+    return { valid: [], rejected: [], warnings: ['Invalid format: expected { events: [...] } or a bare array'], worldSlug: null };
   }
 
-  if (data.events.length === 0) {
+  if (eventList.length === 0) {
     return { valid: [], rejected: [], warnings: ['No events found in file'], worldSlug: null };
   }
 
   // Detect the world slug from the data (from the world event's t-tag, or first event's t-tag)
-  const worldEvent = data.events.find((e) =>
+  const worldEvent = eventList.find((e) =>
     e.tags?.find((t) => t[0] === 'type')?.[1] === 'world'
   );
   const detectedSlug = worldEvent
     ? getTagValue(worldEvent, 't')
-    : getTagValue(data.events[0], 't');
+    : getTagValue(eventList[0], 't');
 
   const store = readStore(worldSlug);
   // Build lookup of existing drafts by d-tag
@@ -287,7 +290,7 @@ export function validateImport(worldSlug, data, publishedEvents) {
 
   const seenDTags = new Set();
 
-  for (const event of data.events) {
+  for (const event of eventList) {
     if (!event.tags || !Array.isArray(event.tags)) {
       rejected.push({ event, reason: 'Missing or invalid tags array' });
       continue;
@@ -384,7 +387,7 @@ export function importEvents(worldSlug, data) {
   let updated = 0;
   let skipped = 0;
 
-  for (const event of (data.events || [])) {
+  for (const event of (Array.isArray(data) ? data : (data.events || []))) {
     const dTag = getTagValue(event, 'd');
     const existingIdx = dTag ? draftIndexByDTag.get(dTag) : undefined;
 

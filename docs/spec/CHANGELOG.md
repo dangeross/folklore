@@ -5,6 +5,15 @@
 
 ## [Unreleased] — April 2026
 
+### Added — `start-dialogue` action type
+
+`start-dialogue` is now a valid action on `on-interact` and `on-enter`. Target is the entry dialogue node `a`-tag. The dialogue is attributed to the hosting event (feature/item/NPC title used as speaker header).
+
+- **`on-interact start-dialogue`** — opens a dialogue tree when the player uses a verb on a feature, item, or NPC. Preferred over `dialogue` tags when the entry point is always fixed (e.g. interactive documents, terminals, menus). The feature title becomes the speaker header rather than implying a conversation partner.
+- **`on-enter start-dialogue`** (NPC only) — fires when the player enters the NPC's room, immediately opening dialogue. Makes NPCs speak first without waiting to be addressed. State guard controls when it fires — blank = always, named state = only in that state.
+
+Updated spec section 2.10 (dialogue patterns), trigger×action matrix, tag-reference notes and NPC on-enter row.
+
 ### Added — `requires`/`requires-not` pre-flight gate on consequence events
 
 `requires` and `requires-not` are now valid on `consequence` events. They act as a pre-flight check evaluated before any consequence actions execute. If any gate fails, the consequence is silently skipped — the caller's other actions continue normally. This allows a single consequence to be conditional without duplicating trigger logic across all callers. Updated spec section 2.11 and tag-reference.

@@ -59,7 +59,7 @@ const SPEC_ACTION_TYPES = [
   'steals-item', 'deposits', 'flees',
   'add-counter', 'sub-counter', 'mul-counter', 'div-counter', 'set-counter',
   'decrement', 'increment', // deprecated
-  'sound', 'activate',
+  'sound', 'activate', 'start-dialogue',
 ];
 
 describe('action type options on triggers', () => {

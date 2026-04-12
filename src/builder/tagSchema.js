@@ -28,9 +28,9 @@ const ACTION_TYPES = [
 const COUNTER_ACTIONS = ['add-counter', 'sub-counter', 'mul-counter', 'div-counter', 'set-counter', 'decrement', 'increment'];
 
 export const TRIGGER_ACTIONS = {
-  'on-interact':           ['set-state', 'give-item', 'consume-item', 'traverse', 'deal-damage', 'deal-damage-npc', 'heal', 'consequence', ...COUNTER_ACTIONS, 'sound', 'activate'],
+  'on-interact':           ['set-state', 'give-item', 'consume-item', 'traverse', 'deal-damage', 'deal-damage-npc', 'heal', 'consequence', ...COUNTER_ACTIONS, 'sound', 'activate', 'start-dialogue'],
   'on-complete':           ['set-state', 'give-item', 'consume-item', 'traverse', 'heal', 'consequence', ...COUNTER_ACTIONS, 'sound', 'activate'],
-  'on-enter':              ['set-state', 'give-item', 'consume-item', 'deal-damage', 'consequence', ...COUNTER_ACTIONS, 'sound'],
+  'on-enter':              ['set-state', 'give-item', 'consume-item', 'deal-damage', 'consequence', ...COUNTER_ACTIONS, 'sound', 'start-dialogue'],
   'on-encounter':          ['set-state', 'deal-damage', 'consequence', 'steals-item', 'deposits', 'flees', ...COUNTER_ACTIONS, 'sound'],
   'on-attacked':           ['set-state', 'deal-damage', 'deal-damage-npc', 'consequence', 'steals-item', 'flees', ...COUNTER_ACTIONS, 'sound'],
   'on-fail':               ['set-state', 'deal-damage', 'consequence', ...COUNTER_ACTIONS, 'sound'],
@@ -68,6 +68,7 @@ export const ACTION_TARGET_FIELD = {
   'deposits':       { type: 'text', placeholder: '(blank)', hidesEventRef: true },
   'flees':          { type: 'text', placeholder: '(blank)', hidesEventRef: true },
   'sound':          { type: 'text', placeholder: 'Strudel pattern (e.g. note("c3 e3 g3").s("sine"))', hidesEventRef: true },
+  'start-dialogue': { type: 'event-ref', placeholder: 'dialogue entry node', eventTypeFilter: 'dialogue', hidesEventRef: true },
 };
 
 /** Short descriptions for each event type — shown at the top of the editor */
