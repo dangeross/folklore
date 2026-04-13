@@ -211,20 +211,11 @@ export function evalSequencePuzzles(place, events, player, emit, emitSound, trus
         // Security: verify target author
         if (trustSet && isEventTrusted(targetEvent, trustSet, clientMode) === 'hidden') continue;
         const targetType = getTag(targetEvent, 'type');
-        if (targetType === 'portal') {
-          const portalCurrentState = player.getState(extRef) ?? getDefaultState(targetEvent);
-          if (portalCurrentState !== value) {
-            player.setState(extRef, value);
-            const transition = findTransition(targetEvent, portalCurrentState, value);
-            if (transition?.text) emit(transition.text, 'narrative');
-          }
-        } else if (targetType === 'feature') {
-          const featCurrentState = player.getState(extRef) ?? getDefaultState(targetEvent);
-          if (featCurrentState !== value) {
-            player.setState(extRef, value);
-            const transition = findTransition(targetEvent, featCurrentState, value);
-            if (transition?.text) emit(transition.text, 'narrative');
-          }
+        const currentStateForType = player.getState(extRef) ?? getDefaultState(targetEvent);
+        if (currentStateForType !== value) {
+          player.setState(extRef, value);
+          const transition = findTransition(targetEvent, currentStateForType, value);
+          if (transition?.text) emit(transition.text, 'narrative');
         }
       } else if (action === 'give-item' && value) {
         const itemEvent = events.get(value);

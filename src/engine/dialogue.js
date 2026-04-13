@@ -51,9 +51,10 @@ export function mixDialogue(Engine) {
       }
     }
 
-    // Evaluate quests after on-enter state changes — allows endgame quests to
-    // fire immediately from dialogue choices (e.g. the final choice in a world).
+    // Evaluate quests and ambient after on-enter state changes — allows endgame
+    // quests to fire immediately from dialogue choices (e.g. the final choice in a world).
     this._evalQuests();
+    this._evalAmbient();
 
     // Show options (filter by destination requires)
     const options = getTags(node, 'option');

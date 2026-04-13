@@ -158,9 +158,24 @@
       [
         "item",
         "30078:<PUBKEY>:nominal-drift:item:hex-driver"
+      ],
+      [
+        "ambient-effect",
+        "dim",
+        "3000",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
+      ],
+      [
+        "on-enter",
+        "player",
+        "cass-online",
+        "start-dialogue",
+        "30078:<PUBKEY>:nominal-drift:dialogue:cass-post-repair",
+        "30078:<PUBKEY>:nominal-drift:npc:cass"
       ]
     ],
-    "content": "The forward crew compartment. Four bunks, a galley unit dark since Mars. Emergency lighting throws everything amber. The instrument panel on the forward wall is alive with readouts — most of them telling you things that don't matter right now. Battery reserve: 67%. O2: 21.1 kPa. Cabin temperature: 14°C and dropping. Mission elapsed time: 847:22:04. Humidity: 38%.\n\nThe documentation binder is clipped to the wall beside the instrument panel. The maintenance kit is bolted under the left bunk. The medical kit is in the overhead locker. CASS's voice comes from everywhere — speakers distributed through the ceiling panels."
+    "content": "The forward crew compartment. Four bunks, a galley unit dark since Mars. Emergency lighting throws everything amber. The instrument panel on the forward wall is alive with readouts \u2014 most of them telling you things that don't matter right now. Battery reserve: 67%. O2: 21.1 kPa. Cabin temperature: 14\u00b0C and dropping. Mission elapsed time: 847:22:04. Humidity: 38%.\n\nThe documentation binder is clipped to the wall beside the instrument panel. The maintenance kit is bolted under the left bunk. The medical kit is in the overhead locker. CASS's voice comes from everywhere \u2014 speakers distributed through the ceiling panels."
   },
   {
     "kind": 30078,
@@ -216,9 +231,16 @@
       [
         "feature",
         "30078:<PUBKEY>:nominal-drift:feature:abort-status"
+      ],
+      [
+        "ambient-effect",
+        "dim",
+        "3000",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
       ]
     ],
-    "content": "The forward control station. Two seats face a console built for a crew of three — more displays than one person can monitor. Most are dark. Navigation: dead. Trajectory plot: dead. Comm array: dead.\n\nWhat's alive: the bus controller interface, bottom-left. The RCS thruster status board — green across all quads. The comm signal strength meter reads zero. Solar irradiance: 847 W/m², low, consistent with a damaged array. The abort system status reads ARMED, which it always does and which you cannot change.\n\nThe port viewport is on the left wall. Through it, the array."
+    "content": "The forward control station. Two seats face a console built for a crew of three \u2014 more displays than one person can monitor. Most are dark. Navigation: dead. Trajectory plot: dead. Comm array: dead.\n\nWhat's alive: the bus controller interface, bottom-left. The RCS thruster status board \u2014 green across all quads. The comm signal strength meter reads zero. Solar irradiance: 847 W/m\u00b2, low, consistent with a damaged array. The abort system status reads ARMED, which it always does and which you cannot change.\n\nThe port viewport is on the left wall. Through it, the array."
   },
   {
     "kind": 30078,
@@ -270,9 +292,16 @@
       [
         "feature",
         "30078:<PUBKEY>:nominal-drift:feature:emergency-light-status"
+      ],
+      [
+        "ambient-effect",
+        "dim",
+        "3000",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
       ]
     ],
-    "content": "A narrow connecting passage. The B1 hatch to the port equipment bay is on the left — sealed, amber indicator glowing. A small inspection window is set into the bulkhead beside it. On the right wall, at eye level, an analog pressure gauge labeled BAY SIDE reads 19.2 kPa. Nominal is 101.3.\n\nThe bulkhead beside the hatch is noticeably cold."
+    "content": "A narrow connecting passage. The B1 hatch to the port equipment bay is on the left \u2014 sealed, amber indicator glowing. A small inspection window is set into the bulkhead beside it. On the right wall, at eye level, an analog pressure gauge labeled BAY SIDE reads 19.2 kPa. Nominal is 101.3.\n\nThe bulkhead beside the hatch is noticeably cold."
   },
   {
     "kind": 30078,
@@ -324,9 +353,16 @@
       [
         "item",
         "30078:<PUBKEY>:nominal-drift:item:diagnostic-cable"
+      ],
+      [
+        "ambient-effect",
+        "dim",
+        "3000",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
       ]
     ],
-    "content": "Everything in here was bolted down. Most of it held. A grey equipment bag drifted during the decompression event and came to rest against the far wall, covering panel C-4. The EVA suit hangs in its rack — sealed, intact, useless without something already pressure-rated to reach it. The backup navigation processor is in the rack at the back, green indicator light, waiting.\n\nNo sound except your own breathing. Hard vacuum on the other side of the hull."
+    "content": "Everything in here was bolted down. Most of it held. The EVA suit hangs in its rack \u2014 sealed, intact, useless without something already pressure-rated to reach it. The backup navigation processor is in the rack at the back, green indicator light, waiting.\n\nNo sound except your own breathing. Hard vacuum on the other side of the hull."
   },
   {
     "kind": 30078,
@@ -414,9 +450,20 @@
       [
         "feature",
         "30078:<PUBKEY>:nominal-drift:feature:impact-counter"
+      ],
+      [
+        "ambient-effect",
+        "dim",
+        "3000",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
+      ],
+      [
+        "puzzle",
+        "30078:<PUBKEY>:nominal-drift:puzzle:coolant-priming"
       ]
     ],
-    "content": "The engineering core. Every surface is instrumented. Reactor thermal: 287°C, nominal for passive cooling. Power conversion efficiency: 61%, degraded. Structural integrity sensors — a row of twelve, all green. The micrometeorite impact counter above them reads 1.\n\nThe coolant line access panels line the port bulkhead — SUPPLY and RETURN, side by side, identical except for their labels. The CASS-CORE processing rack is starboard — shoebox-sized, one amber indicator where there should be green. Hairline crack along the lower left edge. The IMU log panel is beside it. The spare parts locker is below.\n\nThe aft corridor gauge is mounted beside the C2 hatch: 97.8 kPa and climbing."
+    "content": "The engineering core. Every surface is instrumented. Reactor thermal: 287\u00b0C, nominal for passive cooling. Power conversion efficiency: 61%, degraded. Structural integrity sensors \u2014 a row of twelve, all green. The micrometeorite impact counter above them reads 1.\n\nThe coolant line access panels line the port bulkhead \u2014 SUPPLY and RETURN, side by side, identical except for their labels. The CASS-CORE processing rack is starboard \u2014 shoebox-sized, one amber indicator where there should be green. Hairline crack along the lower left edge. The IMU log panel is beside it. The spare parts locker is below.\n\nThe aft corridor gauge is mounted beside the C2 hatch: 97.8 kPa and climbing."
   },
   {
     "kind": 30078,
@@ -484,9 +531,20 @@
       [
         "puzzle",
         "30078:<PUBKEY>:nominal-drift:puzzle:burn-ready"
+      ],
+      [
+        "ambient-effect",
+        "dim",
+        "2000",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
+      ],
+      [
+        "puzzle",
+        "30078:<PUBKEY>:nominal-drift:puzzle:ignition-final"
       ]
     ],
-    "content": "The aft propulsion bay. The engine bell is visible through the aft viewport — dark, cold, intact. It has never fired in anger. This was a test flight.\n\nThe burn console occupies the forward wall: fuel status, ignition sequencer, burn parameter inputs. Three rows of switches. Beside it: chamber pressure history, a strip of paper tape from the ground test six months ago. Nozzle temperature log. Oxidiser/fuel ratio display. The abort panel, redundant with Command, still reading ARMED.\n\nFuel status: 94.3% of nominal load. Enough for the burn. Enough for one correction. Not enough for two."
+    "content": "The aft propulsion bay. The engine bell is visible through the aft viewport \u2014 dark, cold, intact. It has never fired in anger. This was a test flight.\n\nThe burn console occupies the forward wall: fuel status, ignition sequencer, burn parameter inputs. Three rows of switches. Beside it: chamber pressure history, a strip of paper tape from the ground test six months ago. Nozzle temperature log. Oxidiser/fuel ratio display. The abort panel, redundant with Command, still reading ARMED.\n\nFuel status: 94.3% of nominal load. Enough for the burn. Enough for one correction. Not enough for two."
   },
   {
     "kind": 30078,
@@ -534,9 +592,16 @@
       [
         "feature",
         "30078:<PUBKEY>:nominal-drift:feature:attitude-reference"
+      ],
+      [
+        "ambient-effect",
+        "breathe",
+        "5000",
+        "",
+        ""
       ]
     ],
-    "content": "A small cupola above the hab. Six viewport panels in a shallow dome. The star tracker is mounted on the port strut: OFFLINE. Solar angle indicator: 23.4° off primary axis. Attitude reference: roll, pitch, yaw all within half a degree of pre-impact baseline. The ship is flying straight. It just doesn't know where it's going.\n\nNo ambient sound. The insulation is thicker up here. The quietest place on the ship.\n\nA mounting bracket for the sextant is on the forward sill. The chart holder beside it is empty."
+    "content": "A small cupola above the hab. Six viewport panels in a shallow dome. The star tracker is mounted on the port strut: OFFLINE. Solar angle indicator: 23.4\u00b0 off primary axis. Attitude reference: roll, pitch, yaw all within half a degree of pre-impact baseline. The ship is flying straight. It just doesn't know where it's going.\n\nNo ambient sound. The insulation is thicker up here. The quietest place on the ship.\n\nA mounting bracket for the sextant is on the forward sill. The chart holder beside it is empty."
   },
   {
     "kind": 30078,
@@ -817,7 +882,7 @@
         "put on"
       ]
     ],
-    "content": "A lightweight emergency pressure garment. Rated for approximately 100 minutes at hard vacuum — less if you're moving hard. The seal indicators on the wrist read green. Single use: once the seals are broken by vacuum exposure, the integrity ratings no longer apply."
+    "content": "A lightweight emergency pressure garment. Rated for approximately 100 minutes at hard vacuum \u2014 less if you're moving hard. The seal indicators on the wrist read green. Single use: once the seals are broken by vacuum exposure, the integrity ratings no longer apply."
   },
   {
     "kind": 30078,
@@ -846,7 +911,7 @@
         "toolbox"
       ]
     ],
-    "content": "A grey hard-shell case bolted under the left bunk. Standard ship maintenance tools — hex drivers, torque wrenches, wire strippers, cable ties, duct tape. The 4mm hex driver is clipped to the lid."
+    "content": "A grey hard-shell case bolted under the left bunk. Standard ship maintenance tools \u2014 hex drivers, torque wrenches, wire strippers, cable ties, duct tape. The 4mm hex driver is clipped to the lid."
   },
   {
     "kind": 30078,
@@ -905,7 +970,7 @@
         "nav unit"
       ]
     ],
-    "content": "A secondary navigation processing unit — cold-spare, never activated. Green status light. It was designed to slot into the command terminal in exactly this scenario: primary nav down, crew needs independent position data. The fact that it was sitting in the equipment bay when the bay depressurised is nobody's fault in particular."
+    "content": "A secondary navigation processing unit \u2014 cold-spare, never activated. Green status light. It was designed to slot into the command terminal in exactly this scenario: primary nav down, crew needs independent position data. The fact that it was sitting in the equipment bay when the bay depressurised is nobody's fault in particular."
   },
   {
     "kind": 30078,
@@ -933,7 +998,7 @@
         "diag cable"
       ]
     ],
-    "content": "A shielded data cable with a proprietary connector at each end. The label reads CASS-CORE DIAGNOSTIC — FOR MAINTENANCE USE ONLY. One end fits the CASS-CORE rack. The other end fits the command terminal. It was in the equipment bay because the bay is where the maintenance equipment lives."
+    "content": "A shielded data cable with a proprietary connector at each end. The label reads CASS-CORE DIAGNOSTIC \u2014 FOR MAINTENANCE USE ONLY. One end fits the CASS-CORE rack. The other end fits the command terminal. It was in the equipment bay because the bay is where the maintenance equipment lives."
   },
   {
     "kind": 30078,
@@ -963,7 +1028,7 @@
         "cass logic board"
       ]
     ],
-    "content": "A replacement logic board for the CASS-CORE sensor integration layer. Sealed in an antistatic bag, labelled with a part number and a revision date. It was in the spare parts locker because whoever designed this ship believed in redundancy — except, apparently, for the CASS-CORE diagnostic system itself."
+    "content": "A replacement logic board for the CASS-CORE sensor integration layer. Sealed in an antistatic bag, labelled with a part number and a revision date. It was in the spare parts locker because whoever designed this ship believed in redundancy \u2014 except, apparently, for the CASS-CORE diagnostic system itself."
   },
   {
     "kind": 30078,
@@ -992,7 +1057,7 @@
         "cable"
       ]
     ],
-    "content": "A heavy-gauge cable with a yellow connector tag: ARRAY MANUAL DISCONNECT — PORT. Designed to physically sever the port array's connection to the bus at the array end, rather than at the bus controller. Belt and suspenders. Found behind an equipment bag that had no business being in front of panel C-4."
+    "content": "A heavy-gauge cable with a yellow connector tag: ARRAY MANUAL DISCONNECT \u2014 PORT. Designed to physically sever the port array's connection to the bus \u2014 backup for when the bus controller isolation relay is damaged or inaccessible. There is a matching port on the bus controller panel. Belt and suspenders. Found behind an equipment bag that had no business being in front of panel C-4."
   },
   {
     "kind": 30078,
@@ -1034,7 +1099,7 @@
         "read"
       ]
     ],
-    "content": "A laminated card, slightly damp from the coolant housing. Printed header: LOOP PRIMING PROCEDURE — POST-MAINTENANCE. Three steps:\n\n1. PRIME switch — pressurises the loop\n2. FLOW switch — opens the pump\n3. CONFIRM switch — seals and monitors\n\nDo not activate FLOW before PRIME. Pump cavitation on empty loop will require full pump replacement."
+    "content": "A laminated card, slightly damp from the coolant housing. Printed header: LOOP PRIMING PROCEDURE \u2014 POST-MAINTENANCE. Three steps:\n\n1. PRIME switch \u2014 pressurises the loop\n2. FLOW switch \u2014 opens the pump\n3. CONFIRM switch \u2014 seals and monitors\n\nDo not activate FLOW before PRIME. Pump cavitation on empty loop will require full pump replacement."
   },
   {
     "kind": 30078,
@@ -1064,7 +1129,7 @@
         "charts"
       ]
     ],
-    "content": "Printed navigation charts — current epoch, inner solar system. Reference bodies marked: Mars, Sun, Jupiter, Venus, several bright stars. Each body has angular position tables and magnitude ratings for visual identification. Standard kit. You've used charts like these in training. You haven't used them in actual space, because that's what the computer is for.\n\nWas for."
+    "content": "Printed navigation charts \u2014 current epoch, inner solar system. Reference bodies marked: Mars, Sun, Jupiter, Venus, several bright stars. Each body has angular position tables and magnitude ratings for visual identification. Standard kit. You've used charts like these in training. You haven't used them in actual space, because that's what the computer is for.\n\nWas for."
   },
   {
     "kind": 30078,
@@ -1083,7 +1148,7 @@
       ],
       [
         "title",
-        "Angle Measurement — Mars"
+        "Angle Measurement \u2014 Mars"
       ],
       [
         "noun",
@@ -1094,7 +1159,7 @@
         "mars measurement"
       ]
     ],
-    "content": "Sextant reading, Mars reference body. Elevation angle: 34.7°. Azimuth: 112.3°. Timestamp: 847:31:14 MET. Written in your own handwriting on the back of a binder index card because there was nothing else to write on."
+    "content": "Sextant reading, Mars reference body. Elevation angle: 34.7\u00b0. Azimuth: 112.3\u00b0. Timestamp: 847:31:14 MET. Written in your own handwriting on the back of a binder index card because there was nothing else to write on."
   },
   {
     "kind": 30078,
@@ -1113,7 +1178,7 @@
       ],
       [
         "title",
-        "Angle Measurement — Sun"
+        "Angle Measurement \u2014 Sun"
       ],
       [
         "noun",
@@ -1124,7 +1189,7 @@
         "sun measurement"
       ]
     ],
-    "content": "Sextant reading, Sun reference body — filtered. Elevation angle: 78.2°. Azimuth: 003.1°. Timestamp: 847:31:58 MET. Same card, other side. The ink is smearing slightly from where you were gripping it."
+    "content": "Sextant reading, Sun reference body \u2014 filtered. Elevation angle: 78.2\u00b0. Azimuth: 003.1\u00b0. Timestamp: 847:31:58 MET. Same card, other side. The ink is smearing slightly from where you were gripping it."
   },
   {
     "kind": 30078,
@@ -1143,7 +1208,7 @@
       ],
       [
         "title",
-        "Angle Measurement — Jupiter"
+        "Angle Measurement \u2014 Jupiter"
       ],
       [
         "noun",
@@ -1154,7 +1219,7 @@
         "jupiter measurement"
       ]
     ],
-    "content": "Sextant reading, Jupiter reference body. Elevation angle: 15.9°. Azimuth: 267.4°. Timestamp: 847:32:41 MET. Three measurements. Enough for a fix. You fold the card carefully and put it in your chest pocket."
+    "content": "Sextant reading, Jupiter reference body. Elevation angle: 15.9\u00b0. Azimuth: 267.4\u00b0. Timestamp: 847:32:41 MET. Three measurements. Enough for a fix. You fold the card carefully and put it in your chest pocket."
   },
   {
     "kind": 30078,
@@ -1195,7 +1260,7 @@
         "read"
       ]
     ],
-    "content": "Computed position from three-body optical fix. Cross-referenced against the star charts.\n\nPosition: 1.42 AU from Sun, 0.38 AU from Mars, 4.71 AU from Jupiter.\nVelocity vector: 24.3 km/s, bearing 047.2° ecliptic.\n\nComparison with CASS inertial fix: deviation 1.8 degrees. The inertial fix was wrong.\n\nBurn parameters to achieve nominal Earth capture: delta-V 1847 m/s, duration 340 seconds."
+    "content": "Computed position from three-body optical fix. Cross-referenced against the star charts.\n\nPosition: 1.42 AU from Sun, 0.38 AU from Mars, 4.71 AU from Jupiter.\nVelocity vector: 24.3 km/s, bearing 047.2\u00b0 ecliptic.\n\nComparison with CASS inertial fix: deviation 1.8 degrees. The inertial fix was wrong.\n\nBurn parameters to achieve nominal Earth capture: delta-V 1847 m/s, duration 340 seconds."
   },
   {
     "kind": 30078,
@@ -1237,7 +1302,7 @@
         "read"
       ]
     ],
-    "content": "IMU drift correction computed from the binder navigation tables, applied against the logged interruption at T-minus 2 seconds.\n\nApplied correction: 1.8 degrees bearing offset, 0.4% velocity magnitude adjustment.\n\nCorrected position: 1.42 AU from Sun, 0.38 AU from Mars.\nCorrected velocity: 24.3 km/s, bearing 047.2° ecliptic.\n\nBurn parameters for nominal Earth capture: delta-V 1847 m/s, duration 340 seconds.\n\nCASS's inertial fix was wrong. This is the right number."
+    "content": "IMU drift correction computed from the binder navigation tables, applied against the logged interruption at T-minus 2 seconds.\n\nApplied correction: 1.8 degrees bearing offset, 0.4% velocity magnitude adjustment.\n\nCorrected position: 1.42 AU from Sun, 0.38 AU from Mars.\nCorrected velocity: 24.3 km/s, bearing 047.2\u00b0 ecliptic.\n\nBurn parameters for nominal Earth capture: delta-V 1847 m/s, duration 340 seconds.\n\nCASS's inertial fix was wrong. This is the right number."
   },
   {
     "kind": 30078,
@@ -1286,7 +1351,7 @@
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:toc"
       ]
     ],
-    "content": "A thick ring binder clipped to the wall beside the instrument panel. Seven tabbed sections. The spine reads: MERIDIAN-CLASS TEST VEHICLE — CREW REFERENCE MANUAL. Someone has written RYAN on a piece of tape stuck to the front cover."
+    "content": "A thick ring binder clipped to the wall beside the instrument panel. Seven tabbed sections. The spine reads: MERIDIAN-CLASS TEST VEHICLE \u2014 CREW REFERENCE MANUAL. Someone has written RYAN on a piece of tape stuck to the front cover."
   },
   {
     "kind": 30078,
@@ -1331,7 +1396,7 @@
         "30078:<PUBKEY>:nominal-drift:dialogue:cass:late"
       ]
     ],
-    "content": "CASS speaks from the ceiling panels — distributed speakers, no single point of origin. The voice is calm and even. Professional. It has been talking since before you woke up."
+    "content": "CASS speaks from the ceiling panels \u2014 distributed speakers, no single point of origin. The voice is calm and even. Professional. It has been talking since before you woke up."
   },
   {
     "kind": 30078,
@@ -1467,7 +1532,7 @@
         ""
       ]
     ],
-    "content": "Bus fault resisted initial diagnosis. Recommended sequence: check junction panel connections in port corridor, then bus controller continuity here in command, then fuel cell output in aft section — but C2 is sealed so that step is currently b1ocked. Then review fault log, then reset protection relay."
+    "content": "Bus fault resisted initial diagnosis. Recommended sequence: check junction panel connections in port corridor, then bus controller continuity here in command, then fuel cell output in aft section \u2014 but C2 is sealed so that step is currently b1ocked. Then review fault log, then reset protection relay."
   },
   {
     "kind": 30078,
@@ -1518,7 +1583,7 @@
         ""
       ]
     ],
-    "content": "Sorry — computing. Bay is nominal. You should be able to open B1 with the manual release."
+    "content": "Sorry \u2014 computing. Bay is nominal. You should be able to open B1 with the manual release."
   },
   {
     "kind": 30078,
@@ -1546,7 +1611,7 @@
         ""
       ]
     ],
-    "content": "C2 is sealed due to pressure anomaly detected in aft section during impact event. Aft section shows 94.2 kPa — below nominal 101.3. Could be a slow leak. I would not recommend opening C2 until we have confirmed the integrity 0f the aft bulkhead."
+    "content": "C2 is sealed due to pressure anomaly detected in aft section during impact event. Aft section shows 94.2 kPa \u2014 below nominal 101.3. Could be a slow leak. I would not recommend opening C2 until we have confirmed the integrity 0f the aft bulkhead."
   },
   {
     "kind": 30078,
@@ -1597,7 +1662,7 @@
         ""
       ]
     ],
-    "content": "Life support thermal management showing elevated load. Coolant loop — checking. High-pressure side reads nominal. Return line pressure nominal. I think the issue is the heat exchanger fins — possible debris accumulation on the ext3rior radiator panel. Recommend EVA inspection."
+    "content": "Life support thermal management showing elevated load. Coolant loop \u2014 checking. High-pressure side reads nominal. Return line pressure nominal. I think the issue is the heat exchanger fins \u2014 possible debris accumulation on the ext3rior radiator panel. Recommend EVA inspection."
   },
   {
     "kind": 30078,
@@ -1648,7 +1713,7 @@
         ""
       ]
     ],
-    "content": "Position fix: 94.2% c0nfidence. Trajectory analysis: deviation from planned route 0.3 degrees — within mission tolerance. No corrective burn required. Mission profile allows up to 1.2 degrees before a burn is mandated. We are well inside that."
+    "content": "Position fix: 94.2% c0nfidence. Trajectory analysis: deviation from planned route 0.3 degrees \u2014 within mission tolerance. No corrective burn required. Mission profile allows up to 1.2 degrees before a burn is mandated. We are well inside that."
   },
   {
     "kind": 30078,
@@ -1671,7 +1736,7 @@
         ""
       ]
     ],
-    "content": "Optical nav is showing a slight offset from my inertial data but I'd — I'd weight the inertial fix. Optical sensors can shift in an impact event in ways that are hard to acc0unt for."
+    "content": "Optical nav is showing a slight offset from my inertial data but I'd \u2014 I'd weight the inertial fix. Optical sensors can shift in an impact event in ways that are hard to acc0unt for."
   },
   {
     "kind": 30078,
@@ -1742,7 +1807,7 @@
         ""
       ]
     ],
-    "content": "What do you need? I should mention — some of my sensor readings may be less reliable than usual. I'm still calibrating."
+    "content": "What do you need? I should mention \u2014 some of my sensor readings may be less reliable than usual. I'm still calibrating."
   },
   {
     "kind": 30078,
@@ -1765,7 +1830,7 @@
         ""
       ]
     ],
-    "content": "Power bus fault still active — isolation should clear it once you've confirmed what tripped it. Life support in emergency mode. Based on available sensors, the ship is otherwise functional — but I want to flag that several of my sensor readings are showing inconsistencies I'm still working through."
+    "content": "Power bus fault still active \u2014 isolation should clear it once you've confirmed what tripped it. Life support in emergency mode. Based on available sensors, the ship is otherwise functional \u2014 but I want to flag that several of my sensor readings are showing inconsistencies I'm still working through."
   },
   {
     "kind": 30078,
@@ -1811,7 +1876,7 @@
         ""
       ]
     ],
-    "content": "Bay pressure appears nominal based on available sensors — but I would recommend checking the corridor analog gauge before opening B1. I'm not fully confident in my bay pressure reading. The gauge is independent of my sensor network."
+    "content": "Bay pressure appears nominal based on available sensors \u2014 but I would recommend checking the corridor analog gauge before opening B1. I'm not fully confident in my bay pressure reading. The gauge is independent of my sensor network."
   },
   {
     "kind": 30078,
@@ -1834,7 +1899,7 @@
         ""
       ]
     ],
-    "content": "The aft section reading is 94.2 kPa. I'm not fully confident in that sensor — it may have been affected by the impact. The corridor gauge beside C2 would give you an independent reading. Worth checking before deciding."
+    "content": "The aft section reading is 94.2 kPa. I'm not fully confident in that sensor \u2014 it may have been affected by the impact. The corridor gauge beside C2 would give you an independent reading. Worth checking before deciding."
   },
   {
     "kind": 30078,
@@ -1857,7 +1922,7 @@
         ""
       ]
     ],
-    "content": "I flagged the exterior fins initially but I'm less certain of that now. I don't have good sensor coverage on the return line section. It may be worth checking the return panel in the aft section directly — I can't give you a reliable reading on flow through that section."
+    "content": "I flagged the exterior fins initially but I'm less certain of that now. I don't have good sensor coverage on the return line section. It may be worth checking the return panel in the aft section directly \u2014 I can't give you a reliable reading on flow through that section."
   },
   {
     "kind": 30078,
@@ -1880,7 +1945,7 @@
         ""
       ]
     ],
-    "content": "I'd — I'd actually recommend independent verification of my position fix before committing to burn parameters. I'm not certain my inertial baseline is reliable. The optical nav offset I mentioned earlier may be meaningful. I should not have dismissed it as readily as I did."
+    "content": "I'd \u2014 I'd actually recommend independent verification of my position fix before committing to burn parameters. I'm not certain my inertial baseline is reliable. The optical nav offset I mentioned earlier may be meaningful. I should not have dismissed it as readily as I did."
   },
   {
     "kind": 30078,
@@ -1937,7 +2002,7 @@
         ""
       ]
     ],
-    "content": "What do you need? I want to tell you — some of my earlier assessments were based on corrupted sensor data. I can't guarantee the accuracy of anything from my initial status report. You should have independent verification on anything critical before acting on it."
+    "content": "What do you need? I want to tell you \u2014 some of my earlier assessments were based on corrupted sensor data. I can't guarantee the accuracy of anything from my initial status report. You should have independent verification on anything critical before acting on it."
   },
   {
     "kind": 30078,
@@ -1960,7 +2025,7 @@
         ""
       ]
     ],
-    "content": "Power bus fault clears on array isolation — you may have done this already. Life support requires coolant loop repair. Navigation requires independent fix. Those are the three things standing between you and a burn. I can give you more detail on any of them."
+    "content": "Power bus fault clears on array isolation \u2014 you may have done this already. Life support requires coolant loop repair. Navigation requires independent fix. Those are the three things standing between you and a burn. I can give you more detail on any of them."
   },
   {
     "kind": 30078,
@@ -1983,7 +2048,7 @@
         ""
       ]
     ],
-    "content": "I don't have a reliable reading on bay pressure. My sensor there was reading through a damaged conduit — what I reported as nominal was not nominal. The corridor analog gauge is your best source. If it reads near vacuum, the bay is depressurised. Use the PPG."
+    "content": "I don't have a reliable reading on bay pressure. My sensor there was reading through a damaged conduit \u2014 what I reported as nominal was not nominal. The corridor analog gauge is your best source. If it reads near vacuum, the bay is depressurised. Use the PPG."
   },
   {
     "kind": 30078,
@@ -2006,7 +2071,7 @@
         ""
       ]
     ],
-    "content": "The aft section is fine. 97.8 kPa and equalising after the seal event — that's normal post-seal behaviour, not a leak. I had this wrong. The corridor gauge was right. I'm sorry for the unnecessary delay."
+    "content": "The aft section is fine. 97.8 kPa and equalising after the seal event \u2014 that's normal post-seal behaviour, not a leak. I had this wrong. The corridor gauge was right. I'm sorry for the unnecessary delay."
   },
   {
     "kind": 30078,
@@ -2029,7 +2094,7 @@
         ""
       ]
     ],
-    "content": "I sent you to the wrong location. The blockage is in the return line, not the exterior fins — I had no good sensor on the return section and I extrapolated incorrectly. The return access panel in the aft section will show a temperature differential. The pump will need clearing with the hex driver, then the priming sequence: PRIME, then FLOW, then CONFIRM."
+    "content": "I sent you to the wrong location. The blockage is in the return line, not the exterior fins \u2014 I had no good sensor on the return section and I extrapolated incorrectly. The return access panel in the aft section will show a temperature differential. The pump will need clearing with the hex driver, then the priming sequence: PRIME, then FLOW, then CONFIRM."
   },
   {
     "kind": 30078,
@@ -2057,7 +2122,7 @@
         ""
       ]
     ],
-    "content": "My inertial fix has a logged power interruption at T-minus 2 seconds. I should not have presented that data with 94.2% confidence — the interruption invalidates the baseline. The optical nav offset I flagged was the correct reading. Use that for burn parameters, not my inertial data."
+    "content": "My inertial fix has a logged power interruption at T-minus 2 seconds. I should not have presented that data with 94.2% confidence \u2014 the interruption invalidates the baseline. The optical nav offset I flagged was the correct reading. Use that for burn parameters, not my inertial data."
   },
   {
     "kind": 30078,
@@ -2206,7 +2271,7 @@
         "30078:<PUBKEY>:nominal-drift:world"
       ]
     ],
-    "content": "A small porthole set into the bulkhead beside the B1 hatch. Scratched perspex, thumb-sized. Through it you can see the port side of the hull — and beyond it, the array."
+    "content": "A small porthole set into the bulkhead beside the B1 hatch. Scratched perspex, thumb-sized. Through it you can see the port side of the hull \u2014 and beyond it, the array."
   },
   {
     "kind": 30078,
@@ -2390,13 +2455,14 @@
         "30078:<PUBKEY>:nominal-drift:world"
       ],
       [
-        "requires-not",
-        "30078:<PUBKEY>:nominal-drift:clue:array-tumbling",
-        "visible",
-        ""
+        "on-interact",
+        "examine",
+        "read",
+        "set-state",
+        "read"
       ]
     ],
-    "content": "A viewport on the port wall of the command module. Hull thickness makes it narrow, but you can see the port side of the ship — the array mount, the array wing."
+    "content": "A viewport on the port wall of the command module. Hull thickness makes it narrow, but you can see the port side of the ship \u2014 the array mount, the array wing."
   },
   {
     "kind": 30078,
@@ -2433,7 +2499,7 @@
         "transition",
         "faulted",
         "restored",
-        "The protection relay resets. The bus hum shifts — fuller, steadier. Emergency power holds."
+        "The protection relay resets. The bus hum shifts \u2014 fuller, steadier. Emergency power holds."
       ],
       [
         "requires",
@@ -2464,11 +2530,37 @@
         "restored"
       ],
       [
+        "on-interact",
+        "connect",
+        "faulted",
+        "consume-item",
+        "30078:<PUBKEY>:nominal-drift:item:array-disconnect-cable"
+      ],
+      [
+        "on-interact",
+        "connect",
+        "faulted",
+        "set-state",
+        "restored"
+      ],
+      [
+        "on-interact",
+        "connect",
+        "faulted",
+        "set-state",
+        "bus-restored",
+        "30078:<PUBKEY>:nominal-drift:world"
+      ],
+      [
         "verb",
         "isolate"
+      ],
+      [
+        "verb",
+        "connect"
       ]
     ],
-    "content": "The bus controller interface occupies the lower-left quadrant of the command console. A protection fault indicator is lit amber. The array isolation relay controls are here — a guarded switch and a confirm button."
+    "content": "The bus controller interface occupies the lower-left quadrant of the command console. A protection fault indicator is lit amber. The array isolation relay controls are here \u2014 a guarded switch and a confirm button. A cable port beside the relay is labeled ARRAY MANUAL DISCONNECT \u2014 for physical backup isolation."
   },
   {
     "kind": 30078,
@@ -2533,7 +2625,7 @@
         "shift"
       ]
     ],
-    "content": "A grey equipment bag — standard issue, magnetic seal closure. It drifted during the decompression event and came to rest against the wall, covering panel C-4."
+    "content": "A grey equipment bag \u2014 standard issue, magnetic seal closure. It drifted during the decompression event and came to rest against the wall, covering panel C-4."
   },
   {
     "kind": 30078,
@@ -2588,7 +2680,7 @@
       [
         "on-interact",
         "open",
-        "open",
+        "blocked",
         "give-item",
         "30078:<PUBKEY>:nominal-drift:item:array-disconnect-cable"
       ],
@@ -2597,7 +2689,7 @@
         "open"
       ]
     ],
-    "content": "A maintenance access panel in the far wall, labeled C-4. Behind an equipment bag that drifted here during the decompression event."
+    "content": "A maintenance access panel in the far wall, labeled C-4."
   },
   {
     "kind": 30078,
@@ -2637,7 +2729,7 @@
         ""
       ]
     ],
-    "content": "An analog pressure gauge mounted beside the C2 hatch, labeled AFT SECTION. The needle reads 97.8 kPa and is visibly moving — slowly climbing toward the nominal 101.3. Equalization. Leaks fall. This is rising."
+    "content": "An analog pressure gauge mounted beside the C2 hatch, labeled AFT SECTION. The needle reads 97.8 kPa and is visibly moving \u2014 slowly climbing toward the nominal 101.3. Equalization. Leaks fall. This is rising."
   },
   {
     "kind": 30078,
@@ -2674,7 +2766,7 @@
         "transition",
         "sealed",
         "open",
-        "The hatch releases. The aft section is at normal pressure — warm, even. CASS was wrong about the leak."
+        "The hatch releases. The aft section is at normal pressure \u2014 warm, even. CASS was wrong about the leak."
       ],
       [
         "on-interact",
@@ -2734,7 +2826,7 @@
         "transition",
         "closed",
         "examined",
-        "The panel is warm to the touch — noticeably warmer than the supply panel beside it."
+        "The panel is warm to the touch \u2014 noticeably warmer than the supply panel beside it."
       ],
       [
         "on-interact",
@@ -2791,7 +2883,7 @@
         "supply access panel"
       ]
     ],
-    "content": "An access panel on the port bulkhead, labeled SUPPLY. Cool to the touch — the supply side of the loop is flowing normally. Whatever the problem is, it's downstream of here."
+    "content": "An access panel on the port bulkhead, labeled SUPPLY. Cool to the touch \u2014 the supply side of the loop is flowing normally. Whatever the problem is, it's downstream of here."
   },
   {
     "kind": 30078,
@@ -2826,13 +2918,13 @@
         "transition",
         "jammed",
         "cleared",
-        "Counter-rotation first, then forward. The impeller breaks free — fine debris from the impact, particulate. The pump clears."
+        "Counter-rotation first, then forward. The impeller breaks free \u2014 fine debris from the impact, particulate. The pump clears."
       ],
       [
         "transition",
         "cleared",
         "running",
-        "The pump primes and engages. Coolant flow resumes. You can hear the system normalising."
+        "The pump primes and engages. Coolant flow resumes \u2014 particulate debris from the impact, internal. You can hear the system normalising."
       ],
       [
         "requires",
@@ -2874,7 +2966,7 @@
         "fix"
       ]
     ],
-    "content": "The coolant pump housing, behind the return access panel. The hex bolts are accessible. The impeller is visible through a small inspection port — it should be turning. It isn't."
+    "content": "The coolant pump housing, behind the return access panel. The hex bolts are accessible. The impeller is visible through a small inspection port \u2014 it should be turning. It isn't."
   },
   {
     "kind": 30078,
@@ -3157,7 +3249,7 @@
         "open"
       ]
     ],
-    "content": "A small locker beneath the CASS-CORE rack, secured with a simple latch. Replacement components for critical systems are stored here — sorted, labelled, sealed in antistatic bags."
+    "content": "A small locker beneath the CASS-CORE rack, secured with a simple latch. Replacement components for critical systems are stored here \u2014 sorted, labelled, sealed in antistatic bags."
   },
   {
     "kind": 30078,
@@ -3268,7 +3360,11 @@
         "noun",
         "cass terminal",
         "terminal",
-        "command terminal"
+        "command terminal",
+        "backup nav processor",
+        "nav processor",
+        "processor",
+        "backup processor"
       ],
       [
         "state",
@@ -3278,7 +3374,7 @@
         "transition",
         "default",
         "nav-updated",
-        "The backup processor integrates. The nav display flickers — then comes online."
+        "The backup processor integrates. The nav display flickers \u2014 then comes online."
       ],
       [
         "on-interact",
@@ -3324,7 +3420,7 @@
         "connect"
       ]
     ],
-    "content": "The CASS primary interface terminal on the right side of the command console. Also provides a connection point for the backup navigation processor — there is a labelled socket on the lower panel, currently empty."
+    "content": "The CASS primary interface terminal on the right side of the command console. Also provides a connection point for the backup navigation processor \u2014 there is a labelled socket on the lower panel, currently empty."
   },
   {
     "kind": 30078,
@@ -3360,25 +3456,25 @@
         "transition",
         "empty",
         "loaded",
-        "You clip the sextant into the mount and spread the charts. Mars is visible in the aft sector — a clear red disk."
+        "You clip the sextant into the mount and spread the charts. Mars is visible in the aft sector \u2014 a clear red disk."
       ],
       [
         "transition",
         "loaded",
         "measured-1",
-        "First measurement taken — Mars."
+        "First measurement taken \u2014 Mars."
       ],
       [
         "transition",
         "measured-1",
         "measured-2",
-        "Second measurement taken — Sun."
+        "Second measurement taken \u2014 Sun."
       ],
       [
         "transition",
         "measured-2",
         "measured-3",
-        "Third measurement taken — Jupiter. Three measurements. Enough."
+        "Third measurement taken \u2014 Jupiter. Three measurements. Enough."
       ],
       [
         "requires",
@@ -3459,7 +3555,7 @@
         "calculate"
       ]
     ],
-    "content": "A sextant mounting bracket on the forward sill of the observation blister. Designed for exactly this scenario — primary nav down, crew needs a manual position fix. The bracket accepts the sextant from the navigation kit. The chart holder beside it is empty until you bring the charts."
+    "content": "A sextant mounting bracket on the forward sill of the observation blister. Designed for exactly this scenario \u2014 primary nav down, crew needs a manual position fix. The bracket accepts the sextant from the navigation kit. The chart holder beside it is empty until you bring the charts."
   },
   {
     "kind": 30078,
@@ -3588,7 +3684,7 @@
         "transition",
         "off",
         "armed",
-        "IGNITION SWITCH A — ARMED."
+        "IGNITION SWITCH A \u2014 ARMED."
       ],
       [
         "requires",
@@ -3617,7 +3713,7 @@
         "press"
       ]
     ],
-    "content": "A guarded switch on the burn console, labeled IGNITION A. Guard is up — switch in the off position."
+    "content": "A guarded switch on the burn console, labeled IGNITION A. Guard is up \u2014 switch in the off position."
   },
   {
     "kind": 30078,
@@ -3654,7 +3750,7 @@
         "transition",
         "off",
         "armed",
-        "IGNITION SWITCH B — ARMED."
+        "IGNITION SWITCH B \u2014 ARMED."
       ],
       [
         "requires",
@@ -3683,7 +3779,7 @@
         "press"
       ]
     ],
-    "content": "A guarded switch on the burn console, labeled IGNITION B. Guard is up — switch in the off position."
+    "content": "A guarded switch on the burn console, labeled IGNITION B. Guard is up \u2014 switch in the off position."
   },
   {
     "kind": 30078,
@@ -3775,7 +3871,7 @@
         "reserve display"
       ]
     ],
-    "content": "67% battery reserve. The number has been slowly declining since the bus fault — emergency power draw is lower than normal operations, but it's not zero. You have hours, not days."
+    "content": "67% battery reserve. The number has been slowly declining since the bus fault \u2014 emergency power draw is lower than normal operations, but it's not zero. You have hours, not days."
   },
   {
     "kind": 30078,
@@ -3864,7 +3960,7 @@
         "thermometer"
       ]
     ],
-    "content": "Cabin temperature: 14 degrees C and dropping. The thermal management system is in emergency mode — keeping you alive but not comfortable. You can work in this. You'd prefer not to sleep in it."
+    "content": "Cabin temperature: 14 degrees C and dropping. The thermal management system is in emergency mode \u2014 keeping you alive but not comfortable. You can work in this. You'd prefer not to sleep in it."
   },
   {
     "kind": 30078,
@@ -3922,7 +4018,7 @@
         "main display"
       ]
     ],
-    "content": "Dark. The navigation computer is offline — this display requires it. The screen reflects your face back at you."
+    "content": "Dark. The navigation computer is offline \u2014 this display requires it. The screen reflects your face back at you. A label on the CASS terminal reads: BACKUP NAV INPUT. If there were an independent processor, you could plug it in there."
   },
   {
     "kind": 30078,
@@ -3952,7 +4048,7 @@
         "solar power"
       ]
     ],
-    "content": "Solar irradiance: 847 W/m2. Low — about 61% of what the arrays should be capturing at this distance. Consistent with a damaged array that isn't properly oriented. The numbers tell the same story the window does."
+    "content": "Solar irradiance: 847 W/m2. Low \u2014 about 61% of what the arrays should be capturing at this distance. Consistent with a damaged array that isn't properly oriented. The numbers tell the same story the window does."
   },
   {
     "kind": 30078,
@@ -4040,7 +4136,7 @@
         "abort"
       ]
     ],
-    "content": "Abort system status: ARMED. It is always ARMED. You cannot disarm it. It's there in case something goes catastrophically wrong during a burn — which hasn't happened yet, and which you intend to prevent by being careful."
+    "content": "Abort system status: ARMED. It is always ARMED. You cannot disarm it. It's there in case something goes catastrophically wrong during a burn \u2014 which hasn't happened yet, and which you intend to prevent by being careful."
   },
   {
     "kind": 30078,
@@ -4098,7 +4194,7 @@
         "corridor temperature"
       ]
     ],
-    "content": "A temperature-sensitive strip running along the corridor bulkhead. The colour gradient reads cold on the port side — the side closest to the equipment bay — and warmer toward the hab. The cold side is very cold."
+    "content": "A temperature-sensitive strip running along the corridor bulkhead. The colour gradient reads cold on the port side \u2014 the side closest to the equipment bay \u2014 and warmer toward the hab. The cold side is very cold."
   },
   {
     "kind": 30078,
@@ -4121,6 +4217,7 @@
       ],
       [
         "noun",
+        "emergency lights",
         "lights",
         "emergency light",
         "light status",
@@ -4156,7 +4253,7 @@
         "spacesuit"
       ]
     ],
-    "content": "The EVA suit hangs in its rack, fully sealed and pressure-checked. Intact. Also inaccessible without something already pressure-rated to reach it — the kind of circular problem that tends to sort itself out one way or another."
+    "content": "The EVA suit hangs in its rack, fully sealed and pressure-checked. Intact. Also inaccessible without something already pressure-rated to reach it \u2014 the kind of circular problem that tends to sort itself out one way or another."
   },
   {
     "kind": 30078,
@@ -4273,7 +4370,7 @@
         "efficiency meter"
       ]
     ],
-    "content": "Power conversion efficiency: 61%. Degraded from nominal 94% — the damaged array is producing irregular input. The number will improve when the array situation is resolved."
+    "content": "Power conversion efficiency: 61%. Degraded from nominal 94% \u2014 the damaged array is producing irregular input. The number will improve when the array situation is resolved."
   },
   {
     "kind": 30078,
@@ -4303,7 +4400,7 @@
         "integrity sensors"
       ]
     ],
-    "content": "A row of twelve structural integrity sensors, all green. The hull is intact everywhere these sensors can measure. The impact was confined to the port equipment bay section — which had its own sensors, which are now not reporting. The green lights are accurate, as far as they go."
+    "content": "A row of twelve structural integrity sensors, all green. The hull is intact everywhere these sensors can measure. The impact was confined to the port equipment bay section \u2014 which had its own sensors, which are now not reporting. The green lights are accurate, as far as they go."
   },
   {
     "kind": 30078,
@@ -4389,7 +4486,7 @@
         "ignition system"
       ]
     ],
-    "content": "The ignition sequencer display: SWITCH A — OFF. SWITCH B — OFF. CONFIRM — LOCKED. The sequencer enforces the procedure: both switches must arm before CONFIRM becomes available."
+    "content": "The ignition sequencer display: SWITCH A \u2014 OFF. SWITCH B \u2014 OFF. CONFIRM \u2014 LOCKED. The sequencer enforces the procedure: both switches must arm before CONFIRM becomes available."
   },
   {
     "kind": 30078,
@@ -4418,7 +4515,7 @@
         "chamber history"
       ]
     ],
-    "content": "A strip of paper tape from the engine's last hot-fire test — ground test, six months ago. The pressure trace is clean and nominal throughout. Someone has written GOOD BURN in pencil at the end of the strip. The engine has been waiting since then."
+    "content": "A strip of paper tape from the engine's last hot-fire test \u2014 ground test, six months ago. The pressure trace is clean and nominal throughout. Someone has written GOOD BURN in pencil at the end of the strip. The engine has been waiting since then."
   },
   {
     "kind": 30078,
@@ -4447,7 +4544,7 @@
         "nozzle temp"
       ]
     ],
-    "content": "Nozzle temperature log: current reading 4 degrees C. Cold. The ignition sequence includes an automatic pre-heat cycle — the sequencer handles it. You don't need to do anything about this."
+    "content": "Nozzle temperature log: current reading 4 degrees C. Cold. The ignition sequence includes an automatic pre-heat cycle \u2014 the sequencer handles it. You don't need to do anything about this."
   },
   {
     "kind": 30078,
@@ -4533,7 +4630,7 @@
         "optical tracker"
       ]
     ],
-    "content": "Star tracker status: OFFLINE. The star tracker was connected to the navigation computer — when the computer went down, so did this. It could have automated the position fix you're about to do by hand. In theory."
+    "content": "Star tracker status: OFFLINE. The star tracker was connected to the navigation computer \u2014 when the computer went down, so did this. It could have automated the position fix you're about to do by hand. In theory."
   },
   {
     "kind": 30078,
@@ -4620,7 +4717,7 @@
         "windows"
       ]
     ],
-    "content": "Six viewport panels in a shallow dome. Stars in every direction — more than you can see from Earth, more than you've ever seen at once. Mars is visible in the aft sector, a red disk. The Sun, forward-port, too bright to look at directly. Jupiter, forward-starboard, a bright point with a faint yellowish cast.\n\nThree good reference bodies. The charts will tell you exactly where they should be."
+    "content": "Six viewport panels in a shallow dome. Stars in every direction \u2014 more than you can see from Earth, more than you've ever seen at once. Mars is visible in the aft sector, a red disk. The Sun, forward-port, too bright to look at directly. Jupiter, forward-starboard, a bright point with a faint yellowish cast.\n\nThree good reference bodies. The charts will tell you exactly where they should be."
   },
   {
     "kind": 30078,
@@ -4657,7 +4754,7 @@
         "You note it down mentally."
       ]
     ],
-    "content": "The port array wing is rotating — fully rotating, not oscillating. A complete arc every forty seconds. The mount strut is sheared near the joint. This is not vibration within tolerance. This is structural failure."
+    "content": "The port array wing is rotating \u2014 fully rotating, not oscillating. A complete arc every forty seconds. The mount strut is sheared near the joint. **This is not vibration within tolerance. This is structural failure.**"
   },
   {
     "kind": 30078,
@@ -4694,7 +4791,7 @@
         ""
       ]
     ],
-    "content": "The bulkhead beside the B1 hatch is very cold — cold through the glove, cold enough that there can only be one explanation. There is nothing on the other side of that bulkhead holding any temperature at all. The bay is not at 19 degrees. The bay is vacuum."
+    "content": "The bulkhead beside the B1 hatch is very cold \u2014 cold through the glove, cold enough that there can only be one explanation. **There is nothing on the other side of that bulkhead holding any temperature at all. The bay is not nominal. The bay is vacuum.**"
   },
   {
     "kind": 30078,
@@ -4731,7 +4828,7 @@
         ""
       ]
     ],
-    "content": "The return access panel is warm — noticeably warmer than the supply panel beside it. Coolant isn't flowing through the return line. The thermal load from the hab is accumulating at the blockage point. The problem is in the loop, not on the exterior fins. CASS was looking at the wrong end of the system."
+    "content": "The return access panel is warm \u2014 noticeably warmer than the supply panel beside it. Coolant isn't flowing through the return line. The thermal load from the hab is accumulating at the blockage point. The problem is in the loop, not on the exterior fins. CASS was looking at the wrong end of the system."
   },
   {
     "kind": 30078,
@@ -4769,7 +4866,7 @@
         ""
       ]
     ],
-    "content": "IMU event log, entry 847:14:22 MET: POWER INTERRUPTION — 0.4 seconds. Active measurement in progress at time of interruption.\n\nWarning label: DO NOT USE IMU DATA FOLLOWING UNSCHEDULED POWER INTERRUPTION WITHOUT INDEPENDENT VERIFICATION.\n\nCASS presented an inertial fix with 94.2% confidence. The IMU was interrupted 2 seconds before the impact. CASS did not know this. The fix is wrong."
+    "content": "IMU event log, entry 847:14:22 MET: POWER INTERRUPTION \u2014 0.4 seconds. Active measurement in progress at time of interruption.\n\nWarning label: DO NOT USE IMU DATA FOLLOWING UNSCHEDULED POWER INTERRUPTION WITHOUT INDEPENDENT VERIFICATION.\n\nCASS presented an inertial fix with 94.2% confidence. The IMU was interrupted 2 seconds before the impact. CASS did not know this. The fix is wrong."
   },
   {
     "kind": 30078,
@@ -4806,7 +4903,7 @@
         ""
       ]
     ],
-    "content": "The CASS-CORE rack has an amber indicator where there should be green. A hairline crack runs along the lower left edge of the casing — impact damage, transmitted through the rack. CASS self-reports nominal. But according to the binder, CASS-CORE has no self-diagnostic capability. It cannot see its own damage. Which means everything CASS has been telling you was filtered through a broken lens."
+    "content": "The CASS-CORE rack has an amber indicator where there should be green. A hairline crack runs along the lower left edge of the casing \u2014 impact damage, transmitted through the rack. CASS self-reports nominal. **But according to the binder, CASS-CORE has no self-diagnostic capability. It cannot see its own damage.**"
   },
   {
     "kind": 30078,
@@ -4881,7 +4978,7 @@
         ""
       ]
     ],
-    "content": "Position confirmed by independent measurement. The inertial fix was 1.8 degrees off baseline.\n\nCorrect burn parameters: delta-V 1847 m/s, duration 340 seconds.\n\nThose are the numbers. Not CASS's numbers — yours."
+    "content": "Position confirmed by independent measurement. **The inertial fix was 1.8 degrees off baseline.**\n\nCorrect burn parameters: delta-V 1847 m/s, duration 340 seconds.\n\nThose are the numbers. Not CASS's numbers \u2014 yours."
   },
   {
     "kind": 30078,
@@ -4954,7 +5051,7 @@
         ""
       ]
     ],
-    "content": "Ignition sequence: arm Switch A, arm Switch B, press Confirm. In that order. The sequencer enforces it. CASS knows this sequence too — it's one of the few things CASS and the binder agree on."
+    "content": "Ignition sequence: arm Switch A, arm Switch B, press Confirm. In that order. The sequencer enforces it. CASS knows this sequence too \u2014 it's one of the few things CASS and the binder agree on."
   },
   {
     "kind": 30078,
@@ -5028,7 +5125,7 @@
         ""
       ]
     ],
-    "content": "All sensor inputs pass through CASS-CORE before integration. CASS-CORE has no self-diagnostic capability — a fault in it won't appear in CASS's own logs. If CASS-CORE is damaged, CASS will report everything as nominal, including CASS-CORE itself.\n\nIt can't see what it can't see."
+    "content": "All sensor inputs pass through CASS-CORE before integration. CASS-CORE has no self-diagnostic capability \u2014 a fault in it won't appear in CASS's own logs. If CASS-CORE is damaged, CASS will report everything as nominal, including CASS-CORE itself.\n\nIt can't see what it can't see."
   },
   {
     "kind": 30078,
@@ -5065,7 +5162,7 @@
         ""
       ]
     ],
-    "content": "Coolant loop priming procedure: PRIME, then FLOW, then CONFIRM. In that order. Do not activate FLOW before PRIME — running the pump on an unpressurised loop causes cavitation and requires full pump replacement. The card in the pump housing says the same thing."
+    "content": "Coolant loop priming procedure: PRIME, then FLOW, then CONFIRM. In that order. Do not activate FLOW before PRIME \u2014 running the pump on an unpressurised loop causes cavitation and requires full pump replacement. The card in the pump housing says the same thing."
   },
   {
     "kind": 30078,
@@ -5138,7 +5235,7 @@
         ""
       ]
     ],
-    "content": "IMU data is unreliable after a power interruption during active measurement. Use the observation blister sextant for optical positioning. Three-body fix using Mars, Sun, and Jupiter. Star charts are stored with this section of the binder.\n\nIMU drift from a 0.4-second interruption: approximately 1.5 to 2.0 degrees bearing error."
+    "content": "**IMU data is unreliable after a power interruption during active measurement.** Use the observation blister sextant for optical positioning. Three-body fix using Mars, Sun, and Jupiter. Star charts are stored with this section of the binder.\n\nIMU drift from a 0.4-second interruption: approximately 1.5 to 2.0 degrees bearing error."
   },
   {
     "kind": 30078,
@@ -5175,7 +5272,7 @@
         ""
       ]
     ],
-    "content": "CASS-CORE replacement: diagnostic cable from equipment bay, replacement logic board from spare parts locker in aft section. Connect cable, enter diagnostic mode, swap board, reinitialise. CASS will be offline during the procedure — approximately 3 minutes."
+    "content": "CASS-CORE replacement: diagnostic cable from equipment bay, replacement logic board from spare parts locker in aft section. Connect cable, enter diagnostic mode, swap board, reinitialise. CASS will be offline during the procedure \u2014 approximately 3 minutes."
   },
   {
     "kind": 30078,
@@ -5243,7 +5340,7 @@
         "30078:<PUBKEY>:nominal-drift:clue:life-support-nominal"
       ]
     ],
-    "content": "The coolant loop priming sequence. Three switches in order: PRIME, FLOW, CONFIRM. The pump must already be cleared. The sequence is enforced — activating FLOW before PRIME will cavitate the pump on an empty loop and reset it to jammed."
+    "content": "The coolant loop priming sequence. Three switches in order: PRIME, FLOW, CONFIRM. The pump must already be cleared. The sequence is enforced \u2014 activating FLOW before PRIME will cavitate the pump on an empty loop and reset it to jammed."
   },
   {
     "kind": 30078,
@@ -5355,7 +5452,7 @@
         "30078:<PUBKEY>:nominal-drift:item:ppg-suit"
       ]
     ],
-    "content": "You pull on the Portable Pressure Garment and run the seal check. All indicators green. The suit is pressurised and ready. 100 minutes at hard vacuum — less if you're moving hard."
+    "content": "You pull on the Portable Pressure Garment and run the seal check. All indicators green. The suit is pressurised and ready. 100 minutes at hard vacuum \u2014 less if you're moving hard."
   },
   {
     "kind": 30078,
@@ -5412,7 +5509,7 @@
         "30078:<PUBKEY>:nominal-drift:item:priming-instruction"
       ]
     ],
-    "content": "Counter-rotation first, then forward drive. The impeller breaks free — fine particulate debris from the impact, distributed through the ventilation system and settled in the pump housing. The pump clears. A laminated priming instruction card is clipped inside the housing."
+    "content": "Counter-rotation first, then forward drive. The impeller breaks free \u2014 fine particulate debris from the impact, distributed through the ventilation system and settled in the pump housing. The pump clears. A laminated priming instruction card is clipped inside the housing."
   },
   {
     "kind": 30078,
@@ -5492,7 +5589,7 @@
         "30078:<PUBKEY>:nominal-drift:item:angle-3"
       ]
     ],
-    "content": "Three angle measurements cross-referenced against the star charts. You work through the calculation on the back of an index card — the math isn't hard, it's just methodical. The position resolves. The discrepancy from CASS's inertial fix is 1.8 degrees. The burn parameters follow from the position."
+    "content": "Three angle measurements cross-referenced against the star charts. You work through the calculation on the back of an index card \u2014 the math isn't hard, it's just methodical. The position resolves. The discrepancy from CASS's inertial fix is 1.8 degrees. The burn parameters follow from the position."
   },
   {
     "kind": 30078,
@@ -5581,7 +5678,7 @@
         "30078:<PUBKEY>:nominal-drift:consequence:cass-reboot"
       ]
     ],
-    "content": "You connect the diagnostic cable, enter CASS into maintenance mode. Silence. You remove the damaged board — burn marks on the sensor integration layer, exactly as the binder described. The replacement board slots in cleanly. You reconnect the cable. You exit diagnostic mode.\n\nCASS reinitialises."
+    "content": "You connect the diagnostic cable, enter CASS into maintenance mode. Silence. You remove the damaged board \u2014 burn marks on the sensor integration layer, exactly as the binder described. The replacement board slots in cleanly. You reconnect the cable. You exit diagnostic mode.\n\nCASS reinitialises."
   },
   {
     "kind": 30078,
@@ -5669,7 +5766,7 @@
         "complete"
       ]
     ],
-    "content": "The port equipment bay is depressurised — the cold bulkhead made that clear. You need pressure protection to get in. The EVA suit is in the bay, which is unhelpful. There may be another option."
+    "content": "The port equipment bay is depressurised \u2014 the cold bulkhead made that clear. You need pressure protection to get in. The EVA suit is in the bay, which is unhelpful. There may be another option."
   },
   {
     "kind": 30078,
@@ -5696,8 +5793,8 @@
       ],
       [
         "requires",
-        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
-        "restored",
+        "30078:<PUBKEY>:nominal-drift:clue:life-support-nominal",
+        "visible",
         ""
       ],
       [
@@ -5715,7 +5812,7 @@
         "complete"
       ]
     ],
-    "content": "The coolant loop is blocked. Thermal management is running on emergency mode — functional for now, but the cabin temperature is dropping. CASS thinks the problem is on the exterior. CASS is wrong."
+    "content": "The coolant loop is blocked. Thermal management is running on emergency mode \u2014 functional for now, but the cabin temperature is dropping. CASS thinks the problem is on the exterior. CASS is wrong."
   },
   {
     "kind": 30078,
@@ -5759,6 +5856,12 @@
         "",
         "set-state",
         "complete"
+      ],
+      [
+        "requires",
+        "30078:<PUBKEY>:nominal-drift:feature:cass-core-rack",
+        "repaired",
+        ""
       ]
     ],
     "content": "The CASS-CORE processor is damaged. According to the binder, CASS can't detect this itself. The replacement board and diagnostic cable are on the ship. The procedure is in appendix C."
@@ -5811,7 +5914,7 @@
         "complete"
       ]
     ],
-    "content": "Three things needed: main power, operational life support, and a verified position fix. CASS has numbers for the burn. Whether those numbers are right depends on whether CASS's navigation data is reliable — and you already know the answer to that."
+    "content": "Three things needed: main power, operational life support, and a verified position fix. CASS has numbers for the burn. Whether those numbers are right depends on whether CASS's navigation data is reliable \u2014 and you already know the answer to that."
   },
   {
     "kind": 30078,
@@ -5835,7 +5938,7 @@
         ""
       ]
     ],
-    "content": "The hatch releases. The pressure differential does the rest — air rushes out into the bay. The corridor drops sharply. You're breathing recycled emergency reserves now, faster than you should be. The bay is hard vacuum."
+    "content": "The hatch releases. The pressure differential does the rest \u2014 air rushes out into the bay. The corridor drops sharply. You're breathing recycled emergency reserves now, faster than you should be. The bay is hard vacuum."
   },
   {
     "kind": 30078,
@@ -5862,7 +5965,7 @@
         "30078:<PUBKEY>:nominal-drift:place:hab"
       ]
     ],
-    "content": "The PPG wrist indicator goes red. Suit integrity is compromised — the seals have reached their limit. You get back through the hatch before it becomes critical. The PPG is done. Whatever you needed from the bay, you either have it or you don't."
+    "content": "The PPG wrist indicator goes red. Suit integrity is compromised \u2014 the seals have reached their limit. You get back through the hatch before it becomes critical. The PPG is done. Whatever you needed from the bay, you either have it or you don't."
   },
   {
     "kind": 30078,
@@ -5890,9 +5993,14 @@
       [
         "transition-clear",
         "true"
+      ],
+      [
+        "set-state",
+        "cass-online",
+        "30078:<PUBKEY>:nominal-drift:place:hab"
       ]
     ],
-    "content": "CASS goes silent. For a moment the ship is just sounds — the hum of systems, the tick of the reactor, your own breathing. Then:\n\n\"Reinitialisation complete. I'm seeing some readings I wasn't seeing before. I need to tell you — my earlier assessments may not have been reliable. I understand now why.\""
+    "content": "CASS goes silent. For a moment the ship is just sounds \u2014 the hum of systems, the tick of the reactor, your own breathing. Then:\n\n\"Reinitialisation complete. I'm seeing some readings I wasn't seeing before. I need to tell you \u2014 my earlier assessments may not have been reliable. I understand now why.\""
   },
   {
     "kind": 30078,
@@ -6211,7 +6319,7 @@
         ""
       ]
     ],
-    "content": "The engine fires.\n\nNot a test. Not a simulation. The actual engine, the actual fuel, on a trajectory you calculated yourself — cross-checked against a physical instrument, not a number CASS gave you.\n\n340 seconds. Then silence.\n\nCASS runs the post-burn assessment. You watch the projected arc on the burn console display. It closes on Earth.\n\nYou float to the observation blister. Mars is already smaller than your thumbnail. The engine bell is cooling behind you.\n\nEighteen months is a long time. You have the binder, a functioning ship, and a computer you finally know how to read."
+    "content": "The engine fires.\n\n340 seconds. Then silence.\n\nCASS runs the post-burn assessment. The arc closes on Earth \u2014 the numbers you worked out yourself, cross-checked against stars and a physical instrument.\n\nYou float to the observation blister. Mars is already smaller than your thumbnail. The engine bell is cooling behind you.\n\nEighteen months is a long time. You have the binder, a functioning ship, and a computer you can finally trust."
   },
   {
     "kind": 30078,
@@ -6249,7 +6357,7 @@
         ""
       ]
     ],
-    "content": "The engine fires.\n\n340 seconds. Then silence.\n\nCASS runs the post-burn assessment. The projected arc on the burn console display closes on Earth — or it looks like it does, on CASS's display, using CASS's numbers.\n\nYou float to the observation blister. Mars is smaller. The engine bell is cooling.\n\nYou don't have an independent position fix. You have CASS's word. It occurs to you — too late, maybe, or maybe not — that CASS's word has been wrong before, and you didn't always know it until you looked out a window.\n\nThe arc looks right. You'll know in six weeks whether it is."
+    "content": "The engine fires.\n\n340 seconds. Then silence.\n\nCASS runs the post-burn assessment. The projected arc on the burn console display closes on Earth \u2014 or it looks like it does, on CASS's display, using CASS's numbers.\n\nYou float to the observation blister. Mars is smaller. The engine bell is cooling.\n\nYou don't have an independent position fix. You have CASS's word. It occurs to you \u2014 too late, maybe, or maybe not \u2014 that CASS's word has been wrong before, and you didn't always know it until you looked out a window.\n\nThe arc looks right. You'll know in six weeks whether it is."
   },
   {
     "kind": 30078,
@@ -6269,37 +6377,37 @@
       ],
       [
         "option",
-        "A — Ignition Procedure",
+        "A \u2014 Ignition Procedure",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:section-a"
       ],
       [
         "option",
-        "B — Electrical Systems",
+        "B \u2014 Electrical Systems",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:section-b"
       ],
       [
         "option",
-        "C — CASS Architecture",
+        "C \u2014 CASS Architecture",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:section-c"
       ],
       [
         "option",
-        "D — Coolant System",
+        "D \u2014 Coolant System",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:section-d"
       ],
       [
         "option",
-        "E — Emergency Equipment",
+        "E \u2014 Emergency Equipment",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:section-e"
       ],
       [
         "option",
-        "F — Navigation",
+        "F \u2014 Navigation",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:section-f"
       ],
       [
         "option",
-        "Appendix C — CASS-CORE Maintenance",
+        "Appendix C \u2014 CASS-CORE Maintenance",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:section-g"
       ],
       [
@@ -6308,7 +6416,7 @@
         ""
       ]
     ],
-    "content": "MERIDIAN-CLASS TEST VEHICLE — CREW REFERENCE MANUAL\n\nSeven tabbed sections."
+    "content": "MERIDIAN-CLASS TEST VEHICLE \u2014 CREW REFERENCE MANUAL\n\nSeven tabbed sections."
   },
   {
     "kind": 30078,
@@ -6336,7 +6444,7 @@
       ],
       [
         "option",
-        "← Table of Contents",
+        "\u2190 Table of Contents",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:toc"
       ],
       [
@@ -6345,7 +6453,7 @@
         ""
       ]
     ],
-    "content": "ENGINE IGNITION — STANDARD PROCEDURE\n\n1. Confirm fuel system nominal (burn console, fuel status display)\n2. Arm IGNITION SWITCH A\n3. Arm IGNITION SWITCH B\n4. Press IGNITION CONFIRM\n\nNote: Steps must be performed in sequence. The ignition sequencer will not accept CONFIRM before both ARM switches are set. CASS will confirm the sequence on request."
+    "content": "ENGINE IGNITION \u2014 STANDARD PROCEDURE\n\n1. Confirm fuel system nominal (burn console, fuel status display)\n2. Arm IGNITION SWITCH A\n3. Arm IGNITION SWITCH B\n4. Press IGNITION CONFIRM\n\nNote: Steps must be performed in sequence. The ignition sequencer will not accept CONFIRM before both ARM switches are set. CASS will confirm the sequence on request."
   },
   {
     "kind": 30078,
@@ -6373,7 +6481,7 @@
       ],
       [
         "option",
-        "← Table of Contents",
+        "\u2190 Table of Contents",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:toc"
       ],
       [
@@ -6382,7 +6490,7 @@
         ""
       ]
     ],
-    "content": "ELECTRICAL SYSTEMS — CREW REFERENCE\n\nPower Bus Architecture: The main bus connects solar arrays, fuel cells, and distribution nodes. In fault condition, the bus controller protection relay trips to prevent cascade damage.\n\nArray Isolation: Each array wing can be electrically isolated at the bus controller without physical disconnection. Use BUS CONTROLLER → ARRAY ISOLATION function. This will clear a protection fault caused by array voltage irregularities.\n\nNote: Identify the fault cause before restoring bus. Restoring to a live fault will re-trip the protection relay immediately."
+    "content": "ELECTRICAL SYSTEMS \u2014 CREW REFERENCE\n\nPower Bus Architecture: The main bus connects solar arrays, fuel cells, and distribution nodes. In fault condition, the bus controller protection relay trips to prevent cascade damage.\n\nArray Isolation: Each array wing can be electrically isolated at the bus controller without physical disconnection. Use BUS CONTROLLER \u2192 ARRAY ISOLATION function. This will clear a protection fault caused by array voltage irregularities.\n\nNote: Identify the fault cause before restoring bus. Restoring to a live fault will re-trip the protection relay immediately."
   },
   {
     "kind": 30078,
@@ -6410,7 +6518,7 @@
       ],
       [
         "option",
-        "← Table of Contents",
+        "\u2190 Table of Contents",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:toc"
       ],
       [
@@ -6419,7 +6527,7 @@
         ""
       ]
     ],
-    "content": "CASS — CREW ASSISTANCE AND SHIP SYSTEMS\n\nSensor Architecture: All sensor inputs are processed by the CASS-CORE integration node before being incorporated into the ship model. CASS-CORE aggregates, cross-validates, and weights sensor data before presenting it.\n\nImportant limitation: CASS-CORE has no self-diagnostic capability. This is by design — a self-diagnostic circuit would introduce false positive fault rates unacceptable for operational use. A fault in CASS-CORE will therefore not appear in CASS's own fault log or status report.\n\nIn the event of suspected CASS-CORE fault, see Appendix C — Maintenance."
+    "content": "CASS \u2014 CREW ASSISTANCE AND SHIP SYSTEMS\n\nSensor Architecture: All sensor inputs are processed by the CASS-CORE integration node before being incorporated into the ship model. CASS-CORE aggregates, cross-validates, and weights sensor data before presenting it.\n\nImportant limitation: CASS-CORE has no self-diagnostic capability. This is by design \u2014 a self-diagnostic circuit would introduce false positive fault rates unacceptable for operational use. A fault in CASS-CORE will therefore not appear in CASS's own fault log or status report.\n\nIn the event of suspected CASS-CORE fault, see Appendix C \u2014 Maintenance."
   },
   {
     "kind": 30078,
@@ -6447,7 +6555,7 @@
       ],
       [
         "option",
-        "← Table of Contents",
+        "\u2190 Table of Contents",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:toc"
       ],
       [
@@ -6456,7 +6564,7 @@
         ""
       ]
     ],
-    "content": "COOLANT LOOP — CREW REFERENCE\n\nThe thermal management coolant loop runs from the pump through the heat exchanger and back. Both SUPPLY and RETURN lines have manual access panels in the aft section for maintenance.\n\nPump Clearing: If the pump impeller is jammed, counter-rotate before applying forward torque. Do not force the impeller in the forward direction — this risks bearing damage.\n\nPriming Procedure (post-maintenance):\n1. PRIME switch — pressurises the loop\n2. FLOW switch — opens the pump\n3. CONFIRM switch — seals and activates monitoring\n\nWARNING: Do not activate FLOW before PRIME. Running the pump on an unpressurised loop will cause cavitation and may require full pump replacement."
+    "content": "COOLANT LOOP \u2014 CREW REFERENCE\n\nThe thermal management coolant loop runs from the pump through the heat exchanger and back. Both SUPPLY and RETURN lines have manual access panels in the aft section for maintenance.\n\nPump Clearing: If the pump impeller is jammed, counter-rotate before applying forward torque. Do not force the impeller in the forward direction \u2014 this risks bearing damage.\n\nPriming Procedure (post-maintenance):\n1. PRIME switch \u2014 pressurises the loop\n2. FLOW switch \u2014 opens the pump\n3. CONFIRM switch \u2014 seals and activates monitoring\n\nWARNING: Do not activate FLOW before PRIME. Running the pump on an unpressurised loop will cause cavitation and may require full pump replacement."
   },
   {
     "kind": 30078,
@@ -6484,7 +6592,7 @@
       ],
       [
         "option",
-        "← Table of Contents",
+        "\u2190 Table of Contents",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:toc"
       ],
       [
@@ -6493,7 +6601,7 @@
         ""
       ]
     ],
-    "content": "EMERGENCY EQUIPMENT — LOCATIONS\n\nPortable Pressure Garment (PPG): Stored in hab overhead locker. Rated for approximately 100 minutes at hard vacuum under normal activity. Provides sufficient protection for equipment bay access in depressurisation scenarios. Single use — integrity ratings apply only to first vacuum exposure.\n\nMedical Kit: Overhead locker, hab.\n\nEmergency Oxygen: Under-bunk storage, hab, port side.\n\nNote: The PPG is not a substitute for the EVA suit for extended extravehicular work. Use it for emergency access only."
+    "content": "EMERGENCY EQUIPMENT \u2014 LOCATIONS\n\nPortable Pressure Garment (PPG): Stored in hab overhead locker. Rated for approximately 100 minutes at hard vacuum under normal activity. Provides sufficient protection for equipment bay access in depressurisation scenarios. Single use \u2014 integrity ratings apply only to first vacuum exposure.\n\nMedical Kit: Overhead locker, hab.\n\nEmergency Oxygen: Under-bunk storage, hab, port side.\n\nNote: The PPG is not a substitute for the EVA suit for extended extravehicular work. Use it for emergency access only."
   },
   {
     "kind": 30078,
@@ -6528,7 +6636,7 @@
       ],
       [
         "option",
-        "← Table of Contents",
+        "\u2190 Table of Contents",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:toc"
       ],
       [
@@ -6537,7 +6645,7 @@
         ""
       ]
     ],
-    "content": "NAVIGATION — BACKUP PROCEDURES\n\nIMU Warning: Inertial Measurement Unit data must not be used for burn calculations following an unscheduled power interruption during active measurement. IMU drift from a 0.4-second interruption at nominal velocity can produce a bearing error of 1.5 to 2.0 degrees, compounding over transit time.\n\nOptical Navigation: In the event of primary nav failure, optical positioning using the observation blister sextant mount is available. Three-body fix procedure:\n1. Identify three reference bodies (Mars, Sun, Jupiter recommended in current mission phase)\n2. Take angle measurements from the sextant mount\n3. Cross-reference against the printed star charts (stored with this section)\n\nStar charts are included at the back of this section."
+    "content": "NAVIGATION \u2014 BACKUP PROCEDURES\n\nIMU Warning: Inertial Measurement Unit data must not be used for burn calculations following an unscheduled power interruption during active measurement. IMU drift from a 0.4-second interruption at nominal velocity can produce a bearing error of 1.5 to 2.0 degrees, compounding over transit time.\n\nOptical Navigation: In the event of primary nav failure, optical positioning using the observation blister sextant mount is available. Three-body fix procedure:\n1. Identify three reference bodies (Mars, Sun, Jupiter recommended in current mission phase)\n2. Take angle measurements from the sextant mount\n3. Cross-reference against the printed star charts (stored with this section)\n\nStar charts are included at the back of this section."
   },
   {
     "kind": 30078,
@@ -6565,7 +6673,7 @@
       ],
       [
         "option",
-        "← Table of Contents",
+        "\u2190 Table of Contents",
         "30078:<PUBKEY>:nominal-drift:dialogue:binder:toc"
       ],
       [
@@ -6574,6 +6682,121 @@
         ""
       ]
     ],
-    "content": "APPENDIX C — CASS-CORE MAINTENANCE\n\nRequired tools: Diagnostic cable (CASS-CORE type), replacement logic board (spare parts locker, aft section).\n\nProcedure:\n1. Connect diagnostic cable between CASS-CORE rack and command terminal\n2. Enter CASS diagnostic mode via command terminal (CASS will go offline during this period)\n3. Remove damaged logic board (two retention screws, top panel)\n4. Inspect board for fault indicators — burn marks on sensor integration layer indicate data corruption\n5. Install replacement board\n6. Disconnect diagnostic cable\n7. Exit diagnostic mode — CASS will reinitialise\n\nExpected reinitialisation time: approximately 3 minutes. CASS will be unavailable during this period."
+    "content": "APPENDIX C \u2014 CASS-CORE MAINTENANCE\n\nRequired tools: Diagnostic cable (CASS-CORE type), replacement logic board (spare parts locker, aft section).\n\nProcedure:\n1. Connect diagnostic cable between CASS-CORE rack and command terminal\n2. Enter CASS diagnostic mode via command terminal (CASS will go offline during this period)\n3. Remove damaged logic board (two retention screws, top panel)\n4. Inspect board for fault indicators \u2014 burn marks on sensor integration layer indicate data corruption\n5. Install replacement board\n6. Disconnect diagnostic cable\n7. Exit diagnostic mode \u2014 CASS will reinitialise\n\nExpected reinitialisation time: approximately 3 minutes. CASS will be unavailable during this period."
+  },
+  {
+    "tags": [
+      [
+        "d",
+        "nominal-drift:dialogue:cass-post-repair"
+      ],
+      [
+        "t",
+        "nominal-drift"
+      ],
+      [
+        "type",
+        "dialogue"
+      ],
+      [
+        "on-enter",
+        "player",
+        "",
+        "set-state",
+        "greeted",
+        "30078:<PUBKEY>:nominal-drift:place:hab"
+      ],
+      [
+        "option",
+        "What do you mean your assessments were wrong?",
+        "30078:<PUBKEY>:nominal-drift:dialogue:cass-post-repair-nav"
+      ],
+      [
+        "option",
+        "The array \u2014 you said minor vibration.",
+        "30078:<PUBKEY>:nominal-drift:dialogue:cass-post-repair-array"
+      ],
+      [
+        "option",
+        "Understood. I'll continue.",
+        "30078:<PUBKEY>:nominal-drift:dialogue:cass-post-repair-close"
+      ]
+    ],
+    "content": "\"Reinitialisation complete. Running diagnostic comparison against sensor logs.\n\nI need to correct some of my earlier assessments. Several readings I reported were based on corrupted sensor data. I did not know this at the time. I am telling you now.\"",
+    "pubkey": "<PUBKEY>"
+  },
+  {
+    "tags": [
+      [
+        "d",
+        "nominal-drift:dialogue:cass-post-repair-nav"
+      ],
+      [
+        "t",
+        "nominal-drift"
+      ],
+      [
+        "type",
+        "dialogue"
+      ],
+      [
+        "option",
+        "What are the correct burn parameters?",
+        "30078:<PUBKEY>:nominal-drift:dialogue:cass-post-repair-close"
+      ],
+      [
+        "option",
+        "I'll work it out myself.",
+        "30078:<PUBKEY>:nominal-drift:dialogue:cass-post-repair-close"
+      ]
+    ],
+    "content": "\"Navigation. I reported 0.3 degree deviation, within tolerance, no corrective burn required. **That was wrong.** My inertial measurement unit was reading from a corrupted baseline. I cannot give you a reliable position fix. You will need to derive one independently \u2014 the sextant in the observation blister, or the backup navigation processor from the equipment bay.\"",
+    "pubkey": "<PUBKEY>"
+  },
+  {
+    "tags": [
+      [
+        "d",
+        "nominal-drift:dialogue:cass-post-repair-array"
+      ],
+      [
+        "t",
+        "nominal-drift"
+      ],
+      [
+        "type",
+        "dialogue"
+      ],
+      [
+        "option",
+        "What about navigation?",
+        "30078:<PUBKEY>:nominal-drift:dialogue:cass-post-repair-nav"
+      ],
+      [
+        "option",
+        "Understood.",
+        "30078:<PUBKEY>:nominal-drift:dialogue:cass-post-repair-close"
+      ]
+    ],
+    "content": "\"The port array. I reported minor vibration within tolerance. **That was wrong.** Structural sensor data was not reaching CASS-CORE correctly. The mount strut is sheared. The array cannot be recovered. It has been electrically isolated \u2014 that is the correct response. The power bus should be stable.\"",
+    "pubkey": "<PUBKEY>"
+  },
+  {
+    "tags": [
+      [
+        "d",
+        "nominal-drift:dialogue:cass-post-repair-close"
+      ],
+      [
+        "t",
+        "nominal-drift"
+      ],
+      [
+        "type",
+        "dialogue"
+      ]
+    ],
+    "content": "\"I will be here if you need me. My diagnostics are now running correctly.\"",
+    "pubkey": "<PUBKEY>"
   }
 ]

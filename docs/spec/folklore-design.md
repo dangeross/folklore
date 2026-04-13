@@ -174,6 +174,27 @@ The atomic unit of the world. A place the player can occupy.
 The client renders exit slot names as available movement options. Custom exit names read naturally as player commands.
 
 - **Per-place colour overrides:** `["colour", "<slot>", "<value>"]` — overrides theme colours for this place. The `slot` matches any colour slot defined on the world event (e.g. `bg`, `text`, `accent`, `border`). When the player enters a place with `colour` tags, those values override the world theme for that place. When the player leaves (enters a place without `colour` tags), colours reset to the world theme. This enables location-specific atmosphere — a dungeon can be darker, a forest greener.
+
+- **Ambient effects:** `["ambient-effect", "<effect>", "<duration-ms-or-blank>", "<event-ref-or-blank>", "<state-or-blank>"]` — a persistent looping visual atmosphere applied while the player is in this room. Multiple tags are allowed on one place; the first matching tag wins. Colour is driven by the world/place theme (`--colour-highlight`). The ambient clears automatically when the player moves to a room with no matching tag.
+
+  | Preset | Character |
+  |---|---|
+  | `pulse` | Slow edge-glow in/out — alert lighting, tension |
+  | `flicker` | Erratic brightness stutter — failing power |
+  | `heartbeat` | Double-pulse with pause — unsettling monitor feel |
+  | `breathe` | Very slow dim/restore — eerie quiet |
+  | `dim` | Slow fade to near-black and back — emergency power failure |
+  | `static` | Looping noise overlay — interference |
+
+  **State guard:** position 4 is an optional state value. Position 3 is the event ref whose state is checked — blank = the place itself. Blank state (position 4) = always active regardless of any event's state.
+
+  ```json
+  ["ambient-effect", "pulse",   "3000", "", ""]
+  ["ambient-effect", "pulse",   "1500", "30078:<pubkey>:world:consequence:power-bus", "failed"]
+  ["ambient-effect", "breathe", "5000", "30078:<pubkey>:world:consequence:power-bus", "nominal"]
+  ```
+
+
 - Rooms can carry `on-enter` handlers — fired when the player enters the place. NPCs use the same tag with a place reference as the first argument — fired when the NPC arrives at that place. Same tag, different first argument, dispatched by event `type`.
 
 ```json
@@ -678,7 +699,7 @@ New action types can be added without changing the tag structure — the dispatc
 - `traverse` on `on-health` — teleport player on NPC death (reward chamber, cutscene location)
 - `activate` triggers the target event's native mechanic — recipe (crafting), puzzle (prompt), or payment (invoice). Used to scope recipes/puzzles to a feature interaction.
 - `start-dialogue` on `on-interact` — opens a dialogue tree when the player uses a verb on a feature, item, or NPC. Target is the entry dialogue node `a`-tag. The feature/item/NPC title is used as the speaker header. Use this instead of `dialogue` tags when the entry point should be fixed rather than condition-selected.
-- `start-dialogue` on `on-enter` — valid on NPC events only. Fires when the player enters the NPC's current place, immediately opening dialogue. Useful for NPCs that speak first — a greeting, a challenge, a warning. State guard (position 2) controls when it fires — blank = always, named state = only in that state.
+- `start-dialogue` on `on-enter` — valid on NPC events, or on place events with an NPC ref in position 5. Fires when the player enters the room, immediately opening dialogue. Useful for NPCs that speak first — a greeting, a challenge, a warning. State guard (position 2) controls when it fires — blank = always, named state = only in that state. When placed on a **place** event, position 5 (`extRef`) must be the NPC's full a-tag — the dialogue is routed through that NPC (its title is used as the speaker header): `["on-enter", "player", "state", "start-dialogue", "<dialogue-ref>", "<npc-ref>"]`.
 - `add-counter`/`sub-counter`/`mul-counter`/`div-counter`/`set-counter` on `on-attacked` — track hits taken, shield durability, attack counters
 - `on-fail` only fires on `riddle` and `cipher` puzzles — sequence puzzles have no wrong-answer state
 - The matrix reflects intent, not hard enforcement. The client should handle unexpected combinations gracefully rather than erroring.
@@ -1573,6 +1594,16 @@ An NPC can open dialogue automatically when the player enters its room. Add `on-
 ```
 
 The first fires on any entry (no state guard). The second fires only when the NPC is in state `alert`. The dialogue is attributed to the NPC — the header shows `— Guard —`. This is the correct pattern for NPCs that speak first without waiting to be addressed.
+
+The same pattern can be placed on a **place** event with an NPC ref as position 5. This lets a state change on the place (e.g. set by a consequence) trigger an NPC speaking when the player next enters:
+
+```json
+["on-enter", "player", "cass-online", "start-dialogue",
+  "30078:<pubkey>:world:dialogue:cass:correction",
+  "30078:<pubkey>:world:npc:cass"]
+```
+
+The dialogue is attributed to the named NPC (`— CASS —`). The place state guard makes it one-shot when combined with a `set-state greeted` on the dialogue entry node's `on-enter`.
 
 **Client flow:**
 1. Player types `talk` / `ask` on a feature, item, or NPC — or enters a room with an NPC that has `on-enter start-dialogue` — client resolves the target event

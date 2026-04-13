@@ -5,12 +5,34 @@
 
 ## [Unreleased] — April 2026
 
+### Added — `ambient-effect` tag on place events
+
+`["ambient-effect", "<effect>", "<duration-ms-or-blank>", "<event-ref-or-blank>", "<state-or-blank>"]`
+
+Persistent looping visual atmosphere applied while the player is in a room. Multiple tags allowed; first matching tag wins. State guard (position 4) checks the state of the event at position 3 (blank = place's own state). Blank state = always active. Colour driven by theme `--colour-highlight`.
+
+Presets: `pulse` (slow edge-glow), `flicker` (erratic brightness), `heartbeat` (double-pulse), `breathe` (slow dim), `static` (noise overlay).
+
+Ambient clears automatically when the player enters a room with no matching tag. One-shot `transition-effect` from consequences plays over the ambient loop without cancelling it.
+
+### Extended — `on-enter start-dialogue` now supports place events with NPC ref
+
+A place event can now carry `on-enter start-dialogue` with an NPC's a-tag in position 5. When the player enters the room and the state guard matches, the specified NPC delivers the dialogue (its title used as the speaker header). This lets a consequence set a place state that triggers NPC speech on next room entry — a clean one-shot pattern when combined with `set-state greeted` on the dialogue entry node's own `on-enter`.
+
+```json
+["on-enter", "player", "cass-online", "start-dialogue",
+  "30078:<pubkey>:world:dialogue:npc:entry",
+  "30078:<pubkey>:world:npc:name"]
+```
+
+Updated spec section 2.10 (dialogue patterns) and trigger×action matrix note.
+
 ### Added — `start-dialogue` action type
 
 `start-dialogue` is now a valid action on `on-interact` and `on-enter`. Target is the entry dialogue node `a`-tag. The dialogue is attributed to the hosting event (feature/item/NPC title used as speaker header).
 
 - **`on-interact start-dialogue`** — opens a dialogue tree when the player uses a verb on a feature, item, or NPC. Preferred over `dialogue` tags when the entry point is always fixed (e.g. interactive documents, terminals, menus). The feature title becomes the speaker header rather than implying a conversation partner.
-- **`on-enter start-dialogue`** (NPC only) — fires when the player enters the NPC's room, immediately opening dialogue. Makes NPCs speak first without waiting to be addressed. State guard controls when it fires — blank = always, named state = only in that state.
+- **`on-enter start-dialogue`** (NPC events) — fires when the player enters the NPC's room, immediately opening dialogue. Makes NPCs speak first without waiting to be addressed. State guard controls when it fires — blank = always, named state = only in that state.
 
 Updated spec section 2.10 (dialogue patterns), trigger×action matrix, tag-reference notes and NPC on-enter row.
 

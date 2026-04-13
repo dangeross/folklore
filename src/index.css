@@ -345,3 +345,62 @@ input {
   50% { box-shadow: inset 0 0 80px 20px var(--colour-highlight, #fff); }
   100% { box-shadow: inset 0 0 0 0 transparent; }
 }
+
+/* ── Ambient looping effects ──────────────────────────────────────── */
+
+.ambient-pulse {
+  animation: ambient-pulse var(--ambient-duration, 3000ms) ease-in-out infinite;
+}
+@keyframes ambient-pulse {
+  0%, 100% { box-shadow: inset 0 0 0px 0px transparent; }
+  50%       { box-shadow: inset 0 0 80px 20px color-mix(in srgb, var(--colour-highlight, #ff6600) 25%, transparent); }
+}
+
+.ambient-flicker {
+  animation: ambient-flicker var(--ambient-duration, 200ms) steps(3) infinite;
+}
+@keyframes ambient-flicker {
+  0%   { opacity: 1;    filter: brightness(1); }
+  30%  { opacity: 0.82; filter: brightness(0.88); }
+  60%  { opacity: 0.95; filter: brightness(0.96); }
+  80%  { opacity: 0.7;  filter: brightness(0.78); }
+  100% { opacity: 1;    filter: brightness(1); }
+}
+
+.ambient-heartbeat {
+  animation: ambient-heartbeat var(--ambient-duration, 1200ms) ease-in-out infinite;
+}
+@keyframes ambient-heartbeat {
+  0%, 100% { box-shadow: inset 0 0 0px 0px transparent; }
+  12%       { box-shadow: inset 0 0 60px 14px color-mix(in srgb, var(--colour-highlight, #ff6600) 35%, transparent); }
+  25%       { box-shadow: inset 0 0 10px 2px transparent; }
+  38%       { box-shadow: inset 0 0 40px 10px color-mix(in srgb, var(--colour-highlight, #ff6600) 25%, transparent); }
+  60%       { box-shadow: inset 0 0 0px 0px transparent; }
+}
+
+.ambient-breathe {
+  animation: ambient-breathe var(--ambient-duration, 5000ms) ease-in-out infinite;
+}
+@keyframes ambient-breathe {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.72; }
+}
+
+.ambient-static {
+  animation: ambient-static var(--ambient-duration, 300ms) steps(4) infinite;
+}
+@keyframes ambient-static {
+  0%   { filter: contrast(1)   brightness(1);    }
+  25%  { filter: contrast(1.3) brightness(0.88); }
+  50%  { filter: contrast(0.9) brightness(1.06); }
+  75%  { filter: contrast(1.2) brightness(0.92); }
+  100% { filter: contrast(1)   brightness(1);    }
+}
+
+.ambient-dim {
+  animation: ambient-dim var(--ambient-duration, 3000ms) ease-in-out infinite;
+}
+@keyframes ambient-dim {
+  0%, 100% { filter: brightness(1); }
+  50%       { filter: brightness(0.25); }
+}

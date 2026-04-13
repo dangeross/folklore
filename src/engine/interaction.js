@@ -7,7 +7,7 @@ import {
   getTag, getTags, checkRequires, checkRequiresCounter, findByNoun, getDefaultState, findTransition,
 } from './world.js';
 import { stripArticles, findInventoryItem } from './parser.js';
-import { evalCounterLow, evalSequencePuzzles } from './actions.js';
+import { evalCounterLow } from './actions.js';
 import { findRoamingNpcsAtPlace } from './npc.js';
 
 export function mixInteraction(Engine) {
@@ -207,7 +207,7 @@ export function mixInteraction(Engine) {
           }
         }
       }
-      evalSequencePuzzles(this.place, this.events, this.player, (t, ty) => this._emit(t, ty), (p, v) => this._emitSound(p, v), this.config.trustSet, this.config.clientMode);
+      this._evalSequencePuzzles();
       this._evalQuests();
     }
     return acted;
@@ -442,7 +442,8 @@ export function mixInteraction(Engine) {
           // Feature external set-state may trigger sequence puzzles
           const extEvent = this.events.get(targetRef);
           if (extEvent && getTag(extEvent, 'type') === 'feature') {
-            evalSequencePuzzles(this.place, this.events, this.player, (t, ty) => this._emit(t, ty), (p, v) => this._emitSound(p, v), this.config.trustSet, this.config.clientMode);
+            this._evalSequencePuzzles();
+            this._evalQuests();
           }
         }
       } else if (action === 'set-state' && !targetRef) {

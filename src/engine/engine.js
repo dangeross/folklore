@@ -85,6 +85,7 @@ export class GameEngine {
     this.combatTarget = null;  // NPC dtag during a combat round
     this.gameOver = null;      // null | 'hard' | 'soft' — endgame quest state
     this.pendingReport = null; // { targetRef, title, author } — awaiting reason text
+    this.currentAmbient = null; // currently active ambient-effect preset name
 
     // Initialize player health from world event if not already set
     if (player.getHealth() == null) {
@@ -362,10 +363,13 @@ export class GameEngine {
 
       case 'start-dialogue': {
         // Start a specific dialogue node directly, bypassing resolveDialogueEntry.
-        // target = full a-tag of the dialogue entry node; selfDtag = NPC dtag.
-        const dialogueRef = target || extRef;
-        if (!dialogueRef || !selfDtag) return false;
-        this.startDialogue(selfDtag, dialogueRef);
+        // target = full a-tag of the dialogue entry node.
+        // extRef = optional NPC dtag to speak through (defaults to selfDtag).
+        // This allows place on-enter triggers to route speech through an NPC.
+        const dialogueRef = target;
+        const npcRef = extRef || selfDtag;
+        if (!dialogueRef || !npcRef) return false;
+        this.startDialogue(npcRef, dialogueRef);
         return true;
       }
 
@@ -432,6 +436,9 @@ export class GameEngine {
       // Reset to world-only theme
       this.output.push({ type: 'theme-override', colours: null });
     }
+
+    // Emit ambient effect for this room
+    this._evalAmbient();
 
     const title = getTag(room, 'title') || dtag;
     this._emit(`\n— ${title} —`, 'title');
@@ -583,14 +590,58 @@ export class GameEngine {
       }
     }
 
-    // Re-evaluate quests and sequence puzzles after on-enter state changes
+    // Re-evaluate quests, sequence puzzles, and ambient after on-enter state changes
     if (isMoving) {
       this._evalSequencePuzzles();
       this._evalQuests();
+      this._evalAmbient();
     }
 
     // Exits — spec 6.7 contested exit model
     this._emitExits(dtag);
+  }
+
+  // ── Ambient effect evaluation ────────────────────────────────────────
+
+  /**
+   * Evaluate ambient-effect tags on the current room and emit an update if changed.
+   * Tag shape: ["ambient-effect", effect, duration?, eventRef?, stateGuard?]
+   * First matching tag wins. Blank stateGuard = always active.
+   * Blank eventRef = check place's own state.
+   */
+  _evalAmbient() {
+    if (!this.currentPlace) return;
+    const room = this.events.get(this.currentPlace);
+    if (!room) return;
+
+    const tags = getTags(room, 'ambient-effect');
+    let matched = null;
+
+    for (const tag of tags) {
+      const effect = tag[1];
+      const duration = parseInt(tag[2], 10) || 2000;
+      const eventRef = tag[3] || '';
+      const stateGuard = tag[4] || '';
+
+      if (stateGuard) {
+        const checkDtag = eventRef || this.currentPlace;
+        const checkEvent = this.events.get(checkDtag);
+        const defaultState = checkEvent ? getDefaultState(checkEvent) : '';
+        const currentState = this.player.getState(checkDtag) ?? defaultState;
+        if (currentState !== stateGuard) continue;
+      }
+
+      matched = { effect, duration };
+      break;
+    }
+
+    const newEffect = matched?.effect || null;
+    const newDuration = matched?.duration || 2000;
+
+    if (newEffect !== this.currentAmbient) {
+      this.currentAmbient = newEffect;
+      this.output.push({ type: 'ambient-effect', effect: newEffect, duration: newDuration });
+    }
   }
 
   // ── Trust-aware exit resolution (see movement.js mixin) ─────────────

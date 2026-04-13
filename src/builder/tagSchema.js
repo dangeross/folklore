@@ -637,6 +637,12 @@ export const TAG_SCHEMAS = {
   collaborator:  { label: 'Collaborator', desc: 'Hex pubkey of a trusted co-author', repeatable: true, fields: [{ name: 'pubkey', type: 'text', required: true, placeholder: 'hex pubkey' }] },
   theme:         { label: 'Theme', desc: 'Visual theme preset for the client', fields: [{ name: 'value', type: 'select', required: false, options: ['terminal-green', 'parchment', 'void-blue', 'blood-red', 'monochrome', 'custom'] }] },
   colour:        { label: 'Colour Override', desc: 'Override a specific theme colour slot with a hex value', repeatable: true, fields: [{ name: 'slot', type: 'select', required: true, options: ['bg', 'text', 'title', 'dim', 'highlight', 'error', 'item', 'npc', 'clue', 'puzzle', 'exits'] }, { name: 'hex', type: 'text', required: true, placeholder: '#00ff41' }] },
+  'ambient-effect': { label: 'Ambient Effect', desc: 'Looping visual atmosphere while the player is in this room. First matching tag wins. Colour driven by theme highlight.', repeatable: true, fields: [
+    { name: 'effect', type: 'select', required: true, options: ['pulse', 'flicker', 'heartbeat', 'breathe', 'dim', 'static'] },
+    { name: 'duration', type: 'text', required: false, placeholder: 'duration ms (e.g. 2000)' },
+    { name: 'event-ref', type: 'event-ref', required: false, placeholder: 'event to check state on (blank = this place)' },
+    { name: 'state', type: 'text', required: false, placeholder: 'required state (blank = always active)' },
+  ] },
   'transition-effect':   { label: 'Transition Effect', desc: 'Visual effect when traversing this portal', fields: [{ name: 'value', type: 'select', required: true, options: ['blackout', 'flash', 'fade', 'shake', 'glitch', 'invert', 'static', 'pulse'] }] },
   'transition-duration': { label: 'Transition Duration', desc: 'Duration of the transition effect in milliseconds', fields: [{ name: 'value', type: 'text', required: false, placeholder: '800' }] },
   'transition-clear':    { label: 'Clear Log', desc: 'Clear the game log during transition (true/false)', fields: [{ name: 'value', type: 'select', required: true, options: ['true', 'false'] }] },
@@ -663,7 +669,7 @@ export const TAG_SCHEMAS = {
 
 /** Which tags are valid for each event type */
 export const TAGS_BY_EVENT_TYPE = {
-  place:       ['title', 'content-type', 'exit', 'item', 'feature', 'npc', 'clue', 'noun', 'verb', 'state', 'transition', 'requires', 'requires-not', 'requires-counter', 'on-interact', 'on-enter', 'on-drop', 'on-player-health', 'media', 'sound', 'bpm', 'cw', 'puzzle', 'colour'],
+  place:       ['title', 'content-type', 'exit', 'item', 'feature', 'npc', 'clue', 'noun', 'verb', 'state', 'transition', 'requires', 'requires-not', 'requires-counter', 'on-interact', 'on-enter', 'on-drop', 'on-player-health', 'media', 'sound', 'bpm', 'cw', 'puzzle', 'colour', 'ambient-effect'],
   portal:      ['title', 'exit', 'state', 'transition', 'requires', 'requires-not', 'requires-counter', 'consequence', 'cw', 'content-type', 'sound', 'transition-effect', 'transition-duration', 'transition-clear'],
   item:        ['title', 'noun', 'verb', 'state', 'transition', 'on-interact', 'on-move', 'on-counter', 'counter', 'contains', 'requires', 'requires-not', 'requires-counter', 'damage', 'hit-chance', 'content-type', 'media', 'sound'],
   feature:     ['title', 'noun', 'verb', 'state', 'transition', 'on-interact', 'on-drop', 'on-counter', 'counter', 'contains', 'requires', 'requires-not', 'requires-counter', 'content-type', 'media', 'sound'],

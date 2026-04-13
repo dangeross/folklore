@@ -154,12 +154,16 @@ Sequence puzzles work differently -- they are tied to a place via the `puzzle` t
 When a puzzle is solved, all `on-complete` tags fire in order. Common actions:
 
 ```json
-["on-complete", "", "set-state", "decoded", "30078:<PUBKEY>:my-world:feature:notice-board"]
-["on-complete", "", "give-item", "30078:<PUBKEY>:my-world:item:treasure"]
-["on-complete", "", "set-state", "visible", "30078:<PUBKEY>:my-world:portal:secret-door"]
+["on-complete", "", "set-state", "decoded",  "30078:<PUBKEY>:my-world:feature:notice-board"]
+["on-complete", "", "give-item",             "30078:<PUBKEY>:my-world:item:treasure"]
+["on-complete", "", "set-state", "visible",  "30078:<PUBKEY>:my-world:portal:secret-door"]
+["on-complete", "", "set-state", "visible",  "30078:<PUBKEY>:my-world:clue:revelation"]
+["on-complete", "", "consequence",           "30078:<PUBKEY>:my-world:consequence:fanfare"]
 ```
 
 The first element after the tag name is always blank for `on-complete` (the trigger-target is implicit). Then the action type, then the action target.
+
+`set-state` can target any event type — `feature`, `portal`, `clue`, `place`, `npc`, `item`. The fifth element is the ref of the event to update; without it, the puzzle itself is the target (useful for marking the puzzle `solved`). `consequence` fires a reusable outcome — useful for multi-effect completions (sound + transition + prose) without cluttering the puzzle with inline actions.
 
 Multiple `on-complete` tags can stack. In the tutorial world, the sequence puzzle both sets its own state to `solved` and gives the player a brass telescope.
 

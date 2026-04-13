@@ -416,8 +416,10 @@ export default function App() {
   }, [mergedEvents, player.state, worldConfig, trustInfo]);
 
   // Flush engine output into React log state and commit player state
-  // Active transition effect state
+  // Active transition effect state (one-shot, self-clearing)
   const [transitionEffect, setTransitionEffect] = useState(null);
+  // Active ambient effect state (persistent loop until room changes)
+  const [ambientEffect, setAmbientEffect] = useState(null);
   const gameContainerRef = useRef(null);
 
   const commitEngine = useCallback((engine) => {
@@ -427,6 +429,7 @@ export default function App() {
     let shouldClear = false;
     let transition = null;
     let themeOverride = null;
+    let ambient = undefined; // undefined = no change, null = clear, string = new effect
 
     for (const entry of entries) {
       if (entry.type === 'sound' && entry.sound) {
@@ -446,6 +449,11 @@ export default function App() {
         if (entry.clear) shouldClear = true;
       } else if (entry.type === 'theme-override') {
         themeOverride = entry;
+      } else if (entry.type === 'ambient-effect') {
+        ambient = entry.effect; // null clears, string sets
+        if (gameContainerRef.current) {
+          gameContainerRef.current.style.setProperty('--ambient-duration', `${entry.duration || 2000}ms`);
+        }
       } else if (entry.type === 'map') {
         setShowMap((prev) => !prev);
       } else {
@@ -470,6 +478,11 @@ export default function App() {
         // Reset to world-only theme
         applyTheme(resolveTheme(worldConfig.worldEvent));
       }
+    }
+
+    // Apply ambient effect (persistent loop — set or clear)
+    if (ambient !== undefined) {
+      setAmbientEffect(ambient || null);
     }
 
     // Handle transition effect
@@ -741,7 +754,7 @@ export default function App() {
     <>
     {noiseOverlay}
     <div ref={gameContainerRef}
-         className={`max-w-2xl mx-auto p-6 flex flex-col h-dvh game-text game-container${transitionEffect ? ` transition-${transitionEffect}` : ''}`}
+         className={`max-w-2xl mx-auto p-6 flex flex-col h-dvh game-text game-container${transitionEffect ? ` transition-${transitionEffect}` : ''}${ambientEffect ? ` ambient-${ambientEffect}` : ''}`}
          style={{ backgroundColor: 'var(--colour-bg)', color: 'var(--colour-text)', position: 'relative' }}>
       <div className="text-sm mb-2 flex justify-between items-center shrink-0" style={{ color: 'var(--colour-dim)' }}>
         <span className="flex items-center min-w-0">

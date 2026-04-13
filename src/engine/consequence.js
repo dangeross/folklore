@@ -261,5 +261,8 @@ export function mixConsequence(Engine) {
       this._emit('', 'death-separator');
       this.enterRoom(respawnRef);
     }
+
+    // Re-evaluate ambient in case set-state changed a state guard
+    this._evalAmbient();
   };
 }

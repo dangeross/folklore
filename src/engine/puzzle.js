@@ -241,32 +241,11 @@ export function mixPuzzle(Engine) {
         const action = tag[2];
         const value  = tag[3];
         const extRef = tag[4];
-
-        if (action === 'set-state' && extRef) {
-          const targetEvent = this.events.get(extRef);
-          if (!targetEvent) continue;
-          if (this.config.trustSet && isEventTrusted(targetEvent, this.config.trustSet, this.config.clientMode) === 'hidden') continue;
-          const targetType = getTag(targetEvent, 'type');
-          const currentState = this.player.getState(extRef) ?? getDefaultState(targetEvent);
-          if (currentState !== value) {
-            this.player.setState(extRef, value);
-            const transition = findTransition(targetEvent, currentState, value);
-            if (transition?.text) this._emit(transition.text, 'narrative');
-          }
-        } else if (action === 'set-state' && value) {
-          // Self set-state (no extRef)
-          this.player.setState(dtag, value);
-        } else if (action === 'give-item' && value) {
-          if (!this.player.hasItem(value)) {
-            giveItem(value, this.events, this.player, (t, ty) => this._emit(t, ty), this.config.trustSet, this.config.clientMode);
-          }
-        } else if (action === 'consume-item' && value) {
-          if (this.player.hasItem(value)) {
-            this.player.removeItem(value);
-          }
-        } else if (action === 'sound' && value) {
-          this._emitSound(value, extRef || '1');
-        }
+        this._dispatchAction({
+          action, target: value, extRef,
+          selfDtag: dtag, selfEvent: event,
+          opts: { extraRef: tag[5] },
+        });
       }
     }
   };

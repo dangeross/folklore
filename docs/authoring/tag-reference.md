@@ -278,6 +278,7 @@ D-tag: `<slug>:world`
 | `cw` | `["cw", "<warning>"]` (repeatable) | opt | content warning label |
 | `puzzle` | `["puzzle", "<puzzle-ref>"]` | opt (NIP-44) | encryption key source (NIP-44) |
 | `colour` | `["colour", "<slot>", "<value>"]` (repeatable) | opt | per-place theme colour override (e.g. `bg`, `text`, `accent`) |
+| `ambient-effect` | `["ambient-effect", "<effect>", "<duration-ms-or-blank>", "<event-ref-or-blank>", "<state-or-blank>"]` (repeatable) | opt | looping visual atmosphere while player is in this room. First matching tag wins. Presets: `pulse`, `flicker`, `heartbeat`, `breathe`, `dim`, `static`. Colour driven by theme highlight. Blank event-ref = check place own state. Blank state = always active. |
 
 **NOT valid on place:** `dialogue`, `damage`, `health`, `on-attacked`, `on-encounter`, `counter`, `contains`
 
