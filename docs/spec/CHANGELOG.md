@@ -5,6 +5,20 @@
 
 ## [Unreleased] — April 2026
 
+### Extended — `sound` tag supports external event ref (6-element form)
+
+The `sound` tag now has a canonical conditional form:
+
+```
+["sound", "<ref>", "<role>", "<volume>", "<ext-ref|''>", "<state>"]
+```
+
+Position 4 is an event `a`-tag or `""` (blank = hosting event). Position 5 is the state to check. This mirrors the `ambient-effect` shape and enables globally conditional sounds — e.g. an alarm layer on every place that activates when a world-scoped feature changes state.
+
+All existing world files have been updated to the 6-element form. The old 5-element shorthand is no longer supported.
+
+---
+
 ### Added — `ambient-effect` tag on place events
 
 `["ambient-effect", "<effect>", "<duration-ms-or-blank>", "<event-ref-or-blank>", "<state-or-blank>"]`

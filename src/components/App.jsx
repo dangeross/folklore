@@ -201,6 +201,7 @@ export default function App() {
       setShowRelaySettings(false);
       setShowTrust(false);
       setPreviewUnvouched(false);
+      setAmbientEffect(null);
       setGeneration(g => g + 1);
       engineRef.current = null;
       setDrafts(loadDrafts(worldTag || ''));
@@ -1117,10 +1118,11 @@ export default function App() {
           }}
           onBulkPublish={async (onProgress) => {
             if (!identity.signer || !identity.pubkey) return;
-            // Pre-flight world validation
+            // Pre-flight world validation — check drafts in context of full world
             const currentDrafts = loadDrafts(worldTag);
             const answers = loadAnswers(worldTag);
-            const worldCheck = validateWorld(currentDrafts, answers);
+            const publishedFlat = [...mergedEvents.values()].filter(e => !e._isDraft);
+            const worldCheck = validateWorld([...currentDrafts, ...publishedFlat], answers);
             // Also verify puzzle answer hashes
             const hashErrors = await verifyPuzzleHashes(worldCheck.puzzlesToVerify || []);
             const allErrors = [...worldCheck.errors, ...hashErrors];

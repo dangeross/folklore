@@ -733,7 +733,8 @@ export default function Guide({ guidePage, identity }) {
       reader.onload = () => {
         try {
           const data = parseJsonLenient(reader.result);
-          const worldEvent = data.events?.find((ev) => ev.tags?.find((t) => t[0] === 'type')?.[1] === 'world');
+          const eventList = Array.isArray(data) ? data : (data.events ?? []);
+          const worldEvent = eventList.find((ev) => ev.tags?.find((t) => t[0] === 'type')?.[1] === 'world');
           const detectedSlug = worldEvent?.tags?.find((t) => t[0] === 't')?.[1] || '';
           const validation = validateImport(detectedSlug || 'unknown', data);
           setImportPreview({ validation, data, worldSlug: detectedSlug });

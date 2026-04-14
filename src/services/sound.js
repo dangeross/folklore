@@ -255,8 +255,12 @@ export function evaluateSoundTags(events, currentPlace, playerState, npcStates =
   // Filter passing layers, handle effects
   const layers = [];
   const activeEffectIds = new Set();
-  for (const { id, role, volume, soundRef, stateGate, currentState } of inScope) {
-    if (stateGate && currentState !== stateGate) continue;
+  for (const { id, role, volume, soundRef, stateGate, currentState, extRef } of inScope) {
+    // Resolve state: external ref overrides self state
+    const effectiveState = extRef
+      ? (playerState.states?.[extRef] ?? getDefaultState(eventsMap.get(extRef)))
+      : currentState;
+    if (stateGate && effectiveState !== stateGate) continue;
     if (role === 'effect') {
       activeEffectIds.add(id);
       if (!firedEffects.has(id) && soundRef) {
@@ -348,18 +352,21 @@ function collectBpm(event) {
 
 /**
  * Collect sound tags from an event.
- * New shape: ["sound", "<sound-a-tag>", "<role>", "<volume>", "<state?>"]
+ * 4-element: ["sound", "<ref>", "<role>", "<volume>"]
+ * 6-element: ["sound", "<ref>", "<role>", "<volume>", "<ext-ref|''>", "<state>"]
+ *   ext-ref blank = check hosting event's state; non-blank = check that event's state.
  */
 function collectSoundTags(event, eventRef, currentState, inScope) {
   for (const tag of getTags(event, 'sound')) {
     const soundRef = tag[1];  // a-tag ref to type:sound event
     // Skip old-format sound tags (role in position 1 instead of a-tag ref)
     if (!soundRef || !soundRef.startsWith('30078:')) continue;
-    const role = tag[2];      // ambient, layer, effect
-    const volume = tag[3];    // 0.0-1.0
-    const stateGate = tag[4]; // optional state gate
-    const id = `${eventRef}:${role}:${soundRef}:${stateGate || ''}`;
-    inScope.push({ id, role, volume, soundRef, stateGate, currentState });
+    const role      = tag[2];        // ambient, layer, effect
+    const volume    = tag[3];        // 0.0-1.0
+    const extRef    = tag[4] || null; // ext-ref or blank (self)
+    const stateGate = tag[5];        // state to check (optional)
+    const id = `${eventRef}:${role}:${soundRef}:${extRef || ''}:${stateGate || ''}`;
+    inScope.push({ id, role, volume, soundRef, stateGate, currentState, extRef });
   }
 }
 

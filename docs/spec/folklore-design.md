@@ -2675,7 +2675,8 @@ Sample libraries load asynchronously on world start. Built-in oscillators and `n
 **Playing a sound — `sound` tag on any event:**
 
 ```json
-["sound", "<sound-a-tag>", "<role>", "<volume>", "<state?>"]
+["sound", "<sound-a-tag>", "<role>", "<volume>"]                              // unconditional
+["sound", "<sound-a-tag>", "<role>", "<volume>", "<ext-ref|''>", "<state>"]   // conditional
 ```
 
 | Element | Values | Meaning |
@@ -2683,7 +2684,10 @@ Sample libraries load asynchronously on world start. Built-in oscillators and `n
 | sound ref | `a`-tag | Which `type: sound` event to play |
 | role | `ambient` `layer` `effect` | How it plays |
 | volume | 0.0–1.0 | Mix volume at this point of use |
-| state | state string | Only play when event is in this state (optional) |
+| ext-ref | event `a`-tag or `""` | Event whose state is checked. `""` = hosting event |
+| state | state string | Only play when the checked event is in this state |
+
+Use `""` in the ext-ref position to gate on the hosting event's own state. Use a full ref to gate on a different event — such as a global feature tracking ship power or weather state.
 
 **`gain` × `volume`:** the sound event's `gain` bakes a base level into the definition. The play tag's `volume` controls the mix at point of use. These multiply: `finalVolume = gain × volume`. The same sound event can play at `0.6` near a cave entrance and `0.8` deeper inside.
 
@@ -2696,14 +2700,18 @@ Sample libraries load asynchronously on world start. Built-in oscillators and `n
 | `effect` | One-shot. Fires when event enters scope. Re-fires on re-entry. |
 
 ```json
-// Place — atmospheric drone
+// Place — atmospheric drone (unconditional)
 ["sound", "30078:<PUBKEY>:the-lake:sound:cave-drone",   "ambient", "0.7"],
 
-// Item — lamp hum only when on
+// Item — lamp hum only when on (self state gate)
 ["sound", "30078:<PUBKEY>:the-lake:sound:lamp-hum",     "layer",   "0.3", "on"],
 
-// Puzzle — tension while unsolved
+// Puzzle — tension while unsolved (self state gate)
 ["sound", "30078:<PUBKEY>:the-lake:sound:tension",      "layer",   "0.5", "unsolved"],
+
+// Place — alarm layer on all rooms while power is faulted (external state gate)
+["sound", "30078:<PUBKEY>:world:sound:alarm",           "layer",   "0.6",
+  "30078:<PUBKEY>:world:feature:power-bus", "faulted"],
 
 // Consequence — death jingle
 ["sound", "30078:<PUBKEY>:the-lake:sound:death-jingle", "effect",  "1.0"]

@@ -239,7 +239,7 @@ D-tag: `<slug>:world`
 | `flicker` | `["flicker", "on"\|"off"]` | opt | — |
 | `vignette` | `["vignette", "0.0-1.0"]` | opt | — |
 | `noise` | `["noise", "0.0-1.0"]` | opt | — |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 | `bpm` | `["bpm", "<number>"]` | opt | beats per minute for sounds |
 | `samples` | `["samples", "<preset-or-url>"]` (repeatable) | opt | Strudel sample preset or URL |
 | `content-type` | `["content-type", "application/nip44"\|"text/plain"]` | opt | Default is markdown. Use `application/nip44` for sealed content or `text/plain` to disable formatting |
@@ -272,7 +272,7 @@ D-tag: `<slug>:world`
 | `on-drop` | `["on-drop", "<item-ref-or-''>", "<state-guard-or-''>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | fires when item dropped in this place (plain `drop X`) |
 | `on-player-health` | `["on-player-health", "<dir>", "<threshold>", "<action>", "<target>"]` (repeatable) | opt | — |
 | `media` | `["media", "<mime>", "<value>"]` (repeatable) | opt | — |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 | `bpm` | `["bpm", "<number>"]` | opt | beats per minute for sounds |
 | `content-type` | `["content-type", "application/nip44"\|"text/plain"]` | opt | Default is markdown. Use `application/nip44` for sealed content or `text/plain` to disable formatting |
 | `cw` | `["cw", "<warning>"]` (repeatable) | opt | content warning label |
@@ -345,7 +345,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `damage` | `["damage", "<number>"]` | opt (weapons) | — |
 | `hit-chance` | `["hit-chance", "0.0-1.0"]` | opt | probability 0.0-1.0 |
 | `media` | `["media", "<mime>", "<value>"]` (repeatable) | opt | — |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 
 **Content field:** REQUIRED.
 
@@ -388,7 +388,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-counter` | `["requires-counter", "<verb>", "<ref>", "<counter>", "<op>", "<N>", "<desc>"]` (repeatable) | opt | gate on counter value comparison |
 | `media` | `["media", "<mime>", "<value>"]` (repeatable) | opt | — |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 
 **Content field:** REQUIRED. Same placement rules as item (add `["feature", "<ref>"]` to the **place**).
 
@@ -423,7 +423,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-counter` | `["requires-counter", "<verb>", "<ref>", "<counter>", "<op>", "<N>", "<desc>"]` (repeatable) | opt | gate on counter value comparison |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 
 **Content field:** REQUIRED. **NPC placement:** Add `["npc", "<npc-ref>"]` to the **place** event. Use `inventory` (not `item`) for NPC-held items. `steals-item` tracks stolen items separately — `deposits` only drops stolen items, never native inventory.
 
@@ -436,7 +436,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-counter` | `["requires-counter", "<verb>", "<ref>", "<counter>", "<op>", "<N>", "<desc>"]` (repeatable) | opt | gate on counter value comparison (verb field is always blank on dialogue) |
 | `on-enter` | `["on-enter", "player", "<state-guard-or-''\>", "<action>", "<target>", "<ext-ref?>"]` (repeatable) | opt | — |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 
 **NOT valid on dialogue:** `title`, `noun`, `verb`, `exit`, `item`, `feature`, `npc`, `state`, `transition`, `on-interact`, `counter`, `damage`, `health`, `media`
 
@@ -468,7 +468,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `counter` | `["counter", "<name>", "<initial>"]` (repeatable) | opt | — |
 | `on-counter` | `["on-counter", "<dir>", "<counter>", "<threshold>", "<action>", "<action-target?>"]` (repeatable) | opt | — |
 | `content-type` | `["content-type", "application/nip44"\|"text/plain"]` | opt | Default is markdown. Use `application/nip44` for sealed content or `text/plain` to disable formatting |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 
 `on-complete` and `on-fail` trigger-target is always `""`.
 
@@ -482,7 +482,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `requires` | `["requires", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `requires-not` | `["requires-not", "<ref>", "<state>", "<desc>"]` (repeatable) | opt | — |
 | `on-complete` | `["on-complete", "", "<action>", "<target>"]` (repeatable) | opt | — |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 
 **Endgame:** `"endgame"` = hard end. `["quest-type", "endgame", "open"]` = soft end.
 
@@ -501,7 +501,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `counter` | `["counter", "<name>", "<initial>"]` (repeatable) | opt | — |
 | `on-counter` | `["on-counter", "<dir>", "<counter>", "<threshold>", "<action>", "<action-target?>"]` (repeatable) | opt | — |
 | `ordered` | `["ordered", "true"\|"false"]` | opt | sequence steps must be in order |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 
 **Portable vs feature-bound:** A recipe with both `verb` and `noun` tags is **portable** — its verbs are globally recognised and the recipe can be triggered from any room (`fix pickaxe`). A recipe without a `noun` tag is **feature-bound** — it has no noun in scope and must be activated via a feature's `on-interact activate` action, scoping it to that feature's place.
 
@@ -520,7 +520,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `content-type` | `["content-type", "application/nip44"\|"text/plain"]` | opt | Default is markdown. Use `application/nip44` for sealed content or `text/plain` to disable formatting |
 | `media` | `["media", "<mime>", "<value>"]` (repeatable) | opt | — |
 | `puzzle` | `["puzzle", "<puzzle-ref>"]` | opt (NIP-44) | encryption key source (NIP-44) |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 
 **Content field:** REQUIRED.
 
@@ -540,7 +540,7 @@ One-way portal (1 exit tag) or two-way (2 exit tags):
 | `deal-damage` | `["deal-damage", "<number>"]` | opt | — |
 | `set-state` | `["set-state", "<state>", "<event-ref>"]` (repeatable) | opt | — |
 | `set-counter` | `["set-counter", "<name>", "<value>", "<event-ref?>"]` (repeatable) | opt | set world-scoped (or external) counter to value |
-| `sound` | `["sound", "<sound-ref>", "<role>", "<volume>", "<state?>"]` (repeatable) | opt | — |
+| `sound` | `["sound", "<ref>", "<role>", "<volume>"]` — unconditional. `["sound", "<ref>", "<role>", "<volume>", "<ext-ref\|''>", "<state>"]` — conditional: `""` checks hosting event; full ref checks that event. (repeatable) | opt | role: `ambient` (one loop per place), `layer` (additive loop), `effect` (one-shot on entry) |
 
 `clears` categories: `inventory`, `states`, `counters`, `cryptoKeys`, `dialogueVisited`, `paymentAttempts`, `visited`. Content optional.
 

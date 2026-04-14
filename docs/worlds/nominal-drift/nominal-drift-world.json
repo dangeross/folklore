@@ -162,7 +162,7 @@
       [
         "ambient-effect",
         "dim",
-        "3000",
+        "2000",
         "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
         "faulted"
       ],
@@ -173,6 +173,14 @@
         "start-dialogue",
         "30078:<PUBKEY>:nominal-drift:dialogue:cass-post-repair",
         "30078:<PUBKEY>:nominal-drift:npc:cass"
+      ],
+      [
+        "sound",
+        "30078:<PUBKEY>:nominal-drift:sound:emergency-alarm",
+        "layer",
+        "0.4",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
       ]
     ],
     "content": "The forward crew compartment. Four bunks, a galley unit dark since Mars. Emergency lighting throws everything amber. The instrument panel on the forward wall is alive with readouts \u2014 most of them telling you things that don't matter right now. Battery reserve: 67%. O2: 21.1 kPa. Cabin temperature: 14\u00b0C and dropping. Mission elapsed time: 847:22:04. Humidity: 38%.\n\nThe documentation binder is clipped to the wall beside the instrument panel. The maintenance kit is bolted under the left bunk. The medical kit is in the overhead locker. CASS's voice comes from everywhere \u2014 speakers distributed through the ceiling panels."
@@ -235,7 +243,15 @@
       [
         "ambient-effect",
         "dim",
-        "3000",
+        "2000",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
+      ],
+      [
+        "sound",
+        "30078:<PUBKEY>:nominal-drift:sound:emergency-alarm",
+        "layer",
+        "0.4",
         "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
         "faulted"
       ]
@@ -296,7 +312,15 @@
       [
         "ambient-effect",
         "dim",
-        "3000",
+        "2000",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
+      ],
+      [
+        "sound",
+        "30078:<PUBKEY>:nominal-drift:sound:emergency-alarm",
+        "layer",
+        "0.4",
         "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
         "faulted"
       ]
@@ -357,7 +381,15 @@
       [
         "ambient-effect",
         "dim",
-        "3000",
+        "2000",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
+      ],
+      [
+        "sound",
+        "30078:<PUBKEY>:nominal-drift:sound:emergency-alarm",
+        "layer",
+        "0.4",
         "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
         "faulted"
       ]
@@ -454,13 +486,21 @@
       [
         "ambient-effect",
         "dim",
-        "3000",
+        "2000",
         "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
         "faulted"
       ],
       [
         "puzzle",
         "30078:<PUBKEY>:nominal-drift:puzzle:coolant-priming"
+      ],
+      [
+        "sound",
+        "30078:<PUBKEY>:nominal-drift:sound:emergency-alarm",
+        "layer",
+        "0.4",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
       ]
     ],
     "content": "The engineering core. Every surface is instrumented. Reactor thermal: 287\u00b0C, nominal for passive cooling. Power conversion efficiency: 61%, degraded. Structural integrity sensors \u2014 a row of twelve, all green. The micrometeorite impact counter above them reads 1.\n\nThe coolant line access panels line the port bulkhead \u2014 SUPPLY and RETURN, side by side, identical except for their labels. The CASS-CORE processing rack is starboard \u2014 shoebox-sized, one amber indicator where there should be green. Hairline crack along the lower left edge. The IMU log panel is beside it. The spare parts locker is below.\n\nThe aft corridor gauge is mounted beside the C2 hatch: 97.8 kPa and climbing."
@@ -542,6 +582,14 @@
       [
         "puzzle",
         "30078:<PUBKEY>:nominal-drift:puzzle:ignition-final"
+      ],
+      [
+        "sound",
+        "30078:<PUBKEY>:nominal-drift:sound:emergency-alarm",
+        "layer",
+        "0.4",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
       ]
     ],
     "content": "The aft propulsion bay. The engine bell is visible through the aft viewport \u2014 dark, cold, intact. It has never fired in anger. This was a test flight.\n\nThe burn console occupies the forward wall: fuel status, ignition sequencer, burn parameter inputs. Three rows of switches. Beside it: chamber pressure history, a strip of paper tape from the ground test six months ago. Nozzle temperature log. Oxidiser/fuel ratio display. The abort panel, redundant with Command, still reading ARMED.\n\nFuel status: 94.3% of nominal load. Enough for the burn. Enough for one correction. Not enough for two."
@@ -599,6 +647,14 @@
         "5000",
         "",
         ""
+      ],
+      [
+        "sound",
+        "30078:<PUBKEY>:nominal-drift:sound:emergency-alarm",
+        "layer",
+        "0.4",
+        "30078:<PUBKEY>:nominal-drift:feature:bus-controller-panel",
+        "faulted"
       ]
     ],
     "content": "A small cupola above the hab. Six viewport panels in a shallow dome. The star tracker is mounted on the port strut: OFFLINE. Solar angle indicator: 23.4\u00b0 off primary axis. Attitude reference: roll, pitch, yaw all within half a degree of pre-impact baseline. The ship is flying straight. It just doesn't know where it's going.\n\nNo ambient sound. The insulation is thicker up here. The quietest place on the ship.\n\nA mounting bracket for the sextant is on the forward sill. The chart holder beside it is empty."
@@ -6228,6 +6284,60 @@
       [
         "gain",
         "0.0"
+      ]
+    ],
+    "content": ""
+  },
+  {
+    "kind": 30078,
+    "tags": [
+      [
+        "d",
+        "nominal-drift:sound:emergency-alarm"
+      ],
+      [
+        "t",
+        "nominal-drift"
+      ],
+      [
+        "type",
+        "sound"
+      ],
+      [
+        "gain",
+        "0.9"
+      ],
+      [
+        "note",
+        "d3 ~ d3 ~ ~ ~ ~"
+      ],
+      [
+        "fast",
+        "1.5"
+      ],
+      [
+        "room",
+        "0.05"
+      ],
+      [
+        "roomsize",
+        "4"
+      ],
+      [
+        "sustain",
+        "0.08"
+      ],
+      [
+        "attack",
+        "0.01"
+      ],
+      [
+        "release",
+        "0.09"
+      ],
+      [
+        "crush",
+        "7"
       ]
     ],
     "content": ""

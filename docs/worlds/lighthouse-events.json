@@ -422,7 +422,7 @@
         [
           "exit",
           "south",
-          "The coast road south — beyond the edge of this map."
+          "The coast road south \u2014 beyond the edge of this map."
         ],
         [
           "feature",
@@ -435,7 +435,7 @@
           "0.5"
         ]
       ],
-      "content": "A shingle path runs north along the coast. The lighthouse rises against a grey sky — dark, as it has been for years. The tide has left something in the wrack line."
+      "content": "A shingle path runs north along the coast. The lighthouse rises against a grey sky \u2014 dark, as it has been for years. The tide has left something in the wrack line."
     },
     {
       "kind": 30078,
@@ -505,7 +505,7 @@
           "0.3"
         ]
       ],
-      "content": "The base of the lighthouse. Salt and rust. A mechanism occupies the centre of the room — the lamp drive, seized for lack of use. A crank socket gapes at its side. On a shelf by the stairs, a row of logbooks ends abruptly — the last spine blank."
+      "content": "The base of the lighthouse. Salt and rust. A mechanism occupies the centre of the room \u2014 the lamp drive, seized for lack of use. A crank socket gapes at its side. On a shelf by the stairs, a row of logbooks ends abruptly \u2014 the last spine blank."
     },
     {
       "kind": 30078,
@@ -559,7 +559,7 @@
           "0.5"
         ]
       ],
-      "content": "The lamp room at the top of the tower. The great lens is intact, dusty but undamaged. The lamp is cold. Through the glass, the sea stretches to the horizon. Something is out there — has always been out there."
+      "content": "The lamp room at the top of the tower. The great lens is intact, dusty but undamaged. The lamp is cold. Through the glass, the sea stretches to the horizon. Something is out there \u2014 has always been out there."
     },
     {
       "kind": 30078,
@@ -607,7 +607,7 @@
           "0.2"
         ]
       ],
-      "content": "The keeper's cottage. Everything is as he left it — almost. A writing desk faces the window that looks toward the sea. The hearth is cold. The walls hold his whole life in small objects."
+      "content": "The keeper's cottage. Everything is as he left it \u2014 almost. A writing desk faces the window that looks toward the sea. The hearth is cold. The walls hold his whole life in small objects."
     },
     {
       "kind": 30078,
@@ -672,10 +672,11 @@
           "30078:<PUBKEY>:lighthouse:sound:resolution",
           "layer",
           "0.4",
+          "",
           "decoded"
         ]
       ],
-      "content": "# The Keeper's Final Log\n\nThe coordinates are not a place. They never were.\n\nThey are a bearing — to something that has been answering the light for longer than this lighthouse has existed. Something that was here before the coast had a name.\n\nI went to see. I won't write what I found.\n\nThe light should stay dark. But if you've read this — you lit it. You found the signal. You know the coordinates.\n\nYou'll go too.\n\nI understand now why I stayed so long.\n\n*— H.M., Keeper, Day 10,847*"
+      "content": "# The Keeper's Final Log\n\nThe coordinates are not a place. They never were.\n\nThey are a bearing \u2014 to something that has been answering the light for longer than this lighthouse has existed. Something that was here before the coast had a name.\n\nI went to see. I won't write what I found.\n\nThe light should stay dark. But if you've read this \u2014 you lit it. You found the signal. You know the coordinates.\n\nYou'll go too.\n\nI understand now why I stayed so long.\n\n*\u2014 H.M., Keeper, Day 10,847*"
     },
     {
       "kind": 30078,
@@ -948,7 +949,7 @@
           "transition",
           "seized",
           "cranking",
-          "The handle fits. You turn it. The mechanism groans — then catches."
+          "The handle fits. You turn it. The mechanism groans \u2014 then catches."
         ],
         [
           "transition",
@@ -1079,7 +1080,7 @@
           "transition",
           "running",
           "extinguished",
-          "You close the valve. The flame dies. The lens goes dark.\n\nThe beam that has cut across this water for a century — gone. Whatever is out there at the bearing will wait in darkness now. No signal. No answer.\n\nYou broke the cycle.\n\nThe lighthouse is yours. The keeper's watch is over."
+          "You close the valve. The flame dies. The lens goes dark.\n\nThe beam that has cut across this water for a century \u2014 gone. Whatever is out there at the bearing will wait in darkness now. No signal. No answer.\n\nYou broke the cycle.\n\nThe lighthouse is yours. The keeper's watch is over."
         ],
         [
           "on-interact",
@@ -1093,6 +1094,7 @@
           "30078:<PUBKEY>:lighthouse:sound:lamp-hum",
           "layer",
           "0.2",
+          "",
           "running"
         ]
       ],
@@ -1449,7 +1451,7 @@
           "30078:<PUBKEY>:lighthouse:place:gone"
         ]
       ],
-      "content": "The blank-spined logbook from the shelf — it was here all along. Sealed."
+      "content": "The blank-spined logbook from the shelf \u2014 it was here all along. Sealed."
     },
     {
       "kind": 30078,
@@ -1475,7 +1477,7 @@
           "hidden"
         ]
       ],
-      "content": "Dark for three years. The mechanism below could run it — if it had something to turn it with."
+      "content": "Dark for three years. The mechanism below could run it \u2014 if it had something to turn it with."
     },
     {
       "kind": 30078,
@@ -1507,7 +1509,7 @@
           ""
         ]
       ],
-      "content": "The light cuts out to sea. Something in the water — far out, at bearing north-northeast — catches it and answers back."
+      "content": "The light cuts out to sea. Something in the water \u2014 far out, at bearing north-northeast \u2014 catches it and answers back."
     },
     {
       "kind": 30078,
@@ -1559,7 +1561,7 @@
           "hidden"
         ]
       ],
-      "content": "If you find this, the light is dark. You know what to do. Light it. The signal will answer. The coordinates are the key — not the place, the sequence."
+      "content": "If you find this, the light is dark. You know what to do. Light it. The signal will answer. The coordinates are the key \u2014 not the place, the sequence."
     },
     {
       "kind": 30078,
@@ -1611,7 +1613,7 @@
           "hidden"
         ]
       ],
-      "content": "The receiving display shows coordinates in decimal degrees — latitude and longitude, separated by a dash. Enter them exactly as shown."
+      "content": "The receiving display shows coordinates in decimal degrees \u2014 latitude and longitude, separated by a dash. Enter them exactly as shown."
     },
     {
       "kind": 30078,
@@ -1637,7 +1639,7 @@
           "hidden"
         ]
       ],
-      "content": "Day 10,847. The signal came again at 03:00. Same coordinates. Same sequence.\n\nI went out to the bearing. I took the boat. I know what I found.\n\nI won't write it here. If you've read this far, you already know. You lit the lamp. You heard the signal. You decoded the coordinates.\n\nYou'll go too.\n\nI understand now why the keepers before me never left. Why they stayed for decades. Why the logbooks all end the same way — mid-sentence, mid-thought, as if they simply stopped needing to write.\n\nThe light should stay dark. But it won't. Someone always lights it.\n\n*— H.M., Keeper*"
+      "content": "Day 10,847. The signal came again at 03:00. Same coordinates. Same sequence.\n\nI went out to the bearing. I took the boat. I know what I found.\n\nI won't write it here. If you've read this far, you already know. You lit the lamp. You heard the signal. You decoded the coordinates.\n\nYou'll go too.\n\nI understand now why the keepers before me never left. Why they stayed for decades. Why the logbooks all end the same way \u2014 mid-sentence, mid-thought, as if they simply stopped needing to write.\n\nThe light should stay dark. But it won't. Someone always lights it.\n\n*\u2014 H.M., Keeper*"
     },
     {
       "kind": 30078,
@@ -1693,7 +1695,7 @@
           "30078:<PUBKEY>:lighthouse:feature:final-log"
         ]
       ],
-      "content": "The panel shows a receiving display. A signal from out at sea — coordinates, repeated. What are they?"
+      "content": "The panel shows a receiving display. A signal from out at sea \u2014 coordinates, repeated. What are they?"
     },
     {
       "kind": 30078,
@@ -1738,7 +1740,7 @@
           ""
         ]
       ],
-      "content": "The keeper's watch is over. Whatever answer you chose — the bearing, the dark, or the road — you carry it now. The lighthouse stands. The sea remembers."
+      "content": "The keeper's watch is over. Whatever answer you chose \u2014 the bearing, the dark, or the road \u2014 you carry it now. The lighthouse stands. The sea remembers."
     },
     {
       "kind": 30078,
@@ -1768,7 +1770,7 @@
           "30078:<PUBKEY>:lighthouse:feature:the-thing"
         ]
       ],
-      "content": "You row for an hour. The coordinates resolve to open water — nothing on the surface. But the sea here is different. Still. The oars feel heavy. Something below the boat knows you are here.\n\nThe lighthouse beam reaches you even at this distance. A single bright line across black water.\n\nYou understand now."
+      "content": "You row for an hour. The coordinates resolve to open water \u2014 nothing on the surface. But the sea here is different. Still. The oars feel heavy. Something below the boat knows you are here.\n\nThe lighthouse beam reaches you even at this distance. A single bright line across black water.\n\nYou understand now."
     },
     {
       "kind": 30078,
@@ -1800,7 +1802,7 @@
           "waiting"
         ]
       ],
-      "content": "The surface is flat as glass. Something vast is down there — not moving, not sleeping. Waiting. It has been answering the light for longer than the lighthouse has existed."
+      "content": "The surface is flat as glass. Something vast is down there \u2014 not moving, not sleeping. Waiting. It has been answering the light for longer than the lighthouse has existed."
     },
     {
       "kind": 30078,
@@ -1866,7 +1868,7 @@
           "hidden"
         ]
       ],
-      "content": "You walk south along the coast road. The lighthouse shrinks behind you — a dark finger against the sky, the lamp still burning.\n\nYou don't look back. You know the light will find someone else.\n\nIt always does."
+      "content": "You walk south along the coast road. The lighthouse shrinks behind you \u2014 a dark finger against the sky, the lamp still burning.\n\nYou don't look back. You know the light will find someone else.\n\nIt always does."
     },
     {
       "kind": 30078,

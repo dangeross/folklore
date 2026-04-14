@@ -2142,6 +2142,7 @@
           "30078:<PUBKEY>:cartographer:sound:compass-tick",
           "layer",
           "0.2",
+          "",
           "unreliable"
         ],
         [

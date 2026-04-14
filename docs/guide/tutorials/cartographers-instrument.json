@@ -1,6 +1,6 @@
 {
   "walkthrough": [
-    "# The Cartographer's Instrument — Walkthrough",
+    "# The Cartographer's Instrument \u2014 Walkthrough",
     "",
     "> look",
     "# Observatory Entrance. See exits: north. The Instrument is on the ground.",
@@ -53,7 +53,7 @@
     "> down",
     "# Star Chamber (now accessible). Full composition plays. Endgame fires.",
     "",
-    "# THE END — The Cartographer's Composition is complete."
+    "# THE END \u2014 The Cartographer's Composition is complete."
   ],
   "events": [
     {
@@ -611,7 +611,7 @@
           "0.5"
         ]
       ],
-      "content": "Crumbling stone steps ascend through a broken arch. The dome above is shattered — great rents in the copper skin let starlight pour through in silver columns. Dust motes drift in the beams like slow constellations.\n\nThe air smells of old stone and cold metal. Something glints on a pedestal near the entrance."
+      "content": "Crumbling stone steps ascend through a broken arch. The dome above is shattered \u2014 great rents in the copper skin let starlight pour through in silver columns. Dust motes drift in the beams like slow constellations.\n\nThe air smells of old stone and cold metal. Something glints on a pedestal near the entrance."
     },
     {
       "kind": 30078,
@@ -669,7 +669,7 @@
           "30078:<PUBKEY>:cartographers-instrument:feature:stellar-echo"
         ]
       ],
-      "content": "A grand rotunda opens beneath what remains of the dome. The floor is inlaid with a vast star chart — constellations traced in tarnished silver wire across dark stone. Three corridors branch from the central space: west into shadow, east into a faint golden glow, and a spiral stair climbs upward through the ceiling.\n\nA set of stairs descends into darkness at the centre of the chart."
+      "content": "A grand rotunda opens beneath what remains of the dome. The floor is inlaid with a vast star chart \u2014 constellations traced in tarnished silver wire across dark stone. Three corridors branch from the central space: west into shadow, east into a faint golden glow, and a spiral stair climbs upward through the ceiling.\n\nA set of stairs descends into darkness at the centre of the chart."
     },
     {
       "kind": 30078,
@@ -688,7 +688,7 @@
         ],
         [
           "title",
-          "West Wing — Lunar Observatory"
+          "West Wing \u2014 Lunar Observatory"
         ],
         [
           "exit",
@@ -703,7 +703,7 @@
           "30078:<PUBKEY>:cartographers-instrument:feature:lunar-chart"
         ]
       ],
-      "content": "A circular chamber lined with curved mirrors that once tracked the moon's passage. The mirrors are tarnished now, their surfaces clouded with age. Lunar phase diagrams cover the walls — waxing, waning, full, dark — each annotated with faded musical notation.\n\nAt the centre of the room stands a stone column topped with a complex arrangement of concentric rings. It hums faintly, waiting."
+      "content": "A circular chamber lined with curved mirrors that once tracked the moon's passage. The mirrors are tarnished now, their surfaces clouded with age. Lunar phase diagrams cover the walls \u2014 waxing, waning, full, dark \u2014 each annotated with faded musical notation.\n\nAt the centre of the room stands a stone column topped with a complex arrangement of concentric rings. It hums faintly, waiting."
     },
     {
       "kind": 30078,
@@ -722,7 +722,7 @@
         ],
         [
           "title",
-          "East Wing — Solar Observatory"
+          "East Wing \u2014 Solar Observatory"
         ],
         [
           "exit",
@@ -737,7 +737,7 @@
           "30078:<PUBKEY>:cartographers-instrument:feature:solar-chart"
         ]
       ],
-      "content": "Brass instruments and crystal prisms fill this chamber, arranged in precise geometric patterns. Where the starlight strikes the prisms, faint rainbows scatter across the walls. The brass fittings are etched with solar trajectories and harmonic intervals.\n\nA tall brass framework stands at the room's centre — an armillary sphere with tuning forks where the celestial rings should be."
+      "content": "Brass instruments and crystal prisms fill this chamber, arranged in precise geometric patterns. Where the starlight strikes the prisms, faint rainbows scatter across the walls. The brass fittings are etched with solar trajectories and harmonic intervals.\n\nA tall brass framework stands at the room's centre \u2014 an armillary sphere with tuning forks where the celestial rings should be."
     },
     {
       "kind": 30078,
@@ -771,7 +771,7 @@
           "30078:<PUBKEY>:cartographers-instrument:feature:stellar-chart"
         ]
       ],
-      "content": "The highest point of the observatory. The dome is entirely gone here — nothing between you and the sky. A great telescope points upward, its brass barrel green with verdigris. The view is staggering: stars beyond counting, the Milky Way a river of light.\n\nBeneath the telescope, a crystalline structure sits on a marble plinth — faceted like a diamond, cold to the touch."
+      "content": "The highest point of the observatory. The dome is entirely gone here \u2014 nothing between you and the sky. A great telescope points upward, its brass barrel green with verdigris. The view is staggering: stars beyond counting, the Milky Way a river of light.\n\nBeneath the telescope, a crystalline structure sits on a marble plinth \u2014 faceted like a diamond, cold to the touch."
     },
     {
       "kind": 30078,
@@ -827,7 +827,7 @@
           "0.7"
         ]
       ],
-      "content": "You descend into a chamber that should not exist — a perfect sphere hollowed from the bedrock beneath the observatory. The walls are polished to a mirror finish, and in them you see not your reflection but *stars*. The entire night sky, projected from some impossible source, turning slowly around you.\n\nThe three notes you awakened — the root, the third, the fifth — converge here. The chord resolves. The composition is complete.\n\nThe cartographer's work is finished. The music of the spheres plays on."
+      "content": "You descend into a chamber that should not exist \u2014 a perfect sphere hollowed from the bedrock beneath the observatory. The walls are polished to a mirror finish, and in them you see not your reflection but *stars*. The entire night sky, projected from some impossible source, turning slowly around you.\n\nThe three notes you awakened \u2014 the root, the third, the fifth \u2014 converge here. The chord resolves. The composition is complete.\n\nThe cartographer's work is finished. The music of the spheres plays on."
     },
     {
       "kind": 30078,
@@ -927,13 +927,14 @@
           "30078:<PUBKEY>:cartographers-instrument:sound:lunar-drone",
           "layer",
           "0.5",
+          "",
           "active"
         ],
         [
           "transition",
           "dormant",
           "active",
-          "You align the instrument's rings to the lunar frequency and strike the central crystal. A deep, resonant tone rises from the stone column. The concentric rings begin to turn slowly. The tarnished mirrors catch the sound and amplify it — silver light blooms across the lunar diagrams on the walls."
+          "You align the instrument's rings to the lunar frequency and strike the central crystal. A deep, resonant tone rises from the stone column. The concentric rings begin to turn slowly. The tarnished mirrors catch the sound and amplify it \u2014 silver light blooms across the lunar diagrams on the walls."
         ],
         [
           "transition",
@@ -942,7 +943,7 @@
           "The Lunar Resonator hums steadily, its rings turning in slow silver arcs."
         ]
       ],
-      "content": "A stone column topped with concentric rings of dark metal. The rings are scored with precise markings — frequencies, perhaps, or orbital calculations. It stands silent and still."
+      "content": "A stone column topped with concentric rings of dark metal. The rings are scored with precise markings \u2014 frequencies, perhaps, or orbital calculations. It stands silent and still."
     },
     {
       "kind": 30078,
@@ -1013,13 +1014,14 @@
           "30078:<PUBKEY>:cartographers-instrument:sound:solar-arpeggio",
           "layer",
           "0.5",
+          "",
           "active"
         ],
         [
           "transition",
           "dormant",
           "active",
-          "You tune the instrument to the solar harmonic and touch it to the armillary sphere. The tuning forks ring out — a bright, ascending chord that fills the chamber. The prisms catch fire with golden light, scattering rainbows that dance and multiply."
+          "You tune the instrument to the solar harmonic and touch it to the armillary sphere. The tuning forks ring out \u2014 a bright, ascending chord that fills the chamber. The prisms catch fire with golden light, scattering rainbows that dance and multiply."
         ],
         [
           "transition",
@@ -1099,13 +1101,14 @@
           "30078:<PUBKEY>:cartographers-instrument:sound:stellar-melody",
           "layer",
           "0.5",
+          "",
           "active"
         ],
         [
           "transition",
           "dormant",
           "active",
-          "You find the final frequency — the bridge between the root and the fifth. The crystal blazes with white starlight as the note joins the chord. The telescope lens above flares. Far below, you hear stone grinding against stone as something long sealed opens."
+          "You find the final frequency \u2014 the bridge between the root and the fifth. The crystal blazes with white starlight as the note joins the chord. The telescope lens above flares. Far below, you hear stone grinding against stone as something long sealed opens."
         ],
         [
           "transition",
@@ -1258,10 +1261,11 @@
           "30078:<PUBKEY>:cartographers-instrument:sound:lunar-drone",
           "layer",
           "0.4",
+          "",
           "active"
         ]
       ],
-      "content": "A faint silver hum resonates through the stone — the echo of the Lunar Resonator."
+      "content": "A faint silver hum resonates through the stone \u2014 the echo of the Lunar Resonator."
     },
     {
       "kind": 30078,
@@ -1291,10 +1295,11 @@
           "30078:<PUBKEY>:cartographers-instrument:sound:solar-arpeggio",
           "layer",
           "0.4",
+          "",
           "active"
         ]
       ],
-      "content": "A bright harmonic shimmer fills the air — the echo of the Solar Resonator."
+      "content": "A bright harmonic shimmer fills the air \u2014 the echo of the Solar Resonator."
     },
     {
       "kind": 30078,
@@ -1324,10 +1329,11 @@
           "30078:<PUBKEY>:cartographers-instrument:sound:stellar-melody",
           "layer",
           "0.4",
+          "",
           "active"
         ]
       ],
-      "content": "A melodic pulse weaves through the starlight — the echo of the Stellar Resonator."
+      "content": "A melodic pulse weaves through the starlight \u2014 the echo of the Stellar Resonator."
     },
     {
       "kind": 30078,
@@ -1426,7 +1432,7 @@
           ""
         ]
       ],
-      "content": "*An observatory. But not for seeing — for listening. I mapped the music of the spheres. Each room remembers its note. The composition was almost complete when I... well. When I stopped being able to hold the instrument.*"
+      "content": "*An observatory. But not for seeing \u2014 for listening. I mapped the music of the spheres. Each room remembers its note. The composition was almost complete when I... well. When I stopped being able to hold the instrument.*"
     },
     {
       "kind": 30078,
@@ -1482,7 +1488,7 @@
           ""
         ]
       ],
-      "content": "*Take it to each resonator. The charts on the walls will tell you which note belongs where. Play them in any order — the composition will find itself. When all three sing together, the Star Chamber will open.*"
+      "content": "*Take it to each resonator. The charts on the walls will tell you which note belongs where. Play them in any order \u2014 the composition will find itself. When all three sing together, the Star Chamber will open.*"
     },
     {
       "kind": 30078,
@@ -1505,7 +1511,7 @@
           ""
         ]
       ],
-      "content": "*Three resonators. The Lunar, to the west — it sounds the root, the foundation of all harmony. The Solar, to the east — the fifth, bright and reaching. And the Stellar, above — the third, the bridge between. Together they form a chord that the ancients believed was the sound of creation itself. The tower will not open until the moon and sun are singing. You must wake them first.*"
+      "content": "*Three resonators. The Lunar, to the west \u2014 it sounds the root, the foundation of all harmony. The Solar, to the east \u2014 the fifth, bright and reaching. And the Stellar, above \u2014 the third, the bridge between. Together they form a chord that the ancients believed was the sound of creation itself. The tower will not open until the moon and sun are singing. You must wake them first.*"
     },
     {
       "kind": 30078,
@@ -1723,7 +1729,7 @@
           ""
         ]
       ],
-      "content": "**The Music of the Spheres**\n\nThe chord resolves — root, third, fifth — and the Star Chamber sings. The mirrors on the walls show not reflections but the sky itself, turning slowly, endlessly, each star a note in an infinite score.\n\nYou understand now what the cartographer spent a lifetime charting. Not the positions of the stars, but their *sound*. The universe is a composition, and you have played its opening chord.\n\nThe instrument grows warm in your hands. The crystal at its centre pulses once, twice — then settles into a steady glow, beating in time with something vast and distant.\n\nThe cartographer's ghost appears beside you. For the first time, it smiles.\n\n*Thank you. The composition is complete. The spheres will sing it forever now.*\n\nThe figure fades. The music plays on.\n\n---\n\n*You completed The Cartographer's Instrument.*"
+      "content": "**The Music of the Spheres**\n\nThe chord resolves \u2014 root, third, fifth \u2014 and the Star Chamber sings. The mirrors on the walls show not reflections but the sky itself, turning slowly, endlessly, each star a note in an infinite score.\n\nYou understand now what the cartographer spent a lifetime charting. Not the positions of the stars, but their *sound*. The universe is a composition, and you have played its opening chord.\n\nThe instrument grows warm in your hands. The crystal at its centre pulses once, twice \u2014 then settles into a steady glow, beating in time with something vast and distant.\n\nThe cartographer's ghost appears beside you. For the first time, it smiles.\n\n*Thank you. The composition is complete. The spheres will sing it forever now.*\n\nThe figure fades. The music plays on.\n\n---\n\n*You completed The Cartographer's Instrument.*"
     }
   ]
 }

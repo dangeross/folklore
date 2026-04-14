@@ -66,8 +66,11 @@ Tags are applied in declaration order to build the Strudel chain.
 Sounds are played by placing `sound` tags on events (places, items, features, etc.). The `sound` tag references a sound event and assigns it a role:
 
 ```json
-["sound", "<sound-a-tag>", "<role>", "<volume>", "<state?>"]
+["sound", "<sound-a-tag>", "<role>", "<volume>"]
+["sound", "<sound-a-tag>", "<role>", "<volume>", "<ext-ref|''>", "<state>"]
 ```
+
+The conditional form adds two elements: an event ref (or `""` for the hosting event itself) and a state to match. The sound only plays when that event is in that state.
 
 There are three roles:
 
@@ -84,10 +87,15 @@ Continuous loop. One ambient sound per place. Crossfades automatically when the 
 Continuous loop added on top of the mix. Multiple layers can play simultaneously. Use for secondary atmospheric elements that stack with the ambient — seagulls at a dock, a humming lamp, dripping water. Layers can be gated by state (only play when an event is in a specific state).
 
 ```json
-["sound", "30078:<PUBKEY>:my-world:sound:lamp-hum", "layer", "0.3", "on"]
+// Self state gate — layer plays when the lamp item is in state "on"
+["sound", "30078:<PUBKEY>:my-world:sound:lamp-hum", "layer", "0.3", "", "on"]
+
+// External state gate — alarm layer plays on every place while power is faulted
+["sound", "30078:<PUBKEY>:my-world:sound:alarm", "layer", "0.5",
+  "30078:<PUBKEY>:my-world:feature:power-bus", "faulted"]
 ```
 
-The optional fourth element is a state gate — the layer only plays when the referenced event is in state `"on"`.
+The fifth element is the event to check (`""` = the event hosting this tag). The sixth is the state to match.
 
 ### effect
 

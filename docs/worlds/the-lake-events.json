@@ -162,7 +162,7 @@
           "0.7"
         ]
       ],
-      "content": "You stand in a sun-dappled clearing. Tall oaks ring the space, their branches filtering the light into golden shafts. A worn path leads north toward darkness. To the west, crumbling stonework is visible through the trees. To the east, smoke rises from a chimney hidden among the oaks. To the south, the forest thickens into an impenetrable wall — but the undergrowth looks recently disturbed, as if someone has been trying to cut a path."
+      "content": "You stand in a sun-dappled clearing. Tall oaks ring the space, their branches filtering the light into golden shafts. A worn path leads north toward darkness. To the west, crumbling stonework is visible through the trees. To the east, smoke rises from a chimney hidden among the oaks. To the south, the forest thickens into an impenetrable wall \u2014 but the undergrowth looks recently disturbed, as if someone has been trying to cut a path."
     },
     {
       "kind": 30078,
@@ -257,12 +257,31 @@
           "layer",
           "0.5"
         ],
-        ["state", "undisturbed"],
-        ["transition", "undisturbed", "disturbed", "Something shifts in the dark as you set it down. The cave feels different now."],
-        ["transition", "disturbed", "disturbed", "The cave floor is already disturbed."],
-        ["on-drop", "", "", "set-state", "disturbed"]
+        [
+          "state",
+          "undisturbed"
+        ],
+        [
+          "transition",
+          "undisturbed",
+          "disturbed",
+          "Something shifts in the dark as you set it down. The cave feels different now."
+        ],
+        [
+          "transition",
+          "disturbed",
+          "disturbed",
+          "The cave floor is already disturbed."
+        ],
+        [
+          "on-drop",
+          "",
+          "",
+          "set-state",
+          "disturbed"
+        ]
       ],
-      "content": "The air is cool and damp. You stand in a natural cavern, its walls slick with moisture. Something glints on the ground nearby. An old brass lantern sits on a ledge — it looks like it could still be turned on. A rough-hewn stairway descends into darkness."
+      "content": "The air is cool and damp. You stand in a natural cavern, its walls slick with moisture. Something glints on the ground nearby. An old brass lantern sits on a ledge \u2014 it looks like it could still be turned on. A rough-hewn stairway descends into darkness."
     },
     {
       "kind": 30078,
@@ -310,7 +329,7 @@
           "down"
         ]
       ],
-      "content": "What remains of a chapel stands open to the sky. The roof collapsed long ago, and ivy crawls over the broken pews. A bronze altar squats before the east wall, green with age. At the far end, a stone wall bears a crumbling inscription, still partly legible. Something about the altar invites you to kneel — to pray."
+      "content": "What remains of a chapel stands open to the sky. The roof collapsed long ago, and ivy crawls over the broken pews. A bronze altar squats before the east wall, green with age. At the far end, a stone wall bears a crumbling inscription, still partly legible. Something about the altar invites you to kneel \u2014 to pray."
     },
     {
       "kind": 30078,
@@ -422,7 +441,7 @@
           "south"
         ]
       ],
-      "content": "Your lantern light plays across a junction of tunnels. The walls are streaked with mineral deposits — red ochre, pale calcite, veins of something that glitters. Ancient paintings cover the wall to your left. The passage continues down into deeper darkness."
+      "content": "Your lantern light plays across a junction of tunnels. The walls are streaked with mineral deposits \u2014 red ochre, pale calcite, veins of something that glitters. Ancient paintings cover the wall to your left. The passage continues down into deeper darkness."
     },
     {
       "kind": 30078,
@@ -466,7 +485,7 @@
           "east"
         ]
       ],
-      "content": "You emerge onto a narrow ledge above an underground lake. The water is **black and still**, reflecting nothing. The cavern stretches beyond sight.\n\nTo the north, a heavy iron gate bars a passage cut into the rock. The air is cold and tastes of **stone and deep water**.\n\n> *Something vast moves beneath the surface — a ripple, then stillness.*"
+      "content": "You emerge onto a narrow ledge above an underground lake. The water is **black and still**, reflecting nothing. The cavern stretches beyond sight.\n\nTo the north, a heavy iron gate bars a passage cut into the rock. The air is cold and tastes of **stone and deep water**.\n\n> *Something vast moves beneath the surface \u2014 a ripple, then stillness.*"
     },
     {
       "kind": 30078,
@@ -506,7 +525,7 @@
         [
           "media",
           "text/plain",
-          "  ┌───────────────────┐\n  │  (O)         [║]  │\n  │                   │\n  │  ═══════════════  │\n  │  ≈  CHANNELS  ≈   │\n  │  ═══════════════  │\n  │                   │\n  └───────────────────┘"
+          "  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n  \u2502  (O)         [\u2551]  \u2502\n  \u2502                   \u2502\n  \u2502  \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550  \u2502\n  \u2502  \u2248  CHANNELS  \u2248   \u2502\n  \u2502  \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550  \u2502\n  \u2502                   \u2502\n  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518"
         ],
         [
           "sound",
@@ -1024,7 +1043,7 @@
           "transition",
           "flickering",
           "on",
-          "The lantern is already on — barely."
+          "The lantern is already on \u2014 barely."
         ],
         [
           "transition",
@@ -1094,6 +1113,7 @@
           "30078:<PUBKEY>:the-lake:sound:lantern-hum",
           "layer",
           "0.4",
+          "",
           "on"
         ],
         [
@@ -1101,6 +1121,7 @@
           "30078:<PUBKEY>:the-lake:sound:lantern-crackle",
           "layer",
           "0.3",
+          "",
           "on"
         ],
         [
@@ -1108,6 +1129,7 @@
           "30078:<PUBKEY>:the-lake:sound:lantern-hum",
           "layer",
           "0.3",
+          "",
           "flickering"
         ],
         [
@@ -1115,6 +1137,7 @@
           "30078:<PUBKEY>:the-lake:sound:lantern-crackle",
           "layer",
           "0.2",
+          "",
           "flickering"
         ],
         [
@@ -1408,10 +1431,31 @@
           "set-state",
           "read"
         ],
-        ["transition", "weathered", "lit", "You set the lantern at the base of the stone. In its warm glow, fresh carvings emerge from the lichen — a spiral, a wave, a serpent swallowing its own tail."],
-        ["transition", "read", "lit", "You set the lantern at the base of the stone. In its warm glow, fresh carvings emerge from the lichen — a spiral, a wave, a serpent swallowing its own tail."],
-        ["transition", "lit", "lit", "The lantern already rests at the stone's base, casting its light across the carvings."],
-        ["on-drop", "30078:<PUBKEY>:the-lake:item:brass-lantern", "", "set-state", "lit"]
+        [
+          "transition",
+          "weathered",
+          "lit",
+          "You set the lantern at the base of the stone. In its warm glow, fresh carvings emerge from the lichen \u2014 a spiral, a wave, a serpent swallowing its own tail."
+        ],
+        [
+          "transition",
+          "read",
+          "lit",
+          "You set the lantern at the base of the stone. In its warm glow, fresh carvings emerge from the lichen \u2014 a spiral, a wave, a serpent swallowing its own tail."
+        ],
+        [
+          "transition",
+          "lit",
+          "lit",
+          "The lantern already rests at the stone's base, casting its light across the carvings."
+        ],
+        [
+          "on-drop",
+          "30078:<PUBKEY>:the-lake:item:brass-lantern",
+          "",
+          "set-state",
+          "lit"
+        ]
       ],
       "content": "A tall stone, rough-hewn and ancient, stands at the edge of the clearing. Lichen covers most of its surface, but you can make out faint carved letters beneath."
     },
@@ -1728,7 +1772,7 @@
           "30078:<PUBKEY>:the-lake:item:serpent-staff"
         ]
       ],
-      "content": "A stone sarcophagus rests on a raised dais. The lid is carved with a serpent motif. It looks sealed but not locked — just very heavy."
+      "content": "A stone sarcophagus rests on a raised dais. The lid is carved with a serpent motif. It looks sealed but not locked \u2014 just very heavy."
     },
     {
       "kind": 30078,
@@ -1764,7 +1808,7 @@
           "transition",
           "dormant",
           "dormant",
-          "The mechanism is cold and still. Two recesses are carved into its face — one round, one long and narrow."
+          "The mechanism is cold and still. Two recesses are carved into its face \u2014 one round, one long and narrow."
         ],
         [
           "transition",
@@ -1782,7 +1826,7 @@
           "transition",
           "amulet-placed",
           "activated",
-          "You slide the serpent staff into the narrow slot. The staff locks into place. The orichalcum channels blaze with golden light, racing across the walls and floor. The mechanism hums — a deep, resonant tone that shakes dust from the ceiling. The floor beneath the mechanism splits open, revealing stone steps descending into warm light."
+          "You slide the serpent staff into the narrow slot. The staff locks into place. The orichalcum channels blaze with golden light, racing across the walls and floor. The mechanism hums \u2014 a deep, resonant tone that shakes dust from the ceiling. The floor beneath the mechanism splits open, revealing stone steps descending into warm light."
         ],
         [
           "transition",
@@ -1803,7 +1847,7 @@
           "30078:<PUBKEY>:the-lake:recipe:activate-mechanism"
         ]
       ],
-      "content": "A complex device of dark stone and orichalcum channels, set into the north wall. Two recesses are carved into its face — one round, one long and narrow. The orichalcum channels trace intricate patterns across the wall and floor, all converging on this point."
+      "content": "A complex device of dark stone and orichalcum channels, set into the north wall. Two recesses are carved into its face \u2014 one round, one long and narrow. The orichalcum channels trace intricate patterns across the wall and floor, all converging on this point."
     },
     {
       "kind": 30078,
@@ -2125,7 +2169,7 @@
           "30078:<PUBKEY>:the-lake:place:flooded-passage"
         ]
       ],
-      "content": "A tall, gaunt figure draped in shadow. It moves without sound, its long fingers curling and uncurling. It does not acknowledge you — it is interested only in what you carry."
+      "content": "A tall, gaunt figure draped in shadow. It moves without sound, its long fingers curling and uncurling. It does not acknowledge you \u2014 it is interested only in what you carry."
     },
     {
       "kind": 30078,
@@ -2252,7 +2296,7 @@
           ""
         ]
       ],
-      "content": "North of the clearing, there's a cave. Old. Older than me. Take a light — the dark below doesn't forgive the careless. There are paintings on the walls, if you look."
+      "content": "North of the clearing, there's a cave. Old. Older than me. Take a light \u2014 the dark below doesn't forgive the careless. There are paintings on the walls, if you look."
     },
     {
       "kind": 30078,
@@ -2275,7 +2319,7 @@
           ""
         ]
       ],
-      "content": "They painted what they saw. The lake, the serpent, the ones who came before. Don't dismiss the art of the ancients — it tells truth more honestly than words."
+      "content": "They painted what they saw. The lake, the serpent, the ones who came before. Don't dismiss the art of the ancients \u2014 it tells truth more honestly than words."
     },
     {
       "kind": 30078,
@@ -2303,7 +2347,7 @@
           ""
         ]
       ],
-      "content": "The chapel was built by the first watchers. They knew about the serpent. Pray at the altar — if you've earned the right. There's an inscription too, a riddle. The watchers loved their word games. *He chuckles.* They kept their secrets in bottles, you know. Everything precious went into a bottle."
+      "content": "The chapel was built by the first watchers. They knew about the serpent. Pray at the altar \u2014 if you've earned the right. There's an inscription too, a riddle. The watchers loved their word games. *He chuckles.* They kept their secrets in bottles, you know. Everything precious went into a bottle."
     },
     {
       "kind": 30078,
@@ -2354,7 +2398,7 @@
           ""
         ]
       ],
-      "content": "Below the cave network there's water. A lake. Black and still. Something lives there — old, patient. Not unfriendly, but... discerning. It chooses who passes."
+      "content": "Below the cave network there's water. A lake. Black and still. Something lives there \u2014 old, patient. Not unfriendly, but... discerning. It chooses who passes."
     },
     {
       "kind": 30078,
@@ -2377,7 +2421,7 @@
           ""
         ]
       ],
-      "content": "The serpent is a guardian. Not yours, not mine. It guards what's beneath. If you want to pass, you'll need its mark — an amulet of orichalcum. The crypt beneath the chapel holds answers."
+      "content": "The serpent is a guardian. Not yours, not mine. It guards what's beneath. If you want to pass, you'll need its mark \u2014 an amulet of orichalcum. The crypt beneath the chapel holds answers."
     },
     {
       "kind": 30078,
@@ -2405,7 +2449,7 @@
           ""
         ]
       ],
-      "content": "The lake remembers what we forgot. That's not metaphor — what sleeps beneath those waters dreamed something vast. The mechanism was built to wake it, or to keep it sleeping. I was never sure which."
+      "content": "The lake remembers what we forgot. That's not metaphor \u2014 what sleeps beneath those waters dreamed something vast. The mechanism was built to wake it, or to keep it sleeping. I was never sure which."
     },
     {
       "kind": 30078,
@@ -3186,7 +3230,7 @@
           "counters"
         ]
       ],
-      "content": "Everything goes dark. The cold seeps in, then nothing.\n\n...\n\nYou wake in the clearing, the sky bright above you. Your belongings are gone — scattered somewhere behind you."
+      "content": "Everything goes dark. The cold seeps in, then nothing.\n\n...\n\nYou wake in the clearing, the sky bright above you. Your belongings are gone \u2014 scattered somewhere behind you."
     },
     {
       "kind": 30078,
@@ -3212,7 +3256,7 @@
           "counters"
         ]
       ],
-      "content": "The last ember of light dies. Darkness swallows you whole.\n\nYou stumble, hands against cold stone, until — somehow — you find your way back to the cave mouth."
+      "content": "The last ember of light dies. Darkness swallows you whole.\n\nYou stumble, hands against cold stone, until \u2014 somehow \u2014 you find your way back to the cave mouth."
     },
     {
       "kind": 30078,
@@ -3673,7 +3717,7 @@
           "0.3"
         ]
       ],
-      "content": "The passage narrows here, the floor slick with dark water that rises to your ankles. The walls glisten with moisture and strange mineral deposits. Objects lie half-submerged in the shallows — things dropped or abandoned."
+      "content": "The passage narrows here, the floor slick with dark water that rises to your ankles. The walls glisten with moisture and strange mineral deposits. Objects lie half-submerged in the shallows \u2014 things dropped or abandoned."
     },
     {
       "kind": 30078,
@@ -3736,7 +3780,7 @@
           ""
         ]
       ],
-      "content": "You have reached the Sanctum beneath the lake. The sealed knowledge of the watchers is yours — not treasure, but memory. The serpent rests. The mechanism sleeps. And you understand, at last, what the lake remembers.\n\n*The world above will forget, as it always does. But the lake will remember you.*"
+      "content": "You have reached the Sanctum beneath the lake. The sealed knowledge of the watchers is yours \u2014 not treasure, but memory. The serpent rests. The mechanism sleeps. And you understand, at last, what the lake remembers.\n\n*The world above will forget, as it always does. But the lake will remember you.*"
     },
     {
       "kind": 30078,
@@ -3812,7 +3856,7 @@
           "30078:<PUBKEY>:the-lake:portal:mechanism-to-sanctum"
         ]
       ],
-      "content": "You place the serpent amulet into the round recess and slide the serpent staff into the narrow slot. The orichalcum channels blaze with golden light. The mechanism hums — a deep, resonant tone that shakes dust from the ceiling."
+      "content": "You place the serpent amulet into the round recess and slide the serpent staff into the narrow slot. The orichalcum channels blaze with golden light. The mechanism hums \u2014 a deep, resonant tone that shakes dust from the ceiling."
     },
     {
       "kind": 30078,

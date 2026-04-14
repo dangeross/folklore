@@ -86,9 +86,13 @@ export default function DraftListPanel({
       const id = draft._draft?.id;
       if (id) map[id] = validateEvent(draft);
     }
-    // Cross-event world validation
+    // Cross-event world validation — validate drafts in context of full world
+    // (published relay events included so refs to non-drafted events don't false-positive)
     const answers = loadAnswers(worldSlug);
-    const worldResult = validateWorld(drafts, answers);
+    const publishedFlat = events instanceof Map
+      ? [...events.values()].filter(e => !e._isDraft)
+      : [];
+    const worldResult = validateWorld([...drafts, ...publishedFlat], answers);
     // Merge world-level issues into per-event results by d-tag
     const dTagToId = {};
     for (const draft of drafts) {
