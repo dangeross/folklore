@@ -39,7 +39,7 @@ async function fetchExistingList(pubkey) {
         return events.sort((a, b) => b.created_at - a.created_at)[0];
       }
     } catch (err) {
-      console.warn(`useWorldList: fetch failed on ${url}:`, err.message);
+      console.warn(`useWorldList: fetch failed on ${url}:`, err?.message ?? err);
     }
   }
   return null;
@@ -71,7 +71,7 @@ async function publishList(signer, aTags) {
       relay.close();
       return { ok: true, event: signed };
     } catch (err) {
-      console.warn(`useWorldList: publish failed on ${url}:`, err.message);
+      console.warn(`useWorldList: publish failed on ${url}:`, err?.message ?? err);
     }
   }
   return { ok: false, error: 'Failed to publish to any relay.' };
